@@ -1,0 +1,511 @@
+fileFormatVersion: 2
+guid: 4004d4342e992486da3db270f02780ef
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2771995366509396637
+    second: Sprite_ExerciseIcons_Temp_0
+  - first:
+      213: -4302581965277550020
+    second: Sprite_ExerciseIcons_Temp_1
+  - first:
+      213: -6270362591562533586
+    second: Sprite_ExerciseIcons_Temp_2
+  - first:
+      213: -5791202336953851197
+    second: Sprite_ExerciseIcons_Temp_3
+  - first:
+      213: -5511692654747482090
+    second: Sprite_ExerciseIcons_Temp_4
+  - first:
+      213: -3371038181612679640
+    second: Sprite_ExerciseIcons_Temp_5
+  - first:
+      213: 5338168356145782377
+    second: Sprite_ExerciseIcons_Temp_6
+  - first:
+      213: -5650678548822960071
+    second: Sprite_ExerciseIcons_Temp_7
+  - first:
+      213: 600507453253056171
+    second: Sprite_ExerciseIcons_Temp_8
+  - first:
+      213: 7697584592598237192
+    second: Sprite_ExerciseIcons_Temp_9
+  - first:
+      213: -4443799329422384984
+    second: Sprite_ExerciseIcons_Temp_10
+  - first:
+      213: 5816963782787979558
+    second: Sprite_ExerciseIcons_Temp_11
+  - first:
+      213: -4122264100561822765
+    second: Sprite_ExerciseIcons_Temp_12
+  - first:
+      213: -577442731781181770
+    second: Sprite_ExerciseIcons_Temp_13
+  - first:
+      213: -7174833162494680127
+    second: Sprite_ExerciseIcons_Temp_14
+  - first:
+      213: 3212727392163644429
+    second: Sprite_ExerciseIcons_Temp_15
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 745
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91e01978649b84cb39c0647729b57aab
+      internalID: -2771995366509396637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 737
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b0702d3460043d180981b1f84cfab7
+      internalID: -4302581965277550020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_2
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 742
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96b2403153194e50af4fa233e0e5eea
+      internalID: -6270362591562533586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_3
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 744
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 112f8e094f4854b448153b388dc2e0f8
+      internalID: -5791202336953851197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_4
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 483
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19f89ea29d1f745f48a4cb89d365617f
+      internalID: -5511692654747482090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_5
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 481
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5bd14369dbf4c9b992cd4f92543c08
+      internalID: -3371038181612679640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_6
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 491
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32633f243f74c499dada67df7b2749ae
+      internalID: 5338168356145782377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_7
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 480
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbdc6f8f39af045c39a04fd005e6442f
+      internalID: -5650678548822960071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_8
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 216
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b944216490b4c56bf0f30cfcdef245
+      internalID: 600507453253056171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_9
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 239
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b427521f55c284672884553ffe118132
+      internalID: 7697584592598237192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_10
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 233
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4201c343eef4231910d06c1ad60a82
+      internalID: -4443799329422384984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_11
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 237
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71bea2ee5a3644f71a05d1e69ea93e23
+      internalID: 5816963782787979558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_12
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 0
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fad9c3e4a4dd4a528b698a5684b1dd0
+      internalID: -4122264100561822765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_13
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc4f2221d26d1402ea649f33e8289126
+      internalID: -577442731781181770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_14
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 0
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e950bd1bdae247729158281b51247e7
+      internalID: -7174833162494680127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite_ExerciseIcons_Temp_15
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 0
+        width: 220
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149f41129f1444aed99fe63f12a79e19
+      internalID: 3212727392163644429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fcd866e6b51b84e2b94a33f93bd69262
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

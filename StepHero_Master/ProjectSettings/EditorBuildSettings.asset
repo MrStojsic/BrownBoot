@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Plugins/UniPedometer/Sample/Sample1.unity
+    guid: d91dea75da7c34f04a0bc6af05b4b8a4
+  - enabled: 0
+    path: Assets/Plugins/UniPedometer/Sample/PrimaryTestingScene.unity
+    guid: dde522329eaae4372b6908d8f9d78c2a
+  - enabled: 0
+    path: Assets/_Workout/Scenes/WorkoutInput_Scene.unity
+    guid: 15d770770a99f4c7693591d28cfa6afc
+  - enabled: 1
+    path: Assets/Scenes/Workout/Scene_WorkoutSelection.unity
+    guid: 9b8e400c2c6244598a3db46a7b91e35c
+  m_configObjects: {}

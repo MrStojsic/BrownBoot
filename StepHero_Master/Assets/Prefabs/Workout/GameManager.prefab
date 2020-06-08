@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3494576031910268665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3494576031910268667}
+  - component: {fileID: 1777724993}
+  - component: {fileID: 1777724994}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3494576031910268667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494576031910268665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1777724993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494576031910268665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6824f7826fd94a3a985d3ac1aab1c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultExerciseDataList:
+  - exerciseName: Weight Training
+    exerciseType: 0
+    iconIndex: 0
+    isCustom: 0
+    id: 0
+  - exerciseName: Running
+    exerciseType: 1
+    iconIndex: 1
+    isCustom: 0
+    id: 1
+  - exerciseName: Yoga
+    exerciseType: 2
+    iconIndex: 2
+    isCustom: 0
+    id: 3
+  spriteArray:
+  - {fileID: 8067816043842819363, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -2361745669769750827, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -5066654288858103800, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: 925267100924490453, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -1253174770981239787, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -6828135731558101449, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: 1785910154692601885, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -842054268786833406, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -4967462850406469686, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  - {fileID: -3820000676390778269, guid: 7b4a32cf63de54f9682bfeb4ed89d3c3, type: 3}
+  exerciseTypeColoursArray:
+  - {r: 0.7490196, g: 0.39607844, b: 0.3764706, a: 1}
+  - {r: 0.41960788, g: 0.654902, b: 0.44705886, a: 1}
+  - {r: 0.3254902, g: 0.6117647, b: 0.7803922, a: 1}
+--- !u!114 &1777724994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494576031910268665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8d8b9a10cc7432f8446f0d879ae623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lenghtLimit: 100
+  createWorkout: {fileID: 0}

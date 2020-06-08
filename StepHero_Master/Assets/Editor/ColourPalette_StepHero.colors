@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12323, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: ColourPalette_StepHero
+  m_EditorClassIdentifier: 
+  m_Presets:
+  - m_Name: ScrollBarBackground
+    m_Color: {r: 0.8962264, g: 0.89564484, b: 0.89199895, a: 1}
+  - m_Name: ScrollViewBackground
+    m_Color: {r: 1, g: 1, b: 1, a: 1}
+  - m_Name: BasicMenubackground
+    m_Color: {r: 0.8207547, g: 0.77843463, b: 0.6775098, a: 1}
+  - m_Name: DefaultButtonBackground
+    m_Color: {r: 0.6226415, g: 0.5925374, b: 0.502225, a: 1}
+  - m_Name: PressedButtonBackground
+    m_Color: {r: 0.69, g: 0.65663916, b: 0.5565566, a: 1}
+  - m_Name: StrengthRed
+    m_Color: {r: 0.7490196, g: 0.39607844, b: 0.3764706, a: 1}
+  - m_Name: AgilityGreen
+    m_Color: {r: 0.41960788, g: 0.654902, b: 0.44705886, a: 1}
+  - m_Name: InteligenceBlue
+    m_Color: {r: 0.3254902, g: 0.6117647, b: 0.7803922, a: 1}
+  - m_Name: TextHeading
+    m_Color: {r: 0.31132078, g: 0.3069153, b: 0.3069153, a: 1}
+  - m_Name: TextRegular
+    m_Color: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+  - m_Name: DefaultCancelButtonBackground
+    m_Color: {r: 0.6603774, g: 0.28969383, b: 0.28969383, a: 1}
+  - m_Name: PressedCancelButtonBackground
+    m_Color: {r: 0.73, g: 0.32154763, b: 0.32154763, a: 1}
+  - m_Name: DefaultOkButtonBackground
+    m_Color: {r: 0.56051904, g: 0.8867924, b: 0.50614095, a: 1}
+  - m_Name: PressedOkButtonBackground
+    m_Color: {r: 0.6074337, g: 0.96, b: 0.54796463, a: 1}
