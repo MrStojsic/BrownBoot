@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[InitializeOnLoad()]
+// Commented out to remove from editor.
+//[InitializeOnLoad()]
 public class PathfindingEditor
 {
+    // Commented out to remove from editor.
+    /*
     [DrawGizmo(GizmoType.NonSelected | GizmoType.Selected | GizmoType.Pickable)]
     public static void OnDrawSceneGizmos(AStarEdge aStarEdge, GizmoType gizmoType)
     {
@@ -30,6 +33,6 @@ public class PathfindingEditor
             Gizmos.color = Color.magenta;
             Gizmos.DrawLine(aStarEdge.headNode.transform.position, aStarEdge.tailNode.transform.position);
         }
-    }
+    }*/
 
 }

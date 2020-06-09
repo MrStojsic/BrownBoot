@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{A428E8D4-1D15-FF73-BD2B-034078A60F55}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_Workout/Scripts/ToKeep/Menu/SimpleButton.cs">
+    <Files>
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/PlayerData.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/Exercise.cs" Line="23" Column="5" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/ExerciseData.cs" Line="10" Column="25" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/DataIndexer.cs" Line="8" Column="55" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/DataIndexerData.cs" Line="1" Column="1" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/SaveData/SaveSystem.cs" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/ExerciseListsPopulator.cs" Line="16" Column="6" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/ExerciseCreator.cs" Line="23" Column="72" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/TabButton.cs" Line="29" Column="22" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/SelectorButton.cs" Line="16" Column="5" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/SelectorGroup.cs" Line="37" Column="41" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/TabGroup.cs" Line="49" Column="17" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/ExerciseManager.cs" Line="5" Column="29" />
+      <File FileName="Assets/_Workout/Scripts/Workout.cs" Line="7" Column="14" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/SetActiveUiElement.cs" Line="31" Column="80" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/SimpleButton.cs" Line="16" Column="33" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/OneOffs/SetSpriteToExerciseIcon.cs" Line="23" Column="75" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/ExerciseComponent.cs" Line="25" Column="42" />
+      <File FileName="Assets/_Workout/Scripts/ToKeep/Menu/CreateExerciseButton_SimpleButton.cs" Line="8" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp-firstpass PreferredExecutionTarget="ff2caf8d-f4b5-490d-901e-6516ebfcba07" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="67c1bf8c-9082-4628-bcb7-c58fa18f607d" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

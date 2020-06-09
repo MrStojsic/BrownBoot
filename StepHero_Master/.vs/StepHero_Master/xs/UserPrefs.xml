@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointManagementWindow.cs">
+    <Files>
+      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingEditor.cs" Line="7" Column="3" />
+      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingManagementWindow.cs" Line="276" Column="7" />
+      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointEditor.cs" Line="4" Column="19" />
+      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointManagementWindow.cs" Line="9" Column="7" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="35939977-8830-4908-a9a8-1b281801bc39" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

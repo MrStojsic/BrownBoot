@@ -5,6 +5,8 @@ using UnityEditor;
 
 public class WaypointManagementWindow : EditorWindow
 {
+    // Commented out to remove from editor.
+    /*
     [MenuItem("Tools/Waypoint Management Window")]
     public static void Open()
     {
@@ -174,5 +176,5 @@ public class WaypointManagementWindow : EditorWindow
             }
 
         }
-    }
+    }*/
 }

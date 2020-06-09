@@ -5,7 +5,8 @@ using UnityEditor;
 using System.Reflection;
 
 public class PathfindingManagementWindow : EditorWindow
-{
+{   // Commented out to remove from editor.
+    /*
     [MenuItem("Tools/Pathfinding Management Window")]
     public static void Open()
     {
@@ -272,5 +273,5 @@ public class PathfindingManagementWindow : EditorWindow
         Selection.activeGameObject = newNode.gameObject;
 
     }
-
+    */
 }
