@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 //- This AStar code and node system is based off SebLague Lagues A* found at.
 // https://github.com/SebLague/Pathfinding/tree/master/Episode%2003%20-%20astar/Assets/Scripts
 // - For references to FindClosestWaypoint for when player is selecting waypoints to move to try.
@@ -10,7 +11,7 @@ public class AStarPathfinder : MonoBehaviour
 {
 	public AStarNode start, goal;
 	public List<AStarNode> nodePath = new List<AStarNode>();
-	public List<Vector2> pointPath = new List<Vector2>();
+	public List<PathCreator> finalBezierPath = new List<PathCreator>();
 
 	public float maxDistancePerGoal = 50f;
 
@@ -152,24 +153,16 @@ public class AStarPathfinder : MonoBehaviour
 	void RetracePathToConstructWaypointPath(AStarNode startNode, AStarNode endNode)
 	{
 
-		pointPath.AddRange(startNode.connectingEdges[startNode.bestEdgeIndex].GetCorrectDirectionPathPoints(startNode));
-		//startNode.ResetNode();
+		finalBezierPath.Add(startNode.connectingEdges[startNode.bestEdgeIndex].pathCreator);
+		startNode.ResetNode();
         for (int i = 0; i < nodePath.Count-1; i++)
         {
-			pointPath.AddRange(nodePath[i].connectingEdges[nodePath[i].bestEdgeIndex].GetCorrectDirectionPathPoints(nodePath[i]));
-			//nodePath[i].ResetNode();
+            // TODO. This currently returns the pathCreator to but doesnt give the correct direction to follow it yet.
+			finalBezierPath.Add(nodePath[i].connectingEdges[nodePath[i].bestEdgeIndex].pathCreator);
+			nodePath[i].ResetNode();
 		}
-		//endNode.ResetNode();
+		endNode.ResetNode();
 		print("DONE!");
-		//totalPathDistance = endNode.gScore;
-		//print("totalPathDistance " + totalPathDistance);
-
-		print(Time.realtimeSinceStartup);
-
-		/*foreach (var item in pointPath)
-        {
-			print(item);
-        }*/
 
 	}
 	/*	void RetracePathToConstructWaypointPath(MyAStarNode startNode, MyAStarNode endNode)

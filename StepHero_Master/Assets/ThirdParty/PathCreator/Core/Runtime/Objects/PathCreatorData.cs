@@ -63,7 +63,6 @@ namespace PathCreation {
 
             var space = (defaultIs2D) ? PathSpace.xy : PathSpace.xyz;
             _bezierPath = new BezierPath (centre, false, space);
-
             _bezierPath.OnModified += BezierPathEdited;
             vertexPathUpToDate = false;
 

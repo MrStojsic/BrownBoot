@@ -10,11 +10,13 @@ public class AStarPointPathToPlayerMovement_TEST : MonoBehaviour
     // Start is called before the first frame update
     public void BeginPathFollow()
     {
+        // TODO Fix of use the PathFollower version as a new base.
+        /*
         if (aStarPathfinder.pointPath.Count > 0)
         {
             print("Run");
             player_FollowPointPath.SetupPath(aStarPathfinder.pointPath.ToArray());
 
-        }
+        }*/
     }
 }

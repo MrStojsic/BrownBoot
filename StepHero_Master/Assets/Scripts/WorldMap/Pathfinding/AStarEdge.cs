@@ -1,73 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class AStarEdge : MonoBehaviour
 {
+    public PathCreator pathCreator;
+
     public AStarNode headNode = null;
     public AStarNode tailNode = null;
 
-    //- This is the lenght of this nodes path that leads to its 0 index connectingNode.
-    public float lScore = 0;
+    // The Path ends on the head and tail nodes respectivly so the lenght is purely the paths length.
     public float LScore
     {
-        get { return lScore; }
-    }
-    
-    private void Awake()
-    {
-        CalculateCost();
-    }
-
-    
-    public void CalculateCost()
-    {
-        if (transform.childCount > 0)
-        {
-            lScore += Vector2.Distance(headNode.transform.position, transform.GetChild(0).transform.position);
-            for (int i = 0; i < transform.childCount - 1; i++)
-            {
-                lScore += Vector2.Distance(transform.GetChild(i).transform.position, transform.GetChild(i + 1).transform.position);
-            }
-            lScore += Vector2.Distance(transform.GetChild(transform.childCount-1).transform.position, tailNode.transform.position);
-        }
-        else
-        {
-            lScore = Vector2.Distance(headNode.transform.position, tailNode.transform.position);
-        }
-        //print(lScore);
+        get { return pathCreator.path.length;; }
     }
 
 
-    public Vector2[] GetCorrectDirectionPathPoints(AStarNode nextNode)
+
+    // Needs refactoring to use bezeirs.
+    public void GetCorrectDirectionPathPoints(AStarNode nextNode)
     {
         bool isHeadNode = (nextNode == headNode);
+        // basically if we are the tail node the player will traverse the bezeir curve normally from strt to end 0 > 1.
+        // if we are the head node we tell the player to start at the end and reverse at end in  way 1 > 0.
+        // ( look in Path follow around line 253 for an idea of what im thinking.)
+        // We know with certainty that if the node creation editor works as intended the head node should be the end of the curve, the direction its heading.
+        // and the tail node shoould be at the point the curve started.
 
-        Vector2[] pathPoints = new Vector2[transform.childCount + 1];
+        // Im not sure what this should return yet so it just returns void for now.
 
-        if (isHeadNode)
-        {
-            pathPoints[transform.childCount] = tailNode.transform.position;
-            if (transform.childCount > 0)
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    pathPoints[i] = transform.GetChild(i).transform.position;
-                }
-            }
-        }
-        else
-        {
-            pathPoints[transform.childCount] = headNode.transform.position;
-            if (transform.childCount > 0)
-            {
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    pathPoints[i] = transform.GetChild(transform.childCount - i - 1).transform.position;
-                }
-            }
-        }
-        return pathPoints;
     }
 
     public AStarNode ReturnOtherEndOfPath(AStarNode end)
@@ -79,30 +41,4 @@ public class AStarEdge : MonoBehaviour
         return headNode;
         
     }
-
-    public void SetNodeConnections(AStarNode headNode, AStarNode tailNode)
-    {
-
-    }
-
-    /*
-    private void OnDrawGizmos()
-    {
-        if (transform.childCount == 0)
-        {
-            return;
-        }
-
-        Gizmos.color = Color.black;
-
-        for (int i = 0; i < transform.childCount-1; i++)
-        {
-            Gizmos.DrawLine(transform.GetChild(i).transform.position, transform.GetChild(i+1).transform.position);
-        }
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.GetChild(0).transform.position, headNode.transform.position);
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.GetChild(transform.childCount-1).transform.position, tailNode.transform.position);
-    }*/
 }

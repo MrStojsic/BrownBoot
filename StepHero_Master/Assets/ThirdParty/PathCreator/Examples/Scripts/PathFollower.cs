@@ -26,7 +26,7 @@ namespace PathCreation.Examples
             {
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
-                if (distanceTravelled >= pathCreator.path.length)
+                if (distanceTravelled >= pathCreator.path.length && endOfPathInstruction != EndOfPathInstruction.Reverse)
                 {
                     reachedEnd = true;
                     distanceTravelled = pathCreator.path.length;

@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2871256371975870592}
   - component: {fileID: 2871256371975870593}
+  - component: {fileID: 6392672379515366521}
   m_Layer: 0
   m_Name: Prefab_AStarNode
   m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45,6 +46,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previous: {fileID: 0}
   bestEdgeIndex: 0
+  previousBestEdgeIndex: 0
   gScore: 0
   hScore: 0
+  id: 0
   connectingEdges: []
+--- !u!114 &6392672379515366521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2871256371975871359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4082cdbc5c3cb49b59a7a3ffb1ae4edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aStarNode: {fileID: 2871256371975870593}

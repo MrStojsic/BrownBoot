@@ -280,9 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 533977446}
   tailNode: {fileID: 1070207600}
-  lScore: 0
 --- !u!4 &103292004
 Transform:
   m_ObjectHideFlags: 0
@@ -860,9 +860,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 1070207600}
   tailNode: {fileID: 676476417}
-  lScore: 0
 --- !u!1 &514966971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1086,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1089473563}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &571434217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 571434220}
+  - component: {fileID: 571434218}
+  - component: {fileID: 571434219}
+  m_Layer: 0
+  m_Name: Node0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &571434218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571434217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44c40ec5fb91d44fd8d7571991af0624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previous: {fileID: 0}
+  bestEdgeIndex: 0
+  previousBestEdgeIndex: 0
+  gScore: 0
+  hScore: 0
+  id: 0
+  connectingEdges: []
+--- !u!114 &571434219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571434217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4082cdbc5c3cb49b59a7a3ffb1ae4edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aStarNode: {fileID: 571434218}
+--- !u!4 &571434220
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571434217}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.037, y: -1.417, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &629597273
 GameObject:
@@ -1711,9 +1775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 1261267309}
   tailNode: {fileID: 1406324108}
-  lScore: 0
 --- !u!4 &1068311765
 Transform:
   m_ObjectHideFlags: 0
@@ -1810,9 +1874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 1646219317}
   tailNode: {fileID: 2110502940}
-  lScore: 0
 --- !u!4 &1073552252
 Transform:
   m_ObjectHideFlags: 0
@@ -1903,9 +1967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 344031875}
   tailNode: {fileID: 225490412}
-  lScore: 0
 --- !u!4 &1089473563
 Transform:
   m_ObjectHideFlags: 0
@@ -1950,9 +2014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 1768125693}
   tailNode: {fileID: 533977446}
-  lScore: 0
 --- !u!4 &1101294328
 Transform:
   m_ObjectHideFlags: 0
@@ -2094,9 +2158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 514966972}
   tailNode: {fileID: 1768125693}
-  lScore: 0
 --- !u!1 &1275946091
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,9 +2394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 1406324108}
   tailNode: {fileID: 225490412}
-  lScore: 0
 --- !u!4 &1337681298
 Transform:
   m_ObjectHideFlags: 0
@@ -2392,9 +2456,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 225490412}
   tailNode: {fileID: 1768125693}
-  lScore: 0
 --- !u!1 &1406324107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2477,9 +2541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 2110502940}
   tailNode: {fileID: 1406324108}
-  lScore: 0
 --- !u!4 &1452919260
 Transform:
   m_ObjectHideFlags: 0
@@ -2604,7 +2668,7 @@ MonoBehaviour:
   start: {fileID: 676476417}
   goal: {fileID: 1261267309}
   nodePath: []
-  pointPath: []
+  finalBezierPath: []
   maxDistancePerGoal: 50
   totalPathDistance: 0
 --- !u!114 &1569308054
@@ -3018,9 +3082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 178845354}
   tailNode: {fileID: 533977446}
-  lScore: 0
 --- !u!4 &1747926899
 Transform:
   m_ObjectHideFlags: 0
@@ -3584,9 +3648,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathCreator: {fileID: 0}
   headNode: {fileID: 2089047957}
   tailNode: {fileID: 1768125693}
-  lScore: 0
 --- !u!4 &1963164591
 Transform:
   m_ObjectHideFlags: 0
@@ -3960,26 +4024,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000,
         type: 0}
-    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
-        type: 3}
-      propertyPath: connectingEdges.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
-        type: 3}
-      propertyPath: connectingEdges.Array.data[0]
-      value: 
-      objectReference: {fileID: 398270848}
-    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
-        type: 3}
-      propertyPath: connectingEdges.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
-        type: 3}
-      propertyPath: gScore
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2871256371975870592, guid: 3212be986790c41b7a28becee14d834b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4033,6 +4077,26 @@ PrefabInstance:
     - target: {fileID: 2871256371975870592, guid: 3212be986790c41b7a28becee14d834b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
+        type: 3}
+      propertyPath: connectingEdges.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
+        type: 3}
+      propertyPath: connectingEdges.Array.data[0]
+      value: 
+      objectReference: {fileID: 398270848}
+    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
+        type: 3}
+      propertyPath: connectingEdges.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2871256371975870593, guid: 3212be986790c41b7a28becee14d834b,
+        type: 3}
+      propertyPath: gScore
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
