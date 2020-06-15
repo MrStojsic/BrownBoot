@@ -179,6 +179,13 @@ namespace PathCreation {
             float t = dst / length;
             return GetPointAtTime (t, endOfPathInstruction);
         }
+        /// Gets point on path based on distance travelled and direction of travel.
+        public Vector3 GetPointAtDistanceByDirection(float dst, bool isForward, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
+        {
+            float t = isForward ? dst / length : 1-dst / length;
+            Debug.Log(t);
+            return GetPointAtTime(t, endOfPathInstruction);
+        }
 
         /// Gets forward direction on path based on distance travelled.
         public Vector3 GetDirectionAtDistance (float dst, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop) {

@@ -56,9 +56,9 @@ public class PathfindingPlacementManagementWindow : EditorWindow
     {
         isEditMode = GUILayout.Toggle(isEditMode, "EditMode - Toggle off when not editing.");
   
-        if (isEditMode && Selection.activeGameObject != null)
+        if (isEditMode && Selection.activeObject != null)
         {
-            if (Selection.activeGameObject.GetComponent<AStarNode>())
+            if (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<AStarNode>())
             {
                 GUI.backgroundColor = Color.yellow;
                 if (GUILayout.Button("Create New Node Bézier Linked To Selected Node"))
@@ -72,7 +72,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
                 }
             }
             // TODO Impliment adding a node halfway along a bezier path.. Maybe?
-            if (Selection.activeGameObject.GetComponent<AStarEdge>())
+            if (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<AStarEdge>())
             {
                 if (GUILayout.Button("Insert New Node At Path Head"))
                 {
@@ -81,6 +81,10 @@ public class PathfindingPlacementManagementWindow : EditorWindow
                 if (GUILayout.Button("Insert New Node At Path Tail"))
                 {
                     InsertNewNodeAtPathTail();
+                }
+                if (GUILayout.Button("Remove Selected Connected Bezier Path"))
+                {
+                    RemoveSelectedConnectedBezierPath();
                 }
             }
         }
@@ -104,35 +108,51 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         newEdge.pathCreator = pathEdge;
         newEdge.transform.name = "Path - " + selectedNodeTransform.name + " > " + newNode.name;
 
-
+        // CONFIGURE PATH.
         pathEdge.bezierPath = new BezierPath((newNode.transform.position + (existingNode.transform.position - newNode.transform.position) / 2), false, PathSpace.xyz);
-
         pathEdge.bezierPath.MovePoint(0, existingNode.transform.position);
         pathEdge.bezierPath.MovePoint(3, newNode.transform.position);
 
-
-
+        // LINK NODES AND PATHS.
         newEdge.headNode = newNode;
         newEdge.tailNode = existingNode;
-
         newNode.connectingEdges.Add(newEdge);
         existingNode.connectingEdges.Add(newEdge);
  
-
-
         Selection.activeGameObject = newNode.gameObject;
 
     }
 
     void RemoveSelectedNodeAndAllConnectedBezierPaths()
     {
+        AStarNode aStarNode = Selection.activeGameObject.GetComponent<AStarNode>();
+        AStarNode otherAStarNode;
+        AStarEdge aStarEdge;
+        for (int i = aStarNode.connectingEdges.Count-1; i > -1; i--)
+        {
+            Debug.Log(aStarNode.name + " " + (aStarNode.connectingEdges.Count - 1));
+            
+            otherAStarNode = aStarNode.connectingEdges[i].ReturnOtherEndOfPath(aStarNode);
+            for (int j = 0; j < otherAStarNode.connectingEdges.Count; j++)
+            {
+
+                Debug.Log(j +" <O , T> " + i);
+                if (otherAStarNode.connectingEdges[j] == aStarNode.connectingEdges[i])
+                {
+                    aStarEdge = otherAStarNode.connectingEdges[j];
+                    otherAStarNode.connectingEdges.RemoveAt(j);
+                    DestroyImmediate(aStarEdge.gameObject);
+                }
+            }
+        }
+        DestroyImmediate(aStarNode.gameObject);
 
     }
     void InsertNewNodeAtPathHead()
     {
+        // GET ORIGINAL NODE AND EDGE THEN DISCONNECT.
         AStarEdge originalEdge = Selection.activeGameObject.GetComponent<AStarEdge>();
         AStarNode nodeToRepath = originalEdge.headNode;
-
         nodeToRepath.connectingEdges.Remove(originalEdge);
 
         // NEW NODE.
@@ -157,24 +177,23 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         newEdge.pathCreator = newPathCreator;
         newEdge.transform.name = "Path - " + newNode.name + " > " + nodeToRepath.name;
 
-
+        // CONFIGURE PATH.
         newPathCreator.bezierPath = new BezierPath((newNode.transform.position + (nodeToRepath.transform.position - newNode.transform.position) / 2), false, PathSpace.xyz);
-
         newPathCreator.bezierPath.MovePoint(0, newNode.transform.position);
         newPathCreator.bezierPath.MovePoint(3, nodeToRepath.transform.position);
 
+        // LINK NODES AND PATHS.
         newNode.connectingEdges.Add(newEdge);
         nodeToRepath.connectingEdges.Add(newEdge);
-
         newEdge.tailNode = newNode;
         newEdge.headNode = nodeToRepath;
     }
 
     void InsertNewNodeAtPathTail()
     {
+        // GET ORIGINAL NODE AND EDGE THEN DISCONNECT.
         AStarEdge originalEdge = Selection.activeGameObject.GetComponent<AStarEdge>();
         AStarNode nodeToRepath = originalEdge.tailNode;
-
         nodeToRepath.connectingEdges.Remove(originalEdge);
 
         // NEW NODE.
@@ -199,16 +218,23 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         newEdge.pathCreator = newPathCreator;
         newEdge.transform.name = "Path - " + newNode.name + " > " + nodeToRepath.name;
 
-
+        // CONFIGURE PATH.
         newPathCreator.bezierPath = new BezierPath((newNode.transform.position + (nodeToRepath.transform.position - newNode.transform.position) / 2), false, PathSpace.xyz);
-
         newPathCreator.bezierPath.MovePoint(0, nodeToRepath.transform.position);
         newPathCreator.bezierPath.MovePoint(3, newNode.transform.position);
 
+        // LINK NODES AND PATHS.
         newNode.connectingEdges.Add(newEdge);
         nodeToRepath.connectingEdges.Add(newEdge);
-
         newEdge.tailNode = nodeToRepath;
         newEdge.headNode = newNode;
+    }
+    void RemoveSelectedConnectedBezierPath()
+    {
+        // GET EDGE, DISCONNECT FROM NODES, DESTORY IT.
+        AStarEdge aStarEdge = Selection.activeGameObject.GetComponent<AStarEdge>();
+        aStarEdge.headNode.connectingEdges.Remove(aStarEdge);
+        aStarEdge.tailNode.connectingEdges.Remove(aStarEdge);
+        DestroyImmediate(aStarEdge.gameObject);
     }
 }

@@ -1,25 +1,24 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ThirdParty/PathCreator/Core/Editor/PathEditor.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/ThirdParty/PathCreator/Examples/Scripts/PathFollower.cs">
     <Files>
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingEditor.cs" Line="6" Column="1" />
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointEditor.cs" />
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointManagementWindow.cs" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreator.cs" Line="30" Column="19" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreatorData.cs" Line="8" Column="18" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/BezierPath.cs" Line="29" Column="8" />
+      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/BezierPath.cs" Line="668" Column="21" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathSpace.cs" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathPlacer.cs" Line="1" Column="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathSpawner.cs" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/GeneratePathExample.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathFollower.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarNode.cs" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarNode.cs" Line="22" Column="43" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" Line="49" Column="19" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPointPathToPlayerMovement_TEST.cs" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" Line="160" Column="119" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPointPathToPlayerMovement_TEST.cs" Line="20" Column="12" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/Editor/PathSceneToolEditor.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingManagementWindow.cs" Line="134" Column="10" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathSceneTool.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs" Line="34" Column="39" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs" Line="30" Column="10" />
       <File FileName="Assets/Scripts/UNUSED_SCRIPTS/Waypoints/Waypoint.cs" />
       <File FileName="Assets/Scripts/UNUSED_SCRIPTS/AStarAttempt/BasicAStarNode.cs" Line="28" Column="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/Helper/ScreenSpacePolyLine.cs" Line="211" Column="22" />
@@ -32,8 +31,12 @@
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/MathUtility.cs" Line="1" Column="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/VertexPathUtility.cs" Line="1" Column="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/PathEditor.cs" Line="1" Column="1" />
-      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" Line="8" Column="50" NotebookId="1" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/MovePlayerSimp_TEST.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/AStarAttempt/Player_FollowPointPath.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/Player_FollowBezierPath.cs" Line="1" Column="1" />
+      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" Line="61" Column="43" NotebookId="1" />
+      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathFollower.cs" Line="7" Column="30" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

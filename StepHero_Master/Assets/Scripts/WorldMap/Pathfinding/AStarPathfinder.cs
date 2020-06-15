@@ -11,7 +11,7 @@ public class AStarPathfinder : MonoBehaviour
 {
 	public AStarNode start, goal;
 	public List<AStarNode> nodePath = new List<AStarNode>();
-	public List<PathCreator> finalBezierPath = new List<PathCreator>();
+	public List<AStarEdge> finalEdgePath = new List<AStarEdge>();
 
 	public float maxDistancePerGoal = 50f;
 
@@ -153,12 +153,12 @@ public class AStarPathfinder : MonoBehaviour
 	void RetracePathToConstructWaypointPath(AStarNode startNode, AStarNode endNode)
 	{
 
-		finalBezierPath.Add(startNode.connectingEdges[startNode.bestEdgeIndex].pathCreator);
+		finalEdgePath.Add(startNode.connectingEdges[startNode.bestEdgeIndex]);
 		startNode.ResetNode();
         for (int i = 0; i < nodePath.Count-1; i++)
         {
-            // TODO. This currently returns the pathCreator to but doesnt give the correct direction to follow it yet.
-			finalBezierPath.Add(nodePath[i].connectingEdges[nodePath[i].bestEdgeIndex].pathCreator);
+			// TODO. This currently returns the pathCreator to but doesnt give the correct direction to follow it yet.
+			finalEdgePath.Add(nodePath[i].connectingEdges[nodePath[i].bestEdgeIndex]);
 			nodePath[i].ResetNode();
 		}
 		endNode.ResetNode();

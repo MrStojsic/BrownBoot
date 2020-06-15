@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player_FollowPointPath : MonoBehaviour
-{
+{/*
     private float speed = 0.5f;
     private Vector2 goalPosition;
     private Vector2 position;
@@ -88,5 +88,5 @@ public class Player_FollowPointPath : MonoBehaviour
             //- This is when we would actually check to look for next node on the astar path and connect to the new path.
             canMove = false;
         }
-    }
+    }*/
 }

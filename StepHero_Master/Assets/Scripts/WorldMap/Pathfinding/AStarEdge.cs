@@ -10,6 +10,8 @@ public class AStarEdge : MonoBehaviour
     public AStarNode headNode = null;
     public AStarNode tailNode = null;
 
+
+
     // The Path ends on the head and tail nodes respectivly so the lenght is purely the paths length.
     public float LScore
     {
@@ -19,9 +21,9 @@ public class AStarEdge : MonoBehaviour
 
 
     // Needs refactoring to use bezeirs.
-    public void GetCorrectDirectionPathPoints(AStarNode nextNode)
+    public bool GetDirectionOfPath(AStarNode nextNode)
     {
-        bool isHeadNode = (nextNode == headNode);
+        return (nextNode == headNode);
         // basically if we are the tail node the player will traverse the bezeir curve normally from strt to end 0 > 1.
         // if we are the head node we tell the player to start at the end and reverse at end in  way 1 > 0.
         // ( look in Path follow around line 253 for an idea of what im thinking.)
