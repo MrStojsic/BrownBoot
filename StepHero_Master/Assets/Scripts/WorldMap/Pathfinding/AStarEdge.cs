@@ -23,15 +23,12 @@ public class AStarEdge : MonoBehaviour
     // Needs refactoring to use bezeirs.
     public bool GetDirectionOfPath(AStarNode nextNode)
     {
-        return (nextNode == headNode);
         // basically if we are the tail node the player will traverse the bezeir curve normally from strt to end 0 > 1.
         // if we are the head node we tell the player to start at the end and reverse at end in  way 1 > 0.
         // ( look in Path follow around line 253 for an idea of what im thinking.)
         // We know with certainty that if the node creation editor works as intended the head node should be the end of the curve, the direction its heading.
         // and the tail node shoould be at the point the curve started.
-
-        // Im not sure what this should return yet so it just returns void for now.
-
+        return (nextNode == headNode);
     }
 
     public AStarNode ReturnOtherEndOfPath(AStarNode end)

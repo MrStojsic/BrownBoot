@@ -21,11 +21,11 @@ public class LivePathUpdateOnMove : MonoBehaviour
         {
             if (aStarNode == item.headNode)
             {
-                item.pathCreator.bezierPath.MovePoint(0, this.transform.position);
+                item.pathCreator.bezierPath.MovePoint(item.pathCreator.bezierPath.NumPoints - 1, this.transform.position);
             }
             else
             {
-                item.pathCreator.bezierPath.MovePoint(item.pathCreator.bezierPath.NumPoints - 1, this.transform.position);
+                item.pathCreator.bezierPath.MovePoint(0, this.transform.position);
             }
         }
     }
