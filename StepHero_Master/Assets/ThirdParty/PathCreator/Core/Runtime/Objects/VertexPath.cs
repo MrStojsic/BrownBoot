@@ -183,7 +183,6 @@ namespace PathCreation {
         public Vector3 GetPointAtDistanceByDirection(float dst, bool isForward, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
         {
             float t = isForward ? dst / length : 1-dst / length;
-            Debug.Log(t);
             return GetPointAtTime(t, endOfPathInstruction);
         }
 

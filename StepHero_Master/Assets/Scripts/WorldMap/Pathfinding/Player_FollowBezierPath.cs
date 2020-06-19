@@ -10,7 +10,17 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     public float speed = 5;
     public float distanceTravelled;
-    public bool reachedNode = false;
+
+    public enum MovementState
+    {
+        AWAITING_INSTRUCTION,
+        MOVING,
+        REACHED_GOAL,
+        PAUSED_ON_NODE_FOR_EVENT,
+        PAUSED_ON_EDGE_FOR_EVENT,
+        OUT_OF_STEPS
+    }
+    [SerializeField] private MovementState movementState;
 
     public AStarNode TEMP_startNode;
     [SerializeField] AStarNode currentNode;
@@ -37,29 +47,32 @@ public class Player_FollowBezierPath : MonoBehaviour
         print("TEST_"+edgesToGoal[currentEdgeIndex].pathCreator.path.GetClosestTimeOnPath(transform.position));
         print("distance "+edgesToGoal[currentEdgeIndex].pathCreator.path.GetClosestDistanceAlongPath(this.transform.position));
         print("lenght "+edgesToGoal[currentEdgeIndex].pathCreator.path.length);
+
+        // TODO - This is temp for testing, it will be controlled when setting up movement properly later.
+        movementState = MovementState.MOVING;
+        totalDistanceTravelled = 0;
     }
 
     void Update()
     {
-        if (edgesToGoal[currentEdgeIndex] != null && reachedNode == false)
+        if (edgesToGoal[currentEdgeIndex] != null && movementState == MovementState.MOVING)
         {
-            
             step = speed * Time.deltaTime;
 
             distanceTravelled += step;
             totalDistanceTravelled += step;
-     
+
+            if (totalDistanceTravelled > availibleDistance)
+            {
+                movementState = MovementState.OUT_OF_STEPS;
+            }
 
             transform.position = edgesToGoal[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
-           
+
             if (distanceTravelled >= edgesToGoal[currentEdgeIndex].pathCreator.path.length)
             {
-                reachedNode = true;
                 NextEgde();
-
-
             }
-            //transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
         }
     }
     void NextEgde()
@@ -71,15 +84,11 @@ public class Player_FollowBezierPath : MonoBehaviour
             currentNode = edgesToGoal[currentEdgeIndex].ReturnOtherEndOfPath(currentNode);
             isForward = edgesToGoal[currentEdgeIndex].headNode == currentNode;
             distanceTravelled = isForward ? 0 : edgesToGoal[currentEdgeIndex].pathCreator.path.length;
-            reachedNode = false;
+            movementState = MovementState.MOVING;
         }
-    }
-
-    // If the path changes during the game, update the distance travelled so that the follower's position on the new path
-    // is as close as possible to its position on the old path
-    void OnPathChanged()
-    {
-        // NOT CURRENTLY USED - path doesnt change during play.
-        distanceTravelled = edgesToGoal[0].pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+        else
+        {
+            movementState = MovementState.REACHED_GOAL;
+        }
     }
 }
