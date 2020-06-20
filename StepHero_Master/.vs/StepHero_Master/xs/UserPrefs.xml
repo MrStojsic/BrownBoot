@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/Pathfinding/Player_FollowBezierPath.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/LocationInfoDisplay.cs">
     <Files>
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingEditor.cs" Line="6" Column="1" />
       <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointEditor.cs" />
@@ -12,7 +12,7 @@
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathSpawner.cs" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/GeneratePathExample.cs" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarNode.cs" Line="22" Column="43" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" Line="260" Column="24" />
+      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" Line="185" Column="65" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" Line="155" Column="1" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPointPathToPlayerMovement_TEST.cs" Line="20" Column="12" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/Editor/PathSceneToolEditor.cs" Line="1" Column="1" />
@@ -32,8 +32,13 @@
       <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/VertexPathUtility.cs" Line="1" Column="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/PathEditor.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="24" Column="55" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/MovePlayerSimp_TEST.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/Player_FollowBezierPath.cs" Line="58" Column="17" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/MovePlayerSimp_TEST.cs" Line="72" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/Player_FollowBezierPath.cs" Line="41" Column="40" />
+      <File FileName="Assets/Scripts/WorldMap/Location.cs" Line="13" Column="43" />
+      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/SpriteButton.cs" Line="19" Column="35" />
+      <File FileName="Assets/Scripts/WorldMap/MapUiManager.cs" Line="30" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/LocationInfoDisplay.cs" Line="4" Column="3" />
       <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" Line="8" Column="50" NotebookId="1" />
       <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathFollower.cs" Line="44" Column="6" NotebookId="1" />
     </Files>

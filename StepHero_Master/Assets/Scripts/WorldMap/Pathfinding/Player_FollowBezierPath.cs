@@ -23,8 +23,13 @@ public class Player_FollowBezierPath : MonoBehaviour
     [SerializeField] private MovementState movementState;
 
     public AStarNode TEMP_startNode;
+
     [SerializeField] AStarNode currentNode;
     int currentEdgeIndex = 0;
+
+    // TODO - This along with the percet along the path will need to be included in the player save data,
+    //        and rember to save when the player exits the app!
+    public AStarEdge lastAStarEdge;
 
     public float totalDistanceTravelled = 0;
 
@@ -52,6 +57,10 @@ public class Player_FollowBezierPath : MonoBehaviour
         movementState = MovementState.MOVING;
         totalDistanceTravelled = 0;
     }
+    public void InitialisePathfinding(AStarNode goalNode)
+    {
+        // TODO - impliment to be used for pathfinging..
+    }
 
     void Update()
     {
@@ -64,6 +73,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
             if (totalDistanceTravelled > availibleDistance)
             {
+                lastAStarEdge = edgesToGoal[currentEdgeIndex];
                 movementState = MovementState.OUT_OF_STEPS;
             }
 
@@ -88,6 +98,7 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
         else
         {
+            lastAStarEdge = edgesToGoal[currentEdgeIndex];
             movementState = MovementState.REACHED_GOAL;
         }
     }
