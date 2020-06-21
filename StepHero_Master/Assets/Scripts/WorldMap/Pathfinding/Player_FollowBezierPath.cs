@@ -39,7 +39,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     void Start()
     {
-        InitialisePath(TEMP_startNode);
+        //InitialisePath(TEMP_startNode);
     }
     void InitialisePath(AStarNode starNode)
     {
