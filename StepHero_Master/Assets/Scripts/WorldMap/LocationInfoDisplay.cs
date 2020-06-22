@@ -23,11 +23,12 @@ public class LocationInfoDisplay : MonoBehaviour
     }
     public void SetLocationDetails(Location location)
     {
-        title.text = location.TestString;
+        title.text = location.name;
         node = location.GetComponent<AStarNode>();
     }
-    public void SetPlayerGoalNode(AStarNode aStarNode)
+    public void SetPlayerGoalNode()
     {
+        // TODO.
         player_FollowBezierPath.InitialisePathfinding(node);
 
     }

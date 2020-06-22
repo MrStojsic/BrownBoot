@@ -13,7 +13,7 @@ public class TabGroup : MonoBehaviour
 
     public List<GameObject> objectsToSwap;
 
-    void Awake()
+    void Start()
     {
         for (int i = 1; i < objectsToSwap.Count; i++)
         {

@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class MapUiManager : MonoBehaviour
 {
-
-
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +16,4 @@ public class MapUiManager : MonoBehaviour
     {
         
     }
-
-    public void ToggleUiElementVisability(GameObject uiElement)
-    {
-        uiElement.SetActive(!uiElement.activeInHierarchy);
-    }
-
-
 }

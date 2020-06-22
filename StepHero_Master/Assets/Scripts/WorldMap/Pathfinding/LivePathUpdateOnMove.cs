@@ -19,6 +19,10 @@ public class LivePathUpdateOnMove : MonoBehaviour
         
         foreach (var item in aStarNode.connectingEdges)
         {
+            if (item == null)
+            {
+                Debug.LogError(this.name + " is missing a connecting node reference!");
+            }
             if (aStarNode == item.headNode)
             {
                 item.pathCreator.bezierPath.MovePoint(item.pathCreator.bezierPath.NumPoints - 1, this.transform.position);

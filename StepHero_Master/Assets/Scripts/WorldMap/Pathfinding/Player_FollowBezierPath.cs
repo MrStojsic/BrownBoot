@@ -6,10 +6,32 @@ using System;
 
 public class Player_FollowBezierPath : MonoBehaviour
 {
-    public List<AStarEdge> edgesToGoal = new List<AStarEdge>();
+    public List<AStarEdge> edgesPath = new List<AStarEdge>();
 
     public float speed = 5;
-    public float distanceTravelled;
+    public float distanceTravelled; // SAVEDATA
+
+    [SerializeField] AStarNode currentNode;
+    AStarNode destinationNode;
+    int currentEdgeIndex = 0;
+    [SerializeField] Vector3 lastWorldPosition;
+
+    public AStarPathfinder AStarPathfinder;
+
+
+
+
+
+
+    // TODO - This along with the percet along the path will need to be included in the player save data,
+    //        and rember to save when the player exits the app!
+    public AStarEdge lastAStarEdge; // SAVEDATA
+
+    public float totalDistanceTravelled = 0; // SAVEDATA
+
+    public float availibleDistance = 0; // SAVEDATA
+    float step;
+    [SerializeField] bool isForward = false;
 
     public enum MovementState
     {
@@ -22,49 +44,42 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     [SerializeField] private MovementState movementState;
 
-    public AStarNode TEMP_startNode;
+     private void Start()
+     {
+         transform.position = lastWorldPosition;
+     }
 
-    [SerializeField] AStarNode currentNode;
-    int currentEdgeIndex = 0;
 
-    // TODO - This along with the percet along the path will need to be included in the player save data,
-    //        and rember to save when the player exits the app!
-    public AStarEdge lastAStarEdge;
+     public void InitialisePathfinding(AStarNode destionationNode)
+     {
+         currentEdgeIndex = 0;
+         this.destinationNode = destionationNode;
 
-    public float totalDistanceTravelled = 0;
-
-    public float availibleDistance = 0;
-    float step;
-    [SerializeField] bool isForward = false;
-
-    void Start()
+         AStarNode startNode = Vector3.Distance(lastAStarEdge.headNode.transform.position, destionationNode.transform.position)
+                             > Vector3.Distance(lastAStarEdge.tailNode.transform.position, destionationNode.transform.position)
+                             ? lastAStarEdge.headNode : lastAStarEdge.tailNode;
+         edgesPath = AStarPathfinder.FindPath(startNode, destionationNode);
+         if (edgesPath != null)
+         {
+             isForward = edgesPath[currentEdgeIndex].tailNode == startNode;
+             StartMoving();
+         }
+     }
+    void StartMoving()
     {
-        //InitialisePath(TEMP_startNode);
-    }
-    void InitialisePath(AStarNode starNode)
-    {
-        isForward = edgesToGoal[currentEdgeIndex].headNode == starNode;
-        //- Set distanceTravelled to the closest point on the path to the players starting posistion.
-       
-        distanceTravelled = isForward ? edgesToGoal[0].pathCreator.path.GetClosestDistanceAlongPath(this.transform.position): edgesToGoal[0].pathCreator.path.length - edgesToGoal[0].pathCreator.path.GetClosestDistanceAlongPath(this.transform.position);
-       
-
-        print("TEST_"+edgesToGoal[currentEdgeIndex].pathCreator.path.GetClosestTimeOnPath(transform.position));
-        print("distance "+edgesToGoal[currentEdgeIndex].pathCreator.path.GetClosestDistanceAlongPath(this.transform.position));
-        print("lenght "+edgesToGoal[currentEdgeIndex].pathCreator.path.length);
+        print("TEST_"+edgesPath[currentEdgeIndex].pathCreator.path.GetClosestTimeOnPath(transform.position));
+        print("distance "+edgesPath[currentEdgeIndex].pathCreator.path.GetClosestDistanceAlongPath(this.transform.position));
+        print("lenght "+edgesPath[currentEdgeIndex].pathCreator.path.length);
 
         // TODO - This is temp for testing, it will be controlled when setting up movement properly later.
         movementState = MovementState.MOVING;
         totalDistanceTravelled = 0;
     }
-    public void InitialisePathfinding(AStarNode goalNode)
-    {
-        // TODO - impliment to be used for pathfinging..
-    }
+
 
     void Update()
     {
-        if (edgesToGoal[currentEdgeIndex] != null && movementState == MovementState.MOVING)
+        if (movementState == MovementState.MOVING && edgesPath != null)
         {
             step = speed * Time.deltaTime;
 
@@ -73,13 +88,13 @@ public class Player_FollowBezierPath : MonoBehaviour
 
             if (totalDistanceTravelled > availibleDistance)
             {
-                lastAStarEdge = edgesToGoal[currentEdgeIndex];
+                lastAStarEdge = edgesPath[currentEdgeIndex];
                 movementState = MovementState.OUT_OF_STEPS;
             }
 
-            transform.position = edgesToGoal[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
+            transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
 
-            if (distanceTravelled >= edgesToGoal[currentEdgeIndex].pathCreator.path.length)
+            if (distanceTravelled >= edgesPath[currentEdgeIndex].pathCreator.path.length)
             {
                 NextEgde();
             }
@@ -87,18 +102,18 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     void NextEgde()
     {
-        if (currentEdgeIndex + 1 < edgesToGoal.Count)
+        if (currentEdgeIndex + 1 < edgesPath.Count)
         {
             currentEdgeIndex++;
 
-            currentNode = edgesToGoal[currentEdgeIndex].ReturnOtherEndOfPath(currentNode);
-            isForward = edgesToGoal[currentEdgeIndex].headNode == currentNode;
-            distanceTravelled = isForward ? 0 : edgesToGoal[currentEdgeIndex].pathCreator.path.length;
+            currentNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentNode);
+            isForward = edgesPath[currentEdgeIndex].headNode == currentNode;
+            distanceTravelled = isForward ? 0 : edgesPath[currentEdgeIndex].pathCreator.path.length;
             movementState = MovementState.MOVING;
         }
         else
         {
-            lastAStarEdge = edgesToGoal[currentEdgeIndex];
+            lastAStarEdge = edgesPath[currentEdgeIndex];
             movementState = MovementState.REACHED_GOAL;
         }
     }

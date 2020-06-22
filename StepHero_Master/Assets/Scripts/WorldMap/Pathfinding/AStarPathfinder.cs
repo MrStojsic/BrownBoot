@@ -13,24 +13,24 @@ public class AStarPathfinder : MonoBehaviour
 	public List<AStarNode> nodePath = new List<AStarNode>();
 	public List<AStarEdge> finalEdgePath = new List<AStarEdge>();
 
-	public float maxDistancePerGoal = 50f;
+	public float maxDistancePerGoal = 50f; // UNUSED.
 
-	public float totalPathDistance = 0;
+	public float totalPathDistance = 0; // UNUSED.
 
 	void Start()
 	{
-		FindPath(start, goal);
+		//FindPath(start, goal);
 	}
 
 
 
 
-	void FindPath(AStarNode start, AStarNode target)
+	public List<AStarEdge> FindPath(AStarNode startNode, AStarNode destinationNode)
 	{
 
 		List<AStarNode> openSet = new List<AStarNode>();
 		HashSet<AStarNode> closedSet = new HashSet<AStarNode>();
-		openSet.Add(start);
+		openSet.Add(startNode);
 
 		while (openSet.Count > 0)
 		{
@@ -48,10 +48,10 @@ public class AStarPathfinder : MonoBehaviour
 			openSet.Remove(node);
 			closedSet.Add(node);
 
-			if (node == target)
+			if (node == destinationNode)
 			{
-				RetraceAndReversePath(start, target);
-				return;
+				RetraceAndReversePath(startNode, destinationNode);
+				return finalEdgePath;
 			}
             for (int i = 0; i < node.connectingEdges.Count; i++)
             {
@@ -66,7 +66,7 @@ public class AStarPathfinder : MonoBehaviour
 				if (newGScore < otherNode.gScore || !openSet.Contains(otherNode))
 				{
 					otherNode.gScore = newGScore;
-					otherNode.hScore = Vector2.Distance(otherNode.transform.position, target.transform.position);
+					otherNode.hScore = Vector2.Distance(otherNode.transform.position, destinationNode.transform.position);
 					otherNode.previous = node;
 					otherNode.bestEdgeIndex = i;
                     // WORKS
@@ -98,6 +98,7 @@ public class AStarPathfinder : MonoBehaviour
 				}
 			}*/
 		}
+		return null;
 	}
 
 	/*void RetracePathe(MyAStarNode startNode, MyAStarNode endNode)
