@@ -11,7 +11,7 @@ public class LivePathUpdateOnMove : MonoBehaviour
     AStarNode aStarNode;
     void Awake()
     {
-        Debug.Log("Editor causes this Awake");
+
     }
 
     void Update()

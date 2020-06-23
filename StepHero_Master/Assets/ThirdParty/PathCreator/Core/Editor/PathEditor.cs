@@ -320,6 +320,7 @@ namespace PathCreationEditor {
                         points[j] = MathUtility.TransformPoint (points[j], creator.transform, bezierPath.Space);
                     }
                     Handles.DrawBezier (points[0], points[3], points[1], points[2], bezierCol, null, 2);
+                    bezierCol = globalDisplaySettings.vertexPath;
                 }
             }
 
