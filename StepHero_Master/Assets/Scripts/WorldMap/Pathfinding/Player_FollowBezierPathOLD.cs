@@ -4,17 +4,15 @@ using UnityEngine;
 using PathCreation;
 using System;
 
-public class Player_FollowBezierPath : MonoBehaviour
+public class Player_FollowBezierPath0 : MonoBehaviour
 {
     public List<AStarEdge> edgesPath = new List<AStarEdge>();
 
-    public float speed = 5;
+    public float speed = 1;
     public float distanceTravelled; // SAVEDATA
 
     [SerializeField] AStarNode currentGoalNode;
-
-    int currentEdgeIndex = 0;
-    [SerializeField] Vector3 lastWorldPosition;
+    public int currentEdgeIndex = 0;
 
     public AStarPathfinder AStarPathfinder;
 
@@ -44,31 +42,31 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     [SerializeField] private MovementState movementState;
 
-     private void Start()
-     {
+    private void Start()
+    {
         distanceTravelled = currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
-
     }
 
 
-     public void InitialisePathfinding(AStarNode destionationNode)
-     {
+    public void InitialisePathfinding(AStarNode destionationNode)
+    {
         currentEdgeIndex = 0;
-        AStarNode startNode = null;
+
+        // - Get the current edge, pick eith head of tail,
+        //   if the current path is index 0 of the returned list of paths we know we go the right starting node as we got a path to it and wont skip to it
+        //   if the current path is index 0 of the returned list, we must have gotten the wrong end, in which case traverse the current path before staring to follow index 0.
+        AStarNode startNode = Vector2.Distance(transform.position, currentAStarEdge.headNode.transform.position)
+                            < Vector2.Distance(transform.position, currentAStarEdge.tailNode.transform.position)
+                            ? currentAStarEdge.headNode : currentAStarEdge.tailNode;
 
         if (destionationNode == currentAStarEdge.headNode || destionationNode == currentAStarEdge.tailNode)
         {
             edgesPath.Insert(0, currentAStarEdge);
-            startNode = currentAStarEdge.ReturnOtherEndOfPath(destionationNode);
-
         }
         else
         {
-            // - Get the current edge, pick eith head of tail,
-            //   if the current path is index 0 of the returned list of paths we know we go the right starting node as we got a path to it and wont skip to it
-            //   if the current path is index 0 of the returned list, we must have gotten the wrong end, in which case traverse the current path before staring to follow index 0.
-            startNode = currentAStarEdge.headNode;
+
 
             edgesPath = AStarPathfinder.FindPath(startNode, destionationNode);
             if (edgesPath[0] != currentAStarEdge)
@@ -76,11 +74,12 @@ public class Player_FollowBezierPath : MonoBehaviour
                 edgesPath.Insert(0, currentAStarEdge);
                 startNode = currentAStarEdge.tailNode;
             }
-
         }
 
+
+
         currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(startNode);
-        //print(currentGoalNode.name);
+        print(currentGoalNode.name);
         if (edgesPath != null)
         {
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
@@ -88,21 +87,16 @@ public class Player_FollowBezierPath : MonoBehaviour
             {
                 distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled;
             }
-            else { distanceTravelled = 0; }
-           // print(isForward);
+            print(isForward);
             StartMoving();
         }
-
-        print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
     void StartMoving()
     {
-
         // TODO - This is temp for testing, it will be controlled when setting up movement properly later.
         movementState = MovementState.MOVING;
-
+        totalDistanceTravelled = 0;
     }
-
 
     void Update()
     {
@@ -113,14 +107,17 @@ public class Player_FollowBezierPath : MonoBehaviour
             distanceTravelled += step;
             totalDistanceTravelled += step;
 
-            if (totalDistanceTravelled > availableDistance)
+            if (totalDistanceTravelled >= availableDistance)
             {
+                availableDistance = 0;
+
                 currentAStarEdge = edgesPath[currentEdgeIndex];
                 movementState = MovementState.OUT_OF_STEPS;
             }
-
+            
             transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
 
+            
             if (distanceTravelled >= edgesPath[currentEdgeIndex].pathCreator.path.length)
             {
                 movementState = MovementState.AWAITING_INSTRUCTION;
@@ -133,9 +130,11 @@ public class Player_FollowBezierPath : MonoBehaviour
         if (currentEdgeIndex + 1 < edgesPath.Count)
         {
             currentEdgeIndex++;
-
+            
             currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
+
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
+
             distanceTravelled = 0;
             movementState = MovementState.MOVING;
         }
@@ -144,11 +143,8 @@ public class Player_FollowBezierPath : MonoBehaviour
             currentAStarEdge = edgesPath[currentEdgeIndex];
             ResetEdgesPathList();
             movementState = MovementState.REACHED_GOAL;
-            
         }
-        print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
-
     private void ResetEdgesPathList()
     {
         edgesPath.Clear();

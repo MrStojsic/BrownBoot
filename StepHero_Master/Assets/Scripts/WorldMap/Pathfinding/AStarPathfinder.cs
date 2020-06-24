@@ -163,6 +163,7 @@ public class AStarPathfinder : MonoBehaviour
 			nodePath[i].ResetNode();
 		}
 		endNode.ResetNode();
+		nodePath.Clear();
 		print("DONE!");
 
 	}

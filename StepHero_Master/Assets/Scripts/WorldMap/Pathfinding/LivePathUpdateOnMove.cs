@@ -9,10 +9,6 @@ public class LivePathUpdateOnMove : MonoBehaviour
 {
     [SerializeField]
     AStarNode aStarNode;
-    void Awake()
-    {
-        Debug.Log("Editor causes this Awake");
-    }
 
     void Update()
     {
