@@ -8,23 +8,16 @@ public class Player_FollowBezierPath : MonoBehaviour
 {
     public List<AStarEdge> edgesPath = new List<AStarEdge>();
 
-    public float speed = 5;
+    public float speed = 1.5f;
     public float distanceTravelled; // SAVEDATA
 
     [SerializeField] AStarNode currentGoalNode;
 
     int currentEdgeIndex = 0;
-    [SerializeField] Vector3 lastWorldPosition;
 
     public AStarPathfinder AStarPathfinder;
 
 
-
-
-
-
-    // TODO - This along with the percet along the path will need to be included in the player save data,
-    //        and rember to save when the player exits the app!
     public AStarEdge currentAStarEdge; // SAVEDATA
 
     public float totalDistanceTravelled = 0; // SAVEDATA
@@ -46,11 +39,10 @@ public class Player_FollowBezierPath : MonoBehaviour
 
      private void Start()
      {
-        distanceTravelled = currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+        // TODO > the following 1 line is only here until the players movement data can be saved.
+        distanceTravelled = currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
         transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
-
     }
-
 
      public void InitialisePathfinding(AStarNode destionationNode)
      {
@@ -80,7 +72,6 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
 
         currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(startNode);
-        //print(currentGoalNode.name);
         if (edgesPath != null)
         {
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
@@ -88,19 +79,14 @@ public class Player_FollowBezierPath : MonoBehaviour
             {
                 distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled;
             }
-            else { distanceTravelled = 0; }
-           // print(isForward);
             StartMoving();
         }
 
         print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
-    void StartMoving()
+    private void StartMoving()
     {
-
-        // TODO - This is temp for testing, it will be controlled when setting up movement properly later.
         movementState = MovementState.MOVING;
-
     }
 
 
@@ -115,7 +101,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
             if (totalDistanceTravelled > availableDistance)
             {
-                currentAStarEdge = edgesPath[currentEdgeIndex];
+                WrapUpEndOfMovement();
                 movementState = MovementState.OUT_OF_STEPS;
             }
 
@@ -123,7 +109,6 @@ public class Player_FollowBezierPath : MonoBehaviour
 
             if (distanceTravelled >= edgesPath[currentEdgeIndex].pathCreator.path.length)
             {
-                movementState = MovementState.AWAITING_INSTRUCTION;
                 NextEgde();
             }
         }
@@ -135,19 +120,34 @@ public class Player_FollowBezierPath : MonoBehaviour
             currentEdgeIndex++;
 
             currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
+            
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
             distanceTravelled = 0;
-            movementState = MovementState.MOVING;
         }
         else
         {
-            currentAStarEdge = edgesPath[currentEdgeIndex];
-            ResetEdgesPathList();
+            WrapUpEndOfMovement();
             movementState = MovementState.REACHED_GOAL;
-            
         }
         print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
+
+    private void WrapUpEndOfMovement()
+    {
+        currentAStarEdge = edgesPath[currentEdgeIndex];
+        if (!isForward)
+        {
+            distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled;
+        }
+        ResetEdgesPathList();
+    }
+
+    public void CancelJourney()
+    {
+        WrapUpEndOfMovement();
+        movementState = MovementState.AWAITING_INSTRUCTION;
+    }
+
 
     private void ResetEdgesPathList()
     {
