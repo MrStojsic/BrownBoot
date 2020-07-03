@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 32272897}
   - component: {fileID: 32272896}
   - component: {fileID: 32272895}
+  - component: {fileID: 32272898}
   m_Layer: 0
   m_Name: Path - Node10 > Node11
   m_TagString: Untagged
@@ -373,6 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 32272896}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 863705324}
   tailNode: {fileID: 1422615270}
 --- !u!114 &32272896
@@ -442,6 +444,20 @@ Transform:
   m_Father: {fileID: 1486555417}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &32272898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32272894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056b5f7b0c3e64d77a84eb3442b8b726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleEvents:
+  - percentageChanceOfEvent: 0
 --- !u!1 &44893726
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 533977446}
   tailNode: {fileID: 1070207600}
 --- !u!4 &103292004
@@ -1037,6 +1054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 145082372}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1757081067}
   tailNode: {fileID: 707515617}
 --- !u!114 &145082372
@@ -1465,6 +1483,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203279787}
   m_CullTransparentMesh: 0
+--- !u!1 &215197567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 215197568}
+  - component: {fileID: 215197570}
+  - component: {fileID: 215197569}
+  m_Layer: 0
+  m_Name: Path - Piff's Fall > Node5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &215197568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215197567}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1486555417}
+  m_RootOrder: 34
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &215197569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215197567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0593a5116d8914e90b37fb96ffb2f3cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathCreator: {fileID: 215197570}
+  randomPathEvent: {fileID: 0}
+  headNode: {fileID: 0}
+  tailNode: {fileID: 1451708910}
+--- !u!114 &215197570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215197567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: -0.376, y: 0.04, z: 0}
+      - {x: -0.276, y: 0.13999999, z: 0}
+      - {x: 0.874, y: 0.55, z: 0}
+      - {x: 0.974, y: 0.65, z: 0}
+      isClosed: 0
+      space: 0
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 1
+    vertexPathMaxAngleError: 0.3
+    vertexPathMinVertexSpacing: 0.01
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 0
+    showDisplayOptions: 0
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
 --- !u!1 &225490411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 306540238}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 515977419}
   tailNode: {fileID: 1698686120}
 --- !u!114 &306540238
@@ -2523,6 +2643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1070207600}
   tailNode: {fileID: 676476417}
 --- !u!1 &421604548
@@ -2556,6 +2677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 421604550}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 96166191}
   tailNode: {fileID: 422868098}
 --- !u!114 &421604550
@@ -3076,6 +3198,7 @@ GameObject:
   - component: {fileID: 526910201}
   - component: {fileID: 526910200}
   - component: {fileID: 526910203}
+  - component: {fileID: 526910204}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3186,6 +3309,20 @@ MonoBehaviour:
   finalEdgePath: []
   maxDistancePerGoal: 50
   totalPathDistance: 0
+--- !u!114 &526910204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526910199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eaea41f456384ddfb02a0b400504c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chosenEvent:
+    percentageChanceOfEvent: 0
 --- !u!1 &528054489
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,6 +3775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 672229113}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 2089116865}
   tailNode: {fileID: 515977419}
 --- !u!114 &672229113
@@ -3987,6 +4125,7 @@ GameObject:
   - component: {fileID: 776069921}
   - component: {fileID: 776069920}
   - component: {fileID: 776069919}
+  - component: {fileID: 776069922}
   m_Layer: 0
   m_Name: Path - Node1 > Node8
   m_TagString: Untagged
@@ -4007,6 +4146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 776069920}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 1580145765}
 --- !u!114 &776069920
@@ -4076,6 +4216,20 @@ Transform:
   m_Father: {fileID: 1486555417}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &776069922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776069918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056b5f7b0c3e64d77a84eb3442b8b726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleEvents:
+  - percentageChanceOfEvent: 0
 --- !u!1 &796929783
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4256,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796929783}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1486555417}
@@ -4121,6 +4275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 796929786}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 96166191}
 --- !u!114 &796929786
@@ -4628,6 +4783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 929670504}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1809799756}
   tailNode: {fileID: 1757081067}
 --- !u!114 &929670504
@@ -4714,6 +4870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 932629355}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 422868098}
   tailNode: {fileID: 1757081067}
 --- !u!114 &932629355
@@ -4896,6 +5053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 944270587}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1698686120}
   tailNode: {fileID: 1187801443}
 --- !u!114 &944270587
@@ -5105,6 +5263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 956809659}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 707515617}
   tailNode: {fileID: 1451708910}
 --- !u!114 &956809659
@@ -5466,6 +5625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1261267309}
   tailNode: {fileID: 1406324108}
 --- !u!4 &1068311765
@@ -5565,6 +5725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1646219317}
   tailNode: {fileID: 2110502940}
 --- !u!4 &1073552252
@@ -5854,6 +6015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 344031875}
   tailNode: {fileID: 225490412}
 --- !u!4 &1089473563
@@ -5901,6 +6063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1768125693}
   tailNode: {fileID: 533977446}
 --- !u!4 &1101294328
@@ -7048,6 +7211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 514966972}
   tailNode: {fileID: 1768125693}
 --- !u!1 &1275946091
@@ -7284,6 +7448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1406324108}
   tailNode: {fileID: 225490412}
 --- !u!4 &1337681298
@@ -7346,6 +7511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 225490412}
   tailNode: {fileID: 1768125693}
 --- !u!1 &1353080764
@@ -7898,6 +8064,7 @@ MonoBehaviour:
   connectingEdges:
   - {fileID: 1841517183}
   - {fileID: 956809658}
+  - {fileID: 215197569}
 --- !u!114 &1451708911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8082,6 +8249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 2110502940}
   tailNode: {fileID: 1406324108}
 --- !u!4 &1452919260
@@ -8237,6 +8405,7 @@ Transform:
   - {fileID: 796929784}
   - {fileID: 2140162711}
   - {fileID: 929670502}
+  - {fileID: 215197568}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8285,6 +8454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1492277740}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1662497690}
   tailNode: {fileID: 1580145765}
 --- !u!114 &1492277740
@@ -9164,6 +9334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1646041382}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 707515617}
   tailNode: {fileID: 1809799756}
 --- !u!114 &1646041382
@@ -9691,6 +9862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1670191535}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 1809799756}
 --- !u!114 &1670191535
@@ -10109,6 +10281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 178845354}
   tailNode: {fileID: 533977446}
 --- !u!4 &1747926899
@@ -10732,6 +10905,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1841517184}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1451708910}
   tailNode: {fileID: 1422615270}
 --- !u!114 &1841517184
@@ -10976,6 +11150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1869285422}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1165030548}
   tailNode: {fileID: 515977419}
 --- !u!114 &1869285422
@@ -11141,6 +11316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 0}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 2089047957}
   tailNode: {fileID: 1768125693}
 --- !u!4 &1963164591
@@ -11219,6 +11395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1991478024}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 1080530176}
   tailNode: {fileID: 1809799756}
 --- !u!114 &1991478024
@@ -11933,6 +12110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 2140162713}
+  randomPathEvent: {fileID: 0}
   headNode: {fileID: 96166191}
   tailNode: {fileID: 1422615270}
 --- !u!114 &2140162713

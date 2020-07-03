@@ -27,7 +27,7 @@ public class Quest : MonoBehaviour
     }
 
     void GiveReward()
-    {
+    { 
         // TODO
         /*
         if (ItemReward != null)

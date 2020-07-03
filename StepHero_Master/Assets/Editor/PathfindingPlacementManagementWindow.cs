@@ -56,9 +56,9 @@ public class PathfindingPlacementManagementWindow : EditorWindow
     {
         isEditMode = GUILayout.Toggle(isEditMode, "EditMode - Toggle off when not editing.");
   
-        if (isEditMode && Selection.activeObject != null)
+        if (isEditMode && Selection.activeGameObject != null)
         {
-            if (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<AStarNode>())
+            if (Selection.activeGameObject.GetComponent<AStarNode>())
             {
                 GUI.backgroundColor = Color.yellow;
                 if (GUILayout.Button("Create New Node Bézier Linked To Selected Node"))
@@ -72,7 +72,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
                 }
             }
             // TODO Impliment adding a node halfway along a bezier path.. Maybe?
-            if (Selection.activeGameObject != null && Selection.activeGameObject.GetComponent<AStarEdge>())
+            if (Selection.activeGameObject.GetComponent<AStarEdge>())
             {
                 if (GUILayout.Button("Insert New Node At Path Head"))
                 {

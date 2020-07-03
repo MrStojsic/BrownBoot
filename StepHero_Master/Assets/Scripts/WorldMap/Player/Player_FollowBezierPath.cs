@@ -6,6 +6,25 @@ using System;
 
 public class Player_FollowBezierPath : MonoBehaviour
 {
+    public static Player_FollowBezierPath instance = null;
+
+    private void Awake()
+    {
+        CreateInstance();
+    }
+    void CreateInstance()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else if (instance != this)
+        {
+            Debug.LogError("Duplicate Player_FollowBezierPath CANNOT exist! " + this.name + " is a duplicate");
+        }
+    }
+
     public List<AStarEdge> edgesPath = new List<AStarEdge>();
 
     public float speed = 1.5f;
@@ -86,7 +105,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     private void StartMoving()
     {
-        movementState = MovementState.MOVING;
+        ChangeMovementState(MovementState.MOVING);
     }
 
 
@@ -102,10 +121,17 @@ public class Player_FollowBezierPath : MonoBehaviour
             if (totalDistanceTravelled > availableDistance)
             {
                 WrapUpEndOfMovement();
-                movementState = MovementState.OUT_OF_STEPS;
+                ChangeMovementState(MovementState.OUT_OF_STEPS);
             }
 
             transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
+
+ /*
+                if (Player_EventManager.instance.Evaluate(isForward ? distanceTravelled : edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled))
+                {
+                    ChangeMovementState(MovementState.PAUSED_ON_EDGE_FOR_EVENT);
+                }
+            */
 
             if (distanceTravelled >= edgesPath[currentEdgeIndex].pathCreator.path.length)
             {
@@ -119,6 +145,8 @@ public class Player_FollowBezierPath : MonoBehaviour
         {
             currentEdgeIndex++;
 
+            //Player_EventManager.instance.InitialisePossibleEvent(edgesPath[currentEdgeIndex]);
+
             currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
             
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
@@ -127,7 +155,7 @@ public class Player_FollowBezierPath : MonoBehaviour
         else
         {
             WrapUpEndOfMovement();
-            movementState = MovementState.REACHED_GOAL;
+            ChangeMovementState(MovementState.REACHED_GOAL);
         }
         print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
@@ -144,8 +172,16 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     public void CancelJourney()
     {
-        WrapUpEndOfMovement();
-        movementState = MovementState.AWAITING_INSTRUCTION;
+        if (edgesPath.Count > 0)
+        {
+            WrapUpEndOfMovement();
+            ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
+        }
+    }
+
+    public void ChangeMovementState(MovementState movementState)
+    {
+        this.movementState = movementState;
     }
 
 
