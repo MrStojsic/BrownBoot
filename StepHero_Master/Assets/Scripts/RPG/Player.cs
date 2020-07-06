@@ -8,23 +8,19 @@ using UnityEngine.UI;
 public class Player : Entity
 {
 
-    [SerializeField]
-    private Stat testStat;
-    [SerializeField]
-    private float maxTestStat;
+
 
     public DateTime saveTime;
 
     protected override void Start()
     {
-        //testStat.Initialize(maxTestStat, maxTestStat);
-
+        base.Start();
         //SavePlayer();
 
-        LoadPlayer();
+       // LoadPlayer();
     }
 
-    /*
+    
     protected override void Update()
     {
         // vvvvvvvvvvvvv DEBUG ONLY
@@ -39,7 +35,7 @@ public class Player : Entity
             Debug.Log(testStat.MyCurrentValue);
         }
         // ^^^^^^^^^^^^ DEBUG ONLY
-    }*/
+    }
 
     /*
  public void ConvertToExperience(int hours, int minutes, Workout.WorkoutType workoutType)
@@ -86,9 +82,9 @@ public class Player : Entity
 
         if (playerData != null)
         {
-            level = playerData.level;
-            base.health = playerData.health;
-            title = playerData.title;
+            Level = playerData.level;
+            base.Health = playerData.health;
+            Title = playerData.title;
             //- Convert saveTime from sting to long to DateTime.
             long saveTimeAsBinary = Convert.ToInt64(playerData.saveTime);
             saveTime = DateTime.FromBinary(saveTimeAsBinary);

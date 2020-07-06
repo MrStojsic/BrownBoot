@@ -14,9 +14,9 @@ public class PlayerData
 
     public PlayerData(Player player)
     {
-        level = player.level;
-        health = player.health;
-        title = player.title;
+        level = player.Level;
+        health = player.Health;
+        title = player.Title;
         saveTime = player.saveTime.ToBinary().ToString();
     }
 

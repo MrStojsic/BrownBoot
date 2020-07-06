@@ -55,26 +55,29 @@ public class AStarPathfinder : MonoBehaviour
 			}
             for (int i = 0; i < node.connectingEdges.Count; i++)
             {
-				otherNode = node.connectingEdges[i].ReturnOtherEndOfPath(node);
-				if (closedSet.Contains(otherNode))
+				if (node.connectingEdges[i].isTraversable)
 				{
-					continue;
-                }
+					otherNode = node.connectingEdges[i].ReturnOtherEndOfPath(node);
+					if (closedSet.Contains(otherNode))
+					{
+						continue;
+					}
 
-				//float newGScore = node.gScore + Vector2.Distance(node.position, node.connectingNodes[i].position);
-				float newGScore = node.gScore + node.connectingEdges[i].LScore;
-				if (newGScore < otherNode.gScore || !openSet.Contains(otherNode))
-				{
-					otherNode.gScore = newGScore;
-					otherNode.hScore = Vector2.Distance(otherNode.transform.position, destinationNode.transform.position);
-					otherNode.previous = node;
-					otherNode.bestEdgeIndex = i;
-                    // WORKS
-					//otherNode.previousBestEdgeIndex = i;
-					//node.bestEdgeIndex = i;
+					//float newGScore = node.gScore + Vector2.Distance(node.position, node.connectingNodes[i].position);
+					float newGScore = node.gScore + node.connectingEdges[i].LScore;
+					if (newGScore < otherNode.gScore || !openSet.Contains(otherNode))
+					{
+						otherNode.gScore = newGScore;
+						otherNode.hScore = Vector2.Distance(otherNode.transform.position, destinationNode.transform.position);
+						otherNode.previous = node;
+						otherNode.bestEdgeIndex = i;
+						// WORKS
+						//otherNode.previousBestEdgeIndex = i;
+						//node.bestEdgeIndex = i;
 
-					if (!openSet.Contains(otherNode))
-						openSet.Add(otherNode);
+						if (!openSet.Contains(otherNode))
+							openSet.Add(otherNode);
+					}
 				}
 
 			}

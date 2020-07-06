@@ -33,5 +33,3 @@ public class QuestKillGoal : QuestGoal
 
 
 }
-
-public struct Enemy { public int id; }

@@ -11,6 +11,7 @@ public class AStarEdge : MonoBehaviour
     public AStarNode headNode = null;
     public AStarNode tailNode = null;
 
+    public bool isTraversable = true;
 
 
     // The Path ends on the head and tail nodes respectivly so the lenght is purely the paths length.

@@ -11,9 +11,15 @@ public class ZoomPanCamera : MonoBehaviour
     [SerializeField] private float maxZoomLimit = 3.8f;
 
     [SerializeField] private Vector2 panLimit;
+
+    private Camera camera;
+
+    [SerializeField] private Transform focusTransform;
+
     private void Start()
     {
-        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(Camera.main.orthographicSize * Camera.main.aspect, Camera.main.orthographicSize, 0);
+        camera = Camera.main;
+        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(camera.orthographicSize * camera.aspect, camera.orthographicSize, 0);
     }
 
     void Update()
@@ -22,7 +28,7 @@ public class ZoomPanCamera : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                touchStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                touchStart = camera.ScreenToWorldPoint(Input.mousePosition);
             }
 
             if (Input.touchCount == 2)
@@ -42,8 +48,8 @@ public class ZoomPanCamera : MonoBehaviour
             }
             else if (Input.GetMouseButton(0))
             {
-                Vector3 direction = touchStart - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                ClampCamPosWithinMapBounds(Camera.main.transform.position + direction);
+                Vector3 direction = touchStart - camera.ScreenToWorldPoint(Input.mousePosition);
+                ClampCamPosWithinMapBounds(this.transform.position + direction);
             }
 
             Zoom(Input.GetAxis("Mouse ScrollWheel"));
@@ -53,14 +59,14 @@ public class ZoomPanCamera : MonoBehaviour
     {
         newPosition.x = Mathf.Clamp(newPosition.x, -panLimit.x, panLimit.x);
         newPosition.y = Mathf.Clamp(newPosition.y, -panLimit.y, panLimit.y);
-        Camera.main.transform.position = newPosition;
+        this.transform.position = newPosition;
     }
 
     void Zoom(float increment)
     {
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, minZoomLimit, maxZoomLimit);
-        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(Camera.main.orthographicSize * Camera.main.aspect, Camera.main.orthographicSize, 0);
+        camera.orthographicSize = Mathf.Clamp(camera.orthographicSize - increment, minZoomLimit, maxZoomLimit);
+        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(camera.orthographicSize * camera.aspect, camera.orthographicSize, 0);
 
-        ClampCamPosWithinMapBounds(Camera.main.transform.position);
+        ClampCamPosWithinMapBounds(this.transform.position);
     }
 }

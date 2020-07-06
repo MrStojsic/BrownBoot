@@ -1,54 +1,16 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Questing/QuestReachLocationGoal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs">
     <Files>
-      <File FileName="Assets/Scripts/WorldMap/LocationInfoDisplay.cs" Line="1" Column="1" IsPinned="True" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/VertexPathUtility.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/PathfindingEditor.cs" />
-      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointEditor.cs" />
-      <File FileName="Assets/Scripts/UNUSED_EDITOR_SCRIPTS/WaypointManagementWindow.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreator.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreatorData.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/BezierPath.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathSpace.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathPlacer.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/GeneratePathExample.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarNode.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPointPathToPlayerMovement_TEST.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/Editor/PathSceneToolEditor.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/Waypoints/Waypoint.cs" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/AStarAttempt/BasicAStarNode.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/Helper/ScreenSpacePolyLine.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/PathCreatorEditor.asmdef" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/Helper/PathHandle.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/Helper/MouseUtility.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/EndOfPathInstruction.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/GlobalDisplaySettings.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/CubicBezierUtility.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Utility/MathUtility.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Editor/PathEditor.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/MovePlayerSimp_TEST.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Location.cs" />
-      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
-      <File FileName="Assets/Scripts/WorldMap/SpriteButton.cs" />
-      <File FileName="Assets/Scripts/WorldMap/MapUiManager.cs" />
-      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
-      <File FileName="Assets/Scripts/UI Components/TabGroup.cs" />
-      <File FileName="Assets/Scripts/Questing/Quest.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Player/Player_FollowBezierPath.cs" />
-      <File FileName="Assets/Scripts/Questing/QuestGoal.cs" Line="23" Column="24" />
-      <File FileName="Assets/Scripts/WorldMap/Player/Player_EventManager.cs" />
-      <File FileName="Assets/Scripts/Questing/QuestKillGoal.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Questing/QuestTestGoal_TEST.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Questing/QuestReachLocationGoal.cs" Line="1" Column="1" />
-      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" Line="59" Column="53" NotebookId="1" />
-      <File FileName="Assets/ThirdParty/PathCreator/Examples/Scripts/PathFollower.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/Player_FollowBezierPathOLD.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/WorldMap/NPC &amp; Events/InteractableEvent.cs" Line="6" Column="31" NotebookId="1" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/RPG/Entity.cs" Line="35" Column="55" />
+      <File FileName="Assets/Scripts/RPG/Player.cs" Line="17" Column="8" />
+      <File FileName="Assets/Scripts/RPG/PlayerData.cs" Line="19" Column="29" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="5" Column="26" />
+      <File FileName="Assets/Scripts/RPG/Stat.cs" Line="6" Column="94" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" Line="6" Column="2" />
+      <File FileName="Assets/Scripts/RPG/BattleManager.cs" Line="9" Column="38" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="15" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

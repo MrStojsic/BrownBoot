@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//https://www.youtube.com/watch?v=8StwNBJ5fE8&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=6
 public class Stat : MonoBehaviour
 {
     private Image content;
