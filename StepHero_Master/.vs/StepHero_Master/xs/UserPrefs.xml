@@ -1,21 +1,27 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/InventoryScript.cs">
     <Files>
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/RPG/Entity.cs" Line="35" Column="55" />
-      <File FileName="Assets/Scripts/RPG/Player.cs" Line="17" Column="8" />
-      <File FileName="Assets/Scripts/RPG/PlayerData.cs" Line="19" Column="29" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="5" Column="26" />
-      <File FileName="Assets/Scripts/RPG/Stat.cs" Line="6" Column="94" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" Line="6" Column="2" />
-      <File FileName="Assets/Scripts/RPG/BattleManager.cs" Line="9" Column="38" />
-      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="15" Column="7" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
+      <File FileName="Assets/Scripts/RPG/Entity.cs" />
+      <File FileName="Assets/Scripts/RPG/Player.cs" />
+      <File FileName="Assets/Scripts/RPG/PlayerData.cs" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" />
+      <File FileName="Assets/Scripts/RPG/Stat.cs" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
+      <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
+      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="6" Column="96" />
+      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="6" Column="96" />
+      <File FileName="Assets/Scripts/Inventory/BagScript.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="20" Column="42" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="36d83a19-4f7b-4083-b0a0-c81f45899efa" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cc877972-d9c0-49b5-aac3-c35ba3ca688d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" relfile="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" line="15" column="1" />
