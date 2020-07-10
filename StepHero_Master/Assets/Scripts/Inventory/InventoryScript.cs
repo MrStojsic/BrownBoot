@@ -8,40 +8,83 @@ using UnityEngine;
 public class InventoryScript : MonoBehaviour
 {
 
-    private static InventoryScript instance;
+    private static InventoryScript _instance;
     public static InventoryScript Instance
     {
         get
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = FindObjectOfType<InventoryScript>();
+                _instance = FindObjectOfType<InventoryScript>();
             }
-            return instance;
+            return _instance;
         }
     }
+
+    [SerializeField] private BagButton[] bagButtons;
 
     // DEBUGGING ONLY DELETE LATER.
     [SerializeField] private Item[] items;
 
+    private List<Bag> bags = new List<Bag>();
+
+    //  NOT NEEDED.
+    public bool CanAddBag
+    {
+        get { return bags.Count < 1; }
+    }
+
     private void Awake()
     {
+        /*
         // DEBUGGING ONLY DELETE LATER.
         Bag bag = (Bag)Instantiate(items[0], transform);
         bag.Initialize(16);
         bag.Use();
+        bags.Add(bag);*/
     }
 
+    // DEBUGGING ONLY DELETE LATER.
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            Bag bag = (Bag)Instantiate(items[0]);
+            bag.Initialize(4);
+            bag.Use();
+            bags.Add(bag);
+        }
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            Bag bag = (Bag)Instantiate(items[0]);
+            bag.Initialize(4);
+            AddItem(bag);
+
+        }
+    }
 
     // Start is called before the first frame update
-    void Start()
+    public void AddBag(Bag bag)
     {
-        
+        foreach (BagButton bagButton in bagButtons)
+        {
+            if (bagButton.Bag == null)
+            {
+                bagButton.Bag = bag;
+                break;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddItem(Item item)
     {
-        
+        foreach (Bag bag in bags)
+        {
+            if (bag.BagScript.AddItem(item))
+            {
+                return;
+            }
+        }
     }
 }

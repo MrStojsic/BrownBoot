@@ -10,11 +10,44 @@ public class BagScript : MonoBehaviour
 
     [SerializeField] private GameObject slotPrefab;
 
+    [SerializeField] private CanvasGroup canvasGroup;
+
+    private List<SlotScript> slots = new List<SlotScript>();
+
+    private void Awake()
+    {
+        if (canvasGroup == null)
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
+    }
+
     public void AddSlots(int slotCount)
     {
         for (int i = 0; i < slotCount; i++)
         {
-            Instantiate(slotPrefab, transform);
+            SlotScript slot = Instantiate(slotPrefab, transform).GetComponent<SlotScript>();
+            slots.Add(slot);
         }
+    }
+
+    public bool AddItem(Item item)
+    {
+        foreach (SlotScript slot in slots)
+        {
+            if (slot.IsEmpty)
+            {
+                slot.AddItem(item);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void OpenClose()
+    {
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
 }

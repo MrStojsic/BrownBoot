@@ -6,22 +6,22 @@ using UnityEngine;
 
 public abstract class Item : ScriptableObject
 {
-    [SerializeField] private Sprite icon;
+    [SerializeField] private Sprite _icon;
     public Sprite Icon
     {
-        get { return Icon; }
+        get { return _icon; }
     }
 
-    [SerializeField] private int stackSize;
+    [SerializeField] private int _stackSize;
     public int StackSize
     {
-        get { return stackSize; }
+        get { return _stackSize; }
     }
 
-    private SlotScript slot;
+    private SlotScript _slot;
     protected SlotScript Slot
     {
-        get { return slot; }
-        set { slot = value; }
+        get { return _slot; }
+        set { _slot = value; }
     }
 }

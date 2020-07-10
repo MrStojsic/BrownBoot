@@ -7,11 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bag", menuName = "Items/Bags" , order = 1)]
 public class Bag : Item, IUseable
 {
-    private int numberOfSlots;
+    private int _numberOfSlots;
 
-    public int NumberOfSlots
+    public int _NumberOfSlots
     {
-        get { return numberOfSlots; }
+        get { return _numberOfSlots; }
     }
 
 
@@ -23,12 +23,17 @@ public class Bag : Item, IUseable
 
     public void Initialize(int numberOfSlots)
     {
-        this.numberOfSlots = numberOfSlots;
+        this._numberOfSlots = numberOfSlots;
     }
 
     public void Use()
     {
-        BagScript = Instantiate(bagPrefab, InventoryScript.Instance.transform).GetComponent<BagScript>();
-        BagScript.AddSlots(numberOfSlots);
+        if (InventoryScript.Instance.CanAddBag)
+        {
+            BagScript = Instantiate(bagPrefab, InventoryScript.Instance.transform).GetComponent<BagScript>();
+            BagScript.AddSlots(_numberOfSlots);
+
+            InventoryScript.Instance.AddBag(this);
+        }
     }
 }
