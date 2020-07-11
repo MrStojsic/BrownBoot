@@ -22,9 +22,12 @@ public abstract class Entity : MonoBehaviour
         set { health = value; }
     }
 
+    public Stat TestStat { get { return testStat; } set { testStat = value; } }
 
     [SerializeField]
-    protected Stat testStat;
+    private Stat testStat;
+
+
     [SerializeField]
     protected float maxTestStat;
 
@@ -32,7 +35,7 @@ public abstract class Entity : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        testStat.Initialize(maxTestStat, maxTestStat);
+        TestStat.Initialize(maxTestStat, maxTestStat);
     }
 
     // Update is called once per frame

@@ -7,7 +7,18 @@ using UnityEngine.UI;
 // ========================= PLAYER =========================
 public class Player : Entity
 {
-
+    private static Player _instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<Player>();
+            }
+            return _instance;
+        }
+    }
 
 
     public DateTime saveTime;
@@ -26,13 +37,13 @@ public class Player : Entity
         // vvvvvvvvvvvvv DEBUG ONLY
         if (Input.GetKeyDown(KeyCode.D))
         {
-            testStat.MyCurrentValue -= 10;
-            Debug.Log(testStat.MyCurrentValue);
+            TestStat.MyCurrentValue -= 10;
+            Debug.Log(TestStat.MyCurrentValue);
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            testStat.MyCurrentValue += 10;
-            Debug.Log(testStat.MyCurrentValue);
+            TestStat.MyCurrentValue += 10;
+            Debug.Log(TestStat.MyCurrentValue);
         }
         // ^^^^^^^^^^^^ DEBUG ONLY
     }

@@ -19,9 +19,17 @@ public abstract class Item : ScriptableObject
     }
 
     private SlotScript _slot;
-    protected SlotScript Slot
+    public SlotScript Slot
     {
         get { return _slot; }
         set { _slot = value; }
+    }
+
+    public void Remove()
+    {
+        if (Slot != null)
+        {
+            Slot.RemoveItem(this);
+        }
     }
 }

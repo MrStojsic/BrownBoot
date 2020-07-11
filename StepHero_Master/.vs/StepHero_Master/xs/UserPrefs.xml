@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/BagButton.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Items/HealthPotion.cs">
     <Files>
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="5" Column="26" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
       <File FileName="Assets/Scripts/RPG/Entity.cs" />
       <File FileName="Assets/Scripts/RPG/Player.cs" />
-      <File FileName="Assets/Scripts/RPG/PlayerData.cs" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" />
+      <File FileName="Assets/Scripts/RPG/PlayerData.cs" Line="19" Column="29" />
       <File FileName="Assets/Scripts/RPG/Stat.cs" />
       <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
-      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="6" Column="96" />
-      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="32" Column="19" />
-      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="8" Column="14" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="31" Column="59" />
-      <File FileName="Assets/Scripts/Inventory/BagButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/IUseable.cs" Line="8" Column="12" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="25" Column="22" />
+      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="34" Column="36" />
+      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="38" Column="29" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="24" Column="30" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="34" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/BagButton.cs" Line="22" Column="14" />
+      <File FileName="Assets/Scripts/Inventory/IClickable.cs" Line="17" Column="13" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -31,7 +31,7 @@ public class InventoryScript : MonoBehaviour
     //  NOT NEEDED.
     public bool CanAddBag
     {
-        get { return bags.Count < 1; }
+        get { return bags.Count < 5; }
     }
 
     private void Awake()
@@ -60,6 +60,11 @@ public class InventoryScript : MonoBehaviour
             Bag bag = (Bag)Instantiate(items[0]);
             bag.Initialize(4);
             AddItem(bag);
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            HealthPotion healthPotion = (HealthPotion)Instantiate(items[1]);
+            AddItem(healthPotion);
 
         }
     }
