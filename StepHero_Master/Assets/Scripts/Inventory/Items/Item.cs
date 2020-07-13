@@ -27,9 +27,7 @@ public abstract class Item : ScriptableObject
 
     public void Remove()
     {
-        if (Slot != null)
-        {
-            Slot.RemoveItem(this);
-        }
+        // this is the same as if(slot != null) {Slot.RemoveItem(this);}
+        Slot?.RemoveItem(this);
     }
 }

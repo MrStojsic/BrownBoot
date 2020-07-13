@@ -16,4 +16,9 @@ public interface IClickable
     {
         get;
     }
+
+    Text Stacktext
+    {
+        get;
+    }
 }

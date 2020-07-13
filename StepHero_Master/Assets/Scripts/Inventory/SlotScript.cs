@@ -25,12 +25,14 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler,IClickable
         get { return items.Count; }
     }
 
-    private Stack<Item> items = new Stack<Item>();
+    private ObservableStack<Item> items = new ObservableStack<Item>();
 
     public bool IsEmpty
     {
         get { return items.Count == 0; }
     }
+
+    [SerializeField]  private Text stackSize;
 
     public Item Item
     {
@@ -45,8 +47,20 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler,IClickable
 
     }
 
+    public Text Stacktext
+    {
+        get
+        {
+            return stackSize;
+        }
+    }
+    private void Awake()
+    {
+        items.OnPop += new UpdateStackEvent(UpdateSlot);
+        items.OnPush += new UpdateStackEvent(UpdateSlot);
+        items.OnClear += new UpdateStackEvent(UpdateSlot);
+    }
 
-    
 
     public bool AddItem(Item item)
     {
@@ -63,15 +77,32 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler,IClickable
         if (!IsEmpty)
         {
             items.Pop();
-            UpdateStackSize(this);
         }
+    }
+
+    public void UpdateSlot()
+    {
+        UpdateStackSize(this);
     }
 
     public void UpdateStackSize(IClickable clickable)
     {
+        if (clickable.Count > 1)
+        {
+            clickable.Stacktext.text = clickable.Count.ToString();
+            clickable.Stacktext.color = Color.white;
+            clickable.Icon.color = Color.white;
+        }
+        else
+        {
+            clickable.Stacktext.color = Color.clear;
+        }
+
+
         if (clickable.Count == 0)
         {
             icon.color = Color.clear;
+            clickable.Stacktext.color = Color.clear;
         }
     }
 
@@ -90,5 +121,16 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler,IClickable
             (Item as IUseable).Use();
             print("USED");
         }
+    }
+
+    public bool StackItem(Item item)
+    {
+        if (!IsEmpty && item.name == Item.name && items.Count < Item.StackSize)
+        {
+            items.Push(item);
+            item.Slot = this;
+            return true;
+        }
+        return false;
     }
 }
