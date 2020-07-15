@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utitlities/ObservableStack.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utitlities/IMoveable.cs">
     <Files>
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
       <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="5" Column="26" />
@@ -12,7 +12,7 @@
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" Line="8" Column="12" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="72" Column="25" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="113" Column="1" />
       <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="96" Column="28" />
       <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="19" Column="30" />
       <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="30" Column="51" />
@@ -20,7 +20,9 @@
       <File FileName="Assets/Scripts/Inventory/BagButton.cs" Line="20" Column="17" />
       <File FileName="Assets/Scripts/Inventory/IClickable.cs" Line="22" Column="13" />
       <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="18" Column="6" />
-      <File FileName="Assets/Scripts/Utitlities/ObservableStack.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/Utitlities/ObservableStack.cs" Line="28" Column="16" />
+      <File FileName="Assets/Scripts/Utitlities/HandScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

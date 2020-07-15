@@ -4,7 +4,7 @@ using UnityEngine;
 
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
-public abstract class Item : ScriptableObject
+public abstract class Item : ScriptableObject, IMoveable
 {
     [SerializeField] private Sprite _icon;
     public Sprite Icon

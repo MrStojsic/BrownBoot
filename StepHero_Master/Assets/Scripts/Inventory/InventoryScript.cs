@@ -28,6 +28,21 @@ public class InventoryScript : MonoBehaviour
 
     private List<Bag> bags = new List<Bag>();
 
+    private SlotScript fromSlot;
+    public SlotScript FromSlot
+    {
+        get { return fromSlot; }
+        set
+        {
+            fromSlot = value;
+            if (value != null)
+            {
+                fromSlot.Icon.color = Color.grey;
+            }
+
+        }
+    }
+
     //  NOT NEEDED.
     public bool CanAddBag
     {
