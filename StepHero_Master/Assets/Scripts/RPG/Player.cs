@@ -35,12 +35,12 @@ public class Player : Entity
     protected override void Update()
     {
         // vvvvvvvvvvvvv DEBUG ONLY
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             TestStat.MyCurrentValue -= 10;
             Debug.Log(TestStat.MyCurrentValue);
         }
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             TestStat.MyCurrentValue += 10;
             Debug.Log(TestStat.MyCurrentValue);

@@ -1,28 +1,33 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Utitlities/IMoveable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Items/Apple.cs">
     <Files>
+      <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="11" Column="10" IsPinned="True" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
       <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="5" Column="26" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
       <File FileName="Assets/Scripts/RPG/Entity.cs" Line="25" Column="21" />
-      <File FileName="Assets/Scripts/RPG/Player.cs" Line="17" Column="52" />
+      <File FileName="Assets/Scripts/RPG/Player.cs" Line="38" Column="39" />
       <File FileName="Assets/Scripts/RPG/PlayerData.cs" Line="19" Column="29" />
       <File FileName="Assets/Scripts/RPG/Stat.cs" Line="6" Column="94" />
       <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" Line="8" Column="12" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="113" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="96" Column="28" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="120" Column="27" />
+      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="44" Column="6" />
       <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="19" Column="30" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="30" Column="51" />
-      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="21" Column="18" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="13" Column="55" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="7" Column="1" />
       <File FileName="Assets/Scripts/Inventory/BagButton.cs" Line="20" Column="17" />
       <File FileName="Assets/Scripts/Inventory/IClickable.cs" Line="22" Column="13" />
-      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="18" Column="6" />
-      <File FileName="Assets/Scripts/Utitlities/ObservableStack.cs" Line="28" Column="16" />
-      <File FileName="Assets/Scripts/Utitlities/HandScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/Utitlities/ObservableStack.cs" Line="13" Column="43" />
+      <File FileName="Assets/Scripts/Utitlities/HandScript.cs" Line="101" Column="50" />
+      <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" Line="5" Column="12" />
+      <File FileName="Assets/Scripts/Inventory/RarityColours.cs" Line="17" Column="31" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" Line="35" Column="1" />
+      <File FileName="Assets/Scripts/UI Components/SwipeGroup.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="5" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
