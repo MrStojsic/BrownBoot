@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Superclass for all items
 /// </summary>
-public abstract class Item : ScriptableObject, IMoveable
+public abstract class Item : ScriptableObject, IMoveable, IDescribable
 {
     /// <summary>
     /// The icon used to display this item, also used when moving and placing the items
@@ -28,6 +28,17 @@ public abstract class Item : ScriptableObject, IMoveable
     private string _title;
 
     /// <summary>
+    /// Property for accessing the _title
+    /// </summary>
+    public string Title
+    {
+        get
+        {
+            return _title;
+        }
+    }
+
+    /// <summary>
     /// The item's rarity
     /// </summary>
     [SerializeField] private Rarity _rarity;
@@ -37,9 +48,10 @@ public abstract class Item : ScriptableObject, IMoveable
     /// </summary>
     private SlotScript _slot;
 
+    
 
-    [SerializeField]
-    private int price;
+
+    [SerializeField] private int price;
 
 
     /// <summary>
@@ -88,14 +100,6 @@ public abstract class Item : ScriptableObject, IMoveable
         get
         {
             return _rarity;
-        }
-    }
-
-    public string Title
-    {
-        get
-        {
-            return _title;
         }
     }
 

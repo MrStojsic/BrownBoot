@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 // Asstached to Image_Slot
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
-public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
+public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPointerEnterHandler, IPointerExitHandler
 {
     /// <summary>
     /// Icon should be set in the inspector to reference the slots child image_Icon,
@@ -243,5 +243,23 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable
             return true;
         }
         return false;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!IsEmpty)
+        {
+            UiManager_Inventory.Instance.ShowToolTip(transform.position, Item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        UiManager_Inventory.Instance.HideToolTip();
+    }
+
+    public string GetDescription()
+    {
+        return "This is an item";
     }
 }

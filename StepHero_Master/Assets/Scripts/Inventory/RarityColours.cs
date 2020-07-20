@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Enum for declaring the Rarity of the item
 /// </summary>
-public enum Rarity { Common, Uncommon, Rare, Epic }
+public enum Rarity { Common, Uncommon, Rare, Legendary }
 
 public static class RarityColours
 {
@@ -14,7 +14,7 @@ public static class RarityColours
         {Rarity.Common, "#ffffffff" },
         {Rarity.Uncommon, "#00D2ED" },
         {Rarity.Rare, "#B94BDF" },
-        {Rarity.Epic, "#FFA700" },
+        {Rarity.Legendary, "#FFA700" },
 
     };
 

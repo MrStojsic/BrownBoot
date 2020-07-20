@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Items/Apple.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/IDescribable.cs">
     <Files>
       <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="11" Column="10" IsPinned="True" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="14" Column="38" />
@@ -13,7 +13,7 @@
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" Line="8" Column="12" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="120" Column="27" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="251" Column="10" />
       <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" Line="44" Column="6" />
       <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="19" Column="30" />
       <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="13" Column="55" />
@@ -27,7 +27,9 @@
       <File FileName="Assets/Scripts/Inventory/RarityColours.cs" Line="17" Column="31" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" Line="35" Column="1" />
       <File FileName="Assets/Scripts/UI Components/SwipeGroup.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="5" Column="19" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/Inventory/UiManager_Inventory.cs" Line="27" Column="47" />
+      <File FileName="Assets/Scripts/Inventory/IDescribable.cs" Line="8" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -16,4 +16,9 @@ public class HealthPotion : Item, IUseable
             Player.Instance.TestStat.MyCurrentValue += health;
         }
     }
+
+    public override string GetDescription()
+    {
+        return base.GetDescription() + string.Format("\nRestores {0} health when used.", health);
+    }
 }
