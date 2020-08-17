@@ -59,11 +59,13 @@ public class SelectorGroup : MonoBehaviour
         selectedIndex = selectedSelectorButton.transform.GetSiblingIndex();
 
     }
-    public void SelectSelectorViaIndex(int childIndex)
+    public bool SelectSelectorViaIndex(int childIndex)
     {
-        if (transform.childCount > 0)
+        if (childIndex <= transform.childCount)
         {
             OnButtonSelected(transform.GetChild(childIndex).GetComponent<SelectorButton>());
+            return true;
         }
+        return false;
     }
 }

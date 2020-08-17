@@ -51,7 +51,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     
 
 
-    [SerializeField] private int price;
+    [SerializeField] private int _price;
 
 
     /// <summary>
@@ -103,11 +103,11 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
         }
     }
 
-    public int MyPrice
+    public int Price
     {
         get
         {
-            return price;
+            return _price;
         }
     }
     

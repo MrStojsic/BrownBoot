@@ -11,7 +11,7 @@ public static class RarityColours
 {
     private static Dictionary<Rarity, string> _colors = new Dictionary<Rarity, string>()
     {
-        {Rarity.Common, "#ffffffff" },
+        {Rarity.Common, "#323232" },
         {Rarity.Uncommon, "#00D2ED" },
         {Rarity.Rare, "#B94BDF" },
         {Rarity.Legendary, "#FFA700" },

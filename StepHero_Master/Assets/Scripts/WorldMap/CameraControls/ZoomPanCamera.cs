@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+//- If camera gitters when fully zoomed out, check that max zoom limit isnt so far out that its past the maps bounds.
 
 public class ZoomPanCamera : MonoBehaviour
 {
