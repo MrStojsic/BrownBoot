@@ -15,6 +15,10 @@ public class SimpleButton : MonoBehaviour, IPointerClickHandler, IPointerExitHan
 
     public Color buttonDefaultColour;
     public Color buttonPressedColour;
+    private Color buttonDisabledColour;
+
+    public bool IsInteractable { get { return _isInteractable; } }
+    private bool _isInteractable = true;
 
     public UnityEvent onClicked;
 
@@ -22,25 +26,45 @@ public class SimpleButton : MonoBehaviour, IPointerClickHandler, IPointerExitHan
     protected void Awake()
     {
         background = GetComponent<Image>();
+
+        buttonDisabledColour = buttonDefaultColour * 7.5f;
+        buttonDefaultColour.a = 1;
     }
-    void OnEnable()
+
+     void OnEnable()
     {
-        background.color = buttonDefaultColour;
+        if (_isInteractable)
+        {
+            background.color = buttonDefaultColour;
+        }
+        else
+        {
+            background.color = buttonDefaultColour*.75f;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        background.color = buttonDefaultColour;
-        OnClicked();
+        if (_isInteractable)
+        {
+            background.color = buttonDefaultColour;
+            OnClicked();
+        }
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        background.color = buttonPressedColour;
+        if (_isInteractable)
+        {
+            background.color = buttonPressedColour;
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        background.color = buttonDefaultColour;
+        if (_isInteractable)
+        {
+            background.color = buttonDefaultColour;
+        }
     }
 
     public void OnClicked()
@@ -49,5 +73,12 @@ public class SimpleButton : MonoBehaviour, IPointerClickHandler, IPointerExitHan
         {
             onClicked.Invoke();
         }
+    }
+
+    public void SetInteractable(bool able)
+    {
+        _isInteractable = able;
+
+        OnEnable();
     }
 }

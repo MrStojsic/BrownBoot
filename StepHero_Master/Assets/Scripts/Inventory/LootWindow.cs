@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 // https://www.youtube.com/watch?v=T6ZjSpy3JrI&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=73
 
 public class LootWindow : MonoBehaviour
 {
-    [SerializeField] private SelectorGroup lootSelectorGroup;
+    [SerializeField] private SelectorGroup itemSelectorGroup;
 
-    [SerializeField] List<LootSlot> lootSlots = new List<LootSlot>();
+    
+
+    [SerializeField] List<ItemSelectorButton> itemSelectorButtons = new List<ItemSelectorButton>();
 
     // DEBUGGING ONLY.
     [SerializeField] List<Item> debugLootItems = new List<Item>();
@@ -21,6 +25,8 @@ public class LootWindow : MonoBehaviour
     [SerializeField] private Image infoIcon;
     [SerializeField] private Text infoDesciption;
     [SerializeField] private Text infoItemInventoryCount;
+
+    [SerializeField] private GameObject itemEntryPrefab;
 
 
     // Start is called before the first frame update
@@ -38,38 +44,28 @@ public class LootWindow : MonoBehaviour
 
     private void PopulateLootList()
     {
-        for (int i = 0; i < lootSlots.Count; i++)
+        for (int i = 0; i < lootItems.Count; i++)
         {
-            if (i < lootItems.Count)
-            {
-                lootSlots[i].Item = lootItems[i];
-                // Set loot slot.
-                lootSlots[i].SetLootSlot();
-
-                // Enable loot slot.
-                lootSlots[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                // Enable loot slot.
-                lootSlots[i].gameObject.SetActive(false);
-            }
+            itemSelectorButtons.Add(Instantiate(itemEntryPrefab, itemSelectorGroup.transform).GetComponent<ItemSelectorButton>());
+            itemSelectorButtons[i].SetupButtonDisplay(lootItems[i]);
+            int index = i;
+            itemSelectorButtons[i].SetupButtonFunction(itemSelectorGroup, ()=>SetItemInfo(itemSelectorButtons[index]));
         }
 
-        lootSelectorGroup.SelectSelectorViaIndex(0);
+        itemSelectorGroup.SelectSelectorViaIndex(0);
     }
 
-    public void SetItemInfo(LootSlot lootSlot)
+    public void SetItemInfo(ItemSelectorButton itemSelectorButton)
     {
         // Set info icons.
-        infoIcon.sprite = lootSlot.Item.Icon;
+        infoIcon.sprite = itemSelectorButton.Item.Icon;
 
         // Set info title.
-        string title = string.Format("<color={0}>{1}</color>", RarityColours.Colors[lootSlot.Item.Rarity], lootSlot.Item.Title);
+        string title = string.Format("<color={0}>{1}</color>", RarityColours.Colors[itemSelectorButton.Item.Rarity], itemSelectorButton.Item.Title);
         infoTitle.text = title;
 
         // Set info description.
-        infoDesciption.text = lootSlot.Item.GetDescription();
+        infoDesciption.text = itemSelectorButton.Item.GetDescription();
 
         // Set item inventory count.
         infoItemInventoryCount.text = "TODO";// TODO.
@@ -82,23 +78,23 @@ public class LootWindow : MonoBehaviour
 
     public void TakeItem()
     {
-        if (InventoryScript.Instance.AddItem(lootItems[lootSelectorGroup.selectedIndex]))
+        if (InventoryScript.Instance.AddItem(lootItems[itemSelectorGroup.selectedIndex]))
         {
-            lootSlots[lootSelectorGroup.selectedIndex].Item = null;
-            lootSlots[lootSelectorGroup.selectedIndex].gameObject.SetActive(false);
+            itemSelectorButtons[itemSelectorGroup.selectedIndex].gameObject.SetActive(false);
         }
     }
 
     public void TakeAllItems()
     {
         // NEEDS LOOKING OVER IN CASE INVENTORY FULL.
+        // aslo needs rejigging as we shouldt remove the button refereence.
         // TODO.
         for (int i = 0; i < lootItems.Count; i++)
         {
             InventoryScript.Instance.AddItem(lootItems[i]);
-            lootSlots.RemoveAt(i);
+            itemSelectorButtons.RemoveAt(i);
             // Disable loot slot.
-            lootSlots[i].gameObject.SetActive(true);
+            itemSelectorButtons[i].gameObject.SetActive(true);
         }
 
     }

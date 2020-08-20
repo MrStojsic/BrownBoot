@@ -58,4 +58,6 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
             onDeselected.Invoke();
         }
     }
+
+
 }
