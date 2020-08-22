@@ -35,5 +35,11 @@ public class ItemSelectorButton : SelectorButton
         onSelected.AddListener(action);
     }
 
+    public void Reset()
+    {
+        onSelected.RemoveAllListeners();
+        gameObject.SetActive(true);
+    }
+
 }
 

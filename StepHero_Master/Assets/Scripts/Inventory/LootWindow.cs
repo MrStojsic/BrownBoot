@@ -26,7 +26,7 @@ public class LootWindow : MonoBehaviour
     [SerializeField] private Text infoDesciption;
     [SerializeField] private Text infoItemInventoryCount;
 
-    [SerializeField] private GameObject itemEntryPrefab;
+    [SerializeField] private ItemSelectorButton itemEntryPrefab;
 
 
     // Start is called before the first frame update
@@ -44,14 +44,44 @@ public class LootWindow : MonoBehaviour
 
     private void PopulateLootList()
     {
-        for (int i = 0; i < lootItems.Count; i++)
+        if(itemSelectorButtons.Count >0)
         {
-            itemSelectorButtons.Add(Instantiate(itemEntryPrefab, itemSelectorGroup.transform).GetComponent<ItemSelectorButton>());
-            itemSelectorButtons[i].SetupButtonDisplay(lootItems[i]);
-            int index = i;
-            itemSelectorButtons[i].SetupButtonFunction(itemSelectorGroup, ()=>SetItemInfo(itemSelectorButtons[index]));
+            itemSelectorButtons.Clear();
         }
+       
+        int index = 0;
+        if (itemSelectorGroup.transform.childCount > 0)
+        {
+            
+            for (; index < lootItems.Count && index < itemSelectorGroup.transform.childCount; index++)
+            {
+                itemSelectorButtons.Add(itemSelectorGroup.transform.GetChild(index).GetComponent<ItemSelectorButton>());
+                itemSelectorButtons[index].SetupButtonDisplay(lootItems[index]);
+                itemSelectorButtons[index].Reset();
+                int indexCopy = index;
+                itemSelectorButtons[index].SetupButtonFunction(itemSelectorGroup, () => SetItemInfo(itemSelectorButtons[indexCopy]));
 
+            }
+        }
+        if (itemSelectorButtons.Count < lootItems.Count)
+        {
+            for (; index < lootItems.Count; index++)
+            {
+                itemSelectorButtons.Add(Instantiate(itemEntryPrefab, itemSelectorGroup.transform) as ItemSelectorButton);
+                itemSelectorButtons[index].SetupButtonDisplay(lootItems[index]);
+                int indexCopy = index;
+                itemSelectorButtons[index].SetupButtonFunction(itemSelectorGroup, () => SetItemInfo(itemSelectorButtons[indexCopy]));
+            }
+        }
+        
+        if (itemSelectorGroup.transform.childCount > lootItems.Count)
+        {
+            for (; index < itemSelectorGroup.transform.childCount; index++)
+            {
+                itemSelectorGroup.transform.GetChild(index).gameObject.SetActive(false);
+            }
+        }
+       // print(index);
         itemSelectorGroup.SelectSelectorViaIndex(0);
     }
 
@@ -78,7 +108,8 @@ public class LootWindow : MonoBehaviour
 
     public void TakeItem()
     {
-        if (InventoryScript.Instance.AddItem(lootItems[itemSelectorGroup.selectedIndex]))
+        if (itemSelectorButtons[itemSelectorGroup.selectedIndex].gameObject.activeInHierarchy == true &&
+            InventoryScript.Instance.AddItem(lootItems[itemSelectorGroup.selectedIndex]))
         {
             itemSelectorButtons[itemSelectorGroup.selectedIndex].gameObject.SetActive(false);
         }
@@ -92,7 +123,7 @@ public class LootWindow : MonoBehaviour
         for (int i = 0; i < lootItems.Count; i++)
         {
             InventoryScript.Instance.AddItem(lootItems[i]);
-            itemSelectorButtons.RemoveAt(i);
+ 
             // Disable loot slot.
             itemSelectorButtons[i].gameObject.SetActive(true);
         }
