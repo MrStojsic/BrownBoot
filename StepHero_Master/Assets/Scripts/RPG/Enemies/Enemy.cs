@@ -8,18 +8,26 @@ public class Enemy : Entity
 
     [SerializeField] private CanvasGroup healthGroup;
 
+    [SerializeField] private LootTable lootTable;
+
+    public bool isAlive;
+
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        base.Start();
+        // base.Start();
 
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        
+        if (!isAlive)
+        {
+            lootTable.OfferLoot();
+            isAlive = true;
+        }
     }
 
     public virtual void Select()

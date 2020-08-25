@@ -9,16 +9,32 @@ using UnityEngine.Events;
 
 public class LootWindow : MonoBehaviour
 {
-    [SerializeField] private SelectorGroup itemSelectorGroup;
+    private static LootWindow _instance;
+    public static LootWindow Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<LootWindow>();
+            }
+            return _instance;
+        }
+    }
 
-    
+
+    [SerializeField] private SelectorGroup itemSelectorGroup;
 
     [SerializeField] List<ItemSelectorButton> itemSelectorButtons = new List<ItemSelectorButton>();
 
-    // DEBUGGING ONLY.
-    [SerializeField] List<Item> debugLootItems = new List<Item>();
 
     [SerializeField] List<Item> lootItems = new List<Item>();
+
+    // TODO: If we end up having all enemies loot divided up by one loot table in future we can pass the dropped loot list into a function on lootwindow,
+    //       set lootItems = passedDropList of items and if we remove items from lootItems it will remove it from the original passedDropList from the lootTable.
+    //       this is because settign a list to = another list is a refercne to that list, they are actually refering to the same data now.
+    //       so we can use this idea later if item duplication becomes an issue.
+    // https://youtu.be/V8MoOaYyA5g?t=1639
 
 
     [SerializeField] private Text infoTitle;
@@ -28,13 +44,13 @@ public class LootWindow : MonoBehaviour
 
     [SerializeField] private ItemSelectorButton itemEntryPrefab;
 
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private CanvasGroup canvasGroup;
+    private void Awake()
     {
-        AddLoot(debugLootItems);
-
-        PopulateLootList();
+        if (canvasGroup == null)
+        {
+            canvasGroup = GetComponent<CanvasGroup>();
+        }
     }
 
     public void AddLoot(List<Item> lootToAdd)
@@ -42,7 +58,7 @@ public class LootWindow : MonoBehaviour
         lootItems.AddRange(lootToAdd);
     }
 
-    private void PopulateLootList()
+    public void PopulateLootList()
     {
         if(itemSelectorButtons.Count >0)
         {
@@ -57,7 +73,7 @@ public class LootWindow : MonoBehaviour
             {
                 itemSelectorButtons.Add(itemSelectorGroup.transform.GetChild(index).GetComponent<ItemSelectorButton>());
                 itemSelectorButtons[index].SetupButtonDisplay(lootItems[index]);
-                itemSelectorButtons[index].Reset();
+                itemSelectorButtons[index].ResetForUse();
                 int indexCopy = index;
                 itemSelectorButtons[index].SetupButtonFunction(itemSelectorGroup, () => SetItemInfo(itemSelectorButtons[indexCopy]));
 
@@ -83,6 +99,8 @@ public class LootWindow : MonoBehaviour
         }
        // print(index);
         itemSelectorGroup.SelectSelectorViaIndex(0);
+
+        OpenClose();
     }
 
     public void SetItemInfo(ItemSelectorButton itemSelectorButton)
@@ -140,5 +158,17 @@ public class LootWindow : MonoBehaviour
         // if no more items in the list close the window.
     }
 
+    public void OpenClose()
+    {
+        if (canvasGroup.alpha == 0)
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.blocksRaycasts = true;
+            return;
+        }
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
+        lootItems.Clear();
+    }
 
 }
