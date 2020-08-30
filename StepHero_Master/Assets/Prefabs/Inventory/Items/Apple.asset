@@ -16,5 +16,5 @@ MonoBehaviour:
   _stackSize: 10
   _title: Apple
   _rarity: 0
-  price: 5
+  _price: 0
   health: 5

@@ -38,6 +38,12 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
         }
     }
 
+    private string description;
+    public string Description
+    {
+        get { return description; }
+    }
+
     /// <summary>
     /// The item's rarity
     /// </summary>
@@ -117,7 +123,12 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// <returns></returns>
     public virtual string GetDescription()
     {
-        return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], Title);
+        return null;
+    }
+
+    public virtual string GetTitle()
+    {
+        return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], _title);
     }
 
     /// <summary>

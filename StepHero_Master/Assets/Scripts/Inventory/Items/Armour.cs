@@ -5,10 +5,13 @@ using UnityEngine;
 enum ArmourType
 {
     HELMET,
+    SHOULDER,
     CHEST,
-    GLOVES,
     LEGGING,
-    BOOTS
+    BOOTS,
+    GLOVES,
+    NECKLACE,
+    RING,
 }
 
 [CreateAssetMenu(fileName = "Armour", menuName = "Items/Armour", order = 2)]
