@@ -52,6 +52,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// <summary>
     /// A reference to the slot that this item is sitting on
     /// </summary>
+    [SerializeField]
     private SlotScript _slot;
 
     
@@ -85,6 +86,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// <summary>
     /// Property for accessing the _slotscript
     /// </summary>
+    
     public SlotScript Slot
     {
         get

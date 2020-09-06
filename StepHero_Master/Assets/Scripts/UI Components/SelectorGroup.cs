@@ -9,13 +9,19 @@ public class SelectorGroup : MonoBehaviour
     public Color buttonSelectedColour;
 
     public SelectorButton selectedSelectorButton;
+    public Transform selectorButtonsParent;
 
     public bool useButtonsSelectedColour = false;
 
     public int selectedIndex;
 
-    private void Awake()
+
+    private void Start()
     {
+        if (selectedSelectorButton == null)
+        {
+            SelectSelectorViaIndex(selectedIndex);
+        }
         if (selectedSelectorButton != null)
         {
             OnButtonSelected(selectedSelectorButton);
@@ -61,9 +67,9 @@ public class SelectorGroup : MonoBehaviour
     }
     public void SelectSelectorViaIndex(int childIndex)
     {
-        if (transform.childCount > 0)
+        if (selectorButtonsParent.childCount > 0 && childIndex <= selectorButtonsParent.childCount)
         {
-            OnButtonSelected(transform.GetChild(childIndex).GetComponent<SelectorButton>());
+            OnButtonSelected(selectorButtonsParent.GetChild(childIndex).GetComponent<SelectorButton>());
         }
     }
 }

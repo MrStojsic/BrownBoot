@@ -22,9 +22,9 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
     void Start()
     {
         background = GetComponent<Image>();
-        if (selectorGroup.transform != transform.parent)
+        if (selectorGroup.selectorButtonsParent != transform.parent)
         {
-            Debug.LogError(this.name + " SelectorButton MUST be a child of SelectorGroup " + selectorGroup + " to work.");
+            Debug.LogError(this.name + " SelectorButton MUST be a child of SelectorGroup " + selectorGroup.selectorButtonsParent + " to work.");
         }
     }
 

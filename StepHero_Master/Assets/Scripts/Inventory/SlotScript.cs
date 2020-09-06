@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 // Asstached to Image_Slot
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
-
 public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPointerEnterHandler, IPointerExitHandler
 {
     /// <summary>
@@ -81,6 +80,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
         icon.sprite = item.Icon;
         icon.color = Color.white;
         item.Slot = this;
+        print(item.Slot);
 
         return true;
     }

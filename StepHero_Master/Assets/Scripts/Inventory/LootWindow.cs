@@ -60,15 +60,15 @@ public class LootWindow : MonoBehaviour
 
     public void PopulateLootList()
     {
-        if(itemSelectorButtons.Count >0)
+        if (itemSelectorButtons.Count > 0)
         {
             itemSelectorButtons.Clear();
         }
-       
+
         int index = 0;
         if (itemSelectorGroup.transform.childCount > 0)
         {
-            
+
             for (; index < lootItems.Count && index < itemSelectorGroup.transform.childCount; index++)
             {
                 itemSelectorButtons.Add(itemSelectorGroup.transform.GetChild(index).GetComponent<ItemSelectorButton>());
@@ -89,7 +89,7 @@ public class LootWindow : MonoBehaviour
                 itemSelectorButtons[index].SetupButtonFunction(itemSelectorGroup, () => SetItemInfo(itemSelectorButtons[indexCopy]));
             }
         }
-        
+
         if (itemSelectorGroup.transform.childCount > lootItems.Count)
         {
             for (; index < itemSelectorGroup.transform.childCount; index++)
@@ -97,7 +97,7 @@ public class LootWindow : MonoBehaviour
                 itemSelectorGroup.transform.GetChild(index).gameObject.SetActive(false);
             }
         }
-       // print(index);
+        // print(index);
         itemSelectorGroup.SelectSelectorViaIndex(0);
 
         OpenClose();
@@ -141,7 +141,7 @@ public class LootWindow : MonoBehaviour
         for (int i = 0; i < lootItems.Count; i++)
         {
             InventoryScript.Instance.AddItem(lootItems[i]);
- 
+
             // Disable loot slot.
             itemSelectorButtons[i].gameObject.SetActive(true);
         }

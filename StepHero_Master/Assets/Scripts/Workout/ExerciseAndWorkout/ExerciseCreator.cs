@@ -38,8 +38,10 @@ public class ExerciseCreator : MonoBehaviour
 
         exerciseSelectorGroup.SelectSelectorViaIndex(exerciseType);
 
+
         _iconIndex = 0;
         setSpriteToExerciseIcon.SetSprite(_iconIndex);
+        iconSelectorGroup.SelectSelectorViaIndex(0);
     }
 
     // Start is called before the first frame update
