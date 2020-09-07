@@ -18,11 +18,13 @@ MonoBehaviour:
   - m_Name: ScrollViewBackground
     m_Color: {r: 1, g: 1, b: 1, a: 1}
   - m_Name: BasicMenubackground
-    m_Color: {r: 0.8207547, g: 0.77843463, b: 0.6775098, a: 1}
+    m_Color: {r: 0.7294118, g: 0.7058824, b: 0.7725491, a: 1}
+  - m_Name: DarkMenuBackground
+    m_Color: {r: 0.32156864, g: 0.27058825, b: 0.33333334, a: 1}
   - m_Name: DefaultButtonBackground
-    m_Color: {r: 0.6226415, g: 0.5925374, b: 0.502225, a: 1}
+    m_Color: {r: 0.6666492, g: 0.6391955, b: 0.7169812, a: 1}
   - m_Name: PressedButtonBackground
-    m_Color: {r: 0.69, g: 0.65663916, b: 0.5565566, a: 1}
+    m_Color: {r: 0.5058824, g: 0.47450984, b: 0.5921569, a: 1}
   - m_Name: StrengthRed
     m_Color: {r: 0.7490196, g: 0.39607844, b: 0.3764706, a: 1}
   - m_Name: AgilityGreen

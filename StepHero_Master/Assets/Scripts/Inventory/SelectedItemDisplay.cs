@@ -34,8 +34,6 @@ public class SelectedItemDisplay : MonoBehaviour
             lastSelectedItemButton.SetActive(true);
         }
 
-        Debug.Log(item.Title);
-
         this.item = item;
 
         title.text = item.GetTitle();
@@ -50,11 +48,10 @@ public class SelectedItemDisplay : MonoBehaviour
         }
 
         description.text = item.GetDescription();
-        Debug.Log(selectorGroup.selectedIndex);
-       lastSelectedItemButton = selectorGroup.transform.GetChild(selectorGroup.selectedIndex).gameObject;
-       lastSelectedItemButton.SetActive(false);
+        lastSelectedItemButton = selectorGroup.transform.GetChild(selectorGroup.selectedIndex).gameObject;
+        lastSelectedItemButton.SetActive(false);
 
-       transform.SetSiblingIndex(selectorGroup.selectedIndex);
+        transform.SetSiblingIndex(selectorGroup.selectedIndex);
 
     }
 }
