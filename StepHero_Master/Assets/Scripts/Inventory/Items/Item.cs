@@ -13,19 +13,19 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// The icon used to display this item, also used when moving and placing the items
     /// </summary>
     [SerializeField]
-    private Sprite _icon;
+    private Sprite _icon = default;
 
     /// <summary>
     /// The size of the stack, less than 2 is not stackable
     /// </summary>
     [SerializeField]
-    private int _stackSize;
+    private int _stackSize = default;
 
     /// <summary>
     /// The item's title
     /// </summary>
     [SerializeField]
-    private string _title;
+    private string _title = default;
 
     /// <summary>
     /// Property for accessing the _title
@@ -38,7 +38,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
         }
     }
 
-    private string description;
+    private string description = default;
     public string Description
     {
         get { return description; }
@@ -47,18 +47,18 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// <summary>
     /// The item's rarity
     /// </summary>
-    [SerializeField] private Rarity _rarity;
+    [SerializeField] private Rarity _rarity = default;
 
     /// <summary>
     /// A reference to the slot that this item is sitting on
     /// </summary>
     [SerializeField]
-    private SlotScript _slot;
+    private SlotScript _slot = default;
 
     
 
 
-    [SerializeField] private int _price;
+    [SerializeField] private int _price = default;
 
 
     /// <summary>

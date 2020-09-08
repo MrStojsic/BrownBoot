@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerEquipmentWindow : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroup = default;
 
     public void OpenClose()
     {

@@ -21,10 +21,10 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
-    [SerializeField] private BagButton[] bagButtons;
+    [SerializeField] private BagButton[] bagButtons = default;
 
     // DEBUGGING ONLY DELETE LATER.
-    [SerializeField] private Item[] items;
+    [SerializeField] private Item[] items = default;
 
     private List<Bag> bags = new List<Bag>();
 

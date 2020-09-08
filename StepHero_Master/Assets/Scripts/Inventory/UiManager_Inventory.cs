@@ -18,8 +18,8 @@ public class UiManager_Inventory : MonoBehaviour
         }
     }
 
-    [SerializeField] private RectTransform toolTip;
-    [SerializeField] private Text toolTipText;
+    [SerializeField] private RectTransform toolTip = default;
+    [SerializeField] private Text toolTipText = default;
 
     private void Awake()
     {

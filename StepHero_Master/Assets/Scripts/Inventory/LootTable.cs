@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LootTable : MonoBehaviour
 {
-    [SerializeField] private Loot[] possibleLoot;
+    [SerializeField] private Loot[] possibleLoot = default;
 
     private List<Item> droppedItems = new List<Item>();
 

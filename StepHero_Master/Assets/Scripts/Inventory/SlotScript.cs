@@ -13,7 +13,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
     /// Icon should be set in the inspector to reference the slots child image_Icon,
     /// so we can change the icon to display the item we have stored in that slot. 
     /// </summary>
-    [SerializeField] private Image icon;
+    [SerializeField] private Image icon = default;
     public Image Icon
     {
         get { return icon; }
@@ -43,7 +43,7 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
         } 
     }
 
-    [SerializeField] private Text stackSize;
+    [SerializeField] private Text stackSize = default;
 
     public Item Item
     {

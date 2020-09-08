@@ -70,25 +70,25 @@ public class InventoryItem : MonoBehaviour
     }
 
     // UI.
-    [SerializeField] private Text _title;
+    [SerializeField] private Text _title = default;
     public Text Title
     {
         get { return _title; }
     }
 
-    [SerializeField] private Image _icon;
+    [SerializeField] private Image _icon = default;
     public Image Icon
     {
         get { return _icon; }
     }
 
-    [SerializeField] private Text _stackSizeText;
+    [SerializeField] private Text _stackSizeText = default;
     public Text StackSizeText
     {
         get { return _stackSizeText; }
     }
 
-    [SerializeField] private SelectorButton _selectorButton;
+    [SerializeField] private SelectorButton _selectorButton = default;
     public SelectorButton SelectorButton
     {
         get { return _selectorButton; }

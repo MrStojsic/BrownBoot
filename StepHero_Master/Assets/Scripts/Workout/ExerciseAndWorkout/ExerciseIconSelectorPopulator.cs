@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class ExerciseIconSelectorPopulator : MonoBehaviour
 {
-    [SerializeField] SelectorButton prefabIconSelector;
-    [SerializeField] SelectorGroup selectorGroup;
+    [SerializeField] SelectorButton prefabIconSelector = default;
+    [SerializeField] SelectorGroup selectorGroup = default;
     // Start is called before the first frame update
     void Start()
     {

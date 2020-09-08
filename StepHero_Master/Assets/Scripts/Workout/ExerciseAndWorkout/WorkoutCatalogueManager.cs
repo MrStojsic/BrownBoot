@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WorkoutCatalogueManager : MonoBehaviour
 {
-    [SerializeField] GameObject prefabWorkout;
+    [SerializeField] GameObject prefabWorkout = default;
 
     [SerializeField] List<WorkoutComponent> workoutComponentsList = new List<WorkoutComponent>();
 

@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class SetSpriteToExerciseIcon : MonoBehaviour
 {
-    [SerializeField] Image image;
-    [SerializeField] SimpleButton simpleButton;
+    [SerializeField] Image image = default;
+    [SerializeField] SimpleButton simpleButton = default;
     // Start is called before the first frame update
     public void SetSprite(int spriteIndex)
     {

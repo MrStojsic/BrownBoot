@@ -3,11 +3,11 @@
 namespace UniPedometer {
 	[System.Serializable]
 	public class NSError {
-		[SerializeField] int code;
-		[SerializeField] string domain;
-		[SerializeField] string localizedDescription;
-		[SerializeField] string localizedRecoverySuggestion;
-		[SerializeField] string localizedFailureReason;
+		[SerializeField] int code = default;
+		[SerializeField] string domain = default;
+		[SerializeField] string localizedDescription = default;
+		[SerializeField] string localizedRecoverySuggestion = default;
+		[SerializeField] string localizedFailureReason = default;
 
 		public int Code {
 			get {

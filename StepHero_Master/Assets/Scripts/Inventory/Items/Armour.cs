@@ -17,11 +17,11 @@ enum ArmourType
 [CreateAssetMenu(fileName = "Armour", menuName = "Items/Armour", order = 2)]
 public class Armour : Item
 {
-    [SerializeField] private ArmourType armourType;
+    [SerializeField] private ArmourType armourType = default;
 
-    [SerializeField] private int intelegence;
-    [SerializeField] private int strength;
-    [SerializeField] private int agility;
+    [SerializeField] private int intelegence = default;
+    [SerializeField] private int strength = default;
+    [SerializeField] private int agility = default;
 
     public override string GetDescription()
     {

@@ -8,7 +8,7 @@ using UnityEditor;
 public class LivePathUpdateOnMove : MonoBehaviour
 {
     [SerializeField]
-    AStarNode aStarNode;
+    AStarNode aStarNode = default;
 
     void Update()
     {

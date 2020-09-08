@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class RetrieveSteps : MonoBehaviour
 {
-    [SerializeField] Text text;
-    [SerializeField] Button queryButton;
-    [SerializeField] DateTime lastTimeChecked;
+    [SerializeField] Text text = default;
+    [SerializeField] Button queryButton = default;
+    [SerializeField] DateTime lastTimeChecked = default;
 
     void Start()
     {

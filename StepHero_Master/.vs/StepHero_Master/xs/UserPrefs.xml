@@ -1,10 +1,11 @@
-﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs">
+﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
+  <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI Components/SelectorGroup.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="4" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="9" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="70" Column="6" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" Line="32" Column="66" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="20" Column="5" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/Loot.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/LootTable.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" />
@@ -16,9 +17,9 @@
       <File FileName="Assets/Scripts/RPG/Stat.cs" />
       <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
-      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="18" Column="1" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="16" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
       <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" />
       <File FileName="Assets/Scripts/Inventory/BagButton.cs" />
       <File FileName="Assets/Scripts/Inventory/IClickable.cs" />
@@ -29,49 +30,52 @@
       <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" />
       <File FileName="Assets/Scripts/UI Components/SwipeGroup.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="21" Column="16" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
       <File FileName="Assets/Scripts/Inventory/UiManager_Inventory.cs" />
       <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" />
-      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="5" Column="14" />
+      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="61" Column="1" />
       <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
       <File FileName="Assets/Scripts/UI Components/LongHoldButton.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseComponent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseComponent.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" Line="76" Column="58" />
-      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" Line="18" Column="31" />
+      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" />
+      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" />
       <File FileName="Assets/Scripts/UI Components/TabGroup.cs" />
       <File FileName="Assets/Scripts/UI Components/TabButton.cs" />
       <File FileName="Assets/TEST_TEXT_COUNT.cs" />
-      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" Line="35" Column="10" />
-      <File FileName="Assets/Scripts/UI Components/LongHoldGroup.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI Components/SetActiveUiElement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseIconSelectorPopulator.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseCreator.cs" Line="44" Column="53" />
-      <File FileName="Assets/Scripts/UI Components/SetSpriteToExerciseIcon.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/CreateWorkout.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryTypePocket.cs" Line="7" Column="5" />
-      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs" Line="97" Column="69" />
-      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="19" Column="30" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
+      <File FileName="Assets/Scripts/UI Components/LongHoldGroup.cs" />
+      <File FileName="Assets/Scripts/UI Components/SetActiveUiElement.cs" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseIconSelectorPopulator.cs" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseCreator.cs" />
+      <File FileName="Assets/Scripts/UI Components/SetSpriteToExerciseIcon.cs" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/CreateWorkout.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryTypePocket.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample1.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Scripts/NSError.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample2.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Scripts/CMPedometerData.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample4.cs" />
+      <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample3.cs" />
+      <File FileName="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/RetrieveSteps.cs" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutComponent.cs" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutCatalogueManager.cs" />
+      <File FileName="Assets/Scripts/WorldMap/LocationInfoDisplay.cs" />
+      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="13" Column="53" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StepHero_Master" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Items" expanded="True" />
-                  <Node name="NewInventoryTest" expanded="True">
-                    <Node name="InventoryItem.cs" selected="True" />
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="UI Components" expanded="True">
+                    <Node name="SelectorGroup.cs" selected="True" />
                   </Node>
-                </Node>
-                <Node name="RPG" expanded="True">
-                  <Node name="Enemies" expanded="True" />
-                </Node>
-                <Node name="UI Components" expanded="True" />
-                <Node name="Utitlities" expanded="True" />
-                <Node name="Workout" expanded="True">
-                  <Node name="ExerciseAndWorkout" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -82,7 +86,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e1c6918d-59b4-4bb9-a6f0-cca33509b4d7" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8e647b8a-7403-4820-b9a2-42a952c85187" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" relfile="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" line="15" column="1" />

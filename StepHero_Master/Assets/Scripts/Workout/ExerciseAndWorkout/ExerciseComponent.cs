@@ -10,8 +10,8 @@ public class ExerciseComponent : MonoBehaviour
     public ExerciseData exerciseData;
 
     // UI Related Variables.
-    [SerializeField] private Text titleText;
-    [SerializeField] private Image iconImage;
+    [SerializeField] private Text titleText = default;
+    [SerializeField] private Image iconImage = default;
      public Sprite iconSprite = null;
 
     public SimpleButton simpleButton;

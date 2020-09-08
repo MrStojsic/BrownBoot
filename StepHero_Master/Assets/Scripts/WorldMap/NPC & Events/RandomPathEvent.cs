@@ -19,8 +19,8 @@ public class RandomPathEvent : MonoBehaviour
             eventChance -= possibleEvents[i].percentageChanceOfEvent;
             if (eventChance <= 0)
             {
-                return possibleEvents[i];
                 print("event at index " + i);
+                return possibleEvents[i];
             }
         }
         print("No event chosen");

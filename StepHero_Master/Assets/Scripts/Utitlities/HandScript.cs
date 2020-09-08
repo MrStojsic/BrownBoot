@@ -32,13 +32,13 @@ public class HandScript : MonoBehaviour
     /// <summary>
     /// The icon of the item, that we acre moving around atm.
     /// </summary>
-    private Image icon;
+    private Image icon = default;
 
     /// <summary>
     /// An offset to move the icon away from the mouse
     /// </summary>
     [SerializeField]
-    private Vector3 offset;
+    private Vector3 offset = default;
 
     // Use this for initialization
     void Start ()

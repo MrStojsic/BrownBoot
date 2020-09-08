@@ -5,18 +5,17 @@ using UnityEngine.UI;
 
 public class SelectedItemDisplay : MonoBehaviour
 {
-    [SerializeField] SelectorGroup selectorGroup;
-    [SerializeField] GameObject lastSelectedItemButton;
+    [SerializeField] SelectorGroup selectorGroup = default;
+    [SerializeField] GameObject lastSelectedItemButton = default;
 
-    [SerializeField] private Text title;
+    [SerializeField] private Text title = default;
     //[SerializeField] private SlotScript slotScript;
     // HACK - using Itme until i make a new SlotScript.
-    [SerializeField] private Item item;
-    [SerializeField] private Text actionButtonTitle;
+    [SerializeField] private Item item = default;
+    [SerializeField] private Text actionButtonTitle = default;
 
-    [SerializeField] private Text description;
+    [SerializeField] private Text description = default;
 
-    [SerializeField] private Text worth;
     private void Start()
     {
        

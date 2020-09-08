@@ -4,8 +4,8 @@ using UnityEngine.UI;
 using UniPedometer;
 
 public class Sample3 : MonoBehaviour {
-	[SerializeField] Text text;
-	[SerializeField] Button queryButton;
+	[SerializeField] Text text = default;
+	[SerializeField] Button queryButton = default;
 
 	void Start () {
 		queryButton.onClick.AddListener(() => CheckAndShow());

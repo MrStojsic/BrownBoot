@@ -6,9 +6,9 @@ public class Enemy : Entity
 {
     public int id;
 
-    [SerializeField] private CanvasGroup healthGroup;
+    [SerializeField] private CanvasGroup healthGroup = default;
 
-    [SerializeField] private LootTable lootTable;
+    [SerializeField] private LootTable lootTable = default;
 
     public bool isAlive;
 

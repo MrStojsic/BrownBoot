@@ -23,7 +23,7 @@ public class LootWindow : MonoBehaviour
     }
 
 
-    [SerializeField] private SelectorGroup itemSelectorGroup;
+    [SerializeField] private SelectorGroup itemSelectorGroup = default;
 
     [SerializeField] List<ItemSelectorButton> itemSelectorButtons = new List<ItemSelectorButton>();
 
@@ -37,14 +37,14 @@ public class LootWindow : MonoBehaviour
     // https://youtu.be/V8MoOaYyA5g?t=1639
 
 
-    [SerializeField] private Text infoTitle;
-    [SerializeField] private Image infoIcon;
-    [SerializeField] private Text infoDesciption;
-    [SerializeField] private Text infoItemInventoryCount;
+    [SerializeField] private Text infoTitle = default;
+    [SerializeField] private Image infoIcon = default;
+    [SerializeField] private Text infoDesciption = default;
+    [SerializeField] private Text infoItemInventoryCount = default;
 
-    [SerializeField] private ItemSelectorButton itemEntryPrefab;
+    [SerializeField] private ItemSelectorButton itemEntryPrefab = default;
 
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroup = default;
     private void Awake()
     {
         if (canvasGroup == null)

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/Potion",order = 1)]
 public class HealthPotion : Item, IUseable
 {
-    [SerializeField] private int health;
+    [SerializeField] private int health = default;
 
     public void Use()
     {

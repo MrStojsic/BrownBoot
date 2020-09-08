@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class LocationInfoDisplay : MonoBehaviour
 {
-    [SerializeField]Text title;
-    AStarNode node;
+    [SerializeField]Text title = default;
+    AStarNode node = default;
 
-    [SerializeField] Player_FollowBezierPath player_FollowBezierPath;
+    [SerializeField] Player_FollowBezierPath player_FollowBezierPath = default;
 
     // Start is called before the first frame update
     void Start()

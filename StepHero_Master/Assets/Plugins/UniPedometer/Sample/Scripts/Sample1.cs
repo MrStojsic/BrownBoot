@@ -5,17 +5,17 @@ using System;
 using UnityEngine.UI;
 
 public class Sample1 : MonoBehaviour {
-	[SerializeField] Text text;
-	[SerializeField] InputField fromHourInput;
-	[SerializeField] InputField toHourInput;
-	[SerializeField] Button queryButton;
+	[SerializeField] Text text = default;
+	[SerializeField] InputField fromHourInput = default;
+	[SerializeField] InputField toHourInput = default;
+	[SerializeField] Button queryButton = default;
 
 	void Start () {
 		queryButton.onClick.AddListener(() => {
 			try {
 				QueryAndShow(Int32.Parse(fromHourInput.text), Int32.Parse(toHourInput.text));
 			}
-			catch(FormatException e) {
+			catch(FormatException) {
 				text.text = "given text is not a number!";
 			}
 		});

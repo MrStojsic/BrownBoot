@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Apple", menuName = "Items/Apple", order = 4)]
 public class Apple : Item, IUseable
 {
-    [SerializeField] private int health;
+    [SerializeField] private int health = default;
 
     public void Use()
     {

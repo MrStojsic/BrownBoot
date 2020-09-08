@@ -7,7 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Bag", menuName = "Items/Bags" , order = 1)]
 public class Bag : Item, IUseable
 {
-    private int _numberOfSlots;
+    private int _numberOfSlots = default;
 
     public int _NumberOfSlots
     {
@@ -16,7 +16,7 @@ public class Bag : Item, IUseable
 
 
 
-    [SerializeField] private GameObject bagPrefab;
+    [SerializeField] private GameObject bagPrefab = default;
 
     public BagScript BagScript { get; set; }
 

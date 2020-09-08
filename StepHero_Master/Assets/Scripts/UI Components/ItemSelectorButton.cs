@@ -15,8 +15,8 @@ public class ItemSelectorButton : SelectorButton
     [SerializeField] private Item _item;
     public Item Item { get { return _item; } set { _item = value; } }
 
-    [SerializeField] private Image _icon;
-    [SerializeField] private Text _title;
+    [SerializeField] private Image _icon = default;
+    [SerializeField] private Text _title = default;
 
     public void SetupButtonDisplay(Item item)
     {

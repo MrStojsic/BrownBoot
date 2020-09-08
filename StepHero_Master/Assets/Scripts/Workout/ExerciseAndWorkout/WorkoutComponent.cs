@@ -8,10 +8,10 @@ public class WorkoutComponent : MonoBehaviour
     public WorkoutData workoutData;
 
     // UI Related Variables.
-    [SerializeField] private Text titleText;
-    [SerializeField] private Text timeCompletedText;
-    [SerializeField] private Text durationText;
-    [SerializeField] private Image iconImage;
+    [SerializeField] private Text titleText = default;
+    [SerializeField] private Text timeCompletedText = default;
+    [SerializeField] private Text durationText = default;
+    [SerializeField] private Image iconImage = default;
 
     public SimpleButton simpleButton;
 

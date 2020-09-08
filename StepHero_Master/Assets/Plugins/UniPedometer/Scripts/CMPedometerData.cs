@@ -7,18 +7,18 @@ namespace UniPedometer
 	
 	[System.Serializable]
 	public class CMPedometerData {
-		[SerializeField] int startDate;
-		[SerializeField] int endDate;
-		[SerializeField] int numberOfSteps;
-		[SerializeField] float distance;
-		[SerializeField] bool hasCurrentPace;
-		[SerializeField] float currentPace;
-		[SerializeField] bool hasCurrentCadence;
-		[SerializeField] float currentCadence;
-		[SerializeField] bool hasFloorsAscended;
-		[SerializeField] int floorsAscended;
-		[SerializeField] bool hasFloorsDescended;
-		[SerializeField] int floorsDescended;
+		[SerializeField] int startDate = default;
+		[SerializeField] int endDate = default;
+		[SerializeField] int numberOfSteps = default;
+		[SerializeField] float distance = default;
+		[SerializeField] bool hasCurrentPace = default;
+		[SerializeField] float currentPace = default;
+		[SerializeField] bool hasCurrentCadence = default;
+		[SerializeField] float currentCadence = default;
+		[SerializeField] bool hasFloorsAscended = default;
+		[SerializeField] int floorsAscended = default;
+		[SerializeField] bool hasFloorsDescended = default;
+		[SerializeField] int floorsDescended = default;
 
 		public static DateTime BaseDateTime {
 			get {

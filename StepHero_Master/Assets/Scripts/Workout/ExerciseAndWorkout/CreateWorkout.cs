@@ -8,22 +8,22 @@ public class CreateWorkout : MonoBehaviour
 {
     private ExerciseData exerciseData;
 
-    [SerializeField] private InputField hoursInput;
-    [SerializeField] private InputField minsInput;
-    int hours;
-    int mins;
-    [SerializeField] Color[] flashColours;
+    [SerializeField] private InputField hoursInput = default;
+    [SerializeField] private InputField minsInput = default;
+    int hours = default;
+    int mins = default;
+    [SerializeField] Color[] flashColours = default;
 
-    [SerializeField] Text titleText;
-    [SerializeField] Text totalTimeText;
-    [SerializeField] Image iconImage;
+    [SerializeField] Text titleText = default;
+    [SerializeField] Text totalTimeText = default;
+    [SerializeField] Image iconImage = default;
 
-    [SerializeField] GameObject incorrectEntryWindow;
+    [SerializeField] GameObject incorrectEntryWindow = default;
 
-    [SerializeField] SetActiveUiElement workoutEntryPanel;
-    [SerializeField] SetActiveUiElement workoutCataloguePanel;
+    [SerializeField] SetActiveUiElement workoutEntryPanel = default;
+    [SerializeField] SetActiveUiElement workoutCataloguePanel = default;
 
-    [SerializeField]public  WorkoutCatalogueManager workoutCatalogueManager;
+    [SerializeField] public  WorkoutCatalogueManager workoutCatalogueManager;
 
 
     public void SetExerciseToDisplay(ExerciseData _exerciseData)

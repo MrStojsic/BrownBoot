@@ -8,9 +8,9 @@ using UnityEngine;
 public class BagScript : MonoBehaviour
 {
 
-    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private GameObject slotPrefab = default;
 
-    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private CanvasGroup canvasGroup = default;
 
     private List<SlotScript> slots = new List<SlotScript>();
 

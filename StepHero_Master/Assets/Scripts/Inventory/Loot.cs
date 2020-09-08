@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Loot
 {
-    [SerializeField] private Item _item;
+    [SerializeField] private Item _item = default;
 
-    [SerializeField] private float _dropChance;
+    [SerializeField] private float _dropChance = default;
 
     public Item Item
     {

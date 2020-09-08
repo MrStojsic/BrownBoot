@@ -44,7 +44,7 @@ public class Stat : MonoBehaviour
         }
     }
     [SerializeField]
-    private Text text;
+    private Text text = default;
 
     // Start is called before the first frame update
     void Start()

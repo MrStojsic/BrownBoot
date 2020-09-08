@@ -5,9 +5,9 @@ using System;
 using UniPedometer;
 
 public class Sample2 : MonoBehaviour {
-	[SerializeField] Text text;
-	[SerializeField] InputField hourInput;
-	[SerializeField] Button button;
+	[SerializeField] Text text = default;
+	[SerializeField] InputField hourInput = default;
+	[SerializeField] Button button = default;
 
 	void Start () {
 		button.onClick.AddListener(() => OnButtonClicked());
@@ -21,7 +21,7 @@ public class Sample2 : MonoBehaviour {
 				StartPedometerUpdateAndShowText (Int32.Parse (hourInput.text));
 				button.GetComponentInChildren<Text> ().text = "Stop";
 			}
-			catch(FormatException e) {
+			catch(FormatException) {
 				text.text = "given text is not a number!";
 			}
 		}

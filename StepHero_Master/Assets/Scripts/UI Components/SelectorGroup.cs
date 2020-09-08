@@ -18,14 +18,15 @@ public class SelectorGroup : MonoBehaviour
 
     private void Start()
     {
-        if (selectedSelectorButton == null)
-        {
-            SelectSelectorViaIndex(selectedIndex);
-        }
         if (selectedSelectorButton != null)
         {
             OnButtonSelected(selectedSelectorButton);
         }
+        if (selectedSelectorButton == null)
+        {
+            SelectSelectorViaIndex(selectedIndex);
+        }
+
     }
 
     public void OnButtonDown(SelectorButton selectorButton)

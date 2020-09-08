@@ -21,7 +21,7 @@ public class BattleManager : MonoBehaviour
 
 
 
-[SerializeField]private Enemy[] enemies;
+[SerializeField]private Enemy[] enemies = default;
     private int currentEnemyIndex = 0;
 
 

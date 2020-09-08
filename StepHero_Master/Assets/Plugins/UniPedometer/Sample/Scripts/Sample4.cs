@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class Sample4 : MonoBehaviour
 {
-    [SerializeField] Text totalStepsText;
-    [SerializeField] Text todaysStepsText;
-    [SerializeField] InputField stepsInput;
-    [SerializeField] Button queryButton;
+    //[SerializeField] Text totalStepsText = default;
+    [SerializeField] Text todaysStepsText = default;
+    //[SerializeField] InputField stepsInput = default;
+    [SerializeField] Button queryButton = default;
 
 
-    [SerializeField] DateTime newTime;
-    [SerializeField] DateTime oldTime;
+    [SerializeField] DateTime newTime = default;
+    [SerializeField] DateTime oldTime = default;
+
     [SerializeField] bool isNewDay = true;
 
     [SerializeField] int todaysSteps = 0;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetActiveUiElement : MonoBehaviour
 {
-    [SerializeField] Transform uiBlockerPanel;
+    [SerializeField] Transform uiBlockerPanel = default;
     // Start is called before the first frame update
     public void SetUiActive()
     {

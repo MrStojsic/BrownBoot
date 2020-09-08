@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class ExerciseCreator : MonoBehaviour
 {
-    [SerializeField] ExerciseSelectionManager exerciseSelectionManager = null;
-    [SerializeField] SelectorGroup iconSelectorGroup;
-    [SerializeField] SetSpriteToExerciseIcon setSpriteToExerciseIcon;
-    [SerializeField] SelectorGroup exerciseSelectorGroup;
-    [SerializeField] TabGroup tabGroup;
-    [SerializeField] SetActiveUiElement setActiveUiElement;
+    [SerializeField] ExerciseSelectionManager exerciseSelectionManager = default;
+    [SerializeField] SelectorGroup iconSelectorGroup = default;
+    [SerializeField] SetSpriteToExerciseIcon setSpriteToExerciseIcon = default;
+    [SerializeField] SelectorGroup exerciseSelectorGroup = default;
+    [SerializeField] TabGroup tabGroup = default;
+    [SerializeField] SetActiveUiElement setActiveUiElement = default;
 
     public string _exerciseName = null;
     public string ExerciseName { get => _exerciseName; }
@@ -24,9 +24,9 @@ public class ExerciseCreator : MonoBehaviour
     public int _iconIndex = 0;
     public int IconIndex { get => _iconIndex; }
 
-    [SerializeField] private InputField exerciseNameInputField;
+    [SerializeField] private InputField exerciseNameInputField = default;
 
-    [SerializeField] Color[] flashColours;
+    [SerializeField] Color[] flashColours = default;
 
   
 
