@@ -1,10 +1,10 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs">
     <Files>
       <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="4" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="83" Column="26" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="24" Column="1" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" Line="34" Column="14" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" Line="9" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="70" Column="6" IsPinned="True" />
+      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" Line="32" Column="66" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/Loot.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/LootTable.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" />
@@ -18,8 +18,7 @@
       <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/BagScript.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="55" Column="20" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="16" Column="1" />
       <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" />
       <File FileName="Assets/Scripts/Inventory/BagButton.cs" />
       <File FileName="Assets/Scripts/Inventory/IClickable.cs" />
@@ -28,30 +27,31 @@
       <File FileName="Assets/Scripts/Inventory/IDescribable.cs" />
       <File FileName="Assets/Scripts/Utitlities/HandScript.cs" />
       <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" />
-      <File FileName="Assets/Scripts/Inventory/RarityColours.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" />
       <File FileName="Assets/Scripts/UI Components/SwipeGroup.cs" />
       <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="21" Column="16" />
       <File FileName="Assets/Scripts/Inventory/UiManager_Inventory.cs" />
       <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" />
-      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="70" Column="43" />
+      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="5" Column="14" />
       <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
       <File FileName="Assets/Scripts/UI Components/LongHoldButton.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseComponent.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" Line="101" Column="49" />
-      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" />
+      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" Line="76" Column="58" />
+      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" Line="18" Column="31" />
       <File FileName="Assets/Scripts/UI Components/TabGroup.cs" />
       <File FileName="Assets/Scripts/UI Components/TabButton.cs" />
       <File FileName="Assets/TEST_TEXT_COUNT.cs" />
-      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
-      <File FileName="Assets/Scripts/Inventory/InventoryItem.cs" />
+      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" Line="35" Column="10" />
       <File FileName="Assets/Scripts/UI Components/LongHoldGroup.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UI Components/SetActiveUiElement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseIconSelectorPopulator.cs" Line="17" Column="17" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseIconSelectorPopulator.cs" Line="18" Column="1" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseCreator.cs" Line="44" Column="53" />
       <File FileName="Assets/Scripts/UI Components/SetSpriteToExerciseIcon.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/CreateWorkout.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryTypePocket.cs" Line="7" Column="5" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs" Line="97" Column="69" />
+      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="19" Column="30" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -61,13 +61,14 @@
               <Node name="Scripts" expanded="True">
                 <Node name="Inventory" expanded="True">
                   <Node name="Items" expanded="True" />
+                  <Node name="NewInventoryTest" expanded="True">
+                    <Node name="InventoryItem.cs" selected="True" />
+                  </Node>
                 </Node>
                 <Node name="RPG" expanded="True">
                   <Node name="Enemies" expanded="True" />
                 </Node>
-                <Node name="UI Components" expanded="True">
-                  <Node name="SelectorGroup.cs" selected="True" />
-                </Node>
+                <Node name="UI Components" expanded="True" />
                 <Node name="Utitlities" expanded="True" />
                 <Node name="Workout" expanded="True">
                   <Node name="ExerciseAndWorkout" expanded="True" />

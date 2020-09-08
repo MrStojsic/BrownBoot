@@ -15,6 +15,7 @@ public class ExerciseIconSelectorPopulator : MonoBehaviour
             SelectorButton go = Instantiate(prefabIconSelector, transform);
             go.GetComponent<Image>().sprite = ExerciseManager.instance.spriteArray[i];
             go.selectorGroup = selectorGroup;
+
         }
     }
 }

@@ -9393,7 +9393,7 @@ RectTransform:
   - {fileID: 107256498}
   - {fileID: 558589762}
   m_Father: {fileID: 1278328014}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -17020,7 +17020,7 @@ RectTransform:
   - {fileID: 960882698}
   - {fileID: 826995708}
   m_Father: {fileID: 1278328014}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -20094,11 +20094,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1858985945}
   - {fileID: 1910214525}
   - {fileID: 1083765347}
   - {fileID: 1626588833}
   - {fileID: 609847802}
-  - {fileID: 1858985945}
   m_Father: {fileID: 261804770}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26237,7 +26237,7 @@ RectTransform:
   - {fileID: 1571322257}
   - {fileID: 1282559494}
   m_Father: {fileID: 1278328014}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29904,7 +29904,7 @@ RectTransform:
   - {fileID: 639743476}
   - {fileID: 1365060957}
   m_Father: {fileID: 1278328014}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30408,6 +30408,7 @@ GameObject:
   - component: {fileID: 1910214529}
   - component: {fileID: 1910214528}
   - component: {fileID: 1910214527}
+  - component: {fileID: 1910214530}
   - component: {fileID: 1910214526}
   m_Layer: 5
   m_Name: MenuItem_LootItemDisplay (2)
@@ -30430,7 +30431,7 @@ RectTransform:
   - {fileID: 2101936849}
   - {fileID: 655729134}
   m_Father: {fileID: 1278328014}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -30446,33 +30447,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1910214524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d89e2307120f0417a9a10e353fa3510b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b4c9afee70c4423387769cdc854691f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectorGroup: {fileID: 1278328015}
   background: {fileID: 1910214528}
-  buttonSelectedColour: {r: 0.46589673, g: 0.26673195, b: 0.509434, a: 1}
+  buttonSelectedColour: {r: 0, g: 0, b: 0, a: 0}
   onSelected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1858985946}
-        m_MethodName: SetDisplay
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: Item, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onDeselected:
     m_PersistentCalls:
       m_Calls: []
-  _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-  _icon: {fileID: 494426766}
-  _title: {fileID: 655729135}
 --- !u!114 &1910214527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30529,6 +30515,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910214524}
   m_CullTransparentMesh: 0
+--- !u!114 &1910214530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910214524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 133433489a7b34aecb3e3744160fa8d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: {fileID: 655729135}
+  _icon: {fileID: 494426766}
+  _stackSizeText: {fileID: 385662670}
+  _selectorButton: {fileID: 1910214526}
 --- !u!1 &1910364310
 GameObject:
   m_ObjectHideFlags: 0
@@ -33013,7 +33015,7 @@ GameObject:
   - component: {fileID: 2078956020}
   - component: {fileID: 2078956019}
   m_Layer: 5
-  m_Name: ScrollView_ItemButtonList
+  m_Name: ScrollView_ItemTypeList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

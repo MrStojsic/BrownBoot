@@ -32,7 +32,7 @@ public class ItemSelectorButton : SelectorButton
     public void SetupButtonFunction(SelectorGroup selectorGroup, UnityAction action)
     {
         this.selectorGroup = selectorGroup;
-        onSelected.AddListener(action);
+        this.AddListenerActionToOnSelected(action);
     }
 
     public void ResetForUse()

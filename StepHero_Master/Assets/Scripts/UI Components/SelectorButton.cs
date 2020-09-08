@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Image))]
-
 public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerExitHandler
 {
 
@@ -15,8 +14,8 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
 
     public Color buttonSelectedColour;
 
-    public UnityEvent onSelected;
-    public UnityEvent onDeselected;
+    [SerializeField] protected UnityEvent onSelected;
+    [SerializeField] protected UnityEvent onDeselected;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +56,17 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
         {
             onDeselected.Invoke();
         }
+    }
+
+
+    public void AddListenerActionToOnSelected(UnityAction action)
+    {
+        onSelected.AddListener(action);
+    }
+
+    public void RemoveListenerActionToOnSelected(UnityAction action)
+    {
+        onSelected.RemoveListener(action);
     }
 
 
