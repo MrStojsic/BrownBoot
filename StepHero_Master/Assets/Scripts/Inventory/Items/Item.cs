@@ -125,7 +125,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// <returns></returns>
     public virtual string GetDescription()
     {
-        return null;
+        return string.Format("This {0} is currently a placeholder and has thus no description has been set.", _title); ;
     }
 
     public virtual string GetTitle()

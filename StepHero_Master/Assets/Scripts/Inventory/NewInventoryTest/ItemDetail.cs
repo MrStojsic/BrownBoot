@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
-public class InventoryItem : MonoBehaviour
+public class ItemDetail : MonoBehaviour
 {
     // DATA.
     private Item _item;
@@ -16,6 +13,8 @@ public class InventoryItem : MonoBehaviour
             _item = value;
             _title.text = value.Title;
             _icon.sprite = value.Icon;
+            _descriptionText.text = value.GetDescription();
+            SetDescriptionRect();
         }
     }
 
@@ -53,22 +52,6 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
-    public bool IsEmpty
-    {
-        get { return _item == null; }
-    }
-    public bool IsFull
-    {
-        get
-        {
-            if (IsEmpty || _numberInInventory < Item.StackSize)
-            {
-                return false;
-            }
-            return true;
-        }
-    }
-
     // UI.
     [SerializeField] private Text _title = default;
     public Text Title
@@ -88,27 +71,27 @@ public class InventoryItem : MonoBehaviour
         get { return _stackSizeText; }
     }
 
-    [SerializeField] private SelectorButton _selectorButton = default;
-    public SelectorButton SelectorButton
+    [SerializeField] private Text _descriptionText = default;
+    public Text DescriptionText
     {
-        get { return _selectorButton; }
+        get { return _stackSizeText; }
     }
 
-    public void Initialise(Item item, int amount)
+    [SerializeField] private RectTransform _rectTransform;
+
+    private void SetDescriptionRect()
     {
-        Item = item;
-        NumberInInventory += amount;
+        Canvas.ForceUpdateCanvases();
+        _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }
 
-    public bool SetItem(Item item)
+    public void Setup(Transform parent)
     {
-        print(item);
-        if (IsEmpty)
-        {
-            Item = item;
-            return true;
-        }
-        // Set Item failed.
-        return false;
+        transform.SetParent(parent);
+    }
+    public void PreviewItem(InventoryItem inventoryItem)
+    {
+        Item = inventoryItem.Item;
+        NumberInInventory = inventoryItem.NumberInInventory;
     }
 }

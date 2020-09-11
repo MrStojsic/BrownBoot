@@ -61,7 +61,7 @@ public class InventoryScript : MonoBehaviour
 
 
     // DEBUGGING ONLY DELETE LATER.
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
         {

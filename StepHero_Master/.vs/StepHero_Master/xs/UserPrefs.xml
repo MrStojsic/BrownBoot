@@ -1,57 +1,9 @@
-﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
+﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI Components/SelectorGroup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventoryTest/ItemDetail.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="20" Column="5" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/Loot.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/LootTable.cs" IsPinned="True" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" />
-      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" />
-      <File FileName="Assets/Scripts/RPG/Entity.cs" />
-      <File FileName="Assets/Scripts/RPG/Player.cs" />
-      <File FileName="Assets/Scripts/RPG/PlayerData.cs" />
-      <File FileName="Assets/Scripts/RPG/Stat.cs" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
-      <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
-      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="18" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" />
-      <File FileName="Assets/Scripts/Inventory/BagButton.cs" />
-      <File FileName="Assets/Scripts/Inventory/IClickable.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" />
-      <File FileName="Assets/Scripts/Utitlities/ObservableStack.cs" />
-      <File FileName="Assets/Scripts/Inventory/IDescribable.cs" />
-      <File FileName="Assets/Scripts/Utitlities/HandScript.cs" />
-      <File FileName="Assets/Scripts/Utitlities/IMoveable.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" />
-      <File FileName="Assets/Scripts/UI Components/SwipeGroup.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
-      <File FileName="Assets/Scripts/Inventory/UiManager_Inventory.cs" />
-      <File FileName="Assets/Scripts/Inventory/InventoryScript.cs" />
-      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="61" Column="1" />
-      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
-      <File FileName="Assets/Scripts/UI Components/LongHoldButton.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseComponent.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" />
-      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" />
-      <File FileName="Assets/Scripts/UI Components/TabGroup.cs" />
-      <File FileName="Assets/Scripts/UI Components/TabButton.cs" />
-      <File FileName="Assets/TEST_TEXT_COUNT.cs" />
-      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
-      <File FileName="Assets/Scripts/UI Components/LongHoldGroup.cs" />
-      <File FileName="Assets/Scripts/UI Components/SetActiveUiElement.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseIconSelectorPopulator.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseCreator.cs" />
-      <File FileName="Assets/Scripts/UI Components/SetSpriteToExerciseIcon.cs" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/CreateWorkout.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryTypePocket.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryTypePocket.cs" Line="44" Column="37" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/InventoryItem.cs" Line="92" Column="41" />
       <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample1.cs" />
       <File FileName="Assets/Plugins/UniPedometer/Scripts/NSError.cs" />
       <File FileName="Assets/Plugins/UniPedometer/Sample/Scripts/Sample2.cs" />
@@ -64,19 +16,37 @@
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutComponent.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/WorkoutCatalogueManager.cs" />
       <File FileName="Assets/Scripts/WorldMap/LocationInfoDisplay.cs" />
-      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="13" Column="53" NotebookId="1" />
+      <File FileName="../../../../Downloads/unity-tutorial-menu-system-master/Assets/ScriptableObjects/InventoryItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventoryTest/ItemDetail.cs" Line="95" Column="61" />
+      <File FileName="../../../../Downloads/unity-tutorial-menu-system-master/Assets/Scripts/SortingChooser.cs" />
+      <File FileName="../../../../Downloads/unity-tutorial-menu-system-master/Assets/Scripts/ItemChooser.cs" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="24" Column="1" />
+      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" Line="32" Column="29" />
+      <File FileName="Assets/Scripts/Inventory/SlotScript.cs" />
+      <File FileName="Assets/Scripts/Inventory/LootWindow.cs" Line="89" Column="94" />
+      <File FileName="Assets/TEST_TEXT_COUNT.cs" Line="12" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="128" Column="107" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Armour.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="40" Column="6" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="22" Column="16" />
+      <File FileName="Assets/Scripts/Inventory/BagScript.cs" Line="12" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="55" Column="76" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" Line="17" Column="3" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StepHero_Master" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="UI Components" expanded="True">
-                    <Node name="SelectorGroup.cs" selected="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="Items" expanded="True" />
+                  <Node name="NewInventoryTest" expanded="True">
+                    <Node name="ItemDetail.cs" selected="True" />
                   </Node>
                 </Node>
+                <Node name="UI Components" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -86,10 +56,13 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8e647b8a-7403-4820-b9a2-42a952c85187" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5500a7d9-095f-4bec-9fd3-d102e7cd5970" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" relfile="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" line="15" column="1" />
+      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/Inventory/BagScript.cs" relfile="Assets/Scripts/Inventory/BagScript.cs" line="28" column="1" />
+      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/UI Components/SelectorGroup.cs" relfile="Assets/Scripts/UI Components/SelectorGroup.cs" line="12" column="1" />
+      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/UI Components/SelectorGroup.cs" relfile="Assets/Scripts/UI Components/SelectorGroup.cs" line="27" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

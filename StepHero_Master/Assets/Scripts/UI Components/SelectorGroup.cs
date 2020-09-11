@@ -16,7 +16,7 @@ public class SelectorGroup : MonoBehaviour
     public int selectedIndex;
 
 
-    private void Start()
+    public void Start()
     {
         if (selectedSelectorButton != null)
         {
@@ -52,6 +52,7 @@ public class SelectorGroup : MonoBehaviour
         }
 
         selectedSelectorButton = selectorButton;
+        selectedIndex = selectedSelectorButton.transform.GetSiblingIndex();
 
         if (useButtonsSelectedColour)
         {
@@ -63,7 +64,7 @@ public class SelectorGroup : MonoBehaviour
         }
 
         selectedSelectorButton.Select();
-        selectedIndex = selectedSelectorButton.transform.GetSiblingIndex();
+
 
     }
     public void SelectSelectorViaIndex(int childIndex)

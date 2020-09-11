@@ -19,6 +19,6 @@ public class HealthPotion : Item, IUseable
 
     public override string GetDescription()
     {
-        return base.GetDescription() + string.Format("\nRestores {0} health when used.", health);
+        return string.Format("Restores {0} health when used.", health);
     }
 }
