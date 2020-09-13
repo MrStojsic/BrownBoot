@@ -47,21 +47,11 @@ public class SelectorGroup : MonoBehaviour
     {
         if (selectedSelectorButton != null)
         {
-            selectedSelectorButton.background.color = buttonDefaultColour;
             selectedSelectorButton.Deselect();
         }
 
         selectedSelectorButton = selectorButton;
         selectedIndex = selectedSelectorButton.transform.GetSiblingIndex();
-
-        if (useButtonsSelectedColour)
-        {
-			selectorButton.background.color = selectorButton.buttonSelectedColour;
-        }
-        else
-        {
-            selectedSelectorButton.background.color = buttonSelectedColour;
-        }
 
         selectedSelectorButton.Select();
 
@@ -72,6 +62,18 @@ public class SelectorGroup : MonoBehaviour
         if (selectorButtonsParent.childCount > 0 && childIndex <= selectorButtonsParent.childCount)
         {
             OnButtonSelected(selectorButtonsParent.GetChild(childIndex).GetComponent<SelectorButton>());
+        }
+    }
+
+    public Color ReturnSelectedColour()
+    {
+        if (useButtonsSelectedColour)
+        {
+            return selectedSelectorButton.buttonSelectedColour;
+        }
+        else
+        {
+            return buttonSelectedColour;
         }
     }
 }

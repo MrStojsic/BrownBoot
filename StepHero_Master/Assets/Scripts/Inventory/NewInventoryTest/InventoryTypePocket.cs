@@ -60,17 +60,17 @@ public class InventoryTypePocket : MonoBehaviour
             _itemDetail.PreviewItem(_menuItems[0]);
         }
     }
-
+    /*
     void SetMenuItems()
     {
         for (int index = 0; index < _inventoryItems.Count; index++)
         {
             SetMenuItem(index);
         }
-    }
+    }*/
 
 
-
+/*
     void SetMenuItem(int index)
     {
         Item item = _inventoryItems[index];
@@ -80,7 +80,7 @@ public class InventoryTypePocket : MonoBehaviour
         menuItem.transform.Find("Name").GetComponent<Text>().text = item.Title;
         menuItem.transform.Find("Value").GetComponent<Text>().text = item.Price.ToString();
 
-    }
+    }*/
     /*
     public void SortInventoryItems(string property = "value")
     {

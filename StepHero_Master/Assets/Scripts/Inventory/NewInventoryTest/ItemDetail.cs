@@ -4,16 +4,17 @@ using UnityEngine.UI;
 public class ItemDetail : MonoBehaviour
 {
     // DATA.
-    private Item _item;
-    public Item Item
+    private InventoryItem _inventoryItem;
+    public InventoryItem InventoryItem
     {
-        get { return _item; }
+        get { return _inventoryItem; }
         private set
         {
-            _item = value;
-            _title.text = value.Title;
-            _icon.sprite = value.Icon;
-            _descriptionText.text = value.GetDescription();
+            _inventoryItem = value;
+            _title.text = value.Item.Title;
+            _icon.sprite = value.Item.Icon;
+            _descriptionText.text = value.Item.GetDescription();
+            NumberInInventory = value.NumberInInventory;
             SetDescriptionRect();
         }
     }
@@ -26,7 +27,7 @@ public class ItemDetail : MonoBehaviour
         {
             _numberInInventory = value;
 
-            if (_item.StackSize > 1)
+            if (_inventoryItem.Item.StackSize > 1)
             {
                 if (_numberInInventory > 1)
                 {
@@ -39,7 +40,7 @@ public class ItemDetail : MonoBehaviour
                 }
                 if (_numberInInventory == 0)
                 {
-                    _item = null;
+                    _inventoryItem = null;
                     _stackSizeText.color = Color.clear;
                 }
             }
@@ -88,10 +89,18 @@ public class ItemDetail : MonoBehaviour
     public void Setup(Transform parent)
     {
         transform.SetParent(parent);
+        if (_inventoryItem != null)
+        {
+            _inventoryItem.SelectorButton.Deselect();
+        }
     }
     public void PreviewItem(InventoryItem inventoryItem)
     {
-        Item = inventoryItem.Item;
-        NumberInInventory = inventoryItem.NumberInInventory;
+        if (inventoryItem.transform.parent != transform.parent)
+        {
+            Setup(inventoryItem.transform.parent);
+            transform.SetSiblingIndex(inventoryItem.transform.GetSiblingIndex());
+        }
+        InventoryItem = inventoryItem;
     }
 }

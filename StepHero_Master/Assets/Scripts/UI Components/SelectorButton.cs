@@ -44,6 +44,7 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
 
     public void Select()
     {
+        background.color = selectorGroup.ReturnSelectedColour();
         if (onSelected != null)
         {
             onSelected.Invoke();
@@ -52,6 +53,7 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
 
     public void Deselect()
     {
+        background.color = selectorGroup.buttonDefaultColour;
         if (onDeselected != null)
         {
             onDeselected.Invoke();
