@@ -11,9 +11,9 @@ public class ItemDetail : MonoBehaviour
         private set
         {
             _inventoryItem = value;
-            _title.text = value.Item.Title;
-            _icon.sprite = value.Item.Icon;
-            _descriptionText.text = value.Item.GetDescription();
+            _title.text = value.InventorySlot.item.Title;
+            _icon.sprite = value.InventorySlot.item.Icon;
+            _descriptionText.text = value.InventorySlot.item.GetDescription();
             NumberInInventory = value.NumberInInventory;
             SetDescriptionRect();
         }
@@ -27,7 +27,7 @@ public class ItemDetail : MonoBehaviour
         {
             _numberInInventory = value;
 
-            if (_inventoryItem.Item.StackSize > 1)
+            if (_inventoryItem.InventorySlot.item.StackSize > 1)
             {
                 if (_numberInInventory > 1)
                 {

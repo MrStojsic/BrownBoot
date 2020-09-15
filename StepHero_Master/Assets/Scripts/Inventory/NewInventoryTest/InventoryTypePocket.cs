@@ -10,8 +10,10 @@ public class InventoryTypePocket : MonoBehaviour
     private SelectorGroup _selectorGroup = default;
     [SerializeField]
     private InventoryItem _inventoryItem = default;
+
+    // DEBUG ONLY. THIS WONT BE NEEDED LATER AS THE ITEMS WILL BE PASSED IN ONE BY ONE.
     [SerializeField]
-    private List<Item> _inventoryItems = default;
+    private List<InventorySlot> _inventorySlots = default;
 
 
     [SerializeField]
@@ -27,19 +29,19 @@ public class InventoryTypePocket : MonoBehaviour
 
     void InitialiseMenuItems()
     {
-        for (int index = 0; index < _inventoryItems.Count; index++)
+        for (int index = 0; index < _inventorySlots.Count; index++)
         {
-            AddMenuItem(_inventoryItems[index]);
+            AddMenuItem(_inventorySlots[index]);
         }
     }
 
-    void AddMenuItem(Item item)
+    void AddMenuItem(InventorySlot inventorySlots)
     {
         InventoryItem newMenuItem;
         newMenuItem = Instantiate(_inventoryItem, _selectorGroup.selectorButtonsParent);
         newMenuItem.SelectorButton.selectorGroup = _selectorGroup;
         newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
-        newMenuItem.Initialise(item, 99);
+        newMenuItem.Initialise(inventorySlots);
 
         _menuItems.Add(newMenuItem);
     }
@@ -54,7 +56,7 @@ public class InventoryTypePocket : MonoBehaviour
 
     void SelectFirstItem()
     {
-        if (_inventoryItems != null)
+        if (_menuItems != null)
         {
             _itemDetail.Setup(_selectorGroup.selectorButtonsParent);
             _itemDetail.PreviewItem(_menuItems[0]);

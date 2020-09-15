@@ -97,7 +97,6 @@ public class LootWindow : MonoBehaviour
                 itemSelectorGroup.transform.GetChild(index).gameObject.SetActive(false);
             }
         }
-        // print(index);
         itemSelectorGroup.SelectSelectorViaIndex(0);
 
         OpenClose();
@@ -124,39 +123,6 @@ public class LootWindow : MonoBehaviour
         // and only enable drop button
     }
 
-    public void TakeItem()
-    {
-        if (itemSelectorButtons[itemSelectorGroup.selectedIndex].gameObject.activeInHierarchy == true &&
-            InventoryScript.Instance.AddItem(lootItems[itemSelectorGroup.selectedIndex]))
-        {
-            itemSelectorButtons[itemSelectorGroup.selectedIndex].gameObject.SetActive(false);
-        }
-    }
-
-    public void TakeAllItems()
-    {
-        // NEEDS LOOKING OVER IN CASE INVENTORY FULL.
-        // aslo needs rejigging as we shouldt remove the button refereence.
-        // TODO.
-        for (int i = 0; i < lootItems.Count; i++)
-        {
-            InventoryScript.Instance.AddItem(lootItems[i]);
-
-            // Disable loot slot.
-            itemSelectorButtons[i].gameObject.SetActive(true);
-        }
-
-    }
-
-    private void SetSelectedAfterTake()
-    {
-        // TODO.
-        // set the selected item to the to pmost active item in the list.
-
-        // if only items that are inactive and greyed out select the top most greyed item.
-
-        // if no more items in the list close the window.
-    }
 
     public void OpenClose()
     {

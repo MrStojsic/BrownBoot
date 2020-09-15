@@ -9,15 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11ea9c3d9439f454797249ab721a2cd8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b8dea82fda6a43b89e3ab615f8eabf1, type: 3}
   m_Name: LeatherGloves
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: edd14aead6c39452ab8cb2047a4380ae, type: 3}
-  _stackSize: 1
-  _title: Leather Gloves
+  _stackSize: 10
+  _title: Soft Leather Gloves
   _rarity: 0
-  price: 38
-  armourType: 2
+  _slot: {fileID: 0}
+  _price: 50
+  armourType: 8
   intelegence: 0
   strength: 0
   agility: 0

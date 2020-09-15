@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum ArmourType
+enum EquipmentType
 {
+    MAIN_HAND,
+    OFF_HAND,
+    TWO_HAND,
     HELMET,
     SHOULDER,
     CHEST,
@@ -14,10 +17,9 @@ enum ArmourType
     RING,
 }
 
-[CreateAssetMenu(fileName = "Armour", menuName = "Items/Armour", order = 2)]
-public class Armour : Item
+public class Equipment : Item
 {
-    [SerializeField] private ArmourType armourType = default;
+    [SerializeField] private EquipmentType armourType = default;
 
     [SerializeField] private int intelegence = default;
     [SerializeField] private int strength = default;
