@@ -50,7 +50,8 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     [SerializeField] private Rarity _rarity = default;
 
     /// <summary>
-    /// A reference to the slot that this item is sitting on
+    /// A reference to the slot that this item is sitting on.
+    /// Now obsolete as we no longer use it, only keeping it as a reference to show how scriptables objects acan still store other world objects.
     /// </summary>
     [SerializeField]
     private SlotScript _slot = default;

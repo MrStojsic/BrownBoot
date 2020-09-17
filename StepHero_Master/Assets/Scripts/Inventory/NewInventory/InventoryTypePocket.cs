@@ -9,16 +9,16 @@ public class InventoryTypePocket : MonoBehaviour
     [SerializeField]
     private SelectorGroup _selectorGroup = default;
     [SerializeField]
-    private InventoryItem _inventoryItem = default;
+    private InventorySlot _inventoryItem = default;
 
     // DEBUG ONLY. THIS WONT BE NEEDED LATER AS THE ITEMS WILL BE PASSED IN ONE BY ONE.
     [SerializeField]
-    private List<InventorySlot> _inventorySlots = default;
+    private List<InventoryItem> _inventoryItems = default;
 
 
     [SerializeField]
     private ItemDetail _itemDetail;
-    private List<InventoryItem> _menuItems = new List<InventoryItem>();
+    private List<InventorySlot> _menuItems = new List<InventorySlot>();
 
     void Awake()
     {
@@ -29,24 +29,24 @@ public class InventoryTypePocket : MonoBehaviour
 
     void InitialiseMenuItems()
     {
-        for (int index = 0; index < _inventorySlots.Count; index++)
+        for (int index = 0; index < _inventoryItems.Count; index++)
         {
-            AddMenuItem(_inventorySlots[index]);
+            AddMenuItem(_inventoryItems[index]);
         }
     }
 
-    void AddMenuItem(InventorySlot inventorySlots)
+    void AddMenuItem(InventoryItem inventoryItem)
     {
-        InventoryItem newMenuItem;
+        InventorySlot newMenuItem;
         newMenuItem = Instantiate(_inventoryItem, _selectorGroup.selectorButtonsParent);
         newMenuItem.SelectorButton.selectorGroup = _selectorGroup;
         newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
-        newMenuItem.Initialise(inventorySlots);
+        newMenuItem.Initialise(inventoryItem);
 
         _menuItems.Add(newMenuItem);
     }
 
-    private void CallPreviewItem(InventoryItem item)
+    private void CallPreviewItem(InventorySlot item)
     {
         _itemDetail.transform.SetSiblingIndex(_selectorGroup.selectedIndex);
         // TODO: We nee to find a way to toggle off the selected InventoryItem Ui and re-enable the last selectd one,

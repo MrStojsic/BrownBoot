@@ -5,24 +5,40 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 
 [System.Serializable]
-public class InventorySlot
+public class InventoryItem
 {
     public Item item;
     public int numberOfItem;
+
+    public bool IsEmpty
+    {
+        get { return item == null || numberOfItem <= 0; }
+    }
+    public bool IsFull
+    {
+        get
+        {
+            if (IsEmpty || numberOfItem < item.StackSize)
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }
 
-public class InventoryItem : MonoBehaviour
+public class InventorySlot : MonoBehaviour
 {
     // DATA.
-    private InventorySlot _inventorySlot;
-    public InventorySlot InventorySlot
+    private InventoryItem _inventoryItem;
+    public InventoryItem InventoryItem
     {
-        get { return _inventorySlot; }
+        get { return _inventoryItem; }
         private set
         {
             if (value != null)
             {
-                _inventorySlot = value;
+                _inventoryItem = value;
                 _title.text = value.item.Title;
                 _icon.sprite = value.item.Icon;
                 NumberInInventory = value.numberOfItem;
@@ -36,25 +52,25 @@ public class InventoryItem : MonoBehaviour
 
     public int NumberInInventory
     {
-        get { return _inventorySlot.numberOfItem; }
+        get { return _inventoryItem.numberOfItem; }
         set
         {
-            _inventorySlot.numberOfItem = value;
+            _inventoryItem.numberOfItem = value;
 
-            if (_inventorySlot.item.StackSize > 1)
+            if (_inventoryItem.item.StackSize > 1)
             {
-                if (_inventorySlot.numberOfItem > 1)
+                if (_inventoryItem.numberOfItem > 1)
                 {
                     _stackSizeText.color = Color.white;
-                    _stackSizeText.text = _inventorySlot.numberOfItem.ToString();
+                    _stackSizeText.text = _inventoryItem.numberOfItem.ToString();
                 }
-                else if (_inventorySlot.numberOfItem == 1)
+                else if (_inventoryItem.numberOfItem == 1)
                 {
                     _stackSizeText.color = Color.clear;
                 }
-                if (_inventorySlot.numberOfItem == 0)
+                if (_inventoryItem.numberOfItem == 0)
                 {
-                    _inventorySlot = null;
+                    _inventoryItem = null;
                     _stackSizeText.color = Color.clear;
                 }
             }
@@ -62,24 +78,6 @@ public class InventoryItem : MonoBehaviour
             {
                 _stackSizeText.color = Color.clear;
             }
-
-
-        }
-    }
-
-    public bool IsEmpty
-    {
-        get { return _inventorySlot == null || _inventorySlot.numberOfItem <= 0; }
-    }
-    public bool IsFull
-    {
-        get
-        {
-            if (IsEmpty || _inventorySlot.numberOfItem < _inventorySlot.item.StackSize)
-            {
-                return false;
-            }
-            return true;
         }
     }
 
@@ -108,8 +106,8 @@ public class InventoryItem : MonoBehaviour
         get { return _selectorButton; }
     }
 
-    public void Initialise(InventorySlot inventorySlot)
+    public void Initialise(InventoryItem inventorySlot)
     {
-        InventorySlot = inventorySlot;
+        InventoryItem = inventorySlot;
     }
 }

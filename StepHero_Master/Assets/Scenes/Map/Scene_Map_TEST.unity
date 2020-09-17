@@ -7566,15 +7566,15 @@ GameObject:
   - component: {fileID: 571577513}
   - component: {fileID: 571577512}
   - component: {fileID: 571577511}
-  - component: {fileID: 571577510}
   - component: {fileID: 571577515}
+  - component: {fileID: 571577510}
   m_Layer: 5
   m_Name: Canvas_Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &571577510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7584,7 +7584,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 571577509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c12defa4940043d48084a22f38b4c36, type: 3}
+  m_Script: {fileID: 11500000, guid: f5d75ada217c947ffa7393e2f081a6c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bagButtons:
@@ -10547,7 +10547,7 @@ MonoBehaviour:
   _selectorGroup: {fileID: 860475628}
   _inventoryItem: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _inventorySlots: []
+  _inventoryItems: []
   _itemDetail: {fileID: 1651190352}
 --- !u!114 &860475630
 MonoBehaviour:
@@ -14352,7 +14352,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107051181}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 571577514}
@@ -24064,7 +24064,7 @@ MonoBehaviour:
   _selectorGroup: {fileID: 1824717057}
   _inventoryItem: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _inventorySlots: []
+  _inventoryItems: []
   _itemDetail: {fileID: 1651190352}
 --- !u!114 &1824717059
 MonoBehaviour:
@@ -24346,13 +24346,13 @@ MonoBehaviour:
   _selectorGroup: {fileID: 1834075865}
   _inventoryItem: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _inventorySlots:
+  _inventoryItems:
   - item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-    numberOfItem: 4
+    numberOfItem: 5
   - item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
-    numberOfItem: 2
+    numberOfItem: 4
   - item: {fileID: 11400000, guid: 39ccdb699393149a5b2ab65eee1cef3a, type: 2}
-    numberOfItem: 1
+    numberOfItem: 3
   _itemDetail: {fileID: 524518797840059664}
 --- !u!114 &1834075867
 MonoBehaviour:
@@ -24802,11 +24802,11 @@ MonoBehaviour:
   _selectorGroup: {fileID: 1870450782}
   _inventoryItem: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _inventorySlots:
+  _inventoryItems:
   - item: {fileID: 11400000, guid: dcb718ce9c48b420fbdbb3e2d6612183, type: 2}
     numberOfItem: 1
   - item: {fileID: 11400000, guid: de8eaa2d2b6a5484b8bf97d0cf6d29fc, type: 2}
-    numberOfItem: 3
+    numberOfItem: 9
   _itemDetail: {fileID: 524518797840059664}
 --- !u!114 &1870450784
 MonoBehaviour:
@@ -27235,9 +27235,9 @@ RectTransform:
   m_Father: {fileID: 2379256174547606435}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 412.38376, y: -640}
   m_SizeDelta: {x: 824.7675, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1123550443869951806
@@ -27300,7 +27300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1651676825516319534
 MonoBehaviour:
   m_ObjectHideFlags: 0

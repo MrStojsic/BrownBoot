@@ -4,16 +4,16 @@ using UnityEngine.UI;
 public class ItemDetail : MonoBehaviour
 {
     // DATA.
-    private InventoryItem _inventoryItem;
-    public InventoryItem InventoryItem
+    private InventorySlot _inventoryItem;
+    public InventorySlot InventoryItem
     {
         get { return _inventoryItem; }
         private set
         {
             _inventoryItem = value;
-            _title.text = value.InventorySlot.item.Title;
-            _icon.sprite = value.InventorySlot.item.Icon;
-            _descriptionText.text = value.InventorySlot.item.GetDescription();
+            _title.text = value.InventoryItem.item.Title;
+            _icon.sprite = value.InventoryItem.item.Icon;
+            _descriptionText.text = value.InventoryItem.item.GetDescription();
             NumberInInventory = value.NumberInInventory;
             SetDescriptionRect();
         }
@@ -27,7 +27,7 @@ public class ItemDetail : MonoBehaviour
         {
             _numberInInventory = value;
 
-            if (_inventoryItem.InventorySlot.item.StackSize > 1)
+            if (_inventoryItem.InventoryItem.item.StackSize > 1)
             {
                 if (_numberInInventory > 1)
                 {
@@ -94,7 +94,7 @@ public class ItemDetail : MonoBehaviour
             _inventoryItem.SelectorButton.Deselect();
         }
     }
-    public void PreviewItem(InventoryItem inventoryItem)
+    public void PreviewItem(InventorySlot inventoryItem)
     {
         if (inventoryItem.transform.parent != transform.parent)
         {
