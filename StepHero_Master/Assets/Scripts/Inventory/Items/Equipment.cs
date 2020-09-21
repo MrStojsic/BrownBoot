@@ -2,25 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-enum EquipmentType
-{
-    MAIN_HAND,
-    OFF_HAND,
-    TWO_HAND,
-    HELMET,
-    SHOULDER,
-    CHEST,
-    LEGGING,
-    BOOTS,
-    GLOVES,
-    NECKLACE,
-    RING,
-}
-
 public class Equipment : Item
 {
-    [SerializeField] private EquipmentType armourType = default;
-
     [SerializeField] private int intelegence = default;
     [SerializeField] private int strength = default;
     [SerializeField] private int agility = default;

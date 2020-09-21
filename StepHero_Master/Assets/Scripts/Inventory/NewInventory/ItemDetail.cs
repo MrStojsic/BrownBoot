@@ -4,18 +4,22 @@ using UnityEngine.UI;
 public class ItemDetail : MonoBehaviour
 {
     // DATA.
-    private InventorySlot _inventoryItem;
-    public InventorySlot InventoryItem
+    private InventorySlot _inventorySlot;
+    public InventorySlot InventorySlot
     {
-        get { return _inventoryItem; }
+        get { return _inventorySlot; }
         private set
         {
-            _inventoryItem = value;
-            _title.text = value.InventoryItem.item.Title;
-            _icon.sprite = value.InventoryItem.item.Icon;
-            _descriptionText.text = value.InventoryItem.item.GetDescription();
-            NumberInInventory = value.NumberInInventory;
-            SetDescriptionRect();
+            if (value != null)
+            {
+                print(value);
+                _inventorySlot = value;
+                _title.text = value.InventoryItem.item.Title;
+                _icon.sprite = value.InventoryItem.item.Icon;
+                _descriptionText.text = value.InventoryItem.item.GetDescription();
+                NumberInInventory = value.NumberInInventory;
+                SetDescriptionRect();
+            }
         }
     }
 
@@ -27,7 +31,7 @@ public class ItemDetail : MonoBehaviour
         {
             _numberInInventory = value;
 
-            if (_inventoryItem.InventoryItem.item.StackSize > 1)
+            if (_inventorySlot.InventoryItem.item.StackSize > 1)
             {
                 if (_numberInInventory > 1)
                 {
@@ -40,7 +44,7 @@ public class ItemDetail : MonoBehaviour
                 }
                 if (_numberInInventory == 0)
                 {
-                    _inventoryItem = null;
+                    _inventorySlot = null;
                     _stackSizeText.color = Color.clear;
                 }
             }
@@ -89,9 +93,9 @@ public class ItemDetail : MonoBehaviour
     public void Setup(Transform parent)
     {
         transform.SetParent(parent);
-        if (_inventoryItem != null)
+        if (_inventorySlot != null)
         {
-            _inventoryItem.SelectorButton.Deselect();
+            _inventorySlot.SelectorButton.Deselect();
         }
     }
     public void PreviewItem(InventorySlot inventoryItem)
@@ -101,6 +105,11 @@ public class ItemDetail : MonoBehaviour
             Setup(inventoryItem.transform.parent);
             transform.SetSiblingIndex(inventoryItem.transform.GetSiblingIndex());
         }
-        InventoryItem = inventoryItem;
+        InventorySlot = inventoryItem;
+    }
+
+    public void PrintItemName()
+    {
+        print(_inventorySlot.InventoryItem.item.Title);
     }
 }

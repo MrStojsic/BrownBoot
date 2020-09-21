@@ -4,11 +4,33 @@ using UnityEngine;
 
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
+public enum ItemType
+{
+    FOOD,       // 0
+    POTION,     // 1
+    MATERIALS,  // 2
+    MAIN_HAND,  // 3
+    OFF_HAND,   // 4
+    TWO_HAND,   // 5
+    HELMET,     // 6
+    SHOULDER,   // 7
+    CHEST,      // 8
+    LEGGING,    // 9
+    BOOTS,      // 10
+    GLOVES,     // 11
+    NECKLACE,   // 12
+    RING,       // 13
+}
+
+
 /// <summary>
 /// Superclass for all items
 /// </summary>
 public abstract class Item : ScriptableObject, IMoveable, IDescribable
 {
+    [SerializeField]
+    private ItemType _itemType = default;
+
     /// <summary>
     /// The icon used to display this item, also used when moving and placing the items
     /// </summary>
@@ -56,7 +78,13 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     [SerializeField]
     private SlotScript _slot = default;
 
-    
+    public ItemType ItemType
+    {
+        get
+        {
+            return _itemType;
+        }
+    }
 
 
     [SerializeField] private int _price = default;
