@@ -8,22 +8,67 @@ using UnityEngine.Events;
 public class InventoryItem
 {
     public Item item;
-    public int numberOfItem;
 
+    [SerializeField]
+    private int _numberOfItem;
+    public int NumberOfItem
+    {
+        get { return _numberOfItem; }
+        set
+        {
+            if (_numberOfItem <= item.StackSize && _numberOfItem != value)
+            {
+                _numberOfItem = value;
+                if (inventorySlot != null)
+                {
+                    inventorySlot.UpdateStackSizeUI();
+                }
+                return;
+            }
+            Debug.LogError(value + " is more than item.StackSize of " + item.StackSize + " or equal to current " + _numberOfItem);
+
+        }
+    }
+    public InventorySlot inventorySlot;
+
+    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot)
+    {
+        this.item = item;
+        this.NumberOfItem = numberOfItem;
+        this.inventorySlot = inventorySlot;
+    }
+
+    // CURRENTLY NOT USED.
+    /*
     public bool IsEmpty
     {
-        get { return item == null || numberOfItem <= 0; }
+        get { return item == null || _numberOfItem <= 0; }
     }
     public bool IsFull
     {
         get
         {
-            if (IsEmpty || numberOfItem < item.StackSize)
+            if (IsEmpty || _numberOfItem < item.StackSize)
             {
                 return false;
             }
             return true;
         }
+    }*/
+
+    public bool AddFromInventoryItem(InventoryItem inventoryItem, int amountToAdd)
+    {
+        if (inventoryItem.item == item && amountToAdd + _numberOfItem <= item.StackSize && amountToAdd <= inventoryItem.NumberOfItem)
+        {
+            NumberOfItem += amountToAdd;
+            //inventorySlot.UpdateStackSizeUI();
+
+            inventoryItem.NumberOfItem -= amountToAdd;
+            //inventoryItem.inventorySlot.UpdateStackSizeUI();
+            return true;
+
+        }
+        return false;
     }
 }
 
@@ -39,9 +84,11 @@ public class InventorySlot : MonoBehaviour
             if (value != null)
             {
                 _inventoryItem = value;
+                _inventoryItem.inventorySlot = this;
                 _title.text = value.item.Title;
                 _icon.sprite = value.item.Icon;
-                NumberInInventory = value.numberOfItem;
+
+                UpdateStackSizeUI();
             }
             else
             {
@@ -50,34 +97,29 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
-    public int NumberInInventory
+    public void UpdateStackSizeUI()
     {
-        get { return _inventoryItem.numberOfItem; }
-        set
+        if (_inventoryItem.item.StackSize > 1)
         {
-            _inventoryItem.numberOfItem = value;
-
-            if (_inventoryItem.item.StackSize > 1)
+            if (_inventoryItem.NumberOfItem > 1)
             {
-                if (_inventoryItem.numberOfItem > 1)
-                {
-                    _stackSizeText.color = Color.white;
-                    _stackSizeText.text = _inventoryItem.numberOfItem.ToString();
-                }
-                else if (_inventoryItem.numberOfItem == 1)
-                {
-                    _stackSizeText.color = Color.clear;
-                }
-                if (_inventoryItem.numberOfItem == 0)
-                {
-                    _inventoryItem = null;
-                    _stackSizeText.color = Color.clear;
-                }
+                _stackSizeText.color = Color.white;
+                _stackSizeText.text = _inventoryItem.NumberOfItem.ToString();
             }
-            else
+            else if (_inventoryItem.NumberOfItem == 1)
             {
                 _stackSizeText.color = Color.clear;
             }
+            if (_inventoryItem.NumberOfItem == 0)
+            {
+                _inventoryItem = null;
+                _stackSizeText.color = Color.clear;
+            }
+        }
+        else
+        {
+            _stackSizeText.color = Color.clear;
+            InventoryItem = null;
         }
     }
 

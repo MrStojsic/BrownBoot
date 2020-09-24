@@ -17,10 +17,9 @@ public class Player_InventoryManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
 
-
-    [SerializeField] public List<InventoryItem>[] inventoryPockets = new List<InventoryItem>[14];
-    [SerializeField] private int[] inventoryPocketsSizeLimits = new int[14];
 
     // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
     [SerializeField] private List<InventoryItem> debugFoodPocket;
@@ -41,29 +40,33 @@ public class Player_InventoryManager : MonoBehaviour
 
     public void SetDebugPlayerinventoryPockets()
     {
+        for (int i = 0; i < inventoryTypePockets.Length-1; i++)
+        {
+            inventoryTypePockets[i].Initialise(i);
+        }
 
+        inventoryTypePockets[0].storedItems = debugFoodPocket;
+        inventoryTypePockets[1].storedItems = debugPotionPocket;
+        inventoryTypePockets[2].storedItems = debugMaterialPocket;
 
-        print(debugFoodPocket[0].item.Title);
-        inventoryPockets[0] = debugFoodPocket;
-        inventoryPockets[1] = debugPotionPocket;
-        inventoryPockets[2] = debugMaterialPocket;
-
-        inventoryPockets[3] = debugMainHandPocket;
-        inventoryPockets[4] = debugOffHandPocket;
-        inventoryPockets[5] = debugTwoHandPocket;
-        inventoryPockets[6] = debugHelmetPocket;
-        inventoryPockets[7] = debugShoulderPocket;
-        inventoryPockets[8] = debugChestPocket;
-        inventoryPockets[9] = debugLeggingPocket;
-        inventoryPockets[10] = debugBootsPocket;
-        inventoryPockets[11] = debugGlovesPocket;
-        inventoryPockets[12] = debugNeckacePocket;
-        inventoryPockets[13] = debugRingPocket;
+        inventoryTypePockets[3].storedItems = debugMainHandPocket;
+        inventoryTypePockets[4].storedItems = debugOffHandPocket;
+        inventoryTypePockets[5].storedItems = debugTwoHandPocket;
+        inventoryTypePockets[6].storedItems = debugHelmetPocket;
+        inventoryTypePockets[7].storedItems = debugShoulderPocket;
+        inventoryTypePockets[8].storedItems = debugChestPocket;
+        inventoryTypePockets[9].storedItems = debugLeggingPocket;
+        inventoryTypePockets[10].storedItems = debugBootsPocket;
+        inventoryTypePockets[11].storedItems = debugGlovesPocket;
+        inventoryTypePockets[12].storedItems = debugNeckacePocket;
+        inventoryTypePockets[13].storedItems = debugRingPocket;
     }
     public void Awake()
     {
         SetDebugPlayerinventoryPockets();
-
+        /*
+        print(inventoryPockets[0][0].item == inventoryPockets[0][1].item);
+        print(inventoryPockets[0][0].item);
+        print(inventoryPockets[0][1].item);*/
     }
-
 }

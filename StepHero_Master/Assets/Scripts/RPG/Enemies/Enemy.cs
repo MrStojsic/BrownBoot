@@ -25,7 +25,7 @@ public class Enemy : Entity
     {
         if (!isAlive)
         {
-            lootTable.OfferLoot();
+            lootTable.AttemptLoot();
             isAlive = true;
         }
     }

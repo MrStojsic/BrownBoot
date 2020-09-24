@@ -12,12 +12,12 @@ public class ItemDetail : MonoBehaviour
         {
             if (value != null)
             {
-                print(value);
                 _inventorySlot = value;
+                print(value.InventoryItem.item.Title);
                 _title.text = value.InventoryItem.item.Title;
                 _icon.sprite = value.InventoryItem.item.Icon;
                 _descriptionText.text = value.InventoryItem.item.GetDescription();
-                NumberInInventory = value.NumberInInventory;
+                NumberInInventory = value.InventoryItem.NumberOfItem;
                 SetDescriptionRect();
             }
         }

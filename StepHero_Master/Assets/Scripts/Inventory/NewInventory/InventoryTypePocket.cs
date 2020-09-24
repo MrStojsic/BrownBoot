@@ -1,158 +1,136 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Events;
 
-public class InventoryTypePocket : MonoBehaviour
+[System.Serializable]
+public class InventoryTypePocket
 {
-    [SerializeField]
-    private SelectorGroup _itemSlotSelectorGroup = default;
 
-    [SerializeField]
-    private SelectorGroup _sideButtonSelectorGroup = default;
-
-    [SerializeField]
-    private ItemDetail _itemDetail;
-
-    [SerializeField]
-    private InventorySlot _inventorySlotPrefab = default;
-
-    [SerializeField]
-    private List<InventorySlot> _inventorySlots = new List<InventorySlot>();
-
-    [SerializeField]
-    private Transform _pooledInventoryHolder;
-
-    private int selectedTypeButtonIndex = -1;
-
-    void Start()
+    private int _sizeLimit = 1000;
+    /// <summary>
+    /// This is the limit of how many different items can be stored in the pocket,
+    /// By default this is set to 1000 for Shops, but this should be set to the limit for the player when loaded.
+    /// </summary>
+    public int SizeLimit
     {
-        Player_InitialiseInventorySlots();
-       // Player_InitialiseInventorySlotsPageIndex(0);
-       //SortInventoryItems();
-
-    }
-
-    public void Player_InitialiseInventorySlots()
-    {
-        selectedTypeButtonIndex = -1;
-
-        for (int i = 0; i < Player_InventoryManager.Instance.inventoryPockets.Length; i++)
+        get
         {
-            if (Player_InventoryManager.Instance.inventoryPockets[i].Count < 1)
+            return _sizeLimit;
+        }
+        set
+        {
+            _sizeLimit = value;
+        }
+    }
+    public int Count
+    {
+        get { return storedItems.Count; }
+    }
+    public bool IsEmpty
+    {
+        get { return storedItems.Count == 0; }
+    }
+    public bool IsFull
+    {
+        get
+        {
+            if (IsEmpty || Count < _sizeLimit)
             {
-                _sideButtonSelectorGroup.transform.GetChild(i).gameObject.SetActive(false);
+                return false;
             }
-            else
-            {
-                _sideButtonSelectorGroup.transform.GetChild(i).gameObject.SetActive(true);
-            }
+            return true;
         }
     }
 
+    public ItemType pocketsItemType;
 
-    public void Player_InitialiseInventorySlotsPageIndex()
+    [SerializeField]
+    public List<InventoryItem> storedItems;
+
+    public void Initialise(int itemType)
     {
-        int pocketIndex = _sideButtonSelectorGroup.selectedIndex;
-        if (selectedTypeButtonIndex != pocketIndex)
-        {
-            selectedTypeButtonIndex = pocketIndex;
-            int slotIndex = 0;
+        storedItems = new List<InventoryItem>();
+        pocketsItemType = (ItemType)itemType;
+    }
 
-            for (; slotIndex < Player_InventoryManager.Instance.inventoryPockets[pocketIndex].Count; slotIndex++)
+
+    public InventoryItem FindItem(Item item)
+    {
+        if (item.ItemType == pocketsItemType)
+        {
+            for (int i = 0; i < storedItems.Count; i++)
             {
-                print(slotIndex);
-                if (_inventorySlots.Count > slotIndex)
+                if (item == storedItems[i].item)
                 {
-                    _inventorySlots[slotIndex].Initialise(Player_InventoryManager.Instance.inventoryPockets[pocketIndex][slotIndex]);
-                    _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
-                    _inventorySlots[slotIndex].gameObject.SetActive(true);
-                }
-                else
-                {
-                    AddMenuItem(Player_InventoryManager.Instance.inventoryPockets[pocketIndex][slotIndex]);
+                    return storedItems[i];
                 }
             }
+        }
+        return null;
+    }
 
-            if (Player_InventoryManager.Instance.inventoryPockets[pocketIndex].Count < _inventorySlots.Count)
+    // This is something the shop 
+    public int MaxNumberOfItemTransferable(InventoryItem inventoryItem)
+    {
+        if (inventoryItem.item.ItemType == pocketsItemType)
+        {
+            InventoryItem II = FindItem(inventoryItem.item);
+
+            if (II != null)
             {
-                for (; slotIndex < _inventorySlots.Count; slotIndex++)
-                {
-                    _inventorySlots[slotIndex].transform.SetParent(_pooledInventoryHolder);
-
-                    // TODO, thers an issues when we change types, the selector group calls the last buttons deslect reenabling the buttons we disabled  here. 
-                }
+                return II.item.StackSize - II.NumberOfItem;
             }
-            SelectFirstItem();
+            if (!IsFull)
+            {
+                return inventoryItem.NumberOfItem;
+            }
         }
+        return 0;
     }
 
-    void AddMenuItem(InventoryItem inventoryItem)
+    public bool AddItem(InventoryItem inventoryItem, int amountToAdd)
     {
-        InventorySlot newMenuItem;
-        newMenuItem = Instantiate(_inventorySlotPrefab, _itemSlotSelectorGroup.selectorButtonsParent);
-        newMenuItem.SelectorButton.selectorGroup = _itemSlotSelectorGroup;
-        newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
-        newMenuItem.Initialise(inventoryItem);
-
-        _inventorySlots.Add(newMenuItem);
-    }
-
-    private void CallPreviewItem(InventorySlot item)
-    {
-        _itemDetail.transform.SetSiblingIndex(_itemSlotSelectorGroup.selectedIndex);
-        // TODO: We nee to find a way to toggle off the selected InventoryItem Ui and re-enable the last selectd one,
-        // so the ItemInventory is hidden while that item is being previewed.
-        _itemDetail.PreviewItem(item);
-    }
-
-    void SelectFirstItem()
-    { 
-        if (_inventorySlots != null)
+        if (inventoryItem.item.ItemType == pocketsItemType && amountToAdd > 0)
         {
-            _itemDetail.Setup(_itemSlotSelectorGroup.selectorButtonsParent);
-
-            _itemSlotSelectorGroup.OnButtonSelected(_inventorySlots[0].SelectorButton);
-           // _itemDetail.PreviewItem(_inventorySlots[0]);
+            if (PlaceInExistingStack(inventoryItem, amountToAdd))
+            {
+                return true;
+            }
+            //return PlaceInNewStack(inventoryItem);
         }
+        return false;
+
+      
     }
-    /*
-    void SetMenuItems()
+    // FIXME needs redoing i think????
+    private bool PlaceInExistingStack(InventoryItem inventoryItem, int amountToAdd)
     {
-        for (int index = 0; index < _inventoryItems.Count; index++)
+        InventoryItem II = FindItem(inventoryItem.item);
+        if (II != null)
         {
-            SetMenuItem(index);
+            return II.AddFromInventoryItem(inventoryItem, amountToAdd);
         }
-        SelectFirstItem();
-    }*/
+        return false;
+    }
 
-
-    /*
-        void SetMenuItem(int index)
-        {
-            Item item = _inventoryItems[index];
-            InventoryItem menuItem = _menuItems[index];
-
-            menuItem.name = item.Title;
-            menuItem.transform.Find("Name").GetComponent<Text>().text = item.Title;
-            menuItem.transform.Find("Value").GetComponent<Text>().text = item.Price.ToString();
-
-        }*/
-    /*
-    public void SortInventoryItems(string property = "value")
+    private bool PlaceInNewStack(InventoryItem inventoryItem)
     {
-        switch (property)
+        if (!IsFull)
         {
-            case "value":
-                _inventoryItems = _inventoryItems.OrderBy(item => item.value).ToList();
-                break;
-            default:
-                _inventoryItems = _inventoryItems.OrderBy(item => item.label).ToList();
-                break;
+            storedItems.Add(inventoryItem);
+            return true;
         }
 
-        SetMenuItems();
+        return false;
     }
-    */
+
+    /// <summary>
+    /// This skips checking if an InventoryItem is already in the storedItems list,
+    /// Primarily for setting up the Pocket when loading or filling an empty shop or loot list.
+    /// </summary>
+    /// <param name="inventoryItem"></param>
+    public void SafeForceAddItem(InventoryItem inventoryItem)
+    {
+        storedItems.Add(inventoryItem);
+    }
 }

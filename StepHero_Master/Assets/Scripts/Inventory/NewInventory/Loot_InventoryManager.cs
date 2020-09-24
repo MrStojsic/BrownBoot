@@ -18,38 +18,22 @@ public class Loot_InventoryManager : MonoBehaviour
     }
 
 
-    [SerializeField] List<Item> lootItems;
-    [SerializeField] List<Item> lootEquipment;
+    [SerializeField]
+    public List<InventoryItem> inventoryPockets = new List<InventoryItem>();
 
-    public void AddLoot(List<Item> lootToAdd)
+    [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
+
+    public void AddLoot(List<InventoryItem> lootToAdd)
     {
-        if (lootItems == null)
+        for (int i = 0; i < lootToAdd.Count; i++)
         {
-            lootItems = new List<Item>();
-        }
-        if (lootEquipment == null)
-        {
-            lootEquipment = new List<Item>();
-        }
-
-        foreach (Item lootItem in lootToAdd)
-        {
-            if (lootItem.GetType() == typeof(Equipment))
-            {
-                lootEquipment.Add(lootItem);
-            }
-            else
-            {
-                lootItems.Add(lootItem);
-            }
-            // Fill Loot window loot items.
+            inventoryPockets.Add(lootToAdd[i]);
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

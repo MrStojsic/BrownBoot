@@ -8,7 +8,7 @@ public class LootTable : MonoBehaviour
 
     private List<Item> droppedItems = new List<Item>();
 
-    public void OfferLoot()
+    public void AttemptLoot()
     {
         RollLoot();
        
@@ -25,12 +25,13 @@ public class LootTable : MonoBehaviour
         {
             droppedItems.Clear();
         }
-        foreach (Loot item in possibleLoot)
+
+        for (int i = 0; i < possibleLoot.Length; i++)
         {
             int rollOutcome = Random.Range(0, 100);
-            if (rollOutcome <= item.DropChance)
+            if (rollOutcome <= possibleLoot[i].DropChance)
             {
-                droppedItems.Add(item.Item);
+                droppedItems.Add(possibleLoot[i].Item);
             }
         }
     }
