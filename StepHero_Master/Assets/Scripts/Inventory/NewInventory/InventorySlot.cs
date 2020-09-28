@@ -25,7 +25,7 @@ public class InventoryItem
                 }
                 return;
             }
-            Debug.LogError(value + " is more than item.StackSize of " + item.StackSize + " or equal to current " + _numberOfItem);
+            Debug.LogWarning("Possible Mistake - " + value + " is more than item.StackSize of " + item.StackSize + " or equal to current " + _numberOfItem);
 
         }
     }
@@ -56,14 +56,14 @@ public class InventoryItem
         }
     }*/
 
-    public bool AddFromInventoryItem(InventoryItem inventoryItem, int amountToAdd)
+    public bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
-        if (inventoryItem.item == item && amountToAdd + _numberOfItem <= item.StackSize && amountToAdd <= inventoryItem.NumberOfItem)
+        if (sourceInventoryItem.item == item && amountToTransfer + _numberOfItem <= item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
         {
-            NumberOfItem += amountToAdd;
+            NumberOfItem += amountToTransfer;
             //inventorySlot.UpdateStackSizeUI();
 
-            inventoryItem.NumberOfItem -= amountToAdd;
+            sourceInventoryItem.NumberOfItem -= amountToTransfer;
             //inventoryItem.inventorySlot.UpdateStackSizeUI();
             return true;
 

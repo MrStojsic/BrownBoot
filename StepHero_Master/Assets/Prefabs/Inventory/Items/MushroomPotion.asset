@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98d7afe3063ad41428d8628fd6d33b88, type: 3}
-  m_Name: Radish
+  m_Script: {fileID: 11500000, guid: 2ad0198ded3734dc5b32f75bbdbae2f6, type: 3}
+  m_Name: MushroomPotion
   m_EditorClassIdentifier: 
-  _itemType: 0
-  _icon: {fileID: 21300000, guid: 7991e2959c2e9422ea18b0bcf17c7dbf, type: 3}
+  _itemType: 1
+  _icon: {fileID: 21300000, guid: 869bddd06c9e6433096098c266aaedf2, type: 3}
   _stackSize: 20
-  _title: Radish
-  _rarity: 0
+  _title: Forest Potion
+  _rarity: 1
   _slot: {fileID: 0}
-  _price: 8
-  health: 4
+  _price: 0
+  health: 25

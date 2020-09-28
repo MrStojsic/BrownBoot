@@ -13,7 +13,6 @@ public class ItemDetail : MonoBehaviour
             if (value != null)
             {
                 _inventorySlot = value;
-                print(value.InventoryItem.item.Title);
                 _title.text = value.InventoryItem.item.Title;
                 _icon.sprite = value.InventoryItem.item.Icon;
                 _descriptionText.text = value.InventoryItem.item.GetDescription();

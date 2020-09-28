@@ -16,9 +16,11 @@ public class Player_InventoryManager : MonoBehaviour
             return _instance;
         }
     }
+    [SerializeField]
+    private InventoryInteractionManager IIM;
 
     [SerializeField]
-    public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
+    public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[14];
 
 
     // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
@@ -42,7 +44,7 @@ public class Player_InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < inventoryTypePockets.Length-1; i++)
         {
-            inventoryTypePockets[i].Initialise(i);
+            inventoryTypePockets[i].Initialise((ItemType)i);
         }
 
         inventoryTypePockets[0].storedItems = debugFoodPocket;
@@ -63,10 +65,7 @@ public class Player_InventoryManager : MonoBehaviour
     }
     public void Awake()
     {
-        SetDebugPlayerinventoryPockets();
-        /*
-        print(inventoryPockets[0][0].item == inventoryPockets[0][1].item);
-        print(inventoryPockets[0][0].item);
-        print(inventoryPockets[0][1].item);*/
+        //SetDebugPlayerinventoryPockets();
+        //IIM.InitialiseInventorySlots(inventoryTypePockets);
     }
 }

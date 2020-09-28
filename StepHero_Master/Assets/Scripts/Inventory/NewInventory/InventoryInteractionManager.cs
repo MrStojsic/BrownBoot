@@ -24,10 +24,10 @@ public class InventoryInteractionManager : MonoBehaviour
 
     private int selectedTypeButtonIndex = -1;
 
+    private InventoryTypePocket[] focusedInventoryTypePockets;
+
     void Start()
     {
-        Player_InitialiseInventorySlots();
-        // Player_InitialiseInventorySlotsPageIndex(0);
         //SortInventoryItems();
 
     }
@@ -38,30 +38,50 @@ public class InventoryInteractionManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            Player_InventoryManager.Instance.inventoryTypePockets[0].AddItem(appleToAdd, 5);
+            Player_InventoryManager.Instance.inventoryTypePockets[0].AttemptTransferItems(appleToAdd, 1);
+        }
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            print(Player_InventoryManager.Instance.inventoryTypePockets[0].MaxNumberOfItemTransferableFromSource(appleToAdd));
         }
     }
 
-    public void Player_InitialiseInventorySlots()
+    // TODO: The plan is to pass in a reference to the inventory we want to use, rather than refer to the player.instance etc.
+    // we will instead set focusedInventoryTypePockets to the inventory we are focusing on using button in shops etc,
+    // and access the pockets we wish to see in the UI by using the buttons index as the pocket index ref of that focused inventory.
+    // hope this makes sence later :|
+
+    public void InitialiseInventorySlots(InventoryTypePocket[] focusedInventoryTypePockets)
     {
-        
+        this.focusedInventoryTypePockets = focusedInventoryTypePockets;
+
         selectedTypeButtonIndex = -1;
 
-        for (int i = 0; i < Player_InventoryManager.Instance.inventoryTypePockets.Length; i++)
+        bool hasSelectedFirtValidButton = false;
+
+        for (int i = 0; i < focusedInventoryTypePockets.Length; i++)
         {
-            if (Player_InventoryManager.Instance.inventoryTypePockets[i].Count < 1)
+            if (focusedInventoryTypePockets[i].Count < 1)
             {
                 _sideButtonSelectorGroup.transform.GetChild(i).gameObject.SetActive(false);
             }
             else
             {
                 _sideButtonSelectorGroup.transform.GetChild(i).gameObject.SetActive(true);
+                if (hasSelectedFirtValidButton == false)
+                {
+                    hasSelectedFirtValidButton = true;
+                    _sideButtonSelectorGroup.selectedIndex = i;
+                    InitialiseInventorySlotsPageIndex();
+                }
             }
         }
+
     }
 
 
-    public void Player_InitialiseInventorySlotsPageIndex()
+
+    public void InitialiseInventorySlotsPageIndex()
     {
         int pocketIndex = _sideButtonSelectorGroup.selectedIndex;
         if (selectedTypeButtonIndex != pocketIndex)
@@ -69,21 +89,21 @@ public class InventoryInteractionManager : MonoBehaviour
             selectedTypeButtonIndex = pocketIndex;
             int slotIndex = 0;
 
-            for (; slotIndex < Player_InventoryManager.Instance.inventoryTypePockets[pocketIndex].Count; slotIndex++)
+            for (; slotIndex < focusedInventoryTypePockets[pocketIndex].Count; slotIndex++)
             {
                 if (_inventorySlots.Count > slotIndex)
                 {
-                    _inventorySlots[slotIndex].Initialise(Player_InventoryManager.Instance.inventoryTypePockets[pocketIndex].storedItems[slotIndex]);
+                    _inventorySlots[slotIndex].Initialise(focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
                     _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
                     _inventorySlots[slotIndex].gameObject.SetActive(true);
                 }
                 else
                 {
-                    AddMenuItem(Player_InventoryManager.Instance.inventoryTypePockets[pocketIndex].storedItems[slotIndex]);
+                    AddMenuItem(focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
                 }
             }
 
-            if (Player_InventoryManager.Instance.inventoryTypePockets[pocketIndex].Count < _inventorySlots.Count)
+            if (focusedInventoryTypePockets[pocketIndex].Count < _inventorySlots.Count)
             {
                 for (; slotIndex < _inventorySlots.Count; slotIndex++)
                 {
@@ -122,7 +142,6 @@ public class InventoryInteractionManager : MonoBehaviour
             _itemDetail.Setup(_itemSlotSelectorGroup.selectorButtonsParent);
 
             _itemSlotSelectorGroup.OnButtonSelected(_inventorySlots[0].SelectorButton);
-            // _itemDetail.PreviewItem(_inventorySlots[0]);
         }
     }
     /*

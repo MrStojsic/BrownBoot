@@ -17,23 +17,32 @@ public class Loot_InventoryManager : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    private InventoryInteractionManager IIM = null;
+
 
     [SerializeField]
-    public List<InventoryItem> inventoryPockets = new List<InventoryItem>();
+    public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
 
     [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
 
     public void AddLoot(List<InventoryItem> lootToAdd)
     {
+        print("ADD LOOT");
+        inventoryTypePockets[14].Initialise(ItemType.ANY);
+
         for (int i = 0; i < lootToAdd.Count; i++)
         {
-            inventoryPockets.Add(lootToAdd[i]);
+            inventoryTypePockets[14].SafeForceAddItem(lootToAdd[i]);
         }
+        
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        AddLoot(debugLootItems);
+        IIM.InitialiseInventorySlots(inventoryTypePockets);
     }
 
     // Update is called once per frame

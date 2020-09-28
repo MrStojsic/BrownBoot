@@ -47,10 +47,10 @@ public class InventoryTypePocket
     [SerializeField]
     public List<InventoryItem> storedItems;
 
-    public void Initialise(int itemType)
+    public void Initialise(ItemType itemType)
     {
         storedItems = new List<InventoryItem>();
-        pocketsItemType = (ItemType)itemType;
+        pocketsItemType = itemType;
     }
 
 
@@ -70,57 +70,60 @@ public class InventoryTypePocket
     }
 
     // This is something the shop 
-    public int MaxNumberOfItemTransferable(InventoryItem inventoryItem)
+    public int MaxNumberOfItemTransferableFromSource(InventoryItem sourceInventoryItem)
     {
-        if (inventoryItem.item.ItemType == pocketsItemType)
+        if (sourceInventoryItem.item.ItemType == pocketsItemType)
         {
-            InventoryItem II = FindItem(inventoryItem.item);
+            InventoryItem II = FindItem(sourceInventoryItem.item);
 
             if (II != null)
             {
+                if (II.NumberOfItem + sourceInventoryItem.NumberOfItem <= II.item.StackSize)
+                { return sourceInventoryItem.NumberOfItem; }
+
                 return II.item.StackSize - II.NumberOfItem;
             }
             if (!IsFull)
             {
-                return inventoryItem.NumberOfItem;
+                return sourceInventoryItem.NumberOfItem;
             }
         }
         return 0;
     }
 
-    public bool AddItem(InventoryItem inventoryItem, int amountToAdd)
+    public bool AttemptTransferItems(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
-        if (inventoryItem.item.ItemType == pocketsItemType && amountToAdd > 0)
+        if (sourceInventoryItem.item.ItemType == pocketsItemType && amountToTransfer > 0)
         {
-            if (PlaceInExistingStack(inventoryItem, amountToAdd))
+            InventoryItem II = FindItem(sourceInventoryItem.item);
+            if (II != null)
             {
-                return true;
+                return TransferToExistingStack(sourceInventoryItem, II, amountToTransfer);
             }
-            //return PlaceInNewStack(inventoryItem);
+            return TransferToNewStack(sourceInventoryItem, amountToTransfer);
         }
         return false;
-
-      
     }
-    // FIXME needs redoing i think????
-    private bool PlaceInExistingStack(InventoryItem inventoryItem, int amountToAdd)
+
+    private bool TransferToExistingStack(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToTransfer)
     {
-        InventoryItem II = FindItem(inventoryItem.item);
-        if (II != null)
+        if (inventoryItemDestination != null)
         {
-            return II.AddFromInventoryItem(inventoryItem, amountToAdd);
+            return inventoryItemDestination.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
         }
         return false;
     }
-
-    private bool PlaceInNewStack(InventoryItem inventoryItem)
+  
+    // TODO ; Ensure that this removes the number of items added from the source items inventory.
+    private bool TransferToNewStack(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
         if (!IsFull)
         {
-            storedItems.Add(inventoryItem);
+            InventoryItem II = new InventoryItem(sourceInventoryItem.item, 0, null);
+            II.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
+            storedItems.Add(II);
             return true;
         }
-
         return false;
     }
 
