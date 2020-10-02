@@ -61,14 +61,20 @@ public class InventoryItem
         if (sourceInventoryItem.item == item && amountToTransfer + _numberOfItem <= item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
         {
             NumberOfItem += amountToTransfer;
-            //inventorySlot.UpdateStackSizeUI();
 
-            sourceInventoryItem.NumberOfItem -= amountToTransfer;
-            //inventoryItem.inventorySlot.UpdateStackSizeUI();
+            sourceInventoryItem.RemoveItems(amountToTransfer);
             return true;
 
         }
         return false;
+    }
+
+    public void RemoveItems(int numberToRemove)
+    {
+        if (numberToRemove <= NumberOfItem)
+        {
+            NumberOfItem -= numberToRemove;
+        }
     }
 }
 
@@ -152,4 +158,5 @@ public class InventorySlot : MonoBehaviour
     {
         InventoryItem = inventorySlot;
     }
+
 }

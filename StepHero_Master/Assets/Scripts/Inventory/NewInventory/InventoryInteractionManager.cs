@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InventoryInteractionManager : MonoBehaviour
-{
+{ 
     [SerializeField]
     private SelectorGroup _itemSlotSelectorGroup = default;
 
@@ -22,9 +22,22 @@ public class InventoryInteractionManager : MonoBehaviour
     [SerializeField]
     private Transform _pooledInventoryHolder;
 
-    private int selectedTypeButtonIndex = -1;
+    private InventoryTypePocket[] _focusedInventoryTypePockets;
+    public InventoryTypePocket[] FocusedInventoryTypePockets
+    {
+        get { return _focusedInventoryTypePockets; }
+    }
 
-    private InventoryTypePocket[] focusedInventoryTypePockets;
+    public enum InventoryType
+    {
+        PLAYER_USE,
+        PLAYER_SELL,
+        SHOP_BUY,
+        LOOT,
+    };
+
+    private InventoryType inventoryType;
+
 
     void Start()
     {
@@ -38,24 +51,14 @@ public class InventoryInteractionManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            Player_InventoryManager.Instance.inventoryTypePockets[0].AttemptTransferItems(appleToAdd, 1);
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            print(Player_InventoryManager.Instance.inventoryTypePockets[0].MaxNumberOfItemTransferableFromSource(appleToAdd));
+            _focusedInventoryTypePockets[0].AttemptTransferItems(appleToAdd, 1);
         }
     }
 
-    // TODO: The plan is to pass in a reference to the inventory we want to use, rather than refer to the player.instance etc.
-    // we will instead set focusedInventoryTypePockets to the inventory we are focusing on using button in shops etc,
-    // and access the pockets we wish to see in the UI by using the buttons index as the pocket index ref of that focused inventory.
-    // hope this makes sence later :|
-
-    public void InitialiseInventorySlots(InventoryTypePocket[] focusedInventoryTypePockets)
+    public void InitialiseInventorySlots(InventoryTypePocket[] focusedInventoryTypePockets, InventoryType inventoryType)
     {
-        this.focusedInventoryTypePockets = focusedInventoryTypePockets;
-
-        selectedTypeButtonIndex = -1;
+        this.inventoryType = inventoryType;
+        this._focusedInventoryTypePockets = focusedInventoryTypePockets;
 
         bool hasSelectedFirtValidButton = false;
 
@@ -71,12 +74,11 @@ public class InventoryInteractionManager : MonoBehaviour
                 if (hasSelectedFirtValidButton == false)
                 {
                     hasSelectedFirtValidButton = true;
-                    _sideButtonSelectorGroup.selectedIndex = i;
-                    InitialiseInventorySlotsPageIndex();
+                    _sideButtonSelectorGroup.SelectSelectorViaIndex(i);
                 }
             }
         }
-
+        _itemDetail.SetInteractionType(inventoryType);
     }
 
 
@@ -84,26 +86,24 @@ public class InventoryInteractionManager : MonoBehaviour
     public void InitialiseInventorySlotsPageIndex()
     {
         int pocketIndex = _sideButtonSelectorGroup.selectedIndex;
-        if (selectedTypeButtonIndex != pocketIndex)
-        {
-            selectedTypeButtonIndex = pocketIndex;
+
             int slotIndex = 0;
 
-            for (; slotIndex < focusedInventoryTypePockets[pocketIndex].Count; slotIndex++)
+            for (; slotIndex < _focusedInventoryTypePockets[pocketIndex].Count; slotIndex++)
             {
                 if (_inventorySlots.Count > slotIndex)
                 {
-                    _inventorySlots[slotIndex].Initialise(focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
+                    _inventorySlots[slotIndex].Initialise(_focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
                     _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
                     _inventorySlots[slotIndex].gameObject.SetActive(true);
                 }
                 else
                 {
-                    AddMenuItem(focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
+                    AddMenuItem(_focusedInventoryTypePockets[pocketIndex].storedItems[slotIndex]);
                 }
             }
 
-            if (focusedInventoryTypePockets[pocketIndex].Count < _inventorySlots.Count)
+            if (_focusedInventoryTypePockets[pocketIndex].Count < _inventorySlots.Count)
             {
                 for (; slotIndex < _inventorySlots.Count; slotIndex++)
                 {
@@ -113,7 +113,7 @@ public class InventoryInteractionManager : MonoBehaviour
                 }
             }
             SelectFirstItem();
-        }
+        
     }
 
     void AddMenuItem(InventoryItem inventoryItem)

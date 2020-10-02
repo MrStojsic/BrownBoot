@@ -65,7 +65,7 @@ public class Player_InventoryManager : MonoBehaviour
     }
     public void Awake()
     {
-        //SetDebugPlayerinventoryPockets();
-        //IIM.InitialiseInventorySlots(inventoryTypePockets);
+        SetDebugPlayerinventoryPockets();
+        IIM.InitialiseInventorySlots(inventoryTypePockets,InventoryInteractionManager.InventoryType.PLAYER_USE);
     }
 }

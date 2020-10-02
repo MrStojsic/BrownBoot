@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+// TODO: Look into this loot table setup https://hyperfoxstudios.com/category/tutorial/
+
 public class Loot_InventoryManager : MonoBehaviour
 {
     private static Loot_InventoryManager _instance;
@@ -41,8 +45,8 @@ public class Loot_InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        AddLoot(debugLootItems);
-        IIM.InitialiseInventorySlots(inventoryTypePockets);
+        //AddLoot(debugLootItems);
+        //IIM.InitialiseInventorySlots(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT );
     }
 
     // Update is called once per frame

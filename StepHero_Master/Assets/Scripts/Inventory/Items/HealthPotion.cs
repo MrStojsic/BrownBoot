@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/Potion",order = 1)]
+[CreateAssetMenu(fileName = "HealthPotion", menuName = "Items/HealthPotion", order = 1)]
 public class HealthPotion : Item, IUseable
 {
     [SerializeField] private int health = default;

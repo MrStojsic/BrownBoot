@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class ItemDetail : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class ItemDetail : MonoBehaviour
                 _icon.sprite = value.InventoryItem.item.Icon;
                 _descriptionText.text = value.InventoryItem.item.GetDescription();
                 NumberInInventory = value.InventoryItem.NumberOfItem;
+                IQI.ToggleDisplay(false);
                 SetDescriptionRect();
             }
         }
@@ -56,6 +58,8 @@ public class ItemDetail : MonoBehaviour
         }
     }
 
+    private int inventoryTypeAsInt = -1;
+
     // UI.
     [SerializeField] private Text _title = default;
     public Text Title
@@ -82,6 +86,13 @@ public class ItemDetail : MonoBehaviour
     }
 
     [SerializeField] private RectTransform _rectTransform;
+
+    [SerializeField] private ItemQuantityInteractor IQI = null;
+
+    //[SerializeField] private UnityEvent[] actions;
+    string[] lables = { "Use", "Sell", "Buy", "Take", "Take All", "Drop", "Equip", "Unequip" };
+    [SerializeField] private Text buttonText1;
+    [SerializeField] private Text buttonText2;
 
     private void SetDescriptionRect()
     {
@@ -110,5 +121,44 @@ public class ItemDetail : MonoBehaviour
     public void PrintItemName()
     {
         print(_inventorySlot.InventoryItem.item.Title);
+    }
+
+    public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
+    {
+        if (this.inventoryTypeAsInt != (int)inventoryType)
+        {
+            this.inventoryTypeAsInt = (int)inventoryType;
+
+            buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
+
+            buttonText2.text = lables[inventoryTypeAsInt];
+        }
+    }
+
+
+    public void SetIQI()
+    {
+        if (IQI.gameObject.activeSelf == false)
+        {
+            switch (inventoryTypeAsInt)
+            {
+                case 0: // DROP. (looking at player inverntory)
+                    IQI.SetUp(_inventorySlot.InventoryItem.NumberOfItem);
+                    break;
+                case 1: // SELL. (looking at player inverntory)
+                    IQI.SetUp(_inventorySlot.InventoryItem.NumberOfItem);
+                    break;
+                case 2: // BUY. (looking at shop inverntory)
+                    break;
+                case 3: // TAKE (looking at Loot inverntory)
+                    break;
+
+                default:
+                    break;
+            }
+            IQI.ToggleDisplay(true);
+        }
+
+
     }
 }
