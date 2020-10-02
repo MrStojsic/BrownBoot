@@ -59,7 +59,10 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public void DropQuantityOfSelectedItem()
     {
-        itemDetail.InventorySlot.InventoryItem.RemoveItems(currentNumberOfItem);
+
+        itemDetail.RemoveItems(currentNumberOfItem);
+        currentNumberOfItem = 1;
+        ToggleDisplay(false);
     }
 
 

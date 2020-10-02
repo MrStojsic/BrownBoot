@@ -81,11 +81,11 @@ public class InventoryItem
 public class InventorySlot : MonoBehaviour
 {
     // DATA.
-    private InventoryItem _inventoryItem;
-    public InventoryItem InventoryItem
+    protected InventoryItem _inventoryItem;
+    public virtual InventoryItem InventoryItem
     {
         get { return _inventoryItem; }
-        private set
+        protected set
         {
             if (value != null)
             {
@@ -103,9 +103,9 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
-    public void UpdateStackSizeUI()
+    public virtual void UpdateStackSizeUI()
     {
-        if (_inventoryItem.item.StackSize > 1)
+        if (_inventoryItem != null && _inventoryItem.item.StackSize > 1)
         {
             if (_inventoryItem.NumberOfItem > 1)
             {
@@ -118,31 +118,30 @@ public class InventorySlot : MonoBehaviour
             }
             if (_inventoryItem.NumberOfItem == 0)
             {
-                _inventoryItem = null;
+                InventoryItem = null;
                 _stackSizeText.color = Color.clear;
             }
         }
         else
         {
             _stackSizeText.color = Color.clear;
-            InventoryItem = null;
         }
     }
 
     // UI.
-    [SerializeField] private Text _title = default;
+    [SerializeField] protected Text _title = default;
     public Text Title
     {
         get { return _title; }
     }
 
-    [SerializeField] private Image _icon = default;
+    [SerializeField] protected Image _icon = default;
     public Image Icon
     {
         get { return _icon; }
     }
 
-    [SerializeField] private Text _stackSizeText = default;
+    [SerializeField] protected Text _stackSizeText = default;
     public Text StackSizeText
     {
         get { return _stackSizeText; }

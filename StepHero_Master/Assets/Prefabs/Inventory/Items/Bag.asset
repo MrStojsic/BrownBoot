@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemType: 3
   _icon: {fileID: 21300000, guid: ea20c45e318144b4d9f67879bd014ce7, type: 3}
-  _stackSize: 1
+  _stackSize: 2
   _title: Bag
   _rarity: 0
   _slot: {fileID: 0}

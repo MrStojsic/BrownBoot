@@ -2,92 +2,79 @@
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class ItemDetail : MonoBehaviour
+public class ItemDetail : InventorySlot
 {
     // DATA.
-    private InventorySlot _inventorySlot;
-    public InventorySlot InventorySlot
+    [SerializeField]private InventorySlot _displayedInventorySlot;
+
+    public override InventoryItem InventoryItem
     {
-        get { return _inventorySlot; }
-        private set
+        get { return _inventoryItem; }
+        protected set
         {
             if (value != null)
             {
-                _inventorySlot = value;
-                _title.text = value.InventoryItem.item.Title;
-                _icon.sprite = value.InventoryItem.item.Icon;
-                _descriptionText.text = value.InventoryItem.item.GetDescription();
-                NumberInInventory = value.InventoryItem.NumberOfItem;
-                IQI.ToggleDisplay(false);
+                _displayedInventorySlot = value.inventorySlot;
+
+                _inventoryItem = value;
+               // _inventoryItem.inventorySlot = this;
+                _title.text = value.item.Title;
+                _icon.sprite = value.item.Icon;
+                _descriptionText.text = value.item.GetDescription();
                 SetDescriptionRect();
-            }
-        }
-    }
 
-    private int _numberInInventory;
-    public int NumberInInventory
-    {
-        get { return _numberInInventory; }
-        set
-        {
-            _numberInInventory = value;
+                IQI.ToggleDisplay(false);
 
-            if (_inventorySlot.InventoryItem.item.StackSize > 1)
-            {
-                if (_numberInInventory > 1)
-                {
-                    _stackSizeText.color = Color.white;
-                    _stackSizeText.text = _numberInInventory.ToString();
-                }
-                else if (_numberInInventory == 1)
-                {
-                    _stackSizeText.color = Color.clear;
-                }
-                if (_numberInInventory == 0)
-                {
-                    _inventorySlot = null;
-                    _stackSizeText.color = Color.clear;
-                }
+                UpdateStackSizeUI();
             }
             else
             {
-                _stackSizeText.color = Color.clear;
+                gameObject.SetActive(false);
             }
-
-
         }
     }
+
+    public override void UpdateStackSizeUI()
+    {
+        if (_inventoryItem != null && _inventoryItem.item.StackSize > 1)
+        {
+            if (_inventoryItem.NumberOfItem > 1)
+            {
+                _stackSizeText.color = Color.white;
+                _stackSizeText.text = _inventoryItem.NumberOfItem.ToString();
+            }
+            else if (_inventoryItem.NumberOfItem == 1)
+            {
+                _stackSizeText.color = Color.clear;
+            }
+            if (_inventoryItem.NumberOfItem == 0)
+            {
+                IIM.DeleteItemFromInventory(_displayedInventorySlot);
+                _displayedInventorySlot = null;
+                _stackSizeText.color = Color.clear;
+            }
+        }
+        else
+        {
+            _stackSizeText.color = Color.clear;
+        }
+    }
+
 
     private int inventoryTypeAsInt = -1;
 
     // UI.
-    [SerializeField] private Text _title = default;
-    public Text Title
-    {
-        get { return _title; }
-    }
-
-    [SerializeField] private Image _icon = default;
-    public Image Icon
-    {
-        get { return _icon; }
-    }
-
-    [SerializeField] private Text _stackSizeText = default;
-    public Text StackSizeText
-    {
-        get { return _stackSizeText; }
-    }
-
     [SerializeField] private Text _descriptionText = default;
     public Text DescriptionText
     {
-        get { return _stackSizeText; }
+        get { return _descriptionText; }
     }
 
     [SerializeField] private RectTransform _rectTransform;
 
     [SerializeField] private ItemQuantityInteractor IQI = null;
+    [SerializeField] private InventoryInteractionManager IIM = null;
+
 
     //[SerializeField] private UnityEvent[] actions;
     string[] lables = { "Use", "Sell", "Buy", "Take", "Take All", "Drop", "Equip", "Unequip" };
@@ -100,27 +87,20 @@ public class ItemDetail : MonoBehaviour
         _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }
 
-    public void Setup(Transform parent)
+    public void DisplayItem(InventorySlot inventorySlot)
     {
-        transform.SetParent(parent);
-        if (_inventorySlot != null)
+        if (inventorySlot.transform.parent != transform.parent)
         {
-            _inventorySlot.SelectorButton.Deselect();
+            transform.SetParent(inventorySlot.transform.parent);
+            
         }
-    }
-    public void PreviewItem(InventorySlot inventoryItem)
-    {
-        if (inventoryItem.transform.parent != transform.parent)
-        {
-            Setup(inventoryItem.transform.parent);
-            transform.SetSiblingIndex(inventoryItem.transform.GetSiblingIndex());
-        }
-        InventorySlot = inventoryItem;
-    }
+        transform.SetSiblingIndex(inventorySlot.transform.GetSiblingIndex());
+        this.InventoryItem = inventorySlot.InventoryItem;
 
-    public void PrintItemName()
-    {
-        print(_inventorySlot.InventoryItem.item.Title);
+        if (gameObject.activeSelf == false)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
@@ -143,10 +123,10 @@ public class ItemDetail : MonoBehaviour
             switch (inventoryTypeAsInt)
             {
                 case 0: // DROP. (looking at player inverntory)
-                    IQI.SetUp(_inventorySlot.InventoryItem.NumberOfItem);
+                    IQI.SetUp(InventoryItem.NumberOfItem);
                     break;
                 case 1: // SELL. (looking at player inverntory)
-                    IQI.SetUp(_inventorySlot.InventoryItem.NumberOfItem);
+                    IQI.SetUp(InventoryItem.NumberOfItem);
                     break;
                 case 2: // BUY. (looking at shop inverntory)
                     break;
@@ -161,4 +141,11 @@ public class ItemDetail : MonoBehaviour
 
 
     }
+
+    public void RemoveItems(int numberToRemove)
+    {
+        _displayedInventorySlot.InventoryItem.RemoveItems(numberToRemove);
+        UpdateStackSizeUI();
+    }
+
 }

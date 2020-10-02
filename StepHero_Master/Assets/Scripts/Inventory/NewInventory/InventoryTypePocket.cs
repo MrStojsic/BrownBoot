@@ -136,4 +136,8 @@ public class InventoryTypePocket
     {
         storedItems.Add(inventoryItem);
     }
+    public void SafeForceRemoveItem(InventoryItem inventoryItem)
+    {
+        storedItems.Remove(inventoryItem);
+    }
 }

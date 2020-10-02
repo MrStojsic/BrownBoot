@@ -28,6 +28,9 @@ public class InventoryInteractionManager : MonoBehaviour
         get { return _focusedInventoryTypePockets; }
     }
 
+    [SerializeField]
+    private int selectedIndex = 0;
+
     public enum InventoryType
     {
         PLAYER_USE,
@@ -112,8 +115,9 @@ public class InventoryInteractionManager : MonoBehaviour
                     // TODO, thers an issues when we change types, the selector group calls the last buttons deslect reenabling the buttons we disabled  here. 
                 }
             }
-            SelectFirstItem();
-        
+        selectedIndex = 0;
+        SelectFirstItem();
+
     }
 
     void AddMenuItem(InventoryItem inventoryItem)
@@ -123,26 +127,44 @@ public class InventoryInteractionManager : MonoBehaviour
         newMenuItem.SelectorButton.selectorGroup = _itemSlotSelectorGroup;
         newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
         newMenuItem.Initialise(inventoryItem);
-
+        newMenuItem.transform.name += _inventorySlots.Count.ToString();
         _inventorySlots.Add(newMenuItem);
     }
 
-    private void CallPreviewItem(InventorySlot item)
+    private void CallPreviewItem(InventorySlot inventorySlot)
     {
         _itemDetail.transform.SetSiblingIndex(_itemSlotSelectorGroup.selectedIndex);
         // TODO: We nee to find a way to toggle off the selected InventoryItem Ui and re-enable the last selectd one,
         // so the ItemInventory is hidden while that item is being previewed.
-        _itemDetail.PreviewItem(item);
+        _itemDetail.DisplayItem(inventorySlot);
     }
 
     void SelectFirstItem()
     {
         if (_inventorySlots != null)
-        {
-            _itemDetail.Setup(_itemSlotSelectorGroup.selectorButtonsParent);
-
-            _itemSlotSelectorGroup.OnButtonSelected(_inventorySlots[0].SelectorButton);
+        { 
+            print(selectedIndex);
+            _itemSlotSelectorGroup.OnButtonSelected(_focusedInventoryTypePockets[_sideButtonSelectorGroup.selectedIndex].storedItems[selectedIndex].inventorySlot.SelectorButton);
         }
+    }
+
+    public void DeleteItemFromInventory(InventorySlot inventorySlot)
+    {
+        _focusedInventoryTypePockets[_sideButtonSelectorGroup.selectedIndex].SafeForceRemoveItem(inventorySlot.InventoryItem);
+        PoolInventorySlot(inventorySlot);
+
+        if (_focusedInventoryTypePockets[_sideButtonSelectorGroup.selectedIndex].Count < selectedIndex)
+        {
+            selectedIndex--;
+        }
+
+        SelectFirstItem();
+    }
+
+    public void PoolInventorySlot(InventorySlot inventorySlot)
+    {
+
+        inventorySlot.transform.SetParent(_pooledInventoryHolder);
     }
     /*
     void SetMenuItems()
