@@ -46,7 +46,7 @@ public class SelectedItemDisplay : MonoBehaviour
             actionButtonTitle.text = "Use";
         }
 
-        description.text = item.GetDescription();
+        description.text = item.GetShortDescription();
         lastSelectedItemButton = selectorGroup.transform.GetChild(selectorGroup.selectedIndex).gameObject;
         lastSelectedItemButton.SetActive(false);
 

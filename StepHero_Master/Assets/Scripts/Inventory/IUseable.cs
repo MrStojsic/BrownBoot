@@ -11,5 +11,5 @@ interface IUseable
 
     }
 
-    void Use();
+    bool Use();
 }

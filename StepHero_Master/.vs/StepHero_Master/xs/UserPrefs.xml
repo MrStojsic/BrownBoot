@@ -1,31 +1,34 @@
-﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI Components/SelectorGroup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="12" Column="21" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="65" Column="30" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="54" Column="21" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="174" Column="24" />
-      <File FileName="Assets/Scripts/Inventory/OldInventory/SlotScript.cs" Line="108" Column="17" />
-      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="5" Column="14" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="156" Column="6" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="139" Column="36" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="150" Column="60" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="28" Column="21" NotebookId="1" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="63" Column="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
+      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" />
+      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
+      <File FileName="Assets/Scripts/Utitlities/HandScript.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
+      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="62" Column="17" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/OldInventory/SlotScript.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="69" Column="13" NotebookId="1" />
+      <File FileName="Assets/Scripts/RPG/Player.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Wotato.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" Line="41" Column="22" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Radish.cs" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="448cdbf5-70b3-4994-9941-73edb62ada56" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e1906180-af75-4db8-86d6-52e86c360e3c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" relfile="Assets/Scripts/WorldMap/NPC &amp; Events/RandomPathEvent.cs" line="15" column="1" />
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/UI Components/SelectorGroup.cs" relfile="Assets/Scripts/UI Components/SelectorGroup.cs" line="12" column="1" />
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/UI Components/SelectorGroup.cs" relfile="Assets/Scripts/UI Components/SelectorGroup.cs" line="29" column="1" />
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/Inventory/OldInventory/BagScript.cs" relfile="Assets/Scripts/Inventory/OldInventory/BagScript.cs" line="28" column="1" />
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" relfile="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" line="136" column="1" />
-      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" relfile="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" line="136" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

@@ -14,14 +14,10 @@ public class ItemDetail : InventorySlot
         {
             if (value != null)
             {
-                _displayedInventorySlot = value.inventorySlot;
-
                 _inventoryItem = value;
-               // _inventoryItem.inventorySlot = this;
-                _title.text = value.item.Title;
-                _icon.sprite = value.item.Icon;
-                _descriptionText.text = value.item.GetDescription();
-                SetDescriptionRect();
+                _title.text = value.Item.Title;
+                _icon.sprite = value.Item.Icon;
+                SetLongOrShortDescription(true);
 
                 IQI.ToggleDisplay(false);
 
@@ -29,14 +25,14 @@ public class ItemDetail : InventorySlot
             }
             else
             {
-                gameObject.SetActive(false);
+                HideEntireDisplay();
             }
         }
     }
 
     public override void UpdateStackSizeUI()
     {
-        if (_inventoryItem != null && _inventoryItem.item.StackSize > 1)
+        if (_inventoryItem != null && _inventoryItem.Item.StackSize > 1)
         {
             if (_inventoryItem.NumberOfItem > 1)
             {
@@ -50,18 +46,20 @@ public class ItemDetail : InventorySlot
             if (_inventoryItem.NumberOfItem == 0)
             {
                 IIM.DeleteItemFromInventory(_displayedInventorySlot);
-                _displayedInventorySlot = null;
-                _stackSizeText.color = Color.clear;
+                InventoryItem = null;
             }
         }
         else
         {
             _stackSizeText.color = Color.clear;
         }
+        _displayedInventorySlot.UpdateStackSizeUI();
     }
 
 
     private int inventoryTypeAsInt = -1;
+
+    private bool descriptionIsShort = true;
 
     // UI.
     [SerializeField] private Text _descriptionText = default;
@@ -77,47 +75,91 @@ public class ItemDetail : InventorySlot
 
 
     //[SerializeField] private UnityEvent[] actions;
-    string[] lables = { "Use", "Sell", "Buy", "Take", "Take All", "Drop", "Equip", "Unequip" };
+    string[] lables = { "Use", "Sell", "Buy", "Take All", "Take", "Drop", "Equip", "Unequip" };
     [SerializeField] private Text buttonText1;
     [SerializeField] private Text buttonText2;
 
-    private void SetDescriptionRect()
-    {
-        Canvas.ForceUpdateCanvases();
-        _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
-    }
+
+    [SerializeField] private GameObject descriptionArea = null;
+
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
+
         if (inventorySlot.transform.parent != transform.parent)
         {
             transform.SetParent(inventorySlot.transform.parent);
             
         }
         transform.SetSiblingIndex(inventorySlot.transform.GetSiblingIndex());
+        _displayedInventorySlot = inventorySlot;
         this.InventoryItem = inventorySlot.InventoryItem;
 
         if (gameObject.activeSelf == false)
         {
             gameObject.SetActive(true);
         }
+
+        Canvas.ForceUpdateCanvases();
     }
 
     public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
     {
-        if (this.inventoryTypeAsInt != (int)inventoryType)
-        {
+        print(inventoryType);
             this.inventoryTypeAsInt = (int)inventoryType;
 
             buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
 
             buttonText2.text = lables[inventoryTypeAsInt];
+    }
+
+    public void HideEntireDisplay()
+    {
+        if (_displayedInventorySlot != null)
+        {
+            _displayedInventorySlot.SelectorButton.Deselect();
+        }
+
+            gameObject.SetActive(false);
+            _displayedInventorySlot = null;
+
+    }
+    public void ToggleLongOrShortDescription()
+    {
+        SetLongOrShortDescription(!descriptionIsShort);
+    }
+
+    private void SetLongOrShortDescription(bool isShort)
+    {
+        descriptionIsShort = isShort;
+        if (isShort)
+        {
+            _descriptionText.text = _inventoryItem.Item.GetShortDescription();
+        }
+        else
+        {
+            _descriptionText.text = _inventoryItem.Item.GetLongDescription();
+        }
+
+        Canvas.ForceUpdateCanvases();
+        _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
+    }
+
+    public void ToggleDescriptionVisibility(bool toggleEnable)
+    {
+        if (descriptionArea.activeSelf != toggleEnable)
+        {
+            descriptionArea.SetActive(toggleEnable);
+        }
+        if (toggleEnable == false)
+        {
+            SetLongOrShortDescription(true);
         }
     }
 
-
     public void SetIQI()
     {
+
         if (IQI.gameObject.activeSelf == false)
         {
             switch (inventoryTypeAsInt)
@@ -144,8 +186,16 @@ public class ItemDetail : InventorySlot
 
     public void RemoveItems(int numberToRemove)
     {
-        _displayedInventorySlot.InventoryItem.RemoveItems(numberToRemove);
+        _inventoryItem.RemoveItems(numberToRemove);
         UpdateStackSizeUI();
     }
+
+    public void Interact()
+    {
+        _inventoryItem.Interact();
+        UpdateStackSizeUI();
+        
+    }
+
 
 }

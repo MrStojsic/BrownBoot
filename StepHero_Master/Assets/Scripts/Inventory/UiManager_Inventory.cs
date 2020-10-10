@@ -32,7 +32,7 @@ public class UiManager_Inventory : MonoBehaviour
     public void ShowToolTip(Vector3 position, IDescribable describable)
     {
         toolTip.transform.position = new Vector3(Screen.width*0.5f,position.y+150,0);
-        toolTipText.text = describable.GetDescription();
+        toolTipText.text = describable.GetShortDescription();
         toolTip.gameObject.SetActive(true);
     }
 

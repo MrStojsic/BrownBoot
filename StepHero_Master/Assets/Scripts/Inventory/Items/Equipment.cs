@@ -8,7 +8,7 @@ public class Equipment : Item
     [SerializeField] private int strength = default;
     [SerializeField] private int agility = default;
 
-    public override string GetDescription()
+    public override string GetShortDescription()
     {
         string stats = string.Empty;
 
@@ -25,6 +25,6 @@ public class Equipment : Item
             stats += string.Format("\n +{INT}", intelegence);
         }
 
-        return base.GetDescription() + stats;
+        return base.GetShortDescription() + stats;
     }
 }

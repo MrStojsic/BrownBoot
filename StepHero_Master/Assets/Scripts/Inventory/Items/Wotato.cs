@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Wotato", menuName = "Items/Wotato", order = 1)]
+[CreateAssetMenu(fileName = "Sweet Wotato", menuName = "Items/Wotato", order = 1)]
 public class Wotato : Item, IUseable
 {
     [SerializeField] private int health = default;
 
-    public void Use()
+    public bool Use()
     {
 
         if (Player.Instance.TestStat.MyCurrentValue < Player.Instance.TestStat.MyMaxValue)
@@ -15,10 +15,16 @@ public class Wotato : Item, IUseable
             Remove();
 
             Player.Instance.TestStat.MyCurrentValue += health;
+            return true;
         }
+        return false;
     }
-    public override string GetDescription()
+    public override string GetShortDescription()
     {
-        return string.Format("This weird looking root vegetable grows underground in dry deset regions, it's spikey skin deters animals from eating its sugary sweet flesh. Restores {0} health when eaten.", health);
+        return string.Format("Restores {0} health when eaten.", health);
+    }
+    public override string GetLongDescription()
+    {
+        return string.Format("This weird looking root vegetable grows underground in dry deset regions, it's spikey skin deters animals from eating its sugary sweet flesh.", health);
     }
 }

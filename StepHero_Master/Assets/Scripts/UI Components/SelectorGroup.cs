@@ -18,7 +18,7 @@ public class SelectorGroup : MonoBehaviour
     [SerializeField] private bool autoSelectIndexOnStart = true;
 
 
-    public void Start()
+    private void Start()
     {
         if (selectedSelectorButton != null)
         {

@@ -17,8 +17,9 @@ public class SimpleButton : MonoBehaviour, IPointerClickHandler, IPointerExitHan
     public Color buttonPressedColour;
     private Color buttonDisabledColour;
 
-    public bool IsInteractable { get { return _isInteractable; } }
+
     private bool _isInteractable = true;
+    public bool IsInteractable { get { return _isInteractable; } }
 
     public UnityEvent onClicked;
 

@@ -26,7 +26,7 @@ public class Bag : Item, IUseable
         this._numberOfSlots = numberOfSlots;
     }
 
-    public void Use()
+    public bool Use()
     {
         if (InventoryScript.Instance.CanAddBag)
         {
@@ -36,6 +36,8 @@ public class Bag : Item, IUseable
             BagScript.AddSlots(_numberOfSlots);
 
             InventoryScript.Instance.AddBag(this);
+            return true;
         }
+        return false;
     }
 }

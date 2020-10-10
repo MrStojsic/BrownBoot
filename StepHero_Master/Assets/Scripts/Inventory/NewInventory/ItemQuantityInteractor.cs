@@ -11,7 +11,7 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     // DATA.
     int maxNumberOfItem = 0;
-    int currentNumberOfItem = 1;
+    int currentNumberOfItem = 0;
 
     [SerializeField ]private ItemDetail itemDetail;
 
@@ -27,13 +27,8 @@ public class ItemQuantityInteractor : MonoBehaviour
     {
         this.maxNumberOfItem = maxNumberOfItem;
 
+        currentNumberOfItem = 0;
         quantityText.text = currentNumberOfItem.ToString();
-
-
-
-
-
-       
     }
 
     // Update is called once per frame
@@ -49,7 +44,7 @@ public class ItemQuantityInteractor : MonoBehaviour
         }
         else
         {
-            if (currentNumberOfItem > 1)
+            if (currentNumberOfItem > 0)
             {
                 currentNumberOfItem--;
                 quantityText.text = currentNumberOfItem.ToString();
@@ -59,19 +54,21 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public void DropQuantityOfSelectedItem()
     {
-
-        itemDetail.RemoveItems(currentNumberOfItem);
-        currentNumberOfItem = 1;
-        ToggleDisplay(false);
+        if (currentNumberOfItem > 0)
+        {
+            itemDetail.RemoveItems(currentNumberOfItem);
+            ToggleDisplay(false);
+        }
     }
 
 
 
     public void ToggleDisplay(bool toggleEnable)
     {
-        if(gameObject.activeSelf != toggleEnable)
+        if (gameObject.activeSelf != toggleEnable)
         {
             gameObject.SetActive(toggleEnable);
+            itemDetail.ToggleDescriptionVisibility(!toggleEnable);
         }
     }
 

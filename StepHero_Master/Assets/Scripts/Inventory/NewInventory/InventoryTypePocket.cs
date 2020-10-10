@@ -60,7 +60,7 @@ public class InventoryTypePocket
         {
             for (int i = 0; i < storedItems.Count; i++)
             {
-                if (item == storedItems[i].item)
+                if (item == storedItems[i].Item)
                 {
                     return storedItems[i];
                 }
@@ -72,16 +72,16 @@ public class InventoryTypePocket
     // This is something the shop 
     public int MaxNumberOfItemTransferableFromSource(InventoryItem sourceInventoryItem)
     {
-        if (sourceInventoryItem.item.ItemType == pocketsItemType)
+        if (sourceInventoryItem.Item.ItemType == pocketsItemType)
         {
-            InventoryItem II = FindItem(sourceInventoryItem.item);
+            InventoryItem II = FindItem(sourceInventoryItem.Item);
 
             if (II != null)
             {
-                if (II.NumberOfItem + sourceInventoryItem.NumberOfItem <= II.item.StackSize)
+                if (II.NumberOfItem + sourceInventoryItem.NumberOfItem <= II.Item.StackSize)
                 { return sourceInventoryItem.NumberOfItem; }
 
-                return II.item.StackSize - II.NumberOfItem;
+                return II.Item.StackSize - II.NumberOfItem;
             }
             if (!IsFull)
             {
@@ -93,9 +93,9 @@ public class InventoryTypePocket
 
     public bool AttemptTransferItems(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
-        if (sourceInventoryItem.item.ItemType == pocketsItemType && amountToTransfer > 0)
+        if (sourceInventoryItem.Item.ItemType == pocketsItemType && amountToTransfer > 0)
         {
-            InventoryItem II = FindItem(sourceInventoryItem.item);
+            InventoryItem II = FindItem(sourceInventoryItem.Item);
             if (II != null)
             {
                 return TransferToExistingStack(sourceInventoryItem, II, amountToTransfer);
@@ -119,7 +119,7 @@ public class InventoryTypePocket
     {
         if (!IsFull)
         {
-            InventoryItem II = new InventoryItem(sourceInventoryItem.item, 0, null);
+            InventoryItem II = new InventoryItem(sourceInventoryItem.Item, 0);
             II.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
             storedItems.Add(II);
             return true;

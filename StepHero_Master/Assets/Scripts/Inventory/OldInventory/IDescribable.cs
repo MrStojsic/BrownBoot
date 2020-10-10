@@ -10,5 +10,5 @@ public interface IDescribable
     /// Returns a custom description.
     /// </summary>
     /// <returns></returns>
-    string GetDescription();
+    string GetShortDescription();
 }

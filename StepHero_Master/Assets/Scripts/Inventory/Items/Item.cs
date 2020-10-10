@@ -153,9 +153,14 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// Returns a description of this specific item
     /// </summary>
     /// <returns></returns>
-    public virtual string GetDescription()
+    public virtual string GetShortDescription()
     {
-        return string.Format("This {0} is currently a placeholder and thus no description has been set.", _title); ;
+        return string.Format("This {0} is currently using a placeholder SHORT description as no description has been set.", _title); ;
+    }
+
+    public virtual string GetLongDescription()
+    {
+        return string.Format("This {0} is currently using a placeholder LONG description as no description has been set.", _title); ;
     }
 
     public virtual string GetTitle()

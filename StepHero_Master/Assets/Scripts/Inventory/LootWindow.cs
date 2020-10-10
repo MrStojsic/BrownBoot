@@ -112,7 +112,7 @@ public class LootWindow : MonoBehaviour
         infoTitle.text = title;
 
         // Set info description.
-        infoDesciption.text = itemSelectorButton.Item.GetDescription();
+        infoDesciption.text = itemSelectorButton.Item.GetShortDescription();
 
         // Set item inventory count.
         infoItemInventoryCount.text = "TODO";// TODO.
