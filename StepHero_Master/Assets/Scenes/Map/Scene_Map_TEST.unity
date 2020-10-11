@@ -13247,34 +13247,47 @@ MonoBehaviour:
   debugFoodPocket:
   - _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
     _numberOfItem: 10
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 39ccdb699393149a5b2ab65eee1cef3a, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 5803666bc26a04174910c1d92033bb11, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 4
+    _inventorySlot: {fileID: 0}
   debugPotionPocket:
   - _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
     _numberOfItem: 2
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: 0fa1529e5a6de443b9fc7a9dc2cd3560, type: 2}
     _numberOfItem: 2
+    _inventorySlot: {fileID: 0}
   debugMaterialPocket: []
   debugMainHandPocket: []
   debugOffHandPocket:
   - _item: {fileID: 11400000, guid: dcb718ce9c48b420fbdbb3e2d6612183, type: 2}
     _numberOfItem: 1
+    _inventorySlot: {fileID: 0}
   debugTwoHandPocket: []
   debugHelmetPocket: []
   debugShoulderPocket: []
@@ -13284,6 +13297,7 @@ MonoBehaviour:
   debugGlovesPocket:
   - _item: {fileID: 11400000, guid: de8eaa2d2b6a5484b8bf97d0cf6d29fc, type: 2}
     _numberOfItem: 3
+    _inventorySlot: {fileID: 0}
   debugNeckacePocket: []
   debugRingPocket: []
 --- !u!114 &1303372571
@@ -13307,8 +13321,9 @@ MonoBehaviour:
   _pooledInventoryHolder: {fileID: 2048520560}
   selectedSlotIndex: 0
   appleToAdd:
-    _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-    _numberOfItem: 9
+    _item: {fileID: 11400000, guid: 5803666bc26a04174910c1d92033bb11, type: 2}
+    _numberOfItem: 20
+    _inventorySlot: {fileID: 0}
 --- !u!114 &1303372572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13356,8 +13371,10 @@ MonoBehaviour:
   debugLootItems:
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 3
+    _inventorySlot: {fileID: 0}
   - _item: {fileID: 11400000, guid: de8eaa2d2b6a5484b8bf97d0cf6d29fc, type: 2}
     _numberOfItem: 6
+    _inventorySlot: {fileID: 0}
 --- !u!1 &1309089557
 GameObject:
   m_ObjectHideFlags: 0

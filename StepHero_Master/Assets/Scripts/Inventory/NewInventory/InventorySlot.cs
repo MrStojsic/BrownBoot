@@ -24,6 +24,11 @@ public class InventoryItem
             {
                 _numberOfItem = value;
 
+                if (_inventorySlot != null)
+                {
+                    _inventorySlot.UpdateStackSizeUI();
+                }
+
                 return;
             }
             Debug.LogWarning("Possible Mistake - " + value + " is more than item.StackSize of " + Item.StackSize + " or equal to current " + _numberOfItem);
@@ -31,10 +36,28 @@ public class InventoryItem
         }
     }
 
-    public InventoryItem(Item item, int numberOfItem)
+    [SerializeField] private InventorySlot _inventorySlot;
+    public InventorySlot InventorySlot
+    {
+        get { return _inventorySlot; }
+        set {
+                _inventorySlot = value;
+
+                if (_inventorySlot != null)
+                {
+                    Debug.Log("RAN " + InventorySlot.InventoryItem.Item.Title);
+                    _inventorySlot.UpdateStackSizeUI();
+                }
+           
+        }
+    }
+
+    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot)
     {
         _item = item;
+        InventorySlot = inventorySlot;
         NumberOfItem = numberOfItem;
+
     }
 
     public bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
@@ -90,7 +113,7 @@ public class InventorySlot : MonoBehaviour
                 _title.text = value.Item.Title;
                 _icon.sprite = value.Item.Icon;
 
-                UpdateStackSizeUI();
+                _inventoryItem.InventorySlot = this;
             }
             else
             {
@@ -155,6 +178,10 @@ public class InventorySlot : MonoBehaviour
 
     public void Initialise(InventoryItem inventoryItem, int index)
     {
+        if (_inventoryItem != null)
+        {
+            _inventoryItem.InventorySlot = null;
+        }
         InventoryItem = inventoryItem;
         _index = index;
     }

@@ -17,11 +17,13 @@ public class ItemDetail : InventorySlot
                 _inventoryItem = value;
                 _title.text = value.Item.Title;
                 _icon.sprite = value.Item.Icon;
+                _inventoryItem.InventorySlot = this;
+
                 SetLongOrShortDescription(true);
 
                 IQI.ToggleDisplay(false);
 
-                UpdateStackSizeUI();
+                //UpdateStackSizeUI();
             }
             else
             {
@@ -53,7 +55,6 @@ public class ItemDetail : InventorySlot
         {
             _stackSizeText.color = Color.clear;
         }
-        _displayedInventorySlot.UpdateStackSizeUI();
     }
 
 
@@ -92,8 +93,14 @@ public class ItemDetail : InventorySlot
             
         }
         transform.SetSiblingIndex(inventorySlot.transform.GetSiblingIndex());
+
+        if (_displayedInventorySlot != null)
+        {
+            InventoryItem.InventorySlot = _displayedInventorySlot;
+        }
+
         _displayedInventorySlot = inventorySlot;
-        this.InventoryItem = inventorySlot.InventoryItem;
+        InventoryItem = inventorySlot.InventoryItem;
 
         if (gameObject.activeSelf == false)
         {
@@ -117,6 +124,7 @@ public class ItemDetail : InventorySlot
     {
         if (_displayedInventorySlot != null)
         {
+            InventoryItem.InventorySlot = _displayedInventorySlot;
             _displayedInventorySlot.SelectorButton.Deselect();
         }
 
@@ -187,13 +195,13 @@ public class ItemDetail : InventorySlot
     public void RemoveItems(int numberToRemove)
     {
         _inventoryItem.RemoveItems(numberToRemove);
-        UpdateStackSizeUI();
+        //UpdateStackSizeUI();
     }
 
     public void Interact()
     {
         _inventoryItem.Interact();
-        UpdateStackSizeUI();
+        //UpdateStackSizeUI();
         
     }
 

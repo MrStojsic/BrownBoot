@@ -1,21 +1,20 @@
 ﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs">
     <Files>
       <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="63" Column="1" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" IsPinned="True" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="173" Column="19" />
       <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" />
       <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
       <File FileName="Assets/Scripts/Utitlities/HandScript.cs" />
       <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="62" Column="17" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="122" Column="112" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="45" Column="44" NotebookId="1" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" NotebookId="1" />
-      <File FileName="Assets/Scripts/Inventory/OldInventory/SlotScript.cs" NotebookId="1" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="69" Column="13" NotebookId="1" />
       <File FileName="Assets/Scripts/RPG/Player.cs" NotebookId="1" />
       <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" NotebookId="1" />

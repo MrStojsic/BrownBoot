@@ -119,7 +119,7 @@ public class InventoryTypePocket
     {
         if (!IsFull)
         {
-            InventoryItem II = new InventoryItem(sourceInventoryItem.Item, 0);
+            InventoryItem II = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
             II.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
             storedItems.Add(II);
             return true;
