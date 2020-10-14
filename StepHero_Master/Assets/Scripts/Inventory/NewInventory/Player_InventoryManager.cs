@@ -22,7 +22,6 @@ public class Player_InventoryManager : MonoBehaviour
     [SerializeField]
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[14];
 
-
     // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
     [SerializeField] private List<InventoryItem> debugFoodPocket;
     [SerializeField] private List<InventoryItem> debugPotionPocket;

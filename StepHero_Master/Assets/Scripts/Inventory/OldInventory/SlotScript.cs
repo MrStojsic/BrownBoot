@@ -80,7 +80,6 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
         items.Push(item);
         icon.sprite = item.Icon;
         icon.color = Color.white;
-        item.Slot = this;
 
         return true;
     }
@@ -229,7 +228,6 @@ public class SlotScript : MonoBehaviour, IPointerClickHandler, IClickable, IPoin
         if (!IsEmpty && item.name == Item.name && items.Count < Item.StackSize)
         {
             items.Push(item);
-            item.Slot = this;
             return true;
         }
         return false;

@@ -42,13 +42,6 @@ public class InventoryInteractionManager : MonoBehaviour
 
     private InventoryType inventoryType;
 
-
-    void Start()
-    {
-        //SortInventoryItems();
-
-    }
-
     public InventoryItem appleToAdd;
 
     private void Update()
@@ -87,8 +80,6 @@ public class InventoryInteractionManager : MonoBehaviour
         _itemDetail.SetInteractionType(InventoryType.PLAYER_USE);
     }
 
-
-
     public void InitialiseInventorySlotsPageIndex()
     {
         _itemDetail.HideEntireDisplay();
@@ -120,8 +111,6 @@ public class InventoryInteractionManager : MonoBehaviour
                 }
             }
         selectedSlotIndex = 0;
-        //SelectFirstItem();
-
     }
 
     void AddMenuItem(int slotIndex)
@@ -159,7 +148,6 @@ public class InventoryInteractionManager : MonoBehaviour
 
     public void PoolInventorySlot(InventorySlot inventorySlot)
     {
-
         inventorySlot.transform.SetParent(_pooledInventoryHolder);
     }
     /*

@@ -59,7 +59,6 @@ public class ItemDetail : InventorySlot
 
 
     private int inventoryTypeAsInt = -1;
-
     private bool descriptionIsShort = true;
 
     // UI.
@@ -80,17 +79,13 @@ public class ItemDetail : InventorySlot
     [SerializeField] private Text buttonText1;
     [SerializeField] private Text buttonText2;
 
-
     [SerializeField] private GameObject descriptionArea = null;
-
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
-
         if (inventorySlot.transform.parent != transform.parent)
         {
             transform.SetParent(inventorySlot.transform.parent);
-            
         }
         transform.SetSiblingIndex(inventorySlot.transform.GetSiblingIndex());
 
@@ -112,12 +107,10 @@ public class ItemDetail : InventorySlot
 
     public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
     {
-        print(inventoryType);
-            this.inventoryTypeAsInt = (int)inventoryType;
+        this.inventoryTypeAsInt = (int)inventoryType;
 
-            buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
-
-            buttonText2.text = lables[inventoryTypeAsInt];
+        buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
+        buttonText2.text = lables[inventoryTypeAsInt];
     }
 
     public void HideEntireDisplay()
@@ -127,11 +120,10 @@ public class ItemDetail : InventorySlot
             InventoryItem.InventorySlot = _displayedInventorySlot;
             _displayedInventorySlot.SelectorButton.Deselect();
         }
-
-            gameObject.SetActive(false);
-            _displayedInventorySlot = null;
-
+        gameObject.SetActive(false);
+        _displayedInventorySlot = null;
     }
+
     public void ToggleLongOrShortDescription()
     {
         SetLongOrShortDescription(!descriptionIsShort);
@@ -148,7 +140,6 @@ public class ItemDetail : InventorySlot
         {
             _descriptionText.text = _inventoryItem.Item.GetLongDescription();
         }
-
         Canvas.ForceUpdateCanvases();
         _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }
@@ -167,7 +158,6 @@ public class ItemDetail : InventorySlot
 
     public void SetIQI()
     {
-
         if (IQI.gameObject.activeSelf == false)
         {
             switch (inventoryTypeAsInt)
@@ -188,22 +178,15 @@ public class ItemDetail : InventorySlot
             }
             IQI.ToggleDisplay(true);
         }
-
-
     }
 
     public void RemoveItems(int numberToRemove)
     {
         _inventoryItem.RemoveItems(numberToRemove);
-        //UpdateStackSizeUI();
     }
 
     public void Interact()
     {
         _inventoryItem.Interact();
-        //UpdateStackSizeUI();
-        
     }
-
-
 }

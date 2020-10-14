@@ -65,6 +65,8 @@ public class Player_FollowBezierPath : MonoBehaviour
 
      public void InitialisePathfinding(AStarNode destionationNode)
      {
+        CancelJourney();
+
         currentEdgeIndex = 0;
         AStarNode startNode = null;
 
@@ -101,7 +103,7 @@ public class Player_FollowBezierPath : MonoBehaviour
             StartMoving();
         }
 
-        print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
+        //print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
     private void StartMoving()
     {
@@ -141,6 +143,14 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     void NextEgde()
     {
+        // DEBUG TESTING ONLY......
+        if (currentGoalNode.Location != null)
+        {
+            print("Passing through " + currentGoalNode.name);
+        }
+        // .......
+
+
         if (currentEdgeIndex + 1 < edgesPath.Count)
         {
             currentEdgeIndex++;
@@ -157,7 +167,7 @@ public class Player_FollowBezierPath : MonoBehaviour
             WrapUpEndOfMovement();
             ChangeMovementState(MovementState.REACHED_GOAL);
         }
-        print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
+        //print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
 
     private void WrapUpEndOfMovement()

@@ -12,8 +12,6 @@ public class Wotato : Item, IUseable
 
         if (Player.Instance.TestStat.MyCurrentValue < Player.Instance.TestStat.MyMaxValue)
         {
-            Remove();
-
             Player.Instance.TestStat.MyCurrentValue += health;
             return true;
         }

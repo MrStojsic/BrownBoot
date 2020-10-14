@@ -72,13 +72,6 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     /// </summary>
     [SerializeField] private Rarity _rarity = default;
 
-    /// <summary>
-    /// A reference to the slot that this item is sitting on.
-    /// Now obsolete as we no longer use it, only keeping it as a reference to show how scriptables objects acan still store other world objects.
-    /// </summary>
-    [SerializeField]
-    private SlotScript _slot = default;
-
     public ItemType ItemType
     {
         get
@@ -110,23 +103,6 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
         get
         {
             return _stackSize;
-        }
-    }
-
-    /// <summary>
-    /// Property for accessing the _slotscript
-    /// </summary>
-    
-    public SlotScript Slot
-    {
-        get
-        {
-            return _slot;
-        }
-
-        set
-        {
-            _slot = value;
         }
     }
 
@@ -166,18 +142,6 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     public virtual string GetTitle()
     {
         return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], _title);
-    }
-
-    /// <summary>
-    /// Removes this item from the inventory
-    /// </summary>
-    public void Remove()
-    {
-        if (Slot != null)
-        {
-            // this is the same as if(slot != null) {Slot.RemoveItem(this);}
-            Slot?.RemoveItem(this);
-        }
     }
 }
 

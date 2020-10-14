@@ -10,6 +10,11 @@ public class AStarNode : MonoBehaviour
     public int bestEdgeIndex = 0;
     public int previousBestEdgeIndex = 0;
 
+    [SerializeField] private Location _location;
+    public Location Location
+    {
+        get { return _location; }
+    }
 
     public float gScore;
     public float hScore;

@@ -17,7 +17,6 @@ public class SelectorGroup : MonoBehaviour
 
     [SerializeField] private bool autoSelectIndexOnStart = true;
 
-
     private void Start()
     {
         if (selectedSelectorButton != null)
@@ -28,7 +27,6 @@ public class SelectorGroup : MonoBehaviour
         {
             SelectSelectorViaIndex(selectedIndex);
         }
-
     }
 
     public void OnButtonDown(SelectorButton selectorButton)
@@ -56,8 +54,6 @@ public class SelectorGroup : MonoBehaviour
         selectedIndex = selectedSelectorButton.transform.GetSiblingIndex();
 
         selectedSelectorButton.Select();
-
-
     }
     public void SelectSelectorViaIndex(int childIndex)
     {

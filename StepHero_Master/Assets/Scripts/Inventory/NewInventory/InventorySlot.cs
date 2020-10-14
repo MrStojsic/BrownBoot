@@ -24,15 +24,11 @@ public class InventoryItem
             {
                 _numberOfItem = value;
 
-                if (_inventorySlot != null)
-                {
-                    _inventorySlot.UpdateStackSizeUI();
-                }
+                _inventorySlot?.UpdateStackSizeUI();
 
                 return;
             }
             Debug.LogWarning("Possible Mistake - " + value + " is more than item.StackSize of " + Item.StackSize + " or equal to current " + _numberOfItem);
-
         }
     }
 
@@ -43,12 +39,7 @@ public class InventoryItem
         set {
                 _inventorySlot = value;
 
-                if (_inventorySlot != null)
-                {
-                    Debug.Log("RAN " + InventorySlot.InventoryItem.Item.Title);
-                    _inventorySlot.UpdateStackSizeUI();
-                }
-           
+            _inventorySlot?.UpdateStackSizeUI();
         }
     }
 
@@ -57,7 +48,6 @@ public class InventoryItem
         _item = item;
         InventorySlot = inventorySlot;
         NumberOfItem = numberOfItem;
-
     }
 
     public bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
@@ -68,7 +58,6 @@ public class InventoryItem
 
             sourceInventoryItem.RemoveItems(amountToTransfer);
             return true;
-
         }
         return false;
     }
@@ -90,13 +79,7 @@ public class InventoryItem
         }
         return false;
     }
-
 }
-
-
-
-
-
 
 public class InventorySlot : MonoBehaviour
 {

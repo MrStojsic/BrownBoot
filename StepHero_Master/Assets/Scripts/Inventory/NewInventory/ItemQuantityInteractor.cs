@@ -7,19 +7,13 @@ public class ItemQuantityInteractor : MonoBehaviour
 {
     // REFERENCES.
 
-
-
     // DATA.
     int maxNumberOfItem = 0;
     int currentNumberOfItem = 0;
 
     [SerializeField ]private ItemDetail itemDetail;
 
-
-
     // UI.
-
-
     [SerializeField] private Text quantityText = null;
 
     // Start is called before the first frame update
@@ -61,8 +55,6 @@ public class ItemQuantityInteractor : MonoBehaviour
         }
     }
 
-
-
     public void ToggleDisplay(bool toggleEnable)
     {
         if (gameObject.activeSelf != toggleEnable)
@@ -71,6 +63,4 @@ public class ItemQuantityInteractor : MonoBehaviour
             itemDetail.ToggleDescriptionVisibility(!toggleEnable);
         }
     }
-
-
 }

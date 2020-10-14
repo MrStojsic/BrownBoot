@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Image))]
 public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickHandler, IPointerExitHandler
 {
-
+    // REFERENCES.
     public SelectorGroup selectorGroup;
     public Image background;
 
@@ -60,7 +60,6 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
         }
     }
 
-
     public void AddListenerActionToOnSelected(UnityAction action)
     {
         onSelected.AddListener(action);
@@ -70,6 +69,4 @@ public class SelectorButton : MonoBehaviour, IPointerDownHandler, IPointerClickH
     {
         onSelected.RemoveListener(action);
     }
-
-
 }

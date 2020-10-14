@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class InventoryTypePocket
 {
-
     private int _sizeLimit = 1000;
     /// <summary>
     /// This is the limit of how many different items can be stored in the pocket,
@@ -113,7 +112,7 @@ public class InventoryTypePocket
         }
         return false;
     }
-  
+
     // TODO ; Ensure that this removes the number of items added from the source items inventory.
     private bool TransferToNewStack(InventoryItem sourceInventoryItem, int amountToTransfer)
     {

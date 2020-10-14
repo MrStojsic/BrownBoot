@@ -67,17 +67,6 @@ public class Player : Entity
      Debug.Log(timeSpentTrainigStrength);
  }
  */
-
-
-
-
-
-
-
-
-
-
-
     // ===========================================================================
     //- Here down is NOT from "In Scope Studios" tutorials.
     public void SavePlayer()
