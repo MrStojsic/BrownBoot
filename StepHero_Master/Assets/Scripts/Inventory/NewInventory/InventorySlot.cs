@@ -43,7 +43,7 @@ public class InventoryItem
         }
     }
 
-    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot)
+    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot = null)
     {
         _item = item;
         InventorySlot = inventorySlot;

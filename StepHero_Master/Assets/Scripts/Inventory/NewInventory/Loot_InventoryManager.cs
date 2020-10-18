@@ -41,7 +41,9 @@ public class Loot_InventoryManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //AddLoot(debugLootItems);
-        //IIM.InitialiseInventorySlots(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT );
+        // HACK
+        AddLoot(debugLootItems);
+        // TOHERE
+        IIM.InitialiseInventorySlots(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT );
     }
 }

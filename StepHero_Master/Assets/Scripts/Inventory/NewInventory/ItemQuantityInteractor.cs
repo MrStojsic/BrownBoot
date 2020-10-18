@@ -16,13 +16,44 @@ public class ItemQuantityInteractor : MonoBehaviour
     // UI.
     [SerializeField] private Text quantityText = null;
 
-    // Start is called before the first frame update
-    public void SetUp(int maxNumberOfItem)
-    {
-        this.maxNumberOfItem = maxNumberOfItem;
+    [SerializeField] private Text buttonText = null;
 
+    public delegate void ItemInteraction();
+    public ItemInteraction itemInteraction;
+
+    // Start is called before the first frame update
+    public void SetUp(bool doEnable = true)
+    {
         currentNumberOfItem = 0;
-        quantityText.text = currentNumberOfItem.ToString();
+
+
+        switch (itemDetail.InventoryTypeAsInt)
+        {
+            case 0: // PLAYER_USE / DROP, check number of item.
+                maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
+                buttonText.text = "Drop";
+                itemInteraction = DropSelectedItem;
+                break;
+            case 1: // PLAYER_SELL, check number of item and number shop can afford.
+     
+                break;
+            case 2: // SHOP_BUY, check both player inventory and number of item and number player can afford.
+
+                break;
+            case 3: // LOOT, check player inventory.
+                maxNumberOfItem = Player_InventoryManager.Instance.inventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].MaxNumberOfItemTransferableFromSource(itemDetail.InventoryItem);
+                buttonText.text = "Take";
+                itemInteraction = TakeSelectedItem;
+                break;
+            default:
+                break;
+        }
+
+        if (doEnable)
+        { 
+            ToggleDisplay(doEnable);
+            quantityText.text = currentNumberOfItem.ToString();
+        }
     }
 
     // Update is called once per frame
@@ -46,13 +77,29 @@ public class ItemQuantityInteractor : MonoBehaviour
         }
     }
 
-    public void DropQuantityOfSelectedItem()
+    public void CallAppropriateItemInteractions()
+    {
+        itemInteraction.Invoke();
+        ToggleDisplay(false);
+    }
+
+    public void DropSelectedItem()
     {
         if (currentNumberOfItem > 0)
         {
             itemDetail.RemoveItems(currentNumberOfItem);
-            ToggleDisplay(false);
         }
+    }
+
+    public void TakeAllSelectedItem()
+    {
+        currentNumberOfItem = maxNumberOfItem;
+        TakeSelectedItem();
+    }
+
+    public void TakeSelectedItem()
+    {
+        Player_InventoryManager.Instance.inventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].AttemptTransferItems(itemDetail.InventoryItem, currentNumberOfItem);
     }
 
     public void ToggleDisplay(bool toggleEnable)

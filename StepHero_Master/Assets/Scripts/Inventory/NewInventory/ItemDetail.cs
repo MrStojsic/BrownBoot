@@ -58,7 +58,12 @@ public class ItemDetail : InventorySlot
     }
 
 
-    private int inventoryTypeAsInt = -1;
+    private int _inventoryTypeAsInt = -1;
+    public int InventoryTypeAsInt
+    {
+        get { return _inventoryTypeAsInt; }
+    }
+
     private bool descriptionIsShort = true;
 
     // UI.
@@ -78,8 +83,6 @@ public class ItemDetail : InventorySlot
     string[] lables = { "Use", "Sell", "Buy", "Take All", "Take", "Drop", "Equip", "Unequip" };
     [SerializeField] private Text buttonText1;
     [SerializeField] private Text buttonText2;
-
-    [SerializeField] private GameObject descriptionArea = null;
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
@@ -107,10 +110,10 @@ public class ItemDetail : InventorySlot
 
     public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
     {
-        this.inventoryTypeAsInt = (int)inventoryType;
+        this._inventoryTypeAsInt = (int)inventoryType;
 
         buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
-        buttonText2.text = lables[inventoryTypeAsInt];
+        buttonText2.text = lables[_inventoryTypeAsInt];
     }
 
     public void HideEntireDisplay()
@@ -146,9 +149,9 @@ public class ItemDetail : InventorySlot
 
     public void ToggleDescriptionVisibility(bool toggleEnable)
     {
-        if (descriptionArea.activeSelf != toggleEnable)
+        if (_descriptionText.gameObject.activeSelf != toggleEnable)
         {
-            descriptionArea.SetActive(toggleEnable);
+            _descriptionText.gameObject.SetActive(toggleEnable);
         }
         if (toggleEnable == false)
         {
@@ -160,23 +163,8 @@ public class ItemDetail : InventorySlot
     {
         if (IQI.gameObject.activeSelf == false)
         {
-            switch (inventoryTypeAsInt)
-            {
-                case 0: // DROP. (looking at player inverntory)
-                    IQI.SetUp(InventoryItem.NumberOfItem);
-                    break;
-                case 1: // SELL. (looking at player inverntory)
-                    IQI.SetUp(InventoryItem.NumberOfItem);
-                    break;
-                case 2: // BUY. (looking at shop inverntory)
-                    break;
-                case 3: // TAKE (looking at Loot inverntory)
-                    break;
+            IQI.SetUp();
 
-                default:
-                    break;
-            }
-            IQI.ToggleDisplay(true);
         }
     }
 
@@ -187,6 +175,12 @@ public class ItemDetail : InventorySlot
 
     public void Interact()
     {
+        if (_inventoryTypeAsInt == 3) //LOOT
+        {
+            IQI.SetUp(false);
+            IQI.TakeAllSelectedItem();
+            return;
+        }
         _inventoryItem.Interact();
     }
 }

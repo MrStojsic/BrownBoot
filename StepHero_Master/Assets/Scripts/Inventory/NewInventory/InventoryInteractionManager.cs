@@ -44,6 +44,7 @@ public class InventoryInteractionManager : MonoBehaviour
 
     public InventoryItem appleToAdd;
 
+    // HACK
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.P))
@@ -51,6 +52,7 @@ public class InventoryInteractionManager : MonoBehaviour
             _focusedInventoryPockets[0].AttemptTransferItems(appleToAdd, 1);
         }
     }
+    // TOHERE
 
     public void InitialiseInventorySlots(InventoryTypePocket[] focusedInventoryTypePockets, InventoryType inventoryType)
     {
@@ -75,9 +77,7 @@ public class InventoryInteractionManager : MonoBehaviour
                 }
             }
         }
-        // HACK Below was changed ofr testing only, set back when done!
-        //_itemDetail.SetInteractionType(inventoryType);
-        _itemDetail.SetInteractionType(InventoryType.PLAYER_USE);
+        _itemDetail.SetInteractionType(inventoryType);
     }
 
     public void InitialiseInventorySlotsPageIndex()

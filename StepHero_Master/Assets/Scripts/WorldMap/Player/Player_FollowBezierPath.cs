@@ -146,7 +146,7 @@ public class Player_FollowBezierPath : MonoBehaviour
         // DEBUG TESTING ONLY......
         if (currentGoalNode.Location != null)
         {
-            print("Passing through " + currentGoalNode.name);
+            currentGoalNode.Location.interactable?.Interact();
         }
         // .......
 

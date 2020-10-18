@@ -68,7 +68,6 @@ public class InventoryTypePocket
         return null;
     }
 
-    // This is something the shop 
     public int MaxNumberOfItemTransferableFromSource(InventoryItem sourceInventoryItem)
     {
         if (sourceInventoryItem.Item.ItemType == pocketsItemType)

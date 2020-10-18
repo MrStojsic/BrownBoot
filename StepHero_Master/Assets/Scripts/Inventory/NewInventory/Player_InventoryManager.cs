@@ -64,7 +64,10 @@ public class Player_InventoryManager : MonoBehaviour
     }
     public void Awake()
     {
+        // HACK Leave this so inventory checks can still happen on Player!!!!
         SetDebugPlayerinventoryPockets();
-        IIM.InitialiseInventorySlots(inventoryTypePockets,InventoryInteractionManager.InventoryType.PLAYER_USE);
+        // TOHERE
+
+        //IIM.InitialiseInventorySlots(inventoryTypePockets,InventoryInteractionManager.InventoryType.PLAYER_USE);
     }
 }
