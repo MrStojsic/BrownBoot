@@ -20,10 +20,9 @@ public class Loot_InventoryManager : MonoBehaviour
     }
 
     [SerializeField]
-    private InventoryInteractionManager IIM = null;
-
-    [SerializeField]
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
+
+    public int gold;
 
     [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
 
@@ -44,6 +43,6 @@ public class Loot_InventoryManager : MonoBehaviour
         // HACK
         AddLoot(debugLootItems);
         // TOHERE
-        IIM.InitialiseInventorySlots(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT );
+        //IIM.SetOtherInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT_TAKE );
     }
 }

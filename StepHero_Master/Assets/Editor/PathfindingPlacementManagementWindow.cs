@@ -18,6 +18,10 @@ public class PathfindingPlacementManagementWindow : EditorWindow
     public AStarNode pfAStarNode;
     public PathCreator pfPathCreator;
 
+    [Header("Parents")]
+    public Transform nodesParent;
+    public Transform pathsParent;
+
 
     private void OnGUI()
     {
@@ -45,6 +49,15 @@ public class PathfindingPlacementManagementWindow : EditorWindow
 
         // NODE INDEX.
         nodeIndex = EditorGUILayout.IntField("Next Node Index:", nodeIndex);
+
+        // NODE & PATH PARENTS.
+        SerializedObject objNodeParent = new SerializedObject(this);
+        EditorGUILayout.PropertyField(objNodeParent.FindProperty("nodesParent"));
+        objNodeParent.ApplyModifiedProperties();
+
+        SerializedObject objPathParent = new SerializedObject(this);
+        EditorGUILayout.PropertyField(objPathParent.FindProperty("pathsParent"));
+        objPathParent.ApplyModifiedProperties();
 
 
         EditorGUILayout.BeginVertical("box");
@@ -95,7 +108,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         Transform selectedNodeTransform = Selection.activeGameObject.transform;
 
         // NEW NODE.
-        AStarNode newNode = Instantiate(pfAStarNode, selectedNodeTransform.parent) as AStarNode;
+        AStarNode newNode = Instantiate(pfAStarNode, nodesParent) as AStarNode;
         newNode.name = "Node" + nodeIndex++;
         newNode.transform.position = selectedNodeTransform.position + (selectedNodeTransform.up * 0.5f);
         newNode.transform.forward = selectedNodeTransform.forward;
@@ -103,7 +116,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         AStarNode existingNode = selectedNodeTransform.GetComponent<AStarNode>();
 
         // NEW PATH EDGE.
-        PathCreator pathEdge = Instantiate(pfPathCreator, selectedNodeTransform.parent) as PathCreator;
+        PathCreator pathEdge = Instantiate(pfPathCreator, pathsParent) as PathCreator;
         AStarEdge newEdge = pathEdge.transform.gameObject.AddComponent<AStarEdge>();
         newEdge.pathCreator = pathEdge;
         newEdge.transform.name = "Path - " + selectedNodeTransform.name + " > " + newNode.name;
@@ -156,7 +169,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         nodeToRepath.connectingEdges.Remove(originalEdge);
 
         // NEW NODE.
-        AStarNode newNode = Instantiate(pfAStarNode, originalEdge.transform.parent) as AStarNode;
+        AStarNode newNode = Instantiate(pfAStarNode, nodesParent) as AStarNode;
         newNode.name = "Node" + nodeIndex++;
         newNode.transform.forward = nodeToRepath.transform.forward;
         float offset = originalEdge.transform.position.y >= nodeToRepath.transform.position.y ? 0.5f : -0.5f;
@@ -172,7 +185,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
 
 
         // NEW PATH EDGE.
-        PathCreator newPathCreator = Instantiate(pfPathCreator, originalEdge.transform.parent) as PathCreator;
+        PathCreator newPathCreator = Instantiate(pfPathCreator, pathsParent) as PathCreator;
         AStarEdge newEdge = newPathCreator.transform.gameObject.AddComponent<AStarEdge>();
         newEdge.pathCreator = newPathCreator;
         newEdge.transform.name = "Path - " + newNode.name + " > " + nodeToRepath.name;
@@ -197,7 +210,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
         nodeToRepath.connectingEdges.Remove(originalEdge);
 
         // NEW NODE.
-        AStarNode newNode = Instantiate(pfAStarNode, originalEdge.transform.parent) as AStarNode;
+        AStarNode newNode = Instantiate(pfAStarNode, nodesParent) as AStarNode;
         newNode.name = "Node" + nodeIndex++;
         newNode.transform.forward = nodeToRepath.transform.forward;
         float offset = originalEdge.transform.position.y >= nodeToRepath.transform.position.y ? 0.5f : -0.5f;
@@ -213,7 +226,7 @@ public class PathfindingPlacementManagementWindow : EditorWindow
 
 
         // NEW PATH EDGE.
-        PathCreator newPathCreator = Instantiate(pfPathCreator, originalEdge.transform.parent) as PathCreator;
+        PathCreator newPathCreator = Instantiate(pfPathCreator, pathsParent) as PathCreator;
         AStarEdge newEdge = newPathCreator.transform.gameObject.AddComponent<AStarEdge>();
         newEdge.pathCreator = newPathCreator;
         newEdge.transform.name = "Path - " + newNode.name + " > " + nodeToRepath.name;

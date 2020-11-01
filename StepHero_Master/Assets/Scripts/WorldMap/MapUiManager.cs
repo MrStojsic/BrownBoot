@@ -5,15 +5,24 @@ using UnityEngine.UI;
 
 public class MapUiManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private LocationInfoDisplay locationInfoDisplay = null;
+
+    private void Start()
     {
-        
+        // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
+        print(Resources.Load("Apple"));
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayMapInfoWindow(Location location)
     {
-        
+        locationInfoDisplay.SetLocationDetails(location);
+        locationInfoDisplay.ToggleButton(false);
+        locationInfoDisplay.gameObject.SetActive(true);
+    }
+    public void DisplayMapEnterWindow(Location location)
+    {
+        locationInfoDisplay.SetLocationDetails(location);
+        locationInfoDisplay.ToggleButton(true);
+        locationInfoDisplay.gameObject.SetActive(true);
     }
 }

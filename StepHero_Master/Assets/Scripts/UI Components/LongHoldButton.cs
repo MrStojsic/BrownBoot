@@ -3,44 +3,105 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class LongHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
+[RequireComponent(typeof(Image))]
+public class LongHoldButton : MonoBehaviour, IPointerClickHandler, IPointerExitHandler, IPointerDownHandler
 {
-    public LongHoldGroup longHoldGroup;
+    public Image background;
 
-    public UnityEvent onLongHold;
-    public UnityEvent onReset;
+    public Color buttonDefaultColour;
+    public Color buttonPressedColour;
+    private Color buttonDisabledColour;
 
+
+    private bool _isInteractable = true;
+    public bool IsInteractable { get { return _isInteractable; } }
+
+    public UnityEvent onClicked;
+
+    private float pressTime;
+    private bool isHeld = false;
+    private bool doHold = false;
+    [SerializeField] private float heldDelayTimer = default;
+
+    // Start is called before the first frame update
+    protected void Awake()
+    {
+        buttonDisabledColour = buttonDefaultColour * 7.5f;
+        buttonDefaultColour.a = 1;
+    }
+
+    void OnEnable()
+    {
+        isHeld = false;
+        if (_isInteractable)
+        {
+            background.color = buttonDefaultColour;
+        }
+        else
+        {
+            background.color = buttonDefaultColour * .75f;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (_isInteractable)
+        {
+            background.color = buttonDefaultColour;
+            isHeld = false;
+            doHold = false;
+            OnClicked();
+        }
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
-        longHoldGroup.OnButtonDown(this);
+        if (_isInteractable)
+        {
+            background.color = buttonPressedColour;
+            pressTime = Time.realtimeSinceStartup;
+            isHeld = true;
+        }
+    }
 
-    }
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        longHoldGroup.OnButtonUp(this);
-    }
     public void OnPointerExit(PointerEventData eventData)
     {
-        longHoldGroup.OnButtonExit(this);
-    }
-
-
-    public void OnLongHold()
-    {
-        print("LEFT");
-        if (onLongHold != null)
+        if (_isInteractable)
         {
-            onLongHold.Invoke();
+            background.color = buttonDefaultColour;
+            isHeld = false;
+            doHold = false;
         }
     }
 
-    public void OnReset()
+    void Update()
     {
-        print("RESET");
-        if (onReset != null)
+        if (!isHeld) return;
+
+        if (Time.realtimeSinceStartup - pressTime >= heldDelayTimer)
         {
-            onReset.Invoke();
+            pressTime = Time.realtimeSinceStartup;
+            print("Handle Long Tap");
+            if (doHold)
+            {
+                OnClicked();
+            }
+            doHold = true;
         }
+    }
+
+    public void OnClicked()
+    {
+        if (onClicked != null)
+        {
+            onClicked.Invoke();
+        }
+    }
+
+    public void SetInteractable(bool able)
+    {
+        _isInteractable = able;
+        OnEnable();
     }
 }

@@ -45,6 +45,8 @@ public class Player_FollowBezierPath : MonoBehaviour
     float step;
     [SerializeField] bool isForward = false;
 
+    [SerializeField] private MapUiManager mapUiManager;
+
     public enum MovementState
     {
         AWAITING_INSTRUCTION,
@@ -143,12 +145,17 @@ public class Player_FollowBezierPath : MonoBehaviour
     }
     void NextEgde()
     {
-        // DEBUG TESTING ONLY......
+      
         if (currentGoalNode.Location != null)
         {
+            mapUiManager.DisplayMapEnterWindow(currentGoalNode.Location);
+            ChangeMovementState(MovementState.PAUSED_ON_NODE_FOR_EVENT);
+
+            // DEBUG TESTING ONLY......
             currentGoalNode.Location.interactable?.Interact();
+            // .......
         }
-        // .......
+
 
 
         if (currentEdgeIndex + 1 < edgesPath.Count)

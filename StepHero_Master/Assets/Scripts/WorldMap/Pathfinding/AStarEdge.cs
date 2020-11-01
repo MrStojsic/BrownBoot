@@ -20,6 +20,11 @@ public class AStarEdge : MonoBehaviour
         get { return pathCreator.path.length;; }
     }
 
+    /*
+    private void OnValidate()
+    {
+        transform.name = "Path - " + headNode.name + " > " + tailNode.name;
+    }*/
 
 
     // Needs refactoring to use bezeirs.

@@ -10,7 +10,7 @@ public class AStarNode : MonoBehaviour
     public int bestEdgeIndex = 0;
     public int previousBestEdgeIndex = 0;
 
-    [SerializeField] private Location _location;
+    [SerializeField] private Location _location = default;
     public Location Location
     {
         get { return _location; }

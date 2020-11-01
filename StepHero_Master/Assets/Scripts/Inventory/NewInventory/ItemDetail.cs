@@ -73,7 +73,7 @@ public class ItemDetail : InventorySlot
         get { return _descriptionText; }
     }
 
-    [SerializeField] private RectTransform _rectTransform;
+    [SerializeField] private RectTransform _rectTransform = null;
 
     [SerializeField] private ItemQuantityInteractor IQI = null;
     [SerializeField] private InventoryInteractionManager IIM = null;
@@ -81,8 +81,8 @@ public class ItemDetail : InventorySlot
 
     //[SerializeField] private UnityEvent[] actions;
     string[] lables = { "Use", "Sell", "Buy", "Take All", "Take", "Drop", "Equip", "Unequip" };
-    [SerializeField] private Text buttonText1;
-    [SerializeField] private Text buttonText2;
+    [SerializeField] private Text buttonText1 = null;
+    [SerializeField] private Text buttonText2 = null;
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
@@ -112,7 +112,7 @@ public class ItemDetail : InventorySlot
     {
         this._inventoryTypeAsInt = (int)inventoryType;
 
-        buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT ? lables[4] : lables[5];
+        buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT_TAKE ? lables[4] : lables[5];
         buttonText2.text = lables[_inventoryTypeAsInt];
     }
 

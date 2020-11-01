@@ -7,18 +7,18 @@ using UnityEngine.Events;
 [System.Serializable]
 public class InventoryItem
 {
-    [SerializeField] private Item _item;
+    [SerializeField] protected Item _item;
     public Item Item
     {
         get { return _item; }
     }
 
     [SerializeField]
-    private int _numberOfItem;
+    protected int _numberOfItem;
     public int NumberOfItem
     {
         get { return _numberOfItem; }
-        private set
+        protected set
         {
             if (_numberOfItem <= Item.StackSize)
             {
@@ -32,7 +32,7 @@ public class InventoryItem
         }
     }
 
-    [SerializeField] private InventorySlot _inventorySlot;
+    [SerializeField] protected InventorySlot _inventorySlot;
     public InventorySlot InventorySlot
     {
         get { return _inventorySlot; }
@@ -50,7 +50,7 @@ public class InventoryItem
         NumberOfItem = numberOfItem;
     }
 
-    public bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
+    public virtual bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
         if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
         {
@@ -70,7 +70,7 @@ public class InventoryItem
         }
     }
 
-    public bool Interact()
+    public virtual bool Interact()
     {
         if (_item is IUseable && ((IUseable)_item).Use())
         {

@@ -22,22 +22,24 @@ public class Player_InventoryManager : MonoBehaviour
     [SerializeField]
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[14];
 
-    // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
-    [SerializeField] private List<InventoryItem> debugFoodPocket;
-    [SerializeField] private List<InventoryItem> debugPotionPocket;
-    [SerializeField] private List<InventoryItem> debugMaterialPocket;
+    public int gold;
 
-    [SerializeField] private List<InventoryItem> debugMainHandPocket;
-    [SerializeField] private List<InventoryItem> debugOffHandPocket;
-    [SerializeField] private List<InventoryItem> debugTwoHandPocket;
-    [SerializeField] private List<InventoryItem> debugHelmetPocket;
-    [SerializeField] private List<InventoryItem> debugShoulderPocket;
-    [SerializeField] private List<InventoryItem> debugChestPocket;
-    [SerializeField] private List<InventoryItem> debugLeggingPocket;
-    [SerializeField] private List<InventoryItem> debugBootsPocket;
-    [SerializeField] private List<InventoryItem> debugGlovesPocket;
-    [SerializeField] private List<InventoryItem> debugNeckacePocket;
-    [SerializeField] private List<InventoryItem> debugRingPocket;
+    // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
+    [SerializeField] private List<InventoryItem> debugFoodPocket = default;
+    [SerializeField] private List<InventoryItem> debugPotionPocket = default;
+    [SerializeField] private List<InventoryItem> debugMaterialPocket = default;
+
+    [SerializeField] private List<InventoryItem> debugMainHandPocket = default;
+    [SerializeField] private List<InventoryItem> debugOffHandPocket = default;
+    [SerializeField] private List<InventoryItem> debugTwoHandPocket = default;
+    [SerializeField] private List<InventoryItem> debugHelmetPocket = default;
+    [SerializeField] private List<InventoryItem> debugShoulderPocket = default;
+    [SerializeField] private List<InventoryItem> debugChestPocket = default;
+    [SerializeField] private List<InventoryItem> debugLeggingPocket = default;
+    [SerializeField] private List<InventoryItem> debugBootsPocket = default;
+    [SerializeField] private List<InventoryItem> debugGlovesPocket = default;
+    [SerializeField] private List<InventoryItem> debugNeckacePocket = default;
+    [SerializeField] private List<InventoryItem> debugRingPocket = default;
 
     public void SetDebugPlayerinventoryPockets()
     {
@@ -67,7 +69,5 @@ public class Player_InventoryManager : MonoBehaviour
         // HACK Leave this so inventory checks can still happen on Player!!!!
         SetDebugPlayerinventoryPockets();
         // TOHERE
-
-        //IIM.InitialiseInventorySlots(inventoryTypePockets,InventoryInteractionManager.InventoryType.PLAYER_USE);
     }
 }

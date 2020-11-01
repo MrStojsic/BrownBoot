@@ -11,7 +11,7 @@ public class InventoryInteractionManager : MonoBehaviour
     private SelectorGroup _pocketSelectorGroup = default;
 
     [SerializeField]
-    private ItemDetail _itemDetail;
+    private ItemDetail _itemDetail = null;
 
     [SerializeField]
     private InventorySlot _inventorySlotPrefab = default;
@@ -20,13 +20,10 @@ public class InventoryInteractionManager : MonoBehaviour
     private List<InventorySlot> _inventorySlots = new List<InventorySlot>();
 
     [SerializeField]
-    private Transform _pooledInventoryHolder;
+    private Transform _pooledInventoryHolder = default;
 
-    private InventoryTypePocket[] _focusedInventoryPockets;
-    public InventoryTypePocket[] FocusedInventoryTypePockets
-    {
-        get { return _focusedInventoryPockets; }
-    }
+    private InventoryTypePocket[] _focusedInventoryPockets = default;
+    private InventoryTypePocket[] _otherInventoryTypePockets = default;
 
     [SerializeField]
     private int selectedSlotIndex = 0;
@@ -37,10 +34,12 @@ public class InventoryInteractionManager : MonoBehaviour
         PLAYER_USE,
         PLAYER_SELL,
         SHOP_BUY,
-        LOOT,
+        LOOT_TAKE,
     };
 
+    [SerializeField]
     private InventoryType inventoryType;
+
 
     public InventoryItem appleToAdd;
 
@@ -51,28 +50,51 @@ public class InventoryInteractionManager : MonoBehaviour
         {
             _focusedInventoryPockets[0].AttemptTransferItems(appleToAdd, 1);
         }
+
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            SetFocustedInventoryTypePockets(false);
+        }
     }
     // TOHERE
 
-    public void InitialiseInventorySlots(InventoryTypePocket[] focusedInventoryTypePockets, InventoryType inventoryType)
+    public void SetOtherInventoryTypePockets(InventoryTypePocket[] otherInventoryTypePockets, InventoryType inventoryType)
     {
+        _otherInventoryTypePockets = otherInventoryTypePockets;
         this.inventoryType = inventoryType;
-        this._focusedInventoryPockets = focusedInventoryTypePockets;
+    }
 
-        bool hasSelectedFirtValidButton = false;
-
-        for (int i = 0; i < focusedInventoryTypePockets.Length; i++)
+    public void SetFocustedInventoryTypePockets(bool isPlayerInventory)
+    {
+        if (isPlayerInventory)
         {
-            if (focusedInventoryTypePockets[i].Count < 1)
+            _focusedInventoryPockets = Player_InventoryManager.Instance.inventoryTypePockets;
+        }
+        else
+        {
+            _focusedInventoryPockets = _otherInventoryTypePockets;
+        }
+        _itemDetail.SetInteractionType(inventoryType);
+        InitialiseInventorySlots();
+    }
+
+
+    public void InitialiseInventorySlots()
+    {
+        bool hasSelectedFirstValidButton = false;
+
+        for (int i = 0; i < _focusedInventoryPockets.Length; i++)
+        {
+            if (_focusedInventoryPockets[i].Count < 1)
             {
                 _pocketSelectorGroup.transform.GetChild(i).gameObject.SetActive(false);
             }
             else
             {
                 _pocketSelectorGroup.transform.GetChild(i).gameObject.SetActive(true);
-                if (hasSelectedFirtValidButton == false)
+                if (hasSelectedFirstValidButton == false)
                 {
-                    hasSelectedFirtValidButton = true;
+                    hasSelectedFirstValidButton = true;
                     _pocketSelectorGroup.SelectSelectorViaIndex(i);
                 }
             }

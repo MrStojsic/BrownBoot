@@ -47,3 +47,6 @@ TagManager:
   - name: Location
     uniqueID: 3948317841
     locked: 0
+  - name: Player_Map
+    uniqueID: 2706509827
+    locked: 0

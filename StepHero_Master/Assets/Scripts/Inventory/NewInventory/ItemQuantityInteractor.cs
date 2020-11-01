@@ -11,7 +11,7 @@ public class ItemQuantityInteractor : MonoBehaviour
     int maxNumberOfItem = 0;
     int currentNumberOfItem = 0;
 
-    [SerializeField ]private ItemDetail itemDetail;
+    [SerializeField ]private ItemDetail itemDetail = null;
 
     // UI.
     [SerializeField] private Text quantityText = null;
@@ -50,9 +50,9 @@ public class ItemQuantityInteractor : MonoBehaviour
         }
 
         if (doEnable)
-        { 
+        {
+            quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
             ToggleDisplay(doEnable);
-            quantityText.text = currentNumberOfItem.ToString();
         }
     }
 
@@ -95,6 +95,7 @@ public class ItemQuantityInteractor : MonoBehaviour
     {
         currentNumberOfItem = maxNumberOfItem;
         TakeSelectedItem();
+        ToggleDisplay(false);
     }
 
     public void TakeSelectedItem()

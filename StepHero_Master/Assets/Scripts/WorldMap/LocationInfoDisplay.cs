@@ -10,17 +10,9 @@ public class LocationInfoDisplay : MonoBehaviour
 
     [SerializeField] Player_FollowBezierPath player_FollowBezierPath = default;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject enterButton = null;
+    [SerializeField] GameObject setOffButton = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SetLocationDetails(Location location)
     {
         title.text = location.name;
@@ -31,5 +23,19 @@ public class LocationInfoDisplay : MonoBehaviour
         // TODO.
         player_FollowBezierPath.InitialisePathfinding(node);
 
+    }
+
+    public void ToggleButton(bool isEnter)
+    {
+        if (isEnter)
+        {
+            setOffButton.SetActive(false);
+            enterButton.SetActive(true);
+        }
+        else
+        {
+            enterButton.SetActive(false);
+            setOffButton.SetActive(true);
+        }
     }
 }

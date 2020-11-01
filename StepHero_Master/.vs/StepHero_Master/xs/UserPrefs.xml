@@ -1,14 +1,36 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="78" Column="9" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="142" Column="2" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="44" Column="6" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="45" Column="9" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="68" Column="11" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="73" Column="43" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="26" Column="72" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="70" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="11" Column="13" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="20" Column="6" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="42" Column="76" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="73" Column="41" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="14" Column="58" />
+      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" Line="14" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="17" Column="34" />
+      <File FileName="Assets/Scripts/Inventory/LootTable.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI Components/LongHoldButton.cs" Line="26" Column="61" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="21" Column="42" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/WorldMap/Player/Player_FollowBezierPath.cs" Line="152" Column="73" />
+      <File FileName="Assets/Scripts/NPC/Occupations/IOccupation.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="9" Column="1" />
+      <File FileName="Assets/Scripts/NPC/NPC.cs" Line="14" Column="10" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="134" Column="16" />
+      <File FileName="Assets/Scripts/WorldMap/Location.cs" Line="9" Column="15" />
+      <File FileName="Assets/Scripts/WorldMap/NPC &amp; Events/Events/Treasure.cs" Line="6" Column="14" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarNode.cs" Line="13" Column="59" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/CreateWorkout.cs" Line="21" Column="32" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" Line="12" Column="17" />
+      <File FileName="Assets/Scripts/WorldMap/LocationInfoDisplay.cs" Line="15" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/MapUiManager.cs" Line="12" Column="116" />
+      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" Line="57" Column="1" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/RenamePaths.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="26" Column="9" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/LivePathUpdateOnMove.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

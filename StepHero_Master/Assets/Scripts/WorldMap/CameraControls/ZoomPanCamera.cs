@@ -11,11 +11,10 @@ public class ZoomPanCamera : MonoBehaviour
     [SerializeField] private float minZoomLimit = 2;
     [SerializeField] private float maxZoomLimit = 3.8f;
 
-    [SerializeField] private Vector2 panLimit = default;
+    [Tooltip("This is set on Start, it uses the mapSpriteRenderer's bounds as the cameras bounds limits")]
+    private Vector2 panLimit = default;
 
     private Camera cam = default;
-
-    [SerializeField] private Transform focusTransform = default;
 
     private void Start()
     {
