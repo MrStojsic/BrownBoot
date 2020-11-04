@@ -13,11 +13,19 @@ public class AStarEdge : MonoBehaviour
 
     public bool isTraversable = true;
 
+    public float inspectorLenght = 0;
+
+
+    // HACK.
+    private void Start()
+    {
+        inspectorLenght = pathCreator.path.length;
+    }// TOHERE.
 
     // The Path ends on the head and tail nodes respectivly so the lenght is purely the paths length.
     public float LScore
     {
-        get { return pathCreator.path.length;; }
+        get { return pathCreator.path.length; }
     }
 
     /*

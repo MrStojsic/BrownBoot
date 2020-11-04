@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NPC.Occupation
+namespace Npcs.Occupation
 {
     public interface IOccupation
     {
-
+        string BusinessTitle
+        {
+            get;
+        }
     }
 }

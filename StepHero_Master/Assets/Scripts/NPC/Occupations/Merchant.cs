@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NPC.Occupation
+namespace Npcs.Occupation
 {
-    public class Merchant : MonoBehaviour, IOccupation
+    [CreateAssetMenu(fileName = "Merchant", menuName = "Npc/Merchant", order = 1)]
+    public class Merchant : Npc, IOccupation
     {
-
+        [SerializeField] private string _businessTitle;
+        public string BusinessTitle
+        {
+            get { return _businessTitle; }
+        }
     }
 }

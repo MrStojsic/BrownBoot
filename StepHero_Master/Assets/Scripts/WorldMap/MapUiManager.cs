@@ -5,13 +5,22 @@ using UnityEngine.UI;
 
 public class MapUiManager : MonoBehaviour
 {
+    private static MapUiManager _instance;
+    public static MapUiManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<MapUiManager>();
+            }
+            return _instance;
+        }
+    }
+
+
     [SerializeField] private LocationInfoDisplay locationInfoDisplay = null;
 
-    private void Start()
-    {
-        // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
-        print(Resources.Load("Apple"));
-    }
 
     public void DisplayMapInfoWindow(Location location)
     {
@@ -24,5 +33,16 @@ public class MapUiManager : MonoBehaviour
         locationInfoDisplay.SetLocationDetails(location);
         locationInfoDisplay.ToggleButton(true);
         locationInfoDisplay.gameObject.SetActive(true);
+    }
+
+    public void HideMapInfoWindow()
+    {
+        locationInfoDisplay.gameObject.SetActive(false);
+    }
+
+    public void JourneyOn()
+    {
+        locationInfoDisplay.gameObject.SetActive(false);
+        Player_FollowBezierPath.instance.ContinueJourney();
     }
 }

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace NPC
+namespace Npcs
 {
-    public class NPC : MonoBehaviour, IInteractable
+    [CreateAssetMenu(fileName = "Citizen", menuName = "Npc/Citizen", order = 1)]
+    public class Npc : ScriptableObject, IInteractable
     {
         [SerializeField] private string title = "New NPC Name";
         [SerializeField] private string greetingText = "Hello Adventurer!";
@@ -18,18 +19,6 @@ namespace NPC
         public void StopIneract()
         {
          
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
