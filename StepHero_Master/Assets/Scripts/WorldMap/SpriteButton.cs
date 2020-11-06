@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(SpriteRenderer),typeof(BoxCollider2D))]
 public class SpriteButton : MonoBehaviour
@@ -26,17 +27,22 @@ public class SpriteButton : MonoBehaviour
 
     public void OnMouseUpAsButton()
     {
-        spriteRenderer.color = buttonDefaultColour;
-        OnClicked();
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            spriteRenderer.color = buttonDefaultColour;
+            OnClicked();
+        }
     }
     public void OnMouseDown()
     {
-        spriteRenderer.color = buttonPressedColour;
+        if (!EventSystem.current.IsPointerOverGameObject())
+            spriteRenderer.color = buttonPressedColour;
     }
 
     public void OnMouseExit()
     {
-        spriteRenderer.color = buttonDefaultColour;
+        if (!EventSystem.current.IsPointerOverGameObject())
+            spriteRenderer.color = buttonDefaultColour;
     }
 
     public void OnClicked()

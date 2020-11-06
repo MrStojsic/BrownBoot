@@ -2440,7 +2440,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6869,16 +6869,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a0d7edc7a0a1434fa14406ec5552e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AStarPathfinder: {fileID: 526910203}
   edgesPath: []
   speed: 0.16
-  distanceTravelled: 0.5
-  currentGoalNode: {fileID: 0}
-  AStarPathfinder: {fileID: 526910203}
-  currentAStarEdge: {fileID: 418869840}
+  distanceTravelledOnEdge: 0
   totalDistanceTravelled: 0
-  availableDistance: 1000
+  availableDistance: 21000
+  currentGoalNode: {fileID: 0}
+  _currentAStarEdge: {fileID: 418869840}
   isForward: 1
-  movementState: 0
+  _currentMovementState: 0
 --- !u!212 &526910201
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23237,10 +23237,10 @@ GameObject:
   m_Layer: 0
   m_Name: PathBreadCrumbTrail
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!96 &1874390970
 TrailRenderer:
   serializedVersion: 2
@@ -23261,7 +23261,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23291,7 +23291,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.07514427
+        value: 0.28727195
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -44,9 +44,9 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     private void ResetCrumb()
     {
-        currentAStarEdge = player_FollowBezierPath.currentAStarEdge;
+        currentAStarEdge = player_FollowBezierPath.CurrentAStarEdge;
         // TODO > the following 1 line is only here until the players movement data can be saved.
-        distanceTravelled = player_FollowBezierPath.distanceTravelled;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
+        distanceTravelled = player_FollowBezierPath.distanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
         startingDistanceTravelled = distanceTravelled;
         transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
 
@@ -89,7 +89,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
             {
                 totalLength += edgesPath[i].LScore;
             }
-            print(totalLength);
+            //print(totalLength);
             // TOHERE
         }
 
@@ -103,7 +103,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
             }
             ChangeMovementState(MovementState.MOVING);
         }
-        print(currentEdgeIndex);
+  
 
         //print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
@@ -135,7 +135,6 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
                     totalDistanceTravelled += distanceTravelled;
                 }
-                print(totalDistanceTravelled);
                 NextEgde();
             }
         }
@@ -160,10 +159,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
             WrapUpEndOfMovement();
             ChangeMovementState(MovementState.REACHED_GOAL);
         }
-        print(currentEdgeIndex);
-
-        //print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
-    }
+     }
 
     private void WrapUpEndOfMovement()
     {

@@ -24,7 +24,7 @@ public class LocationInfoDisplay : MonoBehaviour
             // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
             LocationPoi tempName = (LocationPoi)Resources.Load("LocationData/" + location.name);
         if (tempName != null)
-            tempName.TEST_PrintMerchantName();
+            tempName.TEST_PrintMerchantName(); 
 
         SetBreadCrumbGoalNode();
     }
