@@ -26,6 +26,7 @@ public class AStarEdge : MonoBehaviour
     public float LScore
     {
         get { return pathCreator.path.length; }
+
     }
 
     /*

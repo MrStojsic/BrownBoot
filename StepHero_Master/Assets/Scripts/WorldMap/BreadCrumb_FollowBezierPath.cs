@@ -44,11 +44,11 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     private void ResetCrumb()
     {
-        currentAStarEdge = player_FollowBezierPath.CurrentAStarEdge;
+        //currentAStarEdge = player_FollowBezierPath.CurrentAStarEdge;
         // TODO > the following 1 line is only here until the players movement data can be saved.
-        distanceTravelled = player_FollowBezierPath.distanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
-        startingDistanceTravelled = distanceTravelled;
-        transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
+       // distanceTravelled = player_FollowBezierPath.currentDistanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
+        //startingDistanceTravelled = distanceTravelled;
+       // transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
 
     }
 

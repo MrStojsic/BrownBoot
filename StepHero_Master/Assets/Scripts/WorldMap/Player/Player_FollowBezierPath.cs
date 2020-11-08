@@ -38,7 +38,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     // DISTANCE.
     [Header("Distance")]
-    public float distanceTravelledOnEdge; // SAVEDATA
+    public float currentDistanceTravelledOnEdge; // SAVEDATA
     public float totalDistanceTravelled = 0; // SAVEDATA
     public float availableDistance = 0; // SAVEDATA
 
@@ -46,6 +46,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     [Header("Nodes & Paths")]
     [SerializeField]
     AStarNode currentGoalNode;
+        public Location lastLocation;
 
     [SerializeField]
     private AStarEdge _currentAStarEdge; // SAVEDATA
@@ -74,17 +75,33 @@ public class Player_FollowBezierPath : MonoBehaviour
         OUT_OF_STEPS
     }
 
+    // TEMP VARIABLES.
+    [Range(0, 1)]
+    public float percentageOfPathTraversed = .5f;
+
     // ---------------------------
 
-     private void Start()
-     {
+    private void Start()
+    {
         // TODO > the following 1 line is only here until the players movement data can be saved.
-        distanceTravelledOnEdge = _currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
-        transform.position = _currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelledOnEdge, EndOfPathInstruction.Stop);
+        //currentDistanceTravelledOnEdge = _currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
+        currentDistanceTravelledOnEdge = _currentAStarEdge.pathCreator.path.length * percentageOfPathTraversed;// TEMP.
+        isForward = true;
+
+        transform.position = _currentAStarEdge.pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
     }
 
-     public void InitialisePathfinding(AStarNode destionationNode)
-     {
+    public float CalculatePath(AStarNode destionationNode)
+    {
+
+
+        // HACK - This wll probably be changed once LocationInfoDisplay is rewritten (it will check the state before calling CalculatePath). 
+        if (_currentMovementState == MovementState.PAUSED_ON_NODE_FOR_EVENT)
+        {
+            return 0;
+        }
+        // TOHERE
+
         CancelJourney();
 
         AStarNode startNode = null;
@@ -93,10 +110,12 @@ public class Player_FollowBezierPath : MonoBehaviour
         {
             edgesPath.Insert(0, _currentAStarEdge);
             startNode = _currentAStarEdge.ReturnOtherEndOfPath(destionationNode);
-
         }
         else
         {
+            // TODO - the problem seems to be when we travel a single node dist from one edge to another, so its when the node is one noe away but on a differnt edge.
+
+
             // - Get the current edge, pick eith head of tail,
             //   if the current edge is index 0 of the returned list of paths we know we go the right starting node as we got a path to it and wont skip to it
             //   if the current edge is NOT index 0 of the returned list, we must have gotten the wrong end, in which case traverse the current path before staring to follow index 0.
@@ -109,29 +128,29 @@ public class Player_FollowBezierPath : MonoBehaviour
                 startNode = _currentAStarEdge.tailNode;
             }
 
-            // TESTING
-            float totalLength = 0;
-            totalLength += edgesPath[0].LScore - distanceTravelledOnEdge;
-            for (int i = 1; i < edgesPath.Count; i++)
-            {
-                totalLength += edgesPath[i].LScore;
-            }
-            print(totalLength);
-            // TOHERE
         }
-
         currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(startNode);
-        if (edgesPath != null)
+
+
+
+        isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
+
+        float totalLength = 0;
+        totalLength += isForward ? edgesPath[currentEdgeIndex].LScore - currentDistanceTravelledOnEdge : currentDistanceTravelledOnEdge;
+        for (int i = 1; i < edgesPath.Count; i++)
         {
-            isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
-            if (!isForward)
-            {
-                distanceTravelledOnEdge = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelledOnEdge;
-            }
-            ChangeMovementState(MovementState.MOVING);
+            totalLength += edgesPath[i].LScore;
         }
+        print("Total Path Lenght = " + totalLength);
+
+        return totalLength;
     }
 
+    public void BeginJourney()
+    {
+        //currentDistanceTravelledOnEdge = isForward ? currentDistanceTravelledOnEdge : edgesPath[0].LScore - currentDistanceTravelledOnEdge;
+        ChangeMovementState(MovementState.MOVING);
+    }
 
 
     void Update()
@@ -145,23 +164,46 @@ public class Player_FollowBezierPath : MonoBehaviour
         {
             step = speed * Time.deltaTime;
 
-            distanceTravelledOnEdge += step;
-            totalDistanceTravelled += step;
-
-            transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelledOnEdge, isForward, EndOfPathInstruction.Stop);
-
-            if (totalDistanceTravelled > availableDistance)
+            if (isForward)
             {
-                WrapUpEndOfMovement();
-                ChangeMovementState(MovementState.OUT_OF_STEPS);
-                return;
+                if (currentDistanceTravelledOnEdge + step > edgesPath[currentEdgeIndex].LScore)
+                {
+                    step = edgesPath[currentEdgeIndex].LScore - currentDistanceTravelledOnEdge;
+                }
+
+                currentDistanceTravelledOnEdge += step;
+
+                totalDistanceTravelled += step;
+
+                if (MoveForward() == false)
+                    return;
+
+                if (currentDistanceTravelledOnEdge >= edgesPath[currentEdgeIndex].pathCreator.path.length)
+                {
+                    NextEgde();
+                }
+            }
+            else
+            {
+                if (currentDistanceTravelledOnEdge - step < 0)
+                {
+                    step = currentDistanceTravelledOnEdge;
+                }
+
+                currentDistanceTravelledOnEdge -= step;
+
+                totalDistanceTravelled += step;
+
+                if (MoveForward() == false)
+                    return;
+
+                if (currentDistanceTravelledOnEdge <= 0)
+                {
+                    NextEgde();
+                }
             }
 
 
-            if (distanceTravelledOnEdge >= edgesPath[currentEdgeIndex].pathCreator.path.length)
-            {
-                NextEgde();
-            }
 
             /*
             // This is a more computational check for total distance but it seems like it will be more accurate over long journeys.
@@ -182,15 +224,29 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
     }
 
+    bool MoveForward()
+    {
+        transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
+
+        if (totalDistanceTravelled > availableDistance)
+        {
+            WrapUpEndOfMovement(MovementState.OUT_OF_STEPS);
+            return false;
+        }
+        return true;
+    }
+
     void NextEgde()
     {
-        if (currentGoalNode.Location != null)
+        if (currentGoalNode.Location != null && currentGoalNode.Location != lastLocation)
         {
+            ChangeMovementState(MovementState.PAUSED_ON_NODE_FOR_EVENT);
+
             MapUiManager.Instance.DisplayMapEnterWindow(currentGoalNode.Location);
 
+            lastLocation = currentGoalNode.Location;
 
-            ChangeMovementState(MovementState.PAUSED_ON_NODE_FOR_EVENT);
-            
+
 
             // DEBUG TESTING ONLY......
             currentGoalNode.Location.interactable?.Interact();
@@ -201,40 +257,36 @@ public class Player_FollowBezierPath : MonoBehaviour
         {
             currentEdgeIndex++;
 
+
+            _currentAStarEdge = edgesPath[currentEdgeIndex];
             //Player_EventManager.instance.InitialisePossibleEvent(edgesPath[currentEdgeIndex]);
 
             currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
-            
+
+
             isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
-            distanceTravelledOnEdge = 0;
+            currentDistanceTravelledOnEdge = isForward ? 0 : edgesPath[currentEdgeIndex].LScore;
         }
         else
         {
-            WrapUpEndOfMovement();
-            ChangeMovementState(MovementState.REACHED_GOAL);
+            WrapUpEndOfMovement(MovementState.REACHED_GOAL);
         }
-
-
-        //print("NextEgde - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
 
-    private void WrapUpEndOfMovement()
+    private void WrapUpEndOfMovement(MovementState endingMovementState)
     {
-        _currentAStarEdge = edgesPath[currentEdgeIndex];
-        if (!isForward)
+        if (edgesPath.Count > 0)
         {
-            distanceTravelledOnEdge = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelledOnEdge;
+
+            // This check must be performed before changing the movmentState.
+            ResetEdgesPathList();
         }
-        ResetEdgesPathList();
+        ChangeMovementState(endingMovementState);
     }
 
     public void CancelJourney()
     {
-        if (edgesPath.Count > 0)
-        {
-            WrapUpEndOfMovement();
-            ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
-        }
+        WrapUpEndOfMovement(MovementState.AWAITING_INSTRUCTION);
     }
 
     public void ContinueJourney()
