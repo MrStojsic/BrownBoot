@@ -46,6 +46,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     [Header("Nodes & Paths")]
     [SerializeField]
     AStarNode currentGoalNode;
+
         public Location lastLocation;
 
     [SerializeField]
@@ -74,6 +75,10 @@ public class Player_FollowBezierPath : MonoBehaviour
         PAUSED_ON_EDGE_FOR_EVENT,
         OUT_OF_STEPS
     }
+
+    // OTHER.
+    [Header("Other")]
+    [SerializeField] BreadCrumb_FollowBezierPath breadCrumb_FollowBezier = null;
 
     // TEMP VARIABLES.
     [Range(0, 1)]
@@ -143,7 +148,16 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
         print("Total Path Lenght = " + totalLength);
 
+        UpdateBreadcrumb();
+
+
+
         return totalLength;
+    }
+
+    public void UpdateBreadcrumb()
+    {
+        breadCrumb_FollowBezier.InitialiseBreadCrumb(currentGoalNode, currentEdgeIndex, isForward, currentDistanceTravelledOnEdge);
     }
 
     public void BeginJourney()
@@ -277,7 +291,6 @@ public class Player_FollowBezierPath : MonoBehaviour
     {
         if (edgesPath.Count > 0)
         {
-
             // This check must be performed before changing the movmentState.
             ResetEdgesPathList();
         }
@@ -305,6 +318,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     private void ResetEdgesPathList()
     {
+        breadCrumb_FollowBezier.CancelJourney();
         edgesPath.Clear();
         currentEdgeIndex = 0;
     }

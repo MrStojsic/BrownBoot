@@ -45,12 +45,6 @@ public class LocationInfoDisplay : MonoBehaviour
         Player_FollowBezierPath.instance.BeginJourney();
 
     }
-    public void SetBreadCrumbGoalNode()
-    {
-        // TODO.
-        breadCrumb_FollowBezierPath.InitialisePathfinding(node);
-
-    }
 
     public void ToggleButton(bool isEnter)
     {

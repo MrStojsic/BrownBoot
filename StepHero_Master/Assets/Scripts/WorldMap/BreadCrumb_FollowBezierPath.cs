@@ -6,24 +6,25 @@ using PathCreation;
 public class BreadCrumb_FollowBezierPath : MonoBehaviour
 {
 
-    public List<AStarEdge> edgesPath = new List<AStarEdge>();
+    private List<AStarEdge> playersEdgesPath = new List<AStarEdge>();
 
-    public float speed = 1.5f;
-    public float distanceTravelled; // SAVEDATA
+    [SerializeField] private float speed = 1.5f;
+    private float currentDistanceTravelledOnEdge; // SAVEDATA
 
-    [SerializeField] AStarNode currentGoalNode;
+    private AStarNode currentGoalNode;
 
-    int currentEdgeIndex = 0;
+    private int currentEdgeIndex = 0;
 
-    public AStarPathfinder AStarPathfinder;
+    private float delayTimer = 0;
+    [SerializeField] private float delayBetweenRuns = 2f;
 
 
-    public AStarEdge currentAStarEdge; // SAVEDATA
+    private AStarEdge currentAStarEdge; // SAVEDATA
 
-    public float totalDistanceTravelled = 0; // SAVEDATA
 
-    float step;
-    [SerializeField] bool isForward = false;
+
+    private float step;
+    private bool isForward = false;
 
     public enum MovementState
     {
@@ -31,165 +32,164 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
         MOVING,
         REACHED_GOAL,
     }
-    [SerializeField] private MovementState movementState;
+    [SerializeField] private MovementState currentMovementState;
 
     [SerializeField] private Player_FollowBezierPath player_FollowBezierPath;
 
-    float startingDistanceTravelled = 0;
+    [SerializeField] private TrailRenderer trailRenderer = null;
+    private float startingTrailRendererTime = 0;
+
 
     private void Start()
     {
+        startingTrailRendererTime = trailRenderer.time;
         ResetCrumb();
+
     }
 
     private void ResetCrumb()
     {
+        delayTimer = 0;
+        transform.position = Player_FollowBezierPath.instance.transform.position;
+        trailRenderer.Clear();
+        trailRenderer.time = startingTrailRendererTime;
+
         //currentAStarEdge = player_FollowBezierPath.CurrentAStarEdge;
         // TODO > the following 1 line is only here until the players movement data can be saved.
-       // distanceTravelled = player_FollowBezierPath.currentDistanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
+        // distanceTravelled = player_FollowBezierPath.currentDistanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
         //startingDistanceTravelled = distanceTravelled;
-       // transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
+        // transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(distanceTravelled, EndOfPathInstruction.Stop);
 
     }
 
-    public void InitialisePathfinding(AStarNode destionationNode)
-     {
-        CancelJourney();
+    public void InitialiseBreadCrumb(AStarNode currentGoalNode, int currentEdgeIndex, bool isForward, float distanceTravelled)
+    {
 
+
+        this.currentEdgeIndex = currentEdgeIndex;
+
+        playersEdgesPath = Player_FollowBezierPath.instance.edgesPath;
+
+        this.currentGoalNode = currentGoalNode;
+
+        this.isForward = isForward;
+
+        this.currentDistanceTravelledOnEdge = distanceTravelled;
+
+        ChangeMovementState(MovementState.MOVING);
         ResetCrumb();
 
-        currentEdgeIndex = 0;
-        totalDistanceTravelled = 0;
-        AStarNode startNode = null;
 
-        if (destionationNode == currentAStarEdge.headNode || destionationNode == currentAStarEdge.tailNode)
-        {
-            edgesPath.Insert(0, currentAStarEdge);
-            startNode = currentAStarEdge.ReturnOtherEndOfPath(destionationNode);
-
-        }
-        else
-        {
-            // - Get the current edge, pick eith head of tail,
-            //   if the current path is index 0 of the returned list of paths we know we go the right starting node as we got a path to it and wont skip to it
-            //   if the current path is index 0 of the returned list, we must have gotten the wrong end, in which case traverse the current path before staring to follow index 0.
-            startNode = currentAStarEdge.headNode;
-
-            edgesPath = AStarPathfinder.FindPath(startNode, destionationNode);
-            if (edgesPath[0] != currentAStarEdge)
-            {
-                edgesPath.Insert(0, currentAStarEdge);
-                startNode = currentAStarEdge.tailNode;
-            }
-
-            // TESTING
-            float totalLength = 0;
-            totalLength += edgesPath[0].LScore - distanceTravelled;
-            for (int i = 1; i < edgesPath.Count; i++)
-            {
-                totalLength += edgesPath[i].LScore;
-            }
-            //print(totalLength);
-            // TOHERE
-        }
-
-        currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(startNode);
-        if (edgesPath != null)
-        {
-            isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
-            if (!isForward)
-            {
-                distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled;
-            }
-            ChangeMovementState(MovementState.MOVING);
-        }
-  
-
-        //print("InitialisePathfinding - currentAStarEdge " + currentAStarEdge.name + " - isForward " + isForward + " - currentEdgeIndex" + currentEdgeIndex + " - distanceTravelled  " + distanceTravelled + " - currentGoalNode " + currentGoalNode.name);
     }
-
 
     void Update()
     {
+        MovePlayer();
+    }
 
-        // TODO: the distanceTravelled is currently based on the multiple of speed, we need to calculate the distance first.
-        //       then set the position as a multiple of that distance so we get accurate disat ne travelled.
-        if (movementState == MovementState.MOVING && edgesPath != null)
+    private void MovePlayer()
+    {
+        if (playersEdgesPath == null)
         {
+            CancelJourney();
+            return;
+        }
+        if (currentMovementState == MovementState.MOVING)
+        {
+            if (delayTimer < delayBetweenRuns)
+            {
+                delayTimer += Time.deltaTime;
+            }
+
             step = speed * Time.deltaTime;
 
-            distanceTravelled += step;
-
-            transform.position = edgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistanceByDirection(distanceTravelled, isForward, EndOfPathInstruction.Stop);
-
-            if (distanceTravelled >= edgesPath[currentEdgeIndex].pathCreator.path.length)
+            if (isForward)
             {
-                distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length;
-                if (currentEdgeIndex == 0)
+                if (currentDistanceTravelledOnEdge + step > playersEdgesPath[currentEdgeIndex].LScore)
                 {
-
-                    totalDistanceTravelled += edgesPath[currentEdgeIndex].pathCreator.path.length - startingDistanceTravelled;
+                    step = playersEdgesPath[currentEdgeIndex].LScore - currentDistanceTravelledOnEdge;
                 }
-                else
+
+                currentDistanceTravelledOnEdge += step;
+
+
+                transform.position = playersEdgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
+
+                if (currentDistanceTravelledOnEdge >= playersEdgesPath[currentEdgeIndex].pathCreator.path.length)
                 {
-
-                    totalDistanceTravelled += distanceTravelled;
+                    NextEgde();
                 }
-                NextEgde();
+            }
+            else
+            {
+                if (currentDistanceTravelledOnEdge - step < 0)
+                {
+                    step = currentDistanceTravelledOnEdge;
+                }
+
+                currentDistanceTravelledOnEdge -= step;
+
+
+                transform.position = playersEdgesPath[currentEdgeIndex].pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
+
+                if (currentDistanceTravelledOnEdge <= 0)
+                {
+                    NextEgde();
+                }
             }
         }
     }
 
     void NextEgde()
     {
-
-        if (currentEdgeIndex + 1 < edgesPath.Count)
+        if (playersEdgesPath != null)
         {
-            currentEdgeIndex++;
 
-            //Player_EventManager.instance.InitialisePossibleEvent(edgesPath[currentEdgeIndex]);
 
-            currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
-            
-            isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
-            distanceTravelled = 0;
-        }
-        else
-        {
-            WrapUpEndOfMovement();
-            ChangeMovementState(MovementState.REACHED_GOAL);
-        }
-     }
 
-    private void WrapUpEndOfMovement()
-    {
-        currentAStarEdge = edgesPath[currentEdgeIndex];
-        if (!isForward)
-        {
-            distanceTravelled = edgesPath[currentEdgeIndex].pathCreator.path.length - distanceTravelled;
+            if (currentEdgeIndex + 1 < playersEdgesPath.Count)
+            {
+                currentEdgeIndex++;
+
+
+                currentAStarEdge = playersEdgesPath[currentEdgeIndex];
+                //Player_EventManager.instance.InitialisePossibleEvent(edgesPath[currentEdgeIndex]);
+
+                currentGoalNode = playersEdgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
+
+
+                isForward = playersEdgesPath[currentEdgeIndex].headNode == currentGoalNode;
+                currentDistanceTravelledOnEdge = isForward ? 0 : playersEdgesPath[currentEdgeIndex].LScore;
+            }
+            else
+            {
+                trailRenderer.time = startingTrailRendererTime * .6f;
+                if (delayTimer >= delayBetweenRuns)
+                {
+                    delayTimer = 0;
+                    Player_FollowBezierPath.instance.UpdateBreadcrumb();
+                }
+            }
         }
-        ResetEdgesPathList();
     }
 
     public void CancelJourney()
     {
-        if (edgesPath.Count > 0)
-        {
-            WrapUpEndOfMovement();
-            ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
-        }
+        ResetEdgesPathList();
+        ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
+        ResetCrumb();
     }
 
 
     private void ChangeMovementState(MovementState movementState)
     {
-        this.movementState = movementState;
+        this.currentMovementState = movementState;
     }
 
 
     private void ResetEdgesPathList()
     {
-        edgesPath.Clear();
+        playersEdgesPath = null;
         currentEdgeIndex = 0;
     }
 }
