@@ -1221,6 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &65679160
@@ -1241,13 +1242,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 65679159}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 65679159}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3979,7 +3980,7 @@ GameObject:
   - component: {fileID: 299458569}
   - component: {fileID: 299458568}
   m_Layer: 0
-  m_Name: Gravestone
+  m_Name: Gravestone1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4018,6 +4019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &299458569
@@ -4038,13 +4040,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 299458568}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 299458568}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4709,7 +4711,7 @@ RectTransform:
   - {fileID: 1685432141}
   - {fileID: 2022732391}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5472,7 +5474,7 @@ RectTransform:
   m_Children:
   - {fileID: 653600962}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5535,6 +5537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &422868100
@@ -5555,13 +5558,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 422868099}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 422868099}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6550,7 +6553,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &526910203
 MonoBehaviour:
@@ -7217,7 +7220,7 @@ RectTransform:
   m_Children:
   - {fileID: 2098312919}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8534,7 +8537,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702587447
 GameObject:
@@ -9919,6 +9922,7 @@ GameObject:
   - component: {fileID: 828874423}
   - component: {fileID: 828874422}
   - component: {fileID: 828874425}
+  - component: {fileID: 828874426}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -10006,6 +10010,20 @@ MonoBehaviour:
   mapSpriteRenderer: {fileID: 1275946093}
   minZoomLimit: 2
   maxZoomLimit: 3.8
+--- !u!114 &828874426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828874421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b3f0b33c3dc47eeb38e62fa0bc044b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPanel: {fileID: 0}
+  uiPanels: []
 --- !u!1 &846293645
 GameObject:
   m_ObjectHideFlags: 0
@@ -10192,6 +10210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &855279761
@@ -10211,19 +10230,7 @@ MonoBehaviour:
   buttonPressedColour: {r: 0, g: 0, b: 0, a: 1}
   onClicked:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 855279760}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!61 &855279762
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10384,6 +10391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &863705326
@@ -10404,13 +10412,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 863705325}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 863705325}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10881,6 +10889,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &931023492
@@ -10901,13 +10910,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 931023491}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 931023491}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12220,6 +12229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1031391166
@@ -12240,13 +12250,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1031391165}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1031391165}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -12902,6 +12912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1080530178
@@ -12922,13 +12933,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1080530177}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1080530177}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -14011,6 +14022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1165030550
@@ -14031,13 +14043,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1165030549}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1165030549}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15226,7 +15238,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1275946093
 SpriteRenderer:
@@ -15322,7 +15334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1296544181}
   m_Layer: 0
-  m_Name: PathfindingParent (1)
+  m_Name: PathfindingParent_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15532,7 +15544,7 @@ RectTransform:
   - {fileID: 704959868}
   - {fileID: 48418655}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16125,7 +16137,7 @@ RectTransform:
   - {fileID: 278771052}
   - {fileID: 1234993565}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16997,6 +17009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1451708912
@@ -17017,13 +17030,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1451708911}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1451708911}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -17364,7 +17377,7 @@ Transform:
   - {fileID: 1834148540}
   - {fileID: 1999230116}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486871715
 GameObject:
@@ -18509,6 +18522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1580145767
@@ -18529,13 +18543,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1580145766}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1580145766}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19484,6 +19498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1662497692
@@ -19504,13 +19519,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1662497691}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1662497691}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20005,6 +20020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1698686122
@@ -20025,13 +20041,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1698686121}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1698686121}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -20879,6 +20895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &1757344964
@@ -20899,13 +20916,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 1757344963}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1757344963}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -23386,7 +23403,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1874390976
 MonoBehaviour:
@@ -24718,6 +24735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &2036724147
@@ -24738,13 +24756,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 2036724146}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2036724146}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -25319,6 +25337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 1353080769}
   treasure:
     isInteracting: 0
 --- !u!114 &2089116867
@@ -25339,13 +25358,13 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353080769}
-        m_TargetAssemblyTypeName: MapUiManager, Assembly-CSharp
-        m_MethodName: DisplayMapInfoWindow
-        m_Mode: 2
+      - m_Target: {fileID: 2089116866}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2089116866}
-          m_ObjectArgumentAssemblyTypeName: Location, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

@@ -15,7 +15,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     private int currentEdgeIndex = 0;
 
-    private float delayTimer = 0;
+     private float delayTimer = 0;
     [SerializeField] private float delayBetweenRuns = 2f;
 
 

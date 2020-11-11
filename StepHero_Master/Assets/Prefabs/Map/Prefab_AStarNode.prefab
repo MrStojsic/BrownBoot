@@ -51,6 +51,7 @@ MonoBehaviour:
   previous: {fileID: 0}
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
+  _location: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -82,6 +83,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -160,7 +163,19 @@ MonoBehaviour:
   buttonPressedColour: {r: 0, g: 0, b: 0, a: 1}
   onClicked:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4417169563714197173}
+        m_TargetAssemblyTypeName: Location, Assembly-CSharp
+        m_MethodName: DisplayLocationInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4417169563714197173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +188,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapUiManager: {fileID: 0}
+  treasure:
+    isInteracting: 0
