@@ -10,9 +10,8 @@ public class LivePathUpdateOnMove : MonoBehaviour
     [SerializeField]
     AStarNode aStarNode = default;
 
-    void Update()
+    void OnValidate()
     {
-        
         foreach (var item in aStarNode.connectingEdges)
         {
             if (item == null)

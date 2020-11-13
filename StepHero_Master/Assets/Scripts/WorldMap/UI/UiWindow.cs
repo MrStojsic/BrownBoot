@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [HelpURL("https://www.youtube.com/watch?v=rdXC2om16lo")]
-public abstract class UiPanel : MonoBehaviour
+public abstract class UiWindow : MonoBehaviour
 {
     public abstract void Initialise();
 

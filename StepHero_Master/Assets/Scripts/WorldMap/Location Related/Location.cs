@@ -23,6 +23,10 @@ public class Location : MonoBehaviour
     // Update is called once per frame
     public void DisplayLocationInfo()
     {
-        mapUiManager.DisplayMapInfoWindow(this);
+        
+        MapInteraction_Window tempMIW = UiWindowManager.GetUiPanel<MapInteraction_Window>();
+        tempMIW.ShowLocationDetails(this, false);
+
+        UiWindowManager.Show(tempMIW);
     }
 }

@@ -8,7 +8,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     private List<AStarEdge> playersEdgesPath = new List<AStarEdge>();
 
-    [SerializeField] private float speed = 1.5f;
+    [SerializeField] private float speed = 2f;
     private float currentDistanceTravelledOnEdge; // SAVEDATA
 
     private AStarNode currentGoalNode;

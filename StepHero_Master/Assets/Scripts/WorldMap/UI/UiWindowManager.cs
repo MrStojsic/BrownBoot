@@ -9,22 +9,22 @@ using UnityEngine;
 //       EG Button.onClick.AddListener(() => UiManager.Show<MapInteraction_Window>())
 //       And Show<T>() will look to see if it contains a womdow of that type and if so will show it.
 
-public class UiManager : MonoBehaviour
+public class UiWindowManager : MonoBehaviour
 {
-    private static UiManager instance;
+    private static UiWindowManager instance;
 
-    [SerializeField] private UiPanel startingPanel;
-    [SerializeField] private UiPanel[] uiPanels;
+    [SerializeField] private UiWindow startingPanel;
+    [SerializeField] private UiWindow[] uiPanels;
 
-    private UiPanel currentUiPanel;
+    private UiWindow currentUiPanel;
 
-    private readonly Stack<UiPanel> _history = new Stack<UiPanel>();
+    private readonly Stack<UiWindow> _history = new Stack<UiWindow>();
 
     private void Awake() => instance = this;
 
 
 
-    public static T GetUiPanel<T>() where T : UiPanel
+    public static T GetUiPanel<T>() where T : UiWindow
     {
         for (int i = 0; i < instance.uiPanels.Length; i++)
         {
@@ -36,7 +36,7 @@ public class UiManager : MonoBehaviour
         return null;
     }
 
-    public static UiPanel Show<T>(bool trackInHistory = true) where T : UiPanel
+    public static UiWindow Show<T>(bool trackInHistory = false) where T : UiWindow
     {
         for (int i = 0; i < instance.uiPanels.Length; i++)
         {
@@ -51,14 +51,15 @@ public class UiManager : MonoBehaviour
                     instance.currentUiPanel.Hide();
                 }
 
-                instance.uiPanels[i].Show();
                 instance.currentUiPanel = instance.uiPanels[i];
+                instance.uiPanels[i].Show();
+
                 return instance.uiPanels[i];
             }
         }
         return null;
     }
-    public static void Show(UiPanel uiPanel, bool trackInHistory = true)
+    public static void Show(UiWindow uiPanel, bool trackInHistory = false)
     {
         if (instance.currentUiPanel != null)
         {
@@ -68,9 +69,11 @@ public class UiManager : MonoBehaviour
             }
             instance.currentUiPanel.Hide();
         }
+        instance.currentUiPanel = uiPanel;
+
         uiPanel.Show();
 
-        instance.currentUiPanel = uiPanel;
+
     }
 
     public static void ShowLast()
@@ -78,6 +81,11 @@ public class UiManager : MonoBehaviour
         if (instance._history.Count != 0)
         {
             Show(instance._history.Pop(), false);
+        }
+        // HACK Added in by me for when we need to close the last window.
+        else
+        {
+            instance.currentUiPanel.Hide();
         }
     }
 }

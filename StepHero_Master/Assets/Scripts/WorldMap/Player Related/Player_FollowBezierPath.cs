@@ -47,7 +47,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     [SerializeField]
     AStarNode currentGoalNode;
 
-        public Location lastLocation;
+    public Location lastLocation;
 
     [SerializeField]
     private AStarEdge _currentAStarEdge; // SAVEDATA
@@ -256,7 +256,11 @@ public class Player_FollowBezierPath : MonoBehaviour
         {
             ChangeMovementState(MovementState.PAUSED_ON_NODE_FOR_EVENT);
 
-            MapUiManager.Instance.DisplayMapEnterWindow(currentGoalNode.Location);
+            MapInteraction_Window tempMIW = UiWindowManager.GetUiPanel<MapInteraction_Window>();
+            tempMIW.ShowLocationDetails(currentGoalNode.Location, true);
+
+            UiWindowManager.Show(tempMIW);
+            print("YOOP");
 
             lastLocation = currentGoalNode.Location;
 
