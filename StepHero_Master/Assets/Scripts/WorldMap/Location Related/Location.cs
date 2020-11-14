@@ -25,7 +25,9 @@ public class Location : MonoBehaviour
     {
         
         MapInteraction_Window tempMIW = UiWindowManager.GetUiPanel<MapInteraction_Window>();
-        tempMIW.ShowLocationDetails(this, false);
+
+        //print("Player is at current selected node : " + (Player_FollowBezierPath.instance.CurrentLocation == this));
+        tempMIW.PresetDisplay(this, Player_FollowBezierPath.instance.CurrentLocation == this);
 
         UiWindowManager.Show(tempMIW);
     }

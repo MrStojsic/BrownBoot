@@ -22,8 +22,6 @@ public class UiWindowManager : MonoBehaviour
 
     private void Awake() => instance = this;
 
-
-
     public static T GetUiPanel<T>() where T : UiWindow
     {
         for (int i = 0; i < instance.uiPanels.Length; i++)
@@ -85,7 +83,10 @@ public class UiWindowManager : MonoBehaviour
         // HACK Added in by me for when we need to close the last window.
         else
         {
-            instance.currentUiPanel.Hide();
+            if (instance.currentUiPanel != null)
+            {
+                instance.currentUiPanel.Hide();
+            }
         }
     }
 }

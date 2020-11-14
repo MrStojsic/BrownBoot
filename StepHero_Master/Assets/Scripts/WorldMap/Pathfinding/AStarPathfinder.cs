@@ -15,16 +15,6 @@ public class AStarPathfinder : MonoBehaviour
 
 	public float maxDistancePerGoal = 50f; // UNUSED.
 
-	public float totalPathDistance = 0; // UNUSED.
-
-	void Start()
-	{
-		//FindPath(start, goal);
-	}
-
-
-
-
 	public List<AStarEdge> FindPath(AStarNode startNode, AStarNode destinationNode)
 	{
 
@@ -167,7 +157,7 @@ public class AStarPathfinder : MonoBehaviour
 		}
 		endNode.ResetNode();
 		nodePath.Clear();
-		print("DONE!");
+
 
 	}
 	/*	void RetracePathToConstructWaypointPath(MyAStarNode startNode, MyAStarNode endNode)

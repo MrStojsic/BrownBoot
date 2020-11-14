@@ -1,11 +1,15 @@
-﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+﻿<Properties>
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WorldMap/UI/MapInteraction_Window.cs">
     <Files>
-      <File FileName="Assets/Scripts/WorldMap/Location.cs" Line="27" Column="56" />
-      <File FileName="Assets/Scripts/WorldMap/UI/UiWindow.cs" Line="5" Column="31" />
-      <File FileName="Assets/Scripts/WorldMap/UI/UiWindowManager.cs" Line="16" Column="35" />
-      <File FileName="Assets/Scripts/WorldMap/UI/MapInteraction_Window.cs" Line="7" Column="46" />
+      <File FileName="Assets/Scripts/WorldMap/Location.cs" Line="26" Column="9" />
+      <File FileName="Assets/Scripts/WorldMap/UI/UiWindow.cs" Line="8" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/UI/UiWindowManager.cs" Line="36" Column="1" />
+      <File FileName="Assets/Scripts/WorldMap/UI/MapInteraction_Window.cs" Line="91" Column="42" />
+      <File FileName="Assets/Scripts/WorldMap/Player Related/Player_FollowBezierPath.cs" Line="161" Column="22" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarEdge.cs" Line="28" Column="48" />
+      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" Line="27" Column="31" />
+      <File FileName="Assets/Scripts/WorldMap/Pathfinding/AStarPathfinder.cs" Line="160" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

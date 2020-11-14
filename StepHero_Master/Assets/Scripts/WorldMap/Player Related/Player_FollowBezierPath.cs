@@ -29,7 +29,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     [Header("Pathfinding")]
     public AStarPathfinder AStarPathfinder;
     public List<AStarEdge> edgesPath = new List<AStarEdge>();
-    int currentEdgeIndex = 0;
+    [SerializeField]int currentEdgeIndex = 0;
 
     // MOVEMENT.
     [Header("Movement")]
@@ -40,6 +40,7 @@ public class Player_FollowBezierPath : MonoBehaviour
     [Header("Distance")]
     public float currentDistanceTravelledOnEdge; // SAVEDATA
     public float totalDistanceTravelled = 0; // SAVEDATA
+    private float calculatedJourneyDistance = 0;
     public float availableDistance = 0; // SAVEDATA
 
     // NODES & PATHS.
@@ -47,25 +48,33 @@ public class Player_FollowBezierPath : MonoBehaviour
     [SerializeField]
     AStarNode currentGoalNode;
 
-    public Location lastLocation;
+    [SerializeField]
+    private AStarEdge currentAStarEdge; // SAVEDATA
 
-    [SerializeField]
-    private AStarEdge _currentAStarEdge; // SAVEDATA
-    public AStarEdge CurrentAStarEdge
-    {
-        get { return _currentAStarEdge; }
+    [SerializeField] bool isForward = false;
+    [SerializeField] private bool ignoreFirstLocation = true;
+
+    public Location CurrentLocation
+    {   get {
+                if (currentDistanceTravelledOnEdge == 0)
+                { return currentAStarEdge.tailNode.Location; }
+                if (currentDistanceTravelledOnEdge == 1)
+                { return currentAStarEdge.headNode.Location; }
+                return null;
+            }
     }
-    [SerializeField]
-    bool isForward = false;
+
+    public bool HasReachedGoal
+    {
+        // TODO - confirm this is correct.
+        get { return currentEdgeIndex + 1 >= edgesPath.Count; }
+    }
 
     // STATES.
     [Header("States")]
     [SerializeField]
-    private MovementState _currentMovementState;
-    public MovementState CurrentMovementState
-    {
-        get { return _currentMovementState; }
-    }
+    private MovementState currentMovementState;
+
     public enum MovementState
     {
         AWAITING_INSTRUCTION,
@@ -90,10 +99,10 @@ public class Player_FollowBezierPath : MonoBehaviour
     {
         // TODO > the following 1 line is only here until the players movement data can be saved.
         //currentDistanceTravelledOnEdge = _currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
-        currentDistanceTravelledOnEdge = _currentAStarEdge.pathCreator.path.length * percentageOfPathTraversed;// TEMP.
+        currentDistanceTravelledOnEdge = currentAStarEdge.pathCreator.path.length * percentageOfPathTraversed;// TEMP.
         isForward = true;
 
-        transform.position = _currentAStarEdge.pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
+        transform.position = currentAStarEdge.pathCreator.path.GetPointAtDistance(currentDistanceTravelledOnEdge, EndOfPathInstruction.Stop);
     }
 
     public float CalculatePath(AStarNode destionationNode)
@@ -101,7 +110,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
 
         // HACK - This wll probably be changed once LocationInfoDisplay is rewritten (it will check the state before calling CalculatePath). 
-        if (_currentMovementState == MovementState.PAUSED_ON_NODE_FOR_EVENT)
+        if (currentMovementState == MovementState.PAUSED_ON_NODE_FOR_EVENT)
         {
             return 0;
         }
@@ -111,10 +120,10 @@ public class Player_FollowBezierPath : MonoBehaviour
 
         AStarNode startNode = null;
 
-        if (destionationNode == _currentAStarEdge.headNode || destionationNode == _currentAStarEdge.tailNode)
+        if (destionationNode == currentAStarEdge.headNode || destionationNode == currentAStarEdge.tailNode)
         {
-            edgesPath.Insert(0, _currentAStarEdge);
-            startNode = _currentAStarEdge.ReturnOtherEndOfPath(destionationNode);
+            edgesPath.Insert(0, currentAStarEdge);
+            startNode = currentAStarEdge.ReturnOtherEndOfPath(destionationNode);
         }
         else
         {
@@ -124,35 +133,32 @@ public class Player_FollowBezierPath : MonoBehaviour
             // - Get the current edge, pick eith head of tail,
             //   if the current edge is index 0 of the returned list of paths we know we go the right starting node as we got a path to it and wont skip to it
             //   if the current edge is NOT index 0 of the returned list, we must have gotten the wrong end, in which case traverse the current path before staring to follow index 0.
-            startNode = _currentAStarEdge.headNode;
+            startNode = currentAStarEdge.headNode;
 
             edgesPath = AStarPathfinder.FindPath(startNode, destionationNode);
-            if (edgesPath[0] != _currentAStarEdge)
+            if (edgesPath[0] != currentAStarEdge)
             {
-                edgesPath.Insert(0, _currentAStarEdge);
-                startNode = _currentAStarEdge.tailNode;
+                edgesPath.Insert(0, currentAStarEdge);
+                startNode = currentAStarEdge.tailNode;
             }
 
         }
         currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(startNode);
 
-
-
         isForward = edgesPath[currentEdgeIndex].headNode == currentGoalNode;
 
-        float totalLength = 0;
-        totalLength += isForward ? edgesPath[currentEdgeIndex].LScore - currentDistanceTravelledOnEdge : currentDistanceTravelledOnEdge;
+        calculatedJourneyDistance += isForward ? edgesPath[currentEdgeIndex].LScore - currentDistanceTravelledOnEdge : currentDistanceTravelledOnEdge;
         for (int i = 1; i < edgesPath.Count; i++)
         {
-            totalLength += edgesPath[i].LScore;
+            calculatedJourneyDistance += edgesPath[i].LScore;
         }
-        print("Total Path Lenght = " + totalLength);
+        //print("Total Path Length = " + completedJourneyDistance);
 
         UpdateBreadcrumb();
 
 
 
-        return totalLength;
+        return calculatedJourneyDistance;
     }
 
     public void UpdateBreadcrumb()
@@ -162,8 +168,9 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     public void BeginJourney()
     {
-        //currentDistanceTravelledOnEdge = isForward ? currentDistanceTravelledOnEdge : edgesPath[0].LScore - currentDistanceTravelledOnEdge;
-        ChangeMovementState(MovementState.MOVING);
+    ignoreFirstLocation = currentDistanceTravelledOnEdge == 1 && isForward || currentDistanceTravelledOnEdge == 0 && !isForward;
+    
+     ChangeMovementState(MovementState.MOVING);
     }
 
 
@@ -174,7 +181,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (_currentMovementState == MovementState.MOVING && edgesPath != null)
+        if (currentMovementState == MovementState.MOVING && edgesPath != null)
         {
             step = speed * Time.deltaTime;
 
@@ -252,31 +259,28 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     void NextEgde()
     {
-        if (currentGoalNode.Location != null && currentGoalNode.Location != lastLocation)
+
+        if (currentGoalNode.Location != null && !ignoreFirstLocation)
         {
             ChangeMovementState(MovementState.PAUSED_ON_NODE_FOR_EVENT);
 
             MapInteraction_Window tempMIW = UiWindowManager.GetUiPanel<MapInteraction_Window>();
-            tempMIW.ShowLocationDetails(currentGoalNode.Location, true);
+            tempMIW.PresetDisplay(currentGoalNode.Location, true);
 
             UiWindowManager.Show(tempMIW);
-            print("YOOP");
-
-            lastLocation = currentGoalNode.Location;
-
-
 
             // DEBUG TESTING ONLY......
             currentGoalNode.Location.interactable?.Interact();
             // .......
         }
 
-        if (currentEdgeIndex + 1 < edgesPath.Count)
+        if (!HasReachedGoal)
         {
+            ignoreFirstLocation = false;
             currentEdgeIndex++;
 
 
-            _currentAStarEdge = edgesPath[currentEdgeIndex];
+            currentAStarEdge = edgesPath[currentEdgeIndex];
             //Player_EventManager.instance.InitialisePossibleEvent(edgesPath[currentEdgeIndex]);
 
             currentGoalNode = edgesPath[currentEdgeIndex].ReturnOtherEndOfPath(currentGoalNode);
@@ -287,17 +291,15 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
         else
         {
+            totalDistanceTravelled = calculatedJourneyDistance;
             WrapUpEndOfMovement(MovementState.REACHED_GOAL);
+
         }
     }
 
     private void WrapUpEndOfMovement(MovementState endingMovementState)
     {
-        if (edgesPath.Count > 0)
-        {
-            // This check must be performed before changing the movmentState.
-            ResetEdgesPathList();
-        }
+        ResetEdgesPathList();
         ChangeMovementState(endingMovementState);
     }
 
@@ -308,7 +310,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     public void ContinueJourney()
     {
-        if (_currentMovementState != MovementState.REACHED_GOAL && _currentMovementState != MovementState.OUT_OF_STEPS)
+        if (currentMovementState != MovementState.REACHED_GOAL && currentMovementState != MovementState.OUT_OF_STEPS)
         {
             ChangeMovementState(MovementState.MOVING);
         }
@@ -316,19 +318,23 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     private void ChangeMovementState(MovementState movementState)
     {
-        this._currentMovementState = movementState;
+        this.currentMovementState = movementState;
     }
 
 
     private void ResetEdgesPathList()
     {
+        availableDistance -= totalDistanceTravelled;
+
         breadCrumb_FollowBezier.CancelJourney();
         edgesPath.Clear();
         currentEdgeIndex = 0;
+        totalDistanceTravelled = 0;
+        calculatedJourneyDistance = 0;
     }
 
-    public void AddStepsToAvailableDistance(int steps)
+    public void AddStepsToAvailableSteps(int steps)
     {
-        availableDistance += (steps * .75f);
+        availableDistance += steps;
     }
 }

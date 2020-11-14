@@ -9,8 +9,12 @@ public class MapInteraction_Window : UiWindow
     [SerializeField] Text title = default;
     [SerializeField] private Text journeyDistance = null;
 
-    [SerializeField] private GameObject enterButton = null;
     [SerializeField] private GameObject setOffButton = null;
+    [SerializeField] private GameObject enterButton = null;
+    [SerializeField] private GameObject journeyOnButton = null;
+    [SerializeField] private GameObject closeButton = null;
+
+    [SerializeField] private GameObject largeCancelJourneyButton = null;
 
 
     [SerializeField] private BreadCrumb_FollowBezierPath breadCrumb_FollowBezierPath = null;
@@ -20,7 +24,7 @@ public class MapInteraction_Window : UiWindow
 
     }
 
-    public void ShowLocationDetails(Location location, bool canEnter)
+    public void PresetDisplay(Location location, bool isAtLocation)
     {
         title.text = location.name; // NOTE: this .name is the Objects name in the hierachy.
         AStarNode node = location.GetComponent<AStarNode>();
@@ -30,56 +34,80 @@ public class MapInteraction_Window : UiWindow
         if (tempName != null)
             tempName.TEST_PrintMerchantName();
 
-        // TODO- handle which elements to display on the Map Interation Window.
-        // For now we will use this crap.
-        ToggleButton(canEnter);
 
-        if (canEnter)
+
+        if (isAtLocation)
         {
+
             // Hide journeyDistance text.
             journeyDistance.text = "";
 
+            //TODO
+            //  - When arriving at destination hide distance, display details, hide set as goal button, offer enter, hide journey on.
+            if (Player_FollowBezierPath.instance.HasReachedGoal)
+            {
+                largeCancelJourneyButton.SetActive(false);
+                setOffButton.SetActive(false);
+                enterButton.SetActive(true);
+                journeyOnButton.SetActive(false);
+                closeButton.SetActive(true);
 
+            }
+            //TODO
+            //  - When passing though hide distance, display details, hide set as goal button, offer enter and journey on.
+            else
+            {
+                setOffButton.SetActive(false);
+                enterButton.SetActive(true);
+                journeyOnButton.SetActive(true);
+                closeButton.SetActive(false);
+            }
         }
+        //TODO
+        //  - Just show details, distance away and offer to set as goal, hide enter and journey on.
         else
         {
             // Calculate journeyDistance and display it.
             float distanceToLocation = Player_FollowBezierPath.instance.CalculatePath(node);
-            journeyDistance.text = distanceToLocation.ToString();
+    
+            
+                journeyDistance.text = distanceToLocation.ToString();
 
+                setOffButton.SetActive(true);
+                enterButton.SetActive(false);
+                journeyOnButton.SetActive(false);
+                closeButton.SetActive(true);
+            
         }
     }
 
     public void InitiatePlayerBeginJourney()
     {
-        UiWindowManager.ShowLast();
+        if (gameObject.activeSelf == true)
+        {
+            UiWindowManager.ShowLast();
+        }
+        largeCancelJourneyButton.SetActive(true);
         Player_FollowBezierPath.instance.BeginJourney();
-    }
-
-    public void ToggleButton(bool isEnter)
-    {
-        if (isEnter)
-        {
-            setOffButton.SetActive(false);
-            enterButton.SetActive(true);
-        }
-        else
-        {
-            enterButton.SetActive(false);
-            setOffButton.SetActive(true);
-        }
     }
 
     public void JourneyOn()
     {
-        UiWindowManager.ShowLast();
+        if (gameObject.activeSelf == true)
+        {
+            UiWindowManager.ShowLast();
+        }
         Player_FollowBezierPath.instance.ContinueJourney();
     }
 
 
     public void CancelJourney()
     {
-        UiWindowManager.ShowLast();
+        if (gameObject.activeSelf == true)
+        {
+            UiWindowManager.ShowLast();
+        }
+        largeCancelJourneyButton.SetActive(false);
         Player_FollowBezierPath.instance.CancelJourney();
     }
 
