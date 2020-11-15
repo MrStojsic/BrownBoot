@@ -9,7 +9,7 @@ public class RandomPathEvent : MonoBehaviour
     [SerializeField]List<InteractableEvent> possibleEvents = new List<InteractableEvent>();
 
 
-    public InteractableEvent Initialise()
+    public InteractableEvent RollEvent()
     {
         float eventChance = Random.Range(0, 100);
 

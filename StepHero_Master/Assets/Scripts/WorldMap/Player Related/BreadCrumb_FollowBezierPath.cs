@@ -54,6 +54,7 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
         trailRenderer.Clear();
         trailRenderer.time = startingTrailRendererTime;
 
+
         //currentAStarEdge = player_FollowBezierPath.CurrentAStarEdge;
         // TODO > the following 1 line is only here until the players movement data can be saved.
         // distanceTravelled = player_FollowBezierPath.currentDistanceTravelledOnEdge;   //currentAStarEdge.pathCreator.path.GetClosestDistanceAlongPath(transform.position); // TEMP.
@@ -175,7 +176,8 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     public void CancelJourney()
     {
-        ResetEdgesPathList();
+        playersEdgesPath = null;
+        currentEdgeIndex = 0;
         ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
         ResetCrumb();
     }
@@ -186,10 +188,4 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
         this.currentMovementState = movementState;
     }
 
-
-    private void ResetEdgesPathList()
-    {
-        playersEdgesPath = null;
-        currentEdgeIndex = 0;
-    }
 }

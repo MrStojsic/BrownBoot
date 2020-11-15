@@ -12,5 +12,10 @@ namespace Npcs.Occupation
         {
             get { return _businessTitle; }
         }
+        [SerializeField] private Sprite _icon;
+        public Sprite Icon
+        {
+            get { return _icon; }
+        }
     }
 }

@@ -40,7 +40,7 @@ public class InventoryInteractionManager : MonoBehaviour
     [SerializeField]
     private InventoryType inventoryType;
 
-
+    // DEBUG
     public InventoryItem appleToAdd;
 
     // HACK

@@ -64,7 +64,7 @@ public class Player_FollowBezierPath : MonoBehaviour
             }
     }
 
-    public bool HasReachedGoal
+    public bool JourneyEndedAtLocation
     {
         // TODO - confirm this is correct.
         get { return currentEdgeIndex + 1 >= edgesPath.Count; }
@@ -274,7 +274,7 @@ public class Player_FollowBezierPath : MonoBehaviour
             // .......
         }
 
-        if (!HasReachedGoal)
+        if (!JourneyEndedAtLocation)
         {
             ignoreFirstLocation = false;
             currentEdgeIndex++;

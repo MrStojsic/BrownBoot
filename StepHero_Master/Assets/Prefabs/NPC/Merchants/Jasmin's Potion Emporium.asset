@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011f8665e19cb412ca782aa390c909f6, type: 3}
-  m_Name: Penny Field
+  m_Script: {fileID: 11500000, guid: 446518228890b467487a5738fd55fb4d, type: 3}
+  m_Name: Jasmin's Potion Emporium
   m_EditorClassIdentifier: 
-  _merchants:
-  - {fileID: 11400000, guid: bd6fcdc510401466c8e9078d3ef0614c, type: 2}
+  title: Jasmin Ukuri
+  greetingText: Hello Adventurer!
+  _businessTitle: Jasmin's Potion Emporium
+  _icon: {fileID: 21300000, guid: f0cda215a7076456b885b5b9db23064b, type: 3}

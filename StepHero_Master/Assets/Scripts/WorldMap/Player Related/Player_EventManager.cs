@@ -31,13 +31,13 @@ public class Player_EventManager : MonoBehaviour
     {
         if (aStarEdge.randomPathEvent)
         {
-            chosenEvent = aStarEdge.randomPathEvent.Initialise();
+            chosenEvent = aStarEdge.randomPathEvent.RollEvent();
         }
     }
 
     public bool Evaluate(float distanceTraversed)
     {
-        if (chosenEvent != null && distanceTraversed >= chosenEvent.TriggerDistanceAlongPath)
+        if (distanceTraversed >= chosenEvent.TriggerDistanceAlongPath)
         {
             TriggerEvent();
             return true;

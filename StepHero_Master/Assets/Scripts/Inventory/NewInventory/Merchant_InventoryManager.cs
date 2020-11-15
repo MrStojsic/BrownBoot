@@ -12,6 +12,9 @@ public class Merchant_InventoryManager : MonoBehaviour
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
 
     public int gold;
+    [SerializeField]
+    public List<List<MerchantInventoryItem>> possibleItems = new List<List<MerchantInventoryItem>>();
+
 
     [SerializeField] private List<MerchantInventoryItem> commonPossibleStockItems = default;
     [SerializeField] private int minCommonItemsExpected = default;

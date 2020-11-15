@@ -19,6 +19,9 @@ public class MapInteraction_Window : UiWindow
 
     [SerializeField] private BreadCrumb_FollowBezierPath breadCrumb_FollowBezierPath = null;
 
+    [SerializeField] private MapInteraction_LocationPoiPopulator locationPoiPopulator;
+
+
     public override void Initialise()
     {
 
@@ -27,24 +30,19 @@ public class MapInteraction_Window : UiWindow
     public void PresetDisplay(Location location, bool isAtLocation)
     {
         title.text = location.name; // NOTE: this .name is the Objects name in the hierachy.
-        AStarNode node = location.GetComponent<AStarNode>();
 
-        // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
-        LocationPoi tempName = (LocationPoi)Resources.Load("LocationData/" + location.name);
-        if (tempName != null)
-            tempName.TEST_PrintMerchantName();
 
+        locationPoiPopulator.PopulateLocationPoiList(location.name);
 
 
         if (isAtLocation)
         {
-
             // Hide journeyDistance text.
             journeyDistance.text = "";
 
             //TODO
             //  - When arriving at destination hide distance, display details, hide set as goal button, offer enter, hide journey on.
-            if (Player_FollowBezierPath.instance.HasReachedGoal)
+            if (Player_FollowBezierPath.instance.JourneyEndedAtLocation)
             {
                 largeCancelJourneyButton.SetActive(false);
                 setOffButton.SetActive(false);
@@ -68,7 +66,7 @@ public class MapInteraction_Window : UiWindow
         else
         {
             // Calculate journeyDistance and display it.
-            float distanceToLocation = Player_FollowBezierPath.instance.CalculatePath(node);
+            float distanceToLocation = Player_FollowBezierPath.instance.CalculatePath(location.GetComponent<AStarNode>());
     
             
                 journeyDistance.text = distanceToLocation.ToString();
@@ -110,6 +108,4 @@ public class MapInteraction_Window : UiWindow
         largeCancelJourneyButton.SetActive(false);
         Player_FollowBezierPath.instance.CancelJourney();
     }
-
-
 }
