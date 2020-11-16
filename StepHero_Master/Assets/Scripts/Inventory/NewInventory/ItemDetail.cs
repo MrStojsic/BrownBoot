@@ -72,6 +72,7 @@ public class ItemDetail : InventorySlot
     {
         get { return _descriptionText; }
     }
+    [SerializeField] private LayoutElement _descriptionAreaLayoutElement = null;
 
     [SerializeField] private RectTransform _rectTransform = null;
 
@@ -144,7 +145,8 @@ public class ItemDetail : InventorySlot
             _descriptionText.text = _inventoryItem.Item.GetLongDescription();
         }
         Canvas.ForceUpdateCanvases();
-        _rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
+        _descriptionAreaLayoutElement.minHeight = (_descriptionText.preferredHeight + _descriptionText.fontSize);
+        //_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }
 
     public void ToggleDescriptionVisibility(bool toggleEnable)

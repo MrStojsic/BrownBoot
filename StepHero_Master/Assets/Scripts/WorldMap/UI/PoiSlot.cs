@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,5 +13,10 @@ public class PoiSlot : MonoBehaviour
     {
         text.text = name;
         image.sprite = icon;
+    }
+
+    internal void SetPoiInfo(object name, Sprite icon)
+    {
+        throw new NotImplementedException();
     }
 }

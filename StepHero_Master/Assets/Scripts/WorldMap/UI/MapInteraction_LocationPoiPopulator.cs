@@ -11,54 +11,64 @@ public class MapInteraction_LocationPoiPopulator : MonoBehaviour
 
     [SerializeField] private Transform _pooledPoiSlotHolder = default;
 
-    LocationPoi locationPoi = null;
+    [SerializeField] LocationPoi locationPoi = null;
 
     // Start is called before the first frame update
     public void PopulateLocationPoiList(string locationName)
     {
-        // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
-        locationPoi = (LocationPoi)Resources.Load("LocationData/" + locationName);
+        if (locationPoi?.name != locationName)
+        {
+            // NOTE This just shows how to load an asset at runtime, this can be used to load a towns shops at runtime.
+            locationPoi = (LocationPoi)Resources.Load("LocationData/" + locationName);
+
+        }
         if (locationPoi != null)
         {
-            InitialisePoiSlots();
+            poiDisplaySelectorGroup.SelectSelectorViaIndex(0);
         }
         // HACK.
         // For now we just loop through _poiSlots and move all the poiSlots to hide them,
         // as not all locations have a LocationPoi in resources yet and hiding them makes it easier to troubleshoot.
         else
         {
-            for (int i = 0; i < _poiSlots.Count; i++)
-            {
-                _poiSlots[i].transform.SetParent(_pooledPoiSlotHolder);
-            }
+            ClearOutDisplay();
         }
         // TOHERE
     }
 
-    public void InitialisePoiSlots()
+    public void InitialisePoiSlots_Quests()
     {
-        int slotIndex = 0;
+        ClearOutDisplay();
+    }
 
-        for (; slotIndex < locationPoi.Merchants.Count; slotIndex++)
+
+    public void InitialisePoiSlots_Merchants()
+    {
+        if (locationPoi != null)
         {
-            if (_poiSlots.Count > slotIndex)
-            {
-                _poiSlots[slotIndex].SetPoiInfo(locationPoi.Merchants[slotIndex].name, locationPoi.Merchants[slotIndex].Icon);
-                _poiSlots[slotIndex].transform.SetParent(this.transform);
-            }
-            else
-            {
-                AddMenuItem(slotIndex);
-            }
-        }
+            int slotIndex = 0;
 
-        if (locationPoi.Merchants.Count < _poiSlots.Count)
-        {
-            for (; slotIndex < _poiSlots.Count; slotIndex++)
+            for (; slotIndex < locationPoi.Merchants.Count; slotIndex++)
             {
-                _poiSlots[slotIndex].transform.SetParent(_pooledPoiSlotHolder);
+                if (_poiSlots.Count > slotIndex)
+                {
+                    _poiSlots[slotIndex].SetPoiInfo(locationPoi.Merchants[slotIndex].name, locationPoi.Merchants[slotIndex].Icon);
+                    _poiSlots[slotIndex].transform.SetParent(this.transform);
+                }
+                else
+                {
+                    AddMenuItem(slotIndex);
+                }
+            }
 
-                // TODO, thers an issues when we change types, the selector group calls the last buttons deslect reenabling the buttons we disabled  here. 
+            if (locationPoi.Merchants.Count < _poiSlots.Count)
+            {
+                for (; slotIndex < _poiSlots.Count; slotIndex++)
+                {
+                    _poiSlots[slotIndex].transform.SetParent(_pooledPoiSlotHolder);
+
+                    // TODO, thers an issues when we change types, the selector group calls the last buttons deslect reenabling the buttons we disabled  here. 
+                }
             }
         }
     }
@@ -70,6 +80,14 @@ public class MapInteraction_LocationPoiPopulator : MonoBehaviour
         newMenuItem.SetPoiInfo(locationPoi.Merchants[slotIndex].name, locationPoi.Merchants[slotIndex].Icon);
         newMenuItem.transform.name += _poiSlots.Count.ToString();
         _poiSlots.Add(newMenuItem);
+    }
+
+    private void ClearOutDisplay()
+    {
+        for (int i = 0; i < _poiSlots.Count; i++)
+        {
+            _poiSlots[i].transform.SetParent(_pooledPoiSlotHolder);
+        }
     }
 
 }

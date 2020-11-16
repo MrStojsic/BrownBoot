@@ -13,7 +13,6 @@ public class LocationPoi : ScriptableObject
         get { return _townMap; }
     }
 
-    //[SerializeField] private Npc npc;
     [SerializeField] private List<Merchant> _merchants;
     public List<Merchant> Merchants
     {
