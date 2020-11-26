@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Npcs.Occupation;
 using UnityEngine;
 
 namespace Npcs
@@ -8,7 +9,7 @@ namespace Npcs
     public class Npc : ScriptableObject, IInteractable
     {
         [SerializeField] private string title = "New NPC Name";
-        [SerializeField] private string greetingText = "Hello Adventurer!";
+        [SerializeField] private string greetingText = "Hello Adventurer";
 
 
         public void Interact()
@@ -21,4 +22,5 @@ namespace Npcs
          
         }
     }
+
 }

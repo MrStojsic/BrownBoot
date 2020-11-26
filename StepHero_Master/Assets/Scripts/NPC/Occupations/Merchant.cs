@@ -4,14 +4,16 @@ using UnityEngine;
 
 namespace Npcs.Occupation
 {
-    [CreateAssetMenu(fileName = "Merchant", menuName = "Npc/Merchant", order = 1)]
-    public class Merchant : Npc, IOccupation
+    [System.Serializable]
+
+    public class Merchant: Npc, IOccupation
     {
         [SerializeField] private string _businessTitle;
         public string BusinessTitle
         {
             get { return _businessTitle; }
         }
+
         [SerializeField] private Sprite _icon;
         public Sprite Icon
         {

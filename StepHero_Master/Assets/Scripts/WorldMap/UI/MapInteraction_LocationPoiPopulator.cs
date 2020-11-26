@@ -52,7 +52,7 @@ public class MapInteraction_LocationPoiPopulator : MonoBehaviour
             {
                 if (_poiSlots.Count > slotIndex)
                 {
-                    _poiSlots[slotIndex].SetPoiInfo(locationPoi.Merchants[slotIndex].name, locationPoi.Merchants[slotIndex].Icon);
+                    _poiSlots[slotIndex].SetPoiInfo(locationPoi.Merchants[slotIndex].BusinessTitle, locationPoi.Merchants[slotIndex].Icon);
                     _poiSlots[slotIndex].transform.SetParent(this.transform);
                 }
                 else
@@ -77,7 +77,7 @@ public class MapInteraction_LocationPoiPopulator : MonoBehaviour
     {
         PoiSlot newMenuItem;
         newMenuItem = Instantiate(poiSlotPrefab, this.transform);
-        newMenuItem.SetPoiInfo(locationPoi.Merchants[slotIndex].name, locationPoi.Merchants[slotIndex].Icon);
+        newMenuItem.SetPoiInfo(locationPoi.Merchants[slotIndex].BusinessTitle, locationPoi.Merchants[slotIndex].Icon);
         newMenuItem.transform.name += _poiSlots.Count.ToString();
         _poiSlots.Add(newMenuItem);
     }

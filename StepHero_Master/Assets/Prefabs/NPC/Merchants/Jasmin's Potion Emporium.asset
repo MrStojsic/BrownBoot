@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446518228890b467487a5738fd55fb4d, type: 3}
   m_Name: Jasmin's Potion Emporium
   m_EditorClassIdentifier: 
-  title: Jasmin Ukuri
-  greetingText: Hello Adventurer!
+  title: Jasmin Elkera
+  greetingText: How may I serve you
   _businessTitle: Jasmin's Potion Emporium
   _icon: {fileID: 21300000, guid: f0cda215a7076456b885b5b9db23064b, type: 3}

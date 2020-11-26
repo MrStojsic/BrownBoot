@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446518228890b467487a5738fd55fb4d, type: 3}
   m_Name: Black Stone Tavern
   m_EditorClassIdentifier: 
-  title: Gerald Baovir
-  greetingText: What'll it be?
+  title: Tylerion Cramhammer
+  greetingText: Greetings traveller
   _businessTitle: Black Stone Tavern
   _icon: {fileID: 21300000, guid: c9989dab7a21d4248ab0c9d4d1b81508, type: 3}

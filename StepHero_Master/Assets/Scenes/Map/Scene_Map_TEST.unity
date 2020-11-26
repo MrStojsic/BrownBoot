@@ -12426,7 +12426,7 @@ GameObject:
   - component: {fileID: 918206340}
   - component: {fileID: 918206339}
   m_Layer: 5
-  m_Name: Canvas_Inventory_OLD
+  m_Name: Canvas_Inventory (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24631,7 +24631,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -3071.5857}
+  m_SizeDelta: {x: 0, y: -956.5857}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1807195920
 MonoBehaviour:
@@ -25247,7 +25247,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 1927.3336, y: 0}
+  m_SizeDelta: {x: 1927.3336, y: 2115}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1834075865
 MonoBehaviour:
@@ -27609,7 +27609,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 744523308}
   m_HandleRect: {fileID: 744523307}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -29813,7 +29813,7 @@ PrefabInstance:
     - target: {fileID: 6885053336838657631, guid: a68b9813fdc094e068c77b10acf65a9e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6885053336944389994, guid: a68b9813fdc094e068c77b10acf65a9e,
         type: 3}

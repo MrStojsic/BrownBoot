@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 446518228890b467487a5738fd55fb4d, type: 3}
   m_Name: Honey Mead Inn
   m_EditorClassIdentifier: 
-  title: Artimus Blumm
-  greetingText: Greetings Adventurer!
+  title: June Leostar
+  greetingText: What'll it be?
   _businessTitle: Honey Mead Inn
   _icon: {fileID: 21300000, guid: c7f8d2fb73b534f739de32b506606eae, type: 3}

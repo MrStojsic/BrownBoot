@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Tyrial Harson
   m_EditorClassIdentifier: Assembly-CSharp:Npcs:Npc
-  title: Tyrial Harson
-  greetingText: What do you want traveller?
+  title: New NPC Name
+  greetingText: Hello Adventurer
+  occupations:
+  - {fileID: 0}
+  inventoryItem:
+    _item: {fileID: 0}
+    _numberOfItem: 0
+    _inventorySlot: {fileID: 0}
