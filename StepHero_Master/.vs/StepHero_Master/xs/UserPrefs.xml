@@ -1,48 +1,36 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPC/NPC.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI Components/ScaleOnScroll.cs">
     <Files>
-      <File FileName="Assets/Scripts/NPC/NPC.cs" Line="7" Column="2" />
+      <File FileName="Assets/Scripts/NPC/NPC.cs" Line="19" Column="47" />
       <File FileName="Assets/Scripts/NPC/IInteractable.cs" Line="5" Column="17" />
-      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="20" Column="31" />
-      <File FileName="Assets/Scripts/NPC/Occupations/IOccupation.cs" Line="17" Column="10" />
-      <File FileName="Assets/Scripts/WorldMap/Location Related/LocationPoi.cs" Line="16" Column="44" />
-      <File FileName="Assets/Scripts/WorldMap/UI/MapInteraction_LocationPoiPopulator.cs" Line="80" Column="78" />
+      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="34" Column="7" />
+      <File FileName="Assets/Scripts/NPC/Occupations/IOccupation.cs" />
+      <File FileName="Assets/Scripts/WorldMap/Location Related/LocationPoi.cs" />
+      <File FileName="Assets/Scripts/WorldMap/UI/MapInteraction_LocationPoiPopulator.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="29" Column="6" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" Line="9" Column="6" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="8" Column="14" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="73" Column="33" />
+      <File FileName="Assets/Scripts/Inventory/RarityColours.cs" Line="8" Column="13" />
+      <File FileName="Assets/Scripts/NPC/TownMap/TownMapPoiManager.cs" Line="25" Column="49" />
+      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ScrollRect.cs" Line="648" Column="12" />
+      <File FileName="Assets/Scripts/UI Components/ScaleOnScroll.cs" Line="30" Column="21" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="2" Column="1" />
+      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Scrollbar.cs" Line="19" Column="27" />
+      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StepHero_Master" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Editor" expanded="True" />
-              <Node name="Prefabs" expanded="True">
-                <Node name="NPC" expanded="True">
-                  <Node name="TESTING" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="Scripts" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="NewInventory" expanded="True" />
-                </Node>
-                <Node name="NPC" expanded="True">
-                  <Node name="Occupations" expanded="True" />
-                  <Node name="NPC.cs" selected="True" />
-                </Node>
-                <Node name="Questing" expanded="True" />
-                <Node name="WorldMap" expanded="True">
-                  <Node name="Location Related" expanded="True" />
-                  <Node name="UI" expanded="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="StepHero_Master" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="7a8853c4-0f7e-4a37-8f73-f19d651ab40e" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1408bc23-d841-44d6-a0f7-559e360a6d17" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

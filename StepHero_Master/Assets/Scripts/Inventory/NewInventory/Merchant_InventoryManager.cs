@@ -12,16 +12,13 @@ public class Merchant_InventoryManager : MonoBehaviour
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
 
     public int gold;
-    [SerializeField]
-    public List<List<MerchantInventoryItem>> possibleItems = new List<List<MerchantInventoryItem>>();
-
 
     [SerializeField] private List<MerchantInventoryItem> commonPossibleStockItems = default;
     [SerializeField] private int minCommonItemsExpected = default;
     [SerializeField] private List<MerchantInventoryItem> uncommonPossibleStockItems = default;
     [SerializeField] private int minUncommonItemsExpected = default;
     [SerializeField] private List<MerchantInventoryItem> rarePossibleStockItems = default;
-    private int minRareItemsExpected = 0;
+    [SerializeField] private int minRareItemsExpected = 0;
 
 
     /// <summary>

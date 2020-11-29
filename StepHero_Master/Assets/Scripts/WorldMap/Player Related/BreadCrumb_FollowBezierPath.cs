@@ -80,6 +80,8 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
         ChangeMovementState(MovementState.MOVING);
         ResetCrumb();
 
+        trailRenderer.enabled = true;
+
 
     }
 
@@ -176,10 +178,15 @@ public class BreadCrumb_FollowBezierPath : MonoBehaviour
 
     public void CancelJourney()
     {
-        playersEdgesPath = null;
-        currentEdgeIndex = 0;
-        ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
-        ResetCrumb();
+        if (currentMovementState != MovementState.AWAITING_INSTRUCTION)
+        {
+            playersEdgesPath = null;
+            currentEdgeIndex = 0;
+            ChangeMovementState(MovementState.AWAITING_INSTRUCTION);
+
+            trailRenderer.enabled = false;
+            ResetCrumb();
+        }
     }
 
 

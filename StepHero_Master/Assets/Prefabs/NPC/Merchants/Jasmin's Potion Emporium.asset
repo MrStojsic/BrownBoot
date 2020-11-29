@@ -14,5 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Jasmin Elkera
   greetingText: How may I serve you
+  questToUnlockFurtherInteractions: {fileID: 0}
+  _positionPercentage: {x: 0.1, y: 0.1}
   _businessTitle: Jasmin's Potion Emporium
   _icon: {fileID: 21300000, guid: f0cda215a7076456b885b5b9db23064b, type: 3}
+  commonPossibleStockItems: []
+  minCommonItemsExpected: 0
+  uncommonPossibleStockItems: []
+  minUncommonItemsExpected: 0
+  rarePossibleStockItems: []
+  minRareItemsExpected: 0

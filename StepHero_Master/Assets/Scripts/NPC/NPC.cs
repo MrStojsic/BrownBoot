@@ -8,16 +8,23 @@ namespace Npcs
     [CreateAssetMenu(fileName = "Citizen", menuName = "Npc/Citizen", order = 1)]
     public class Npc : ScriptableObject, IInteractable
     {
-        [SerializeField] private string title = "New NPC Name";
-        [SerializeField] private string greetingText = "Hello Adventurer";
+        [SerializeField] protected string title = "New NPC Name";
+        [SerializeField] protected string greetingText = "Hello Adventurer";
 
+        [SerializeField] private Quest questToUnlockFurtherInteractions = null;
 
-        public void Interact()
+        [SerializeField] private Vector2 _positionPercentage;
+        public Vector2 PositionPercentage
+        {
+            get{ return _positionPercentage; }
+        }
+
+        public virtual void Interact()
         {
             Debug.Log($"{greetingText}, my name is {title}, nice to meet you.");
         }
 
-        public void StopIneract()
+        public virtual void StopIneract()
         {
          
         }
