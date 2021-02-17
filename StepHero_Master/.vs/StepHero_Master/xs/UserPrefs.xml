@@ -1,24 +1,25 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI Components/ScaleOnScroll.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TEST_MOVINGMAP.cs">
     <Files>
       <File FileName="Assets/Scripts/NPC/NPC.cs" Line="19" Column="47" />
-      <File FileName="Assets/Scripts/NPC/IInteractable.cs" Line="5" Column="17" />
-      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="34" Column="7" />
+      <File FileName="Assets/Scripts/NPC/IInteractable.cs" />
+      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" />
       <File FileName="Assets/Scripts/NPC/Occupations/IOccupation.cs" />
       <File FileName="Assets/Scripts/WorldMap/Location Related/LocationPoi.cs" />
       <File FileName="Assets/Scripts/WorldMap/UI/MapInteraction_LocationPoiPopulator.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="29" Column="6" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" Line="9" Column="6" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="8" Column="14" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="73" Column="33" />
-      <File FileName="Assets/Scripts/Inventory/RarityColours.cs" Line="8" Column="13" />
-      <File FileName="Assets/Scripts/NPC/TownMap/TownMapPoiManager.cs" Line="25" Column="49" />
-      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ScrollRect.cs" Line="648" Column="12" />
-      <File FileName="Assets/Scripts/UI Components/ScaleOnScroll.cs" Line="30" Column="21" />
-      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" Line="2" Column="1" />
-      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Scrollbar.cs" Line="19" Column="27" />
-      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
+      <File FileName="Assets/Scripts/Inventory/RarityColours.cs" />
+      <File FileName="Assets/Scripts/NPC/TownMap/TownMapPoiManager.cs" />
+      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/ScrollRect.cs" />
+      <File FileName="Assets/Scripts/UI Components/ScaleOnScroll.cs" />
+      <File FileName="Assets/Scripts/WorldMap/CameraControls/ZoomPanCamera.cs" />
+      <File FileName="../../../../../../Applications/Unity/Hub/Editor/2020.1.4f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Scrollbar.cs" />
+      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" />
+      <File FileName="Assets/TEST_MOVINGMAP.cs" Line="32" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -30,7 +31,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="1408bc23-d841-44d6-a0f7-559e360a6d17" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3a1f75af-7fc2-465d-bb70-d82c946f3fe7" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

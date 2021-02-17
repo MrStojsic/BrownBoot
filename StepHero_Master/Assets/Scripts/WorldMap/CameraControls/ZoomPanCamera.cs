@@ -19,7 +19,7 @@ public class ZoomPanCamera : MonoBehaviour
     private void Start()
     {
         cam = Camera.main;
-        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(cam.orthographicSize * cam.aspect, cam.orthographicSize, 0);
+        CalculatePanLimit();
     }
 
     void Update()
@@ -62,10 +62,15 @@ public class ZoomPanCamera : MonoBehaviour
         this.transform.position = newPosition;
     }
 
+    void CalculatePanLimit()
+    {
+        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(cam.orthographicSize * cam.aspect, cam.orthographicSize, 0);
+    }
+
     void Zoom(float increment)
     {
         cam.orthographicSize = Mathf.Clamp(cam.orthographicSize - increment, minZoomLimit, maxZoomLimit);
-        panLimit = (mapSpriteRenderer.bounds.extents) - new Vector3(cam.orthographicSize * cam.aspect, cam.orthographicSize, 0);
+        CalculatePanLimit();
 
         ClampCamPosWithinMapBounds(this.transform.position);
     }
