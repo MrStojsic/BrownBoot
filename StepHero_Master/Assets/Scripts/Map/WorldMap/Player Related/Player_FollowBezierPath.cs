@@ -57,9 +57,10 @@ public class Player_FollowBezierPath : MonoBehaviour
     public Location CurrentLocation
     {   get {
                 if (currentDistanceTravelledOnEdge == 0)
-                { return currentAStarEdge.tailNode.Location; }
-                if (currentDistanceTravelledOnEdge == 1)
+                { return currentAStarEdge.tailNode.Location;}
+                if (currentDistanceTravelledOnEdge == currentAStarEdge.pathCreator.path.length)
                 { return currentAStarEdge.headNode.Location; }
+            
                 return null;
             }
     }
@@ -168,7 +169,7 @@ public class Player_FollowBezierPath : MonoBehaviour
 
     public void BeginJourney()
     {
-    ignoreFirstLocation = currentDistanceTravelledOnEdge == 1 && isForward || currentDistanceTravelledOnEdge == 0 && !isForward;
+    ignoreFirstLocation = currentDistanceTravelledOnEdge == currentAStarEdge.pathCreator.path.length && isForward || currentDistanceTravelledOnEdge == 0 && !isForward;
     
      ChangeMovementState(MovementState.MOVING);
     }
