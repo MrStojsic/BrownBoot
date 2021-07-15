@@ -182,8 +182,14 @@ namespace PathCreation {
         /// Gets point on path based on distance travelled and direction of travel.
         public Vector3 GetPointAtDistanceByDirection(float dst, bool isForward, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
         {
-            float t = isForward ? dst / length : 1-dst / length;
+            float t = GetPercentageOfDistanceByDirection(dst,isForward);
             return GetPointAtTime(t, endOfPathInstruction);
+        }
+
+        /// Gets point on path based on distance travelled and direction of travel.
+        public float GetPercentageOfDistanceByDirection(float dst, bool isForward, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop)
+        {
+            return isForward ? dst / length : 1 - dst / length;
         }
 
         /// Gets forward direction on path based on distance travelled.
@@ -256,7 +262,7 @@ namespace PathCreation {
 
         /// For a given value 't' between 0 and 1, calculate the indices of the two vertices before and after t. 
         /// Also calculate how far t is between those two vertices as a percentage between 0 and 1.
-        TimeOnPathData CalculatePercentOnPathData (float t, EndOfPathInstruction endOfPathInstruction) {
+        TimeOnPathData CalculatePercentOnPathData (float t, EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Loop) {
             // Constrain t based on the end of path instruction
             switch (endOfPathInstruction) {
                 case EndOfPathInstruction.Loop:

@@ -6,7 +6,7 @@ using PathCreation;
 public class AStarEdge : MonoBehaviour
 {
     public PathCreator pathCreator;
-    public RandomPathEvent randomPathEvent;
+    public WorldMapPathEvent worldMapPathEvent;
 
     public AStarNode headNode = null;
     public AStarNode tailNode = null;

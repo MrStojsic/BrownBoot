@@ -14,6 +14,22 @@ public class AStarNode : MonoBehaviour
     public Location Location
     {
         get { return _location; }
+        set
+        {
+            _location = value;
+            print("Added Location to " + this.name);
+        }
+    }
+
+    [SerializeField] private WorldMapNodeEvent _worldMapNodeEvent = default;
+    public WorldMapNodeEvent WorldMapNodeEvent
+    {
+        get { return _worldMapNodeEvent; }
+        set
+        {
+                _worldMapNodeEvent = value;
+                print("Added WorldMapNodeEvent to " + this.name);
+            }
     }
 
     public float gScore;

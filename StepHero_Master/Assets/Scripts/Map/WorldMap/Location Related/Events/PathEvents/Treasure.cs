@@ -6,6 +6,7 @@ using UnityEngine;
 public class Treasure : IInteractable
 {
     [SerializeField] bool isInteracting = false;
+    [SerializeField] Item item;
     public void Interact()
     {
         if (isInteracting)

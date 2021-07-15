@@ -6,18 +6,17 @@ using UnityEngine;
 [RequireComponent (typeof(SpriteRenderer),typeof(SpriteButton))]
 public class Location : MonoBehaviour
 {
-    [SerializeField] private MapUiManager mapUiManager;
-
-    public Treasure treasure;
-
-    public IInteractable interactable;
+    private MapUiManager mapUiManager;
 
     // Start is called before the first frame update
     void Start()
     {
 
+    }
 
-        interactable = treasure;
+    private void OnValidate()
+    {
+        GetComponent<AStarNode>().Location = this;
     }
 
     // Update is called once per frame

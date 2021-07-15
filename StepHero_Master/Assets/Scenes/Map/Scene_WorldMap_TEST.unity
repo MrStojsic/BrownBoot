@@ -259,7 +259,6 @@ GameObject:
   - component: {fileID: 32272897}
   - component: {fileID: 32272896}
   - component: {fileID: 32272895}
-  - component: {fileID: 32272898}
   m_Layer: 0
   m_Name: Path - Boothby Farm > Node3
   m_TagString: Untagged
@@ -280,7 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 32272896}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 863705324}
   tailNode: {fileID: 1422615270}
   isTraversable: 1
@@ -352,20 +352,6 @@ Transform:
   m_Father: {fileID: 1999230116}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &32272898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 32272894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056b5f7b0c3e64d77a84eb3442b8b726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  possibleEvents:
-  - percentageChanceOfEvent: 0
 --- !u!1 &48418654
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,38 +670,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64089236}
   m_CullTransparentMesh: 0
---- !u!1 &83830480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 83830481}
-  m_Layer: 0
-  m_Name: HomeMadeAStar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &83830481
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83830480}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 189435611}
-  - {fileID: 1992548120}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &96166190
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +704,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -1002,7 +957,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 145082372}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1757081067}
   tailNode: {fileID: 707515617}
   isTraversable: 1
@@ -1438,137 +1394,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 183092070}
   m_CullTransparentMesh: 0
---- !u!1 &189435610
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 189435611}
-  - component: {fileID: 189435615}
-  - component: {fileID: 189435614}
-  - component: {fileID: 189435613}
-  - component: {fileID: 189435612}
-  - component: {fileID: 189435617}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &189435611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 83830481}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &189435612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9933fa809f4b40e9bd0a309e7b2a2d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  start: {fileID: 0}
-  goal: {fileID: 0}
---- !u!64 &189435613
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &189435614
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 0902f35964c264e82bea5a2c5b4f24d1, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &189435615
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &189435617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189435610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bccfd374fa8a454ca4ffd08cf1d3839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  possiblePoint: {x: 0, y: 0}
-  percent: 1
-  waypoints: []
-  waypointRoot: {fileID: 1992548119}
-  goalWaypoint: {fileID: 0}
-  distanceRequired: 0
-  distancTraversable: 8.5
 --- !u!1 &198083605
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,7 +2232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 306540238}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 515977419}
   tailNode: {fileID: 1698686120}
   isTraversable: 1
@@ -2614,7 +2440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 337819889}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 931023490}
   tailNode: {fileID: 357538101}
   isTraversable: 1
@@ -2879,7 +2706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357538100
 GameObject:
@@ -2915,6 +2742,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -3165,7 +2993,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 421604550}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 96166191}
   tailNode: {fileID: 422868098}
   isTraversable: 1
@@ -3358,7 +3187,7 @@ RectTransform:
   m_Children:
   - {fileID: 653600962}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3403,6 +3232,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 422868099}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -3421,9 +3251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &422868100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3929,6 +3756,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -4149,7 +3977,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &526910203
 MonoBehaviour:
@@ -4180,8 +4008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaea41f456384ddfb02a0b400504c9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chosenEvent:
-    percentageChanceOfEvent: 0
 --- !u!114 &526910205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4339,7 +4165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 560750172}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 855279759}
   tailNode: {fileID: 2089116865}
   isTraversable: 1
@@ -4428,7 +4255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 570871662}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 357538101}
   tailNode: {fileID: 707515617}
   isTraversable: 1
@@ -4522,7 +4350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &571577511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4597,7 +4425,7 @@ RectTransform:
   - {fileID: 2098312919}
   - {fileID: 1234993565}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4989,52 +4817,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1cdcc03bcc954fffb65570ffe4c156e, type: 3}
---- !u!1 &629597273
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 629597275}
-  - component: {fileID: 629597274}
-  m_Layer: 0
-  m_Name: Waypoint 0
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &629597274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629597273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22663cf6bb224915a1076d7d5e02208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousWaypoint: {fileID: 0}
-  nextWaypoint: {fileID: 1855291478}
-  distanceToNextWaypoint: 5
---- !u!4 &629597275
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629597273}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: -1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1992548120}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &638979742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5267,7 +5049,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 672229113}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 2089116865}
   tailNode: {fileID: 515977419}
   isTraversable: 1
@@ -5505,7 +5288,7 @@ GameObject:
   - component: {fileID: 694009424}
   - component: {fileID: 694009423}
   m_Layer: 0
-  m_Name: DebugingEnemy_TEST
+  m_Name: DebugingEnemy_FORTESTING
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5553,12 +5336,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694009422}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 514.2352, y: 1374.6445, z: -119.08767}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1303372569}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &702587447
 GameObject:
@@ -5753,7 +5536,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704959867}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -5829,6 +5612,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -6217,7 +6001,6 @@ GameObject:
   - component: {fileID: 776069921}
   - component: {fileID: 776069920}
   - component: {fileID: 776069919}
-  - component: {fileID: 776069922}
   m_Layer: 0
   m_Name: Path - Node1 > The Port of Argent
   m_TagString: Untagged
@@ -6238,7 +6021,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 776069920}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 1580145765}
   isTraversable: 1
@@ -6310,19 +6094,6 @@ Transform:
   m_Father: {fileID: 1999230116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &776069922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776069918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056b5f7b0c3e64d77a84eb3442b8b726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  possibleEvents: []
 --- !u!1 &796929783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6368,7 +6139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 796929786}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 96166191}
   isTraversable: 1
@@ -6905,6 +6677,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 855279760}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -6922,9 +6695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &855279761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7098,6 +6868,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 863705325}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -7115,9 +6886,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &863705326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7579,7 +7347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 929670504}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1809799756}
   tailNode: {fileID: 1757081067}
   isTraversable: 1
@@ -7675,6 +7444,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 931023491}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -7692,9 +7462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &931023492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7860,7 +7627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 932629355}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 422868098}
   tailNode: {fileID: 1757081067}
   isTraversable: 1
@@ -7981,7 +7749,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 936396847}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1757344962}
   tailNode: {fileID: 357538101}
   isTraversable: 1
@@ -8080,7 +7849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 944270587}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1698686120}
   tailNode: {fileID: 1187801443}
   isTraversable: 1
@@ -8294,7 +8064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 956809659}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 707515617}
   tailNode: {fileID: 1451708910}
   isTraversable: 1
@@ -8837,52 +8608,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067725937}
   m_CullTransparentMesh: 0
---- !u!1 &1074538475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1074538476}
-  - component: {fileID: 1074538477}
-  m_Layer: 0
-  m_Name: Waypoint 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1074538476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074538475}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1992548120}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074538477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074538475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22663cf6bb224915a1076d7d5e02208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousWaypoint: {fileID: 1855291478}
-  nextWaypoint: {fileID: 0}
-  distanceToNextWaypoint: 0
 --- !u!1 &1080530175
 GameObject:
   m_ObjectHideFlags: 0
@@ -8921,6 +8646,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1080530177}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -8938,9 +8664,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1080530178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9726,6 +9449,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1165030549}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -9743,9 +9467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1165030550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10022,6 +9743,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -10460,7 +10182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1275946093
 SpriteRenderer:
@@ -10700,8 +10422,9 @@ RectTransform:
   m_Children:
   - {fileID: 704959868}
   - {fileID: 48418655}
+  - {fileID: 694009425}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11035,7 +10758,7 @@ RectTransform:
   m_Children:
   - {fileID: 278771052}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11168,6 +10891,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -11337,6 +11061,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1451708911}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -11355,9 +11080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1451708912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11673,7 +11395,7 @@ Transform:
   - {fileID: 1834148540}
   - {fileID: 1999230116}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1486871715
 GameObject:
@@ -11799,7 +11521,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1492277740}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1662497690}
   tailNode: {fileID: 1580145765}
   isTraversable: 1
@@ -12153,6 +11876,7 @@ GameObject:
   - component: {fileID: 1580145768}
   - component: {fileID: 1580145767}
   - component: {fileID: 1580145766}
+  - component: {fileID: 1580145772}
   m_Layer: 0
   m_Name: The Port of Argent
   m_TagString: Untagged
@@ -12176,6 +11900,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1580145766}
+  _worldMapNodeEvent: {fileID: 1580145772}
   gScore: 0
   hScore: 0
   id: 0
@@ -12194,9 +11919,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1580145767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12331,6 +12053,20 @@ Transform:
   m_Father: {fileID: 1834148540}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1580145772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580145764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5ba392a45fd4020bb0ceeb07aa647c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possibleEvents: []
+  eventProbabilites: 64000000
 --- !u!1 &1589491705
 GameObject:
   m_ObjectHideFlags: 0
@@ -12493,7 +12229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1646041382}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 707515617}
   tailNode: {fileID: 1809799756}
   isTraversable: 1
@@ -12769,6 +12506,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1662497691}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -12786,9 +12524,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1662497692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12968,7 +12703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1670191535}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1187801443}
   tailNode: {fileID: 1809799756}
   isTraversable: 1
@@ -13072,6 +12808,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1698686121}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -13090,9 +12827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1698686122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13433,6 +13167,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -13505,6 +13240,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1757344963}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -13522,9 +13258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &1757344964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14252,6 +13985,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -14713,7 +14447,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1841517184}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1451708910}
   tailNode: {fileID: 1422615270}
   isTraversable: 1
@@ -14785,52 +14520,6 @@ Transform:
   m_Father: {fileID: 1999230116}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1855291477
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1855291479}
-  - component: {fileID: 1855291478}
-  m_Layer: 0
-  m_Name: Waypoint 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1855291478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855291477}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22663cf6bb224915a1076d7d5e02208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  previousWaypoint: {fileID: 629597274}
-  nextWaypoint: {fileID: 1074538477}
-  distanceToNextWaypoint: 4
---- !u!4 &1855291479
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855291477}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1992548120}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1869285420
 GameObject:
   m_ObjectHideFlags: 0
@@ -14862,7 +14551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1869285422}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1165030548}
   tailNode: {fileID: 515977419}
   isTraversable: 1
@@ -15080,7 +14770,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1874390976
 MonoBehaviour:
@@ -15408,7 +15098,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 1991478024}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 1080530176}
   tailNode: {fileID: 1809799756}
   isTraversable: 1
@@ -15479,39 +15170,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1999230116}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1992548119
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1992548120}
-  m_Layer: 0
-  m_Name: WayPointRoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1992548120
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1992548119}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 629597275}
-  - {fileID: 1855291479}
-  - {fileID: 1074538476}
-  m_Father: {fileID: 83830481}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999230115
 GameObject:
@@ -16025,6 +15683,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 2089116866}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -16043,9 +15702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0
 --- !u!114 &2089116867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16475,7 +16131,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 2140162713}
-  randomPathEvent: {fileID: 0}
+  worldMapPathEvent:
+    TriggerDistanceAlongPath: 0
   headNode: {fileID: 96166191}
   tailNode: {fileID: 1422615270}
   isTraversable: 1

@@ -178,6 +178,14 @@ public class Player_FollowBezierPath : MonoBehaviour
     void Update()
     {
         MovePlayer();
+
+
+ 
+    }
+
+    void TestCheckPathPercentageTraversed()
+    {
+        print(currentAStarEdge.pathCreator.path.GetPercentageOfDistanceByDirection(currentDistanceTravelledOnEdge, isForward));
     }
 
     private void MovePlayer()
@@ -243,6 +251,8 @@ public class Player_FollowBezierPath : MonoBehaviour
                 NextEgde();
             }
             */
+
+            //TestCheckPathPercentageTraversed(); // <--TESTING ONLY
         }
     }
 
@@ -270,9 +280,8 @@ public class Player_FollowBezierPath : MonoBehaviour
 
             UiWindowManager.Show(tempMIW);
 
-            // DEBUG TESTING ONLY......
-            currentGoalNode.Location.interactable?.Interact();
-            // .......
+
+
         }
 
         if (!JourneyEndedAtLocation)
@@ -295,6 +304,12 @@ public class Player_FollowBezierPath : MonoBehaviour
             totalDistanceTravelled = calculatedJourneyDistance;
             WrapUpEndOfMovement(MovementState.REACHED_GOAL);
 
+        }
+
+        // check if new currentAStarEdge has an event on it.
+        if (currentGoalNode.WorldMapNodeEvent != null)
+        {
+            Player_EventManager.instance.AttemptRollNodeEvent(currentGoalNode);
         }
     }
 

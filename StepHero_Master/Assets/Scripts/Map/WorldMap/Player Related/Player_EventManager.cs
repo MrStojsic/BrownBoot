@@ -12,6 +12,9 @@ public class Player_EventManager : MonoBehaviour
     {
         CreateInstance();
     }
+
+    void printNum(int num)
+    { print(num); }
     void CreateInstance()
     {
         if (instance == null)
@@ -25,24 +28,27 @@ public class Player_EventManager : MonoBehaviour
         } 
     }
 
-    public InteractableEvent chosenEvent = null;
+    /*
+    public IInteractable interactableEvent = null;
 
     public void InitialisePossibleEvent(AStarEdge aStarEdge)
     {
-        if (aStarEdge.randomPathEvent)
+        if (aStarEdge.worldMapEventRoller)
         {
-            chosenEvent = aStarEdge.randomPathEvent.RollEvent();
+            interactableEvent = aStarEdge.worldMapEventRoller.RollEvent();
         }
     }
+    */
 
-    public bool Evaluate(float distanceTraversed)
+    // function to check for an event when we reach a node
+    // and a function to check for an event when we start on a new path.
+
+    public void AttemptRollNodeEvent(AStarNode aStarNode)
     {
-        if (distanceTraversed >= chosenEvent.TriggerDistanceAlongPath)
+        if (aStarNode.WorldMapNodeEvent)
         {
-            TriggerEvent();
-            return true;
+            print(aStarNode.WorldMapNodeEvent.RollEvent());
         }
-        return false;
     }
 
     public void TriggerEvent()
