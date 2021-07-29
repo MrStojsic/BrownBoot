@@ -307,7 +307,7 @@ public class Player_FollowBezierPath : MonoBehaviour
         }
 
         // check if new currentAStarEdge has an event on it.
-        if (currentGoalNode.WorldMapNodeEvent != null)
+        if (currentGoalNode.WorldMapNodeEncounter != null)
         {
             Player_EventManager.instance.AttemptRollNodeEvent(currentGoalNode);
         }

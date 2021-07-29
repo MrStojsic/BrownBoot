@@ -60,6 +60,7 @@ public class InventoryInteractionManager : MonoBehaviour
 
     public void SetOtherInventoryTypePockets(InventoryTypePocket[] otherInventoryTypePockets, InventoryType inventoryType)
     {
+        print("called");
         _otherInventoryTypePockets = otherInventoryTypePockets;
         this.inventoryType = inventoryType;
     }

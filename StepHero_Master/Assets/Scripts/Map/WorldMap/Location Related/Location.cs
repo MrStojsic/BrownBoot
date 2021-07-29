@@ -14,7 +14,9 @@ public class Location : MonoBehaviour
 
     }
 
-    private void OnValidate()
+    // This is used to add a reference to this script in the objects AStar node when this component is added to an object.
+    // NOTE: Reset is called when adding a component to an object.
+    private void Reset()
     {
         GetComponent<AStarNode>().Location = this;
     }

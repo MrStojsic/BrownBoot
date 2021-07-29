@@ -1,33 +1,60 @@
-﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UNUSED_SCRIPTS/Player_FollowBezierPathOLD.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs">
     <Files>
       <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/PathEvents/Treasure.cs" Line="10" Column="21" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_EventManager.cs" Line="46" Column="38" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="48" Column="1" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_FollowBezierPath.cs" Line="261" Column="85" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreator.cs" Line="22" Column="23" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarEdge.cs" Line="11" Column="18" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" Line="183" Column="50" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapEvent.cs" Line="20" Column="1" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Location.cs" Line="17" Column="1" />
-      <File FileName="Assets/Scripts/Utitlities/ICondition.cs" Line="5" Column="27" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindowManager.cs" Line="12" Column="14" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="12" Column="52" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarNode.cs" Line="20" Column="51" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/Player_FollowBezierPathOLD.cs" Line="118" Column="79" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_EventManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_FollowBezierPath.cs" />
+      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreator.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarEdge.cs" />
+      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapEvent.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Location.cs" />
+      <File FileName="Assets/Scripts/Utitlities/ICondition.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindowManager.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="8" Column="18" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarNode.cs" />
+      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/Player_FollowBezierPathOLD.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="112" Column="39" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="31" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="84" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="10" Column="35" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="44" Column="49" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="49" Column="17" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="18" Column="16" />
+      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StepHero_Master" expanded="True" selected="True" />
+          <Node name="StepHero_Master" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Inventory" expanded="True">
+                    <Node name="NewInventory" expanded="True" />
+                    <Node name="PlayerEquipmentWindow.cs" selected="True" />
+                  </Node>
+                  <Node name="Map" expanded="True">
+                    <Node name="WorldMap" expanded="True">
+                      <Node name="Location Related" expanded="True">
+                        <Node name="Events" expanded="True" />
+                      </Node>
+                      <Node name="Pathfinding" expanded="True" />
+                      <Node name="UI" expanded="True" />
+                    </Node>
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0343bfd2-d966-4816-a7e0-8737b8a05f4e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -131,9 +131,9 @@ public class Merchant_InventoryManager : MonoBehaviour
     {
         // HACK
         //AddStock();
-        AddStock_DRAFT();
+       // AddStock_DRAFT();
         // TOHERE
-        IIM.SetOtherInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.SHOP_BUY);
-        IIM.SetFocustedInventoryTypePockets(false);
+       // IIM.SetOtherInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.SHOP_BUY);
+       // IIM.SetFocustedInventoryTypePockets(false);
     }
 }

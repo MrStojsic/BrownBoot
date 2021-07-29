@@ -22,7 +22,7 @@ public class AStarNode : MonoBehaviour
     }
 
     [SerializeField] private WorldMapNodeEvent _worldMapNodeEvent = default;
-    public WorldMapNodeEvent WorldMapNodeEvent
+    public WorldMapNodeEvent WorldMapNodeEncounter
     {
         get { return _worldMapNodeEvent; }
         set

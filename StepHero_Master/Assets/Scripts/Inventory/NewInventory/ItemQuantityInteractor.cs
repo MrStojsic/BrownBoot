@@ -13,10 +13,15 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     [SerializeField ]private ItemDetail itemDetail = null;
 
+    // HACK
+    // Will likely be replaced with a class to handle gold later.
+    [SerializeField] private GameObject pricePanel = null;
+
+
     // UI.
     [SerializeField] private Text quantityText = null;
 
-    [SerializeField] private Text buttonText = null;
+    [SerializeField] private Text confirmationText = null;
 
     public delegate void ItemInteraction();
     public ItemInteraction itemInteraction;
@@ -31,7 +36,9 @@ public class ItemQuantityInteractor : MonoBehaviour
         {
             case 0: // PLAYER_USE / DROP, check number of item.
                 maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
-                buttonText.text = "Drop";
+                quantityText.text = currentNumberOfItem.ToString();
+                confirmationText.text = "Discard how many?";
+                pricePanel.SetActive(false);
                 itemInteraction = DropSelectedItem;
                 break;
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
@@ -42,7 +49,9 @@ public class ItemQuantityInteractor : MonoBehaviour
                 break;
             case 3: // LOOT, check player inventory.
                 maxNumberOfItem = Player_InventoryManager.Instance.inventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].MaxNumberOfItemTransferableFromSource(itemDetail.InventoryItem);
-                buttonText.text = "Take";
+                quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
+                confirmationText.text = "Take how many?";
+                pricePanel.SetActive(true);
                 itemInteraction = TakeSelectedItem;
                 break;
             default:
@@ -51,7 +60,6 @@ public class ItemQuantityInteractor : MonoBehaviour
 
         if (doEnable)
         {
-            quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
             ToggleDisplay(doEnable);
         }
     }

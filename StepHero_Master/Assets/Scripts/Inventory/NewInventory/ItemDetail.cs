@@ -144,7 +144,7 @@ public class ItemDetail : InventorySlot
         {
             _descriptionText.text = _inventoryItem.Item.GetLongDescription();
         }
-        Canvas.ForceUpdateCanvases();
+       // Canvas.ForceUpdateCanvases();
         _descriptionAreaLayoutElement.minHeight = (_descriptionText.preferredHeight + _descriptionText.fontSize);
         //_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }

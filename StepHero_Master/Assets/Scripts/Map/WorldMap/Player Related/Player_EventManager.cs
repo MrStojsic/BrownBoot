@@ -45,9 +45,9 @@ public class Player_EventManager : MonoBehaviour
 
     public void AttemptRollNodeEvent(AStarNode aStarNode)
     {
-        if (aStarNode.WorldMapNodeEvent)
+        if (aStarNode.WorldMapNodeEncounter)
         {
-            print(aStarNode.WorldMapNodeEvent.RollEvent());
+            print(aStarNode.WorldMapNodeEncounter.RollEvent());
         }
     }
 
