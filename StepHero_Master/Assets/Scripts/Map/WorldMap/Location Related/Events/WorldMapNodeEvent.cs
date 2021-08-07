@@ -13,7 +13,7 @@ public class WorldMapNodeEvent : MonoBehaviour
     // This encounter would need to be saved in the quests section though so it can be saved and loaded in.
 
     [SerializeField] List<WorldMapEvent> possibleEncounters = new List<WorldMapEvent>();
-    [SerializeField] int[] encounterWeights;
+    [SerializeField] private int[] encounterWeights;
 
     // This is used to add a reference to this script in the objects AStar node when this component is added to an object.
     // NOTE: Reset is called when adding a component to an object.

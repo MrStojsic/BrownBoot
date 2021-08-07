@@ -17,12 +17,12 @@ public class Player_InventoryManager : MonoBehaviour
         }
     }
     [SerializeField]
-    private InventoryInteractionManager IIM;
+    private InventoryInteractionManager inventoryInteractionManager = default;
 
     [SerializeField]
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[14];
 
-    public int gold;
+    public int gold = default;
 
     // DEBUG LISTS TO POPULATE INVENTORY POCKETS TILL SAVING / LOADING IS IMPLIMENTED.
     [SerializeField] private List<InventoryItem> debugFoodPocket = default;
@@ -40,6 +40,8 @@ public class Player_InventoryManager : MonoBehaviour
     [SerializeField] private List<InventoryItem> debugGlovesPocket = default;
     [SerializeField] private List<InventoryItem> debugNeckacePocket = default;
     [SerializeField] private List<InventoryItem> debugRingPocket = default;
+
+
 
     public void SetDebugPlayerinventoryPockets()
     {
@@ -68,6 +70,7 @@ public class Player_InventoryManager : MonoBehaviour
     {
         // HACK Leave this so inventory checks can still happen on Player!!!!
         SetDebugPlayerinventoryPockets();
+        inventoryInteractionManager.ChangeFocustedInventoryTypePockets(true);
         // TOHERE
     }
 }

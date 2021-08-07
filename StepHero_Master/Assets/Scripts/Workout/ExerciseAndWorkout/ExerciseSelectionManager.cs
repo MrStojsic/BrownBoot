@@ -6,7 +6,7 @@ public class ExerciseSelectionManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefabExercise = null;
 
-    [SerializeField] private SetActiveUiElement setActiveUiElement = null;
+    [SerializeField] private SetActiveUiElement setActiveUiElement = default;
 
     // Start is called before the first frame update
     void Start()

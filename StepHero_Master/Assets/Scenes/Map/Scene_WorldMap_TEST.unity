@@ -10473,7 +10473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e091589c2d3934f9b9737a358e26b68c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IIM: {fileID: 1303372571}
+  inventoryInteractionManager: {fileID: 1303372571}
   inventoryTypePockets:
   - pocketsItemType: 0
     storedItems: []
@@ -10565,9 +10565,9 @@ MonoBehaviour:
   _pooledInventoryHolder: {fileID: 2048520560}
   selectedSlotIndex: 0
   inventoryType: 0
-  appleToAdd:
-    _item: {fileID: 11400000, guid: 5803666bc26a04174910c1d92033bb11, type: 2}
-    _numberOfItem: 20
+  testItemToAdd:
+    _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
+    _numberOfItem: 0
     _inventorySlot: {fileID: 0}
 --- !u!114 &1303372572
 MonoBehaviour:
@@ -10613,6 +10613,7 @@ MonoBehaviour:
   - pocketsItemType: 0
     storedItems: []
   gold: 0
+  inventoryInteractionManager: {fileID: 0}
   debugLootItems:
   - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
     _numberOfItem: 20

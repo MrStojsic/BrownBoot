@@ -6,23 +6,13 @@ using UnityEngine;
 
 public class Loot_InventoryManager : MonoBehaviour
 {
-    private static Loot_InventoryManager _instance;
-    public static Loot_InventoryManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<Loot_InventoryManager>();
-            }
-            return _instance;
-        }
-    }
-
     [SerializeField]
     public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
 
     public int gold;
+
+    [SerializeField]
+    private InventoryInteractionManager inventoryInteractionManager = default;
 
     [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
 
@@ -43,6 +33,6 @@ public class Loot_InventoryManager : MonoBehaviour
         // HACK
         AddLoot(debugLootItems);
         // TOHERE
-        //IIM.SetOtherInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT_TAKE );
+        //inventoryInteractionManager.SetNonPlayerInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT_TAKE);
     }
 }

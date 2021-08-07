@@ -93,13 +93,14 @@ public class InventoryTypePocket
     {
         if (sourceInventoryItem.Item.ItemType == pocketsItemType && amountToTransfer > 0)
         {
-            InventoryItem II = FindItem(sourceInventoryItem.Item);
-            if (II != null)
+            InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
+            if (inventoryItem != null)
             {
-                return TransferToExistingStack(sourceInventoryItem, II, amountToTransfer);
+                return TransferToExistingStack(sourceInventoryItem, inventoryItem, amountToTransfer);
             }
             return TransferToNewStack(sourceInventoryItem, amountToTransfer);
         }
+        // An error has occured.
         return false;
     }
 

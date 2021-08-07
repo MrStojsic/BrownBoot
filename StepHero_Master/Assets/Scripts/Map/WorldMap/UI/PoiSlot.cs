@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PoiSlot : MonoBehaviour
 {
-    [SerializeField] private Text text;
-    [SerializeField] private Image image;
+    [SerializeField] private Text text = default;
+    [SerializeField] private Image image = default;
 
     public void SetPoiInfo(string name, Sprite icon)
     {

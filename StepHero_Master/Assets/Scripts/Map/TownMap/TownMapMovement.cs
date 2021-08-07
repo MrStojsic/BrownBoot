@@ -13,8 +13,8 @@ public class TownMapMovement : MonoBehaviour
 
     private Vector3 touchStart = default;
 
-    [SerializeField] RectTransform frameHeaderRect;
-    [SerializeField] RectTransform frameFooterRect;
+    [SerializeField] RectTransform frameHeaderRect = default;
+    [SerializeField] RectTransform frameFooterRect = default;
 
 
     [Tooltip("This is set on Start, it uses the mapSpriteRenderer's bounds as the cameras bounds limits")]

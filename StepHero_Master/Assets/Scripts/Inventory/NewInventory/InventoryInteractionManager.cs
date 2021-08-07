@@ -22,8 +22,14 @@ public class InventoryInteractionManager : MonoBehaviour
     [SerializeField]
     private Transform _pooledInventoryHolder = default;
 
+    // _focusedInventoryPockets is the inventory we are currently displaying, this can be the player, shop or loot depending what we need to be displayed in the UI.
     private InventoryTypePocket[] _focusedInventoryPockets = default;
-    private InventoryTypePocket[] _otherInventoryTypePockets = default;
+    /// <summary>
+    ///     MUST NEVER BE SET TO THE PLAYERS INVENTORY!
+    ///     Non-Players inventory is where we store a reference to the other inventory we need to access,
+    ///     this can be the inventory of a shop or loot.
+    /// </summary>
+    private InventoryTypePocket[] _nonPlayerInventoryTypePockets = default;
 
     [SerializeField]
     private int selectedSlotIndex = 0;
@@ -41,31 +47,37 @@ public class InventoryInteractionManager : MonoBehaviour
     private InventoryType inventoryType;
 
     // DEBUG
-    public InventoryItem appleToAdd;
+    public InventoryItem testItemToAdd;
 
-    // HACK
+    // TESTING
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            _focusedInventoryPockets[0].AttemptTransferItems(appleToAdd, 1);
+            // This is a very dirty way to add items to an inventory, not good practice.
+            _focusedInventoryPockets[0].AttemptTransferItems(testItemToAdd, 1);
         }
 
         if (Input.GetKeyUp(KeyCode.S))
         {
-            SetFocustedInventoryTypePockets(false);
+            ChangeFocustedInventoryTypePockets(false);
         }
     }
     // TOHERE
 
-    public void SetOtherInventoryTypePockets(InventoryTypePocket[] otherInventoryTypePockets, InventoryType inventoryType)
+    public void SetNonPlayerInventoryTypePockets(InventoryTypePocket[] nonPlayerInventoryTypePockets, InventoryType inventoryType)
     {
         print("called");
-        _otherInventoryTypePockets = otherInventoryTypePockets;
+        _nonPlayerInventoryTypePockets = nonPlayerInventoryTypePockets;
         this.inventoryType = inventoryType;
     }
 
-    public void SetFocustedInventoryTypePockets(bool isPlayerInventory)
+    /// <summary>
+    /// This takes changes the _focusedInventoryPockets to either the  Players inventory or the current _nonPlayerInventoryTypePockets depending on the bool passed in,
+    /// TRUE for the player, FALSE for the Non-Player.
+    /// </summary>
+    /// <param name="isPlayerInventory"></param>
+    public void ChangeFocustedInventoryTypePockets(bool isPlayerInventory)
     {
         if (isPlayerInventory)
         {
@@ -73,7 +85,7 @@ public class InventoryInteractionManager : MonoBehaviour
         }
         else
         {
-            _focusedInventoryPockets = _otherInventoryTypePockets;
+            _focusedInventoryPockets = _nonPlayerInventoryTypePockets;
         }
         _itemDetail.SetInteractionType(inventoryType);
         InitialiseInventorySlots();
@@ -163,9 +175,16 @@ public class InventoryInteractionManager : MonoBehaviour
         }
     }
 
-    public void DeleteItemFromInventory(InventorySlot inventorySlot)
+    public void RemoveItemFromInventory(InventorySlot inventorySlot)
     {
         _focusedInventoryPockets[_pocketSelectorGroup.selectedIndex].SafeForceRemoveItem(inventorySlot.InventoryItem);
+
+        // Check if the pocket is now empty after removing item from it, if so disable the pocket button icon in the catagory list.
+        if (_focusedInventoryPockets[_pocketSelectorGroup.selectedIndex].Count == 0)
+        {
+            _pocketSelectorGroup.transform.GetChild(_pocketSelectorGroup.selectedIndex).gameObject.SetActive(false);
+        }
+
         PoolInventorySlot(inventorySlot);
     }
 
@@ -173,6 +192,8 @@ public class InventoryInteractionManager : MonoBehaviour
     {
         inventorySlot.transform.SetParent(_pooledInventoryHolder);
     }
+
+
     /*
     void SetMenuItems()
     {

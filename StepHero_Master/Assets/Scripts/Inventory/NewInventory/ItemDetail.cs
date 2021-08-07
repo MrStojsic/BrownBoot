@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class ItemDetail : InventorySlot
 {
     // DATA.
-    [SerializeField]private InventorySlot _displayedInventorySlot;
+    [SerializeField] private InventorySlot _displayedInventorySlot;
 
     public override InventoryItem InventoryItem
     {
@@ -47,7 +47,7 @@ public class ItemDetail : InventorySlot
             }
             if (_inventoryItem.NumberOfItem == 0)
             {
-                IIM.DeleteItemFromInventory(_displayedInventorySlot);
+                IIM.RemoveItemFromInventory(_displayedInventorySlot);
                 InventoryItem = null;
             }
         }
@@ -58,10 +58,10 @@ public class ItemDetail : InventorySlot
     }
 
 
-    private int _inventoryTypeAsInt = -1;
-    public int InventoryTypeAsInt
+    private InventoryInteractionManager.InventoryType _inventoryType = 0;
+    public InventoryInteractionManager.InventoryType InventoryType
     {
-        get { return _inventoryTypeAsInt; }
+        get { return _inventoryType; }
     }
 
     private bool descriptionIsShort = true;
@@ -111,10 +111,10 @@ public class ItemDetail : InventorySlot
 
     public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
     {
-        this._inventoryTypeAsInt = (int)inventoryType;
+        this._inventoryType = inventoryType;
 
         buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT_TAKE ? lables[4] : lables[5];
-        buttonText2.text = lables[_inventoryTypeAsInt];
+        buttonText2.text = lables[(int)_inventoryType];
     }
 
     public void HideEntireDisplay()
@@ -144,7 +144,7 @@ public class ItemDetail : InventorySlot
         {
             _descriptionText.text = _inventoryItem.Item.GetLongDescription();
         }
-       // Canvas.ForceUpdateCanvases();
+        // Canvas.ForceUpdateCanvases();
         _descriptionAreaLayoutElement.minHeight = (_descriptionText.preferredHeight + _descriptionText.fontSize);
         //_rectTransform.sizeDelta = new Vector2(_rectTransform.sizeDelta.x, (_descriptionText.preferredHeight + _descriptionText.fontSize));
     }
@@ -177,7 +177,7 @@ public class ItemDetail : InventorySlot
 
     public void Interact()
     {
-        if (_inventoryTypeAsInt == 3) //LOOT
+        if (_inventoryType == InventoryInteractionManager.InventoryType.LOOT_TAKE)
         {
             IQI.SetUp(false);
             IQI.TakeAllSelectedItem();

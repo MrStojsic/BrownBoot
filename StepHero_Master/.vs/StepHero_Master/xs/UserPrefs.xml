@@ -1,50 +1,46 @@
-﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
+﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/PathEvents/Treasure.cs" Line="10" Column="21" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_EventManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Player Related/Player_FollowBezierPath.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/PathCreator.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarEdge.cs" />
-      <File FileName="Assets/ThirdParty/PathCreator/Core/Runtime/Objects/VertexPath.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapEvent.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Location.cs" />
-      <File FileName="Assets/Scripts/Utitlities/ICondition.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindowManager.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="8" Column="18" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarNode.cs" />
-      <File FileName="Assets/Scripts/UNUSED_SCRIPTS/Player_FollowBezierPathOLD.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="112" Column="39" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="31" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="84" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="10" Column="35" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="44" Column="49" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="49" Column="17" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="18" Column="16" />
-      <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="5" Column="41" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="33" Column="11" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="19" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="11" Column="14" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="30" Column="23" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="180" Column="31" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="32" Column="33" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="16" Column="30" />
+      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" Line="9" Column="77" />
+      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="30" Column="37" />
+      <File FileName="Assets/Scripts/Map/WorldMap/UI/PoiSlot.cs" Line="9" Column="42" />
+      <File FileName="Assets/Scripts/Map/TownMap/TownMapMovement.cs" Line="17" Column="62" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StepHero_Master" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="Inventory" expanded="True">
-                    <Node name="NewInventory" expanded="True" />
-                    <Node name="PlayerEquipmentWindow.cs" selected="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="Items" expanded="True" />
+                  <Node name="NewInventory" expanded="True">
+                    <Node name="InventoryInteractionManager.cs" selected="True" />
                   </Node>
-                  <Node name="Map" expanded="True">
-                    <Node name="WorldMap" expanded="True">
-                      <Node name="Location Related" expanded="True">
-                        <Node name="Events" expanded="True" />
-                      </Node>
-                      <Node name="Pathfinding" expanded="True" />
-                      <Node name="UI" expanded="True" />
+                </Node>
+                <Node name="Map" expanded="True">
+                  <Node name="TownMap" expanded="True" />
+                  <Node name="WorldMap" expanded="True">
+                    <Node name="Location Related" expanded="True">
+                      <Node name="Events" expanded="True" />
                     </Node>
+                    <Node name="UI" expanded="True" />
                   </Node>
+                </Node>
+                <Node name="NPC" expanded="True">
+                  <Node name="Occupations" expanded="True" />
+                </Node>
+                <Node name="Workout" expanded="True">
+                  <Node name="ExerciseAndWorkout" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -55,6 +51,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5f5d04ea-7255-46a6-8969-85e6a1e0523a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -32,7 +32,7 @@ public class ItemQuantityInteractor : MonoBehaviour
         currentNumberOfItem = 0;
 
 
-        switch (itemDetail.InventoryTypeAsInt)
+        switch ((int)itemDetail.InventoryType)
         {
             case 0: // PLAYER_USE / DROP, check number of item.
                 maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
