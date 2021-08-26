@@ -17,6 +17,5 @@ MonoBehaviour:
   _stackSize: 20
   _title: Radish
   _rarity: 0
-  _slot: {fileID: 0}
-  _price: 8
+  _price: 3
   health: 4

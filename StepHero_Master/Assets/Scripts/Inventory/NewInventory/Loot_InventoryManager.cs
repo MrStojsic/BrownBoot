@@ -23,7 +23,8 @@ public class Loot_InventoryManager : MonoBehaviour
 
         for (int i = 0; i < lootToAdd.Count; i++)
         {
-            inventoryTypePockets[14].SafeForceAddItem(lootToAdd[i]);
+            // TODO needs re implimenting
+            //inventoryTypePockets[14].UnsafeForceAddItem(lootToAdd[i]);
         }
     }
 
@@ -33,6 +34,6 @@ public class Loot_InventoryManager : MonoBehaviour
         // HACK
         AddLoot(debugLootItems);
         // TOHERE
-        //inventoryInteractionManager.SetNonPlayerInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.LOOT_TAKE);
+        //InventoryInteractionManager.Instance.SetInventoryTypePockets(this, InventoryInteractionManager.InventoryType.LOOT_TAKE);
     }
 }

@@ -1,46 +1,47 @@
-﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="5" Column="41" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="33" Column="11" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="19" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="11" Column="14" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="30" Column="23" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="180" Column="31" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="32" Column="33" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="16" Column="30" />
-      <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseSelectionManager.cs" Line="9" Column="77" />
-      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="30" Column="37" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/PoiSlot.cs" Line="9" Column="42" />
-      <File FileName="Assets/Scripts/Map/TownMap/TownMapMovement.cs" Line="17" Column="62" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="120" Column="10" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="37" Column="76" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="54" Column="118" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="5" Column="14" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="55" Column="47" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Map/TownMap/TownMapMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="148" Column="46" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="132" Column="58" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="117" Column="127" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="129" Column="7" />
+      <File FileName="Assets/Scripts/Inventory/Items/Equipment.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" Line="16" Column="28" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StepHero_Master" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="Inventory" expanded="True">
-                  <Node name="Items" expanded="True" />
-                  <Node name="NewInventory" expanded="True">
-                    <Node name="InventoryInteractionManager.cs" selected="True" />
-                  </Node>
-                </Node>
-                <Node name="Map" expanded="True">
-                  <Node name="TownMap" expanded="True" />
-                  <Node name="WorldMap" expanded="True">
-                    <Node name="Location Related" expanded="True">
-                      <Node name="Events" expanded="True" />
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="Scripts" expanded="True">
+                  <Node name="Inventory" expanded="True">
+                    <Node name="Items" expanded="True" />
+                    <Node name="NewInventory" expanded="True">
+                      <Node name="InventorySlot.cs" selected="True" />
                     </Node>
-                    <Node name="UI" expanded="True" />
                   </Node>
-                </Node>
-                <Node name="NPC" expanded="True">
-                  <Node name="Occupations" expanded="True" />
-                </Node>
-                <Node name="Workout" expanded="True">
-                  <Node name="ExerciseAndWorkout" expanded="True" />
+                  <Node name="Map" expanded="True">
+                    <Node name="TownMap" expanded="True" />
+                    <Node name="WorldMap" expanded="True">
+                      <Node name="Location Related" expanded="True">
+                        <Node name="Events" expanded="True" />
+                      </Node>
+                      <Node name="UI" expanded="True" />
+                    </Node>
+                  </Node>
+                  <Node name="NPC" expanded="True">
+                    <Node name="Occupations" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
             </Node>

@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Merchant_InventoryManager : MonoBehaviour
-{ 
-    [SerializeField]
-    private InventoryInteractionManager IIM = null;
-
-    [SerializeField]
-    public InventoryTypePocket[] inventoryTypePockets = new InventoryTypePocket[15];
-
-    public int gold;
+public class Merchant_InventoryManager : Inventory
+{
 
     [SerializeField] private List<MerchantInventoryItem> commonPossibleStockItems = default;
     [SerializeField] private int minCommonItemsExpected = default;
@@ -34,15 +27,15 @@ public class Merchant_InventoryManager : MonoBehaviour
 
     public void AddStock_DRAFT()
     {
-        for (int i = 0; i < inventoryTypePockets.Length - 1; i++)
+        for (int i = 0; i < InventoryTypePockets.Length - 1; i++)
         {
-            inventoryTypePockets[i].Initialise((ItemType)i);
+            InventoryTypePockets[i].Initialise((ItemType)i);
         }
 
         Random.InitState(System.DateTime.Now.DayOfYear);
 
         // COMMON STOCK.
-        if(commonPossibleStockItems.Count > 0)
+        if (commonPossibleStockItems.Count > 0)
         {
             int commonStockToSkip = commonPossibleStockItems.Count - Random.Range(minCommonItemsExpected, commonPossibleStockItems.Count - 1);
             print("commonStockToSkip" + commonStockToSkip);
@@ -55,7 +48,7 @@ public class Merchant_InventoryManager : MonoBehaviour
             {
                 if (commonPossibleStockItems[i] != null)
                 {
-                    inventoryTypePockets[(int)commonPossibleStockItems[i].Item.ItemType].SafeForceAddItem(commonPossibleStockItems[i]);
+                    UnsafeForceAddItem(commonPossibleStockItems[i]);
                 }
             }
         }
@@ -73,7 +66,7 @@ public class Merchant_InventoryManager : MonoBehaviour
             {
                 if (uncommonPossibleStockItems[i] != null)
                 {
-                    inventoryTypePockets[(int)uncommonPossibleStockItems[i].Item.ItemType].SafeForceAddItem(uncommonPossibleStockItems[i]);
+                    UnsafeForceAddItem(uncommonPossibleStockItems[i]);
                 }
             }
         }
@@ -94,14 +87,17 @@ public class Merchant_InventoryManager : MonoBehaviour
                 {
                     if (rarePossibleStockItems[i] != null)
                     {
-                        inventoryTypePockets[(int)rarePossibleStockItems[i].Item.ItemType].SafeForceAddItem(rarePossibleStockItems[i]);
+                        UnsafeForceAddItem(rarePossibleStockItems[i]);
                     }
                 }
             }
         }
     }
 
-
+    public void Update()
+    {
+        
+    }
 
 
     public void AddStock()
@@ -111,13 +107,13 @@ public class Merchant_InventoryManager : MonoBehaviour
         // Seed random with the current week of the year.
         //Random.InitState(GetWeekOfYear());
         //Random.InitState(System.DateTime.Now.DayOfYear);
-        Random.InitState((int)System.DateTime.Now.Ticks);
+       // Random.InitState((int)System.DateTime.Now.Ticks);
         // TOHERE
 
 
-        for (int i = 0; i < inventoryTypePockets.Length - 1; i++)
+        for (int i = 0; i < InventoryTypePockets.Length - 1; i++)
         {
-            inventoryTypePockets[i].Initialise((ItemType)i);
+            InventoryTypePockets[i].Initialise((ItemType)i);
         }
 
         /*for (int i = 0; i < possibleStockItems.Count; i++)
@@ -131,9 +127,8 @@ public class Merchant_InventoryManager : MonoBehaviour
     {
         // HACK
         //AddStock();
-       // AddStock_DRAFT();
+        AddStock_DRAFT();
         // TOHERE
-       // IIM.SetOtherInventoryTypePockets(inventoryTypePockets, InventoryInteractionManager.InventoryType.SHOP_BUY);
-       // IIM.SetFocustedInventoryTypePockets(false);
+        InventoryInteractionManager.Instance.SetInventory(this, InventoryInteractionManager.InteractionType.SHOP_BUY);
     }
 }

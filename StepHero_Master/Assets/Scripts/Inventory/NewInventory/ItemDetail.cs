@@ -58,10 +58,10 @@ public class ItemDetail : InventorySlot
     }
 
 
-    private InventoryInteractionManager.InventoryType _inventoryType = 0;
-    public InventoryInteractionManager.InventoryType InventoryType
+    private InventoryInteractionManager.InteractionType _interactionType = 0;
+    public InventoryInteractionManager.InteractionType InteractionType
     {
-        get { return _inventoryType; }
+        get { return _interactionType; }
     }
 
     private bool descriptionIsShort = true;
@@ -80,10 +80,14 @@ public class ItemDetail : InventorySlot
     [SerializeField] private InventoryInteractionManager IIM = null;
 
 
-    //[SerializeField] private UnityEvent[] actions;
-    string[] lables = { "Use", "Sell", "Buy", "Take All", "Take", "Drop", "Equip", "Unequip" };
-    [SerializeField] private Text buttonText1 = null;
-    [SerializeField] private Text buttonText2 = null;
+    public delegate void ButtonFunction();
+    public ButtonFunction leftButtonFunction;
+    public ButtonFunction rightButtonFunction;
+
+
+    [SerializeField] private Text leftButtonText = null;
+    [SerializeField] private Text rightButtonText = null;
+
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
@@ -109,12 +113,40 @@ public class ItemDetail : InventorySlot
         Canvas.ForceUpdateCanvases();
     }
 
-    public void SetInteractionType(InventoryInteractionManager.InventoryType inventoryType)
+    public void SetInteractionInterface(InventoryInteractionManager.InteractionType interactionType)
     {
-        this._inventoryType = inventoryType;
+        this._interactionType = interactionType;
 
-        buttonText1.text = inventoryType == InventoryInteractionManager.InventoryType.LOOT_TAKE ? lables[4] : lables[5];
-        buttonText2.text = lables[(int)_inventoryType];
+        switch ((int)_interactionType)
+        {
+
+            case 0: // PLAYER_USE / DROP, check number of item.
+                leftButtonText.text = "Drop";
+                leftButtonFunction = SetIQI;
+                leftButtonText.transform.parent.gameObject.SetActive(true);
+                rightButtonText.text = "Use";
+                rightButtonFunction = InteractWithItem;
+                break;
+            case 1: // PLAYER_SELL, check number of item and number shop can afford.
+                leftButtonText.transform.parent.gameObject.SetActive(false);
+                rightButtonText.text = "Sell";
+                rightButtonFunction = SetIQI;
+                break;
+            case 2: // SHOP_BUY, check both player inventory and number of item and number player can afford.
+                leftButtonText.transform.parent.gameObject.SetActive(false);
+                rightButtonText.text = "Buy";
+                rightButtonFunction = SetIQI;
+                break;
+            case 3: // LOOT, check player inventory.
+                leftButtonText.text = "Take";
+                leftButtonFunction = SetIQI;
+                leftButtonText.transform.parent.gameObject.SetActive(true);
+                rightButtonText.text = "Take Max";
+                rightButtonFunction = TakeAll;
+                break;
+            default:
+                break;
+        }
     }
 
     public void HideEntireDisplay()
@@ -151,7 +183,7 @@ public class ItemDetail : InventorySlot
 
     public void ToggleDescriptionVisibility(bool toggleEnable)
     {
-        if (_descriptionText.gameObject.activeSelf != toggleEnable)
+        if (toggleEnable && _descriptionText.gameObject.activeSelf != toggleEnable)
         {
             _descriptionText.gameObject.SetActive(toggleEnable);
         }
@@ -160,29 +192,38 @@ public class ItemDetail : InventorySlot
             SetLongOrShortDescription(true);
         }
     }
+    public void LeftFunctionInvoke()
+    {
+        leftButtonFunction.Invoke();
+    }
+    public void RightFunctionInvoke()
+    {
+        rightButtonFunction.Invoke();
+    }
 
-    public void SetIQI()
+    private void SetIQI()
     {
         if (IQI.gameObject.activeSelf == false)
         {
             IQI.SetUp();
-
         }
+        else {
+            IQI.SetUp(false);
+        }
+    }
+
+    private void InteractWithItem()
+    {
+        _inventoryItem.Interact();
+    }
+    private void TakeAll()
+    {
+        IQI.SetUp(false);
+        IQI.TakeAllSelectedItem();
     }
 
     public void RemoveItems(int numberToRemove)
     {
         _inventoryItem.RemoveItems(numberToRemove);
-    }
-
-    public void Interact()
-    {
-        if (_inventoryType == InventoryInteractionManager.InventoryType.LOOT_TAKE)
-        {
-            IQI.SetUp(false);
-            IQI.TakeAllSelectedItem();
-            return;
-        }
-        _inventoryItem.Interact();
     }
 }

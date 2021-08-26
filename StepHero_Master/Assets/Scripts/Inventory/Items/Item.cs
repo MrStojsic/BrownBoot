@@ -121,6 +121,12 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     {
         get
         {
+#if UNITY_EDITOR
+            if (_price < 1)
+            {
+                Debug.LogError("Price CANNOT be 0g");
+            }
+#endif
             return _price;
         }
     }

@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 8051173111292327933}
   - component: {fileID: 4251980636782310904}
   m_Layer: 5
-  m_Name: UseEquipBuySellButton
+  m_Name: InteractionRight_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -345,7 +345,7 @@ RectTransform:
   m_Children:
   - {fileID: 359099600025005873}
   m_Father: {fileID: 1890761937463156751}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6724431, y: 0.080000006}
   m_AnchorMax: {x: 0.95011145, y: 0.44000003}
@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 5289320369836373924}
   - component: {fileID: 5772269630100423605}
   m_Layer: 5
-  m_Name: DropTakeButton
+  m_Name: InteractionLeft_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +611,7 @@ RectTransform:
   m_Children:
   - {fileID: 150812773451287532}
   m_Father: {fileID: 1890761937463156751}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31655446, y: 0.080000006}
   m_AnchorMax: {x: 0.594557, y: 0.44000003}
@@ -856,8 +856,9 @@ MonoBehaviour:
   _rectTransform: {fileID: 4413854700224691428}
   IQI: {fileID: 6885053337288756170}
   IIM: {fileID: 0}
-  buttonText1: {fileID: 4228871128754615581}
-  buttonText2: {fileID: 4170034193045587649}
+  actions: []
+  leftButtonText: {fileID: 0}
+  rightButtonText: {fileID: 0}
 --- !u!114 &6885053336838657623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,8 +1233,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDetail: {fileID: 6885053336838657622}
+  pricePanel: {fileID: 0}
   quantityText: {fileID: 6885053338209800051}
-  buttonText: {fileID: 6885053337057252597}
+  confirmationText: {fileID: 0}
 --- !u!1 &6885053337403647696
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,7 +1929,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6885053336838657622}
         m_TargetAssemblyTypeName: ItemDetail, Assembly-CSharp
-        m_MethodName: ToggleDescription
+        m_MethodName: ToggleDescriptionVisibility
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2601,8 +2603,8 @@ RectTransform:
   m_Children:
   - {fileID: 6746889266409489706}
   - {fileID: 1991761983908437071}
-  - {fileID: 1374288826353146054}
   - {fileID: 1426307227663010182}
+  - {fileID: 1374288826353146054}
   m_Father: {fileID: 6885053336838657628}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

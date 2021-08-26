@@ -17,6 +17,5 @@ MonoBehaviour:
   _stackSize: 10
   _title: Ripe Apple
   _rarity: 1
-  _slot: {fileID: 0}
-  _price: 0
+  _price: 10
   health: 12

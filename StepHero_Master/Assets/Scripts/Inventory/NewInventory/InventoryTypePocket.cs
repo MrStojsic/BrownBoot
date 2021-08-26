@@ -41,7 +41,11 @@ public class InventoryTypePocket
         }
     }
 
-    public ItemType pocketsItemType;
+    private ItemType _pocketsItemType;
+    public ItemType PocketsItemType
+    {
+        get => _pocketsItemType;
+    }
 
     [SerializeField]
     public List<InventoryItem> storedItems;
@@ -49,13 +53,12 @@ public class InventoryTypePocket
     public void Initialise(ItemType itemType)
     {
         storedItems = new List<InventoryItem>();
-        pocketsItemType = itemType;
+        _pocketsItemType = itemType;
     }
 
-
-    public InventoryItem FindItem(Item item)
+    private InventoryItem FindItem(Item item)
     {
-        if (item.ItemType == pocketsItemType)
+        if (item.ItemType == _pocketsItemType)
         {
             for (int i = 0; i < storedItems.Count; i++)
             {
@@ -68,18 +71,18 @@ public class InventoryTypePocket
         return null;
     }
 
-    public int MaxNumberOfItemTransferableFromSource(InventoryItem sourceInventoryItem)
+    public int GetMaxNumberOfItemRecivable(InventoryItem sourceInventoryItem)
     {
-        if (sourceInventoryItem.Item.ItemType == pocketsItemType)
+        if (sourceInventoryItem.Item.ItemType == _pocketsItemType)
         {
-            InventoryItem II = FindItem(sourceInventoryItem.Item);
+            InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
 
-            if (II != null)
+            if (inventoryItem != null)
             {
-                if (II.NumberOfItem + sourceInventoryItem.NumberOfItem <= II.Item.StackSize)
+                if (inventoryItem.NumberOfItem + sourceInventoryItem.NumberOfItem <= inventoryItem.Item.StackSize)
                 { return sourceInventoryItem.NumberOfItem; }
 
-                return II.Item.StackSize - II.NumberOfItem;
+                return inventoryItem.Item.StackSize - inventoryItem.NumberOfItem;
             }
             if (!IsFull)
             {
@@ -89,9 +92,54 @@ public class InventoryTypePocket
         return 0;
     }
 
+
+    public int GetMaxNumberOfItemsPurchaseable(InventoryItem sourceInventoryItem, Inventory destinationInventory, out ItemQuantityInteractor.QuantityLimitReason quantityLimitReasonOut)
+    {
+        if (destinationInventory.Gold > 0)
+        {
+            ItemQuantityInteractor.QuantityLimitReason currentQuantityLimitReason = default;
+            int confirmedMax = int.MaxValue;
+            int unconfirmedMax = 0;
+
+            unconfirmedMax = Mathf.FloorToInt(destinationInventory.Gold / sourceInventoryItem.Item.Price);
+            if (unconfirmedMax < confirmedMax)
+            {
+                confirmedMax = unconfirmedMax;
+                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
+            }
+            unconfirmedMax = sourceInventoryItem.NumberOfItem;
+            if (unconfirmedMax < confirmedMax)
+            {
+                confirmedMax = unconfirmedMax;
+
+                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_STOCK ;
+            }
+            // If the player is selling to a Vendor ignore the inventory stack size as vendors can carry more than the player.
+            if (destinationInventory is Player_InventoryManager)
+            {
+                unconfirmedMax = destinationInventory.InventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].GetMaxNumberOfItemRecivable(sourceInventoryItem);
+                if (unconfirmedMax < confirmedMax)
+                {
+                    confirmedMax = unconfirmedMax;
+                    currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_SPACE;
+                }
+            }
+            quantityLimitReasonOut = currentQuantityLimitReason;
+            return confirmedMax;
+        }
+        quantityLimitReasonOut = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
+        return 0;
+
+    }
+    /// <summary>
+    /// This should only be called from the inventory that stores this InventoryTypePocket!
+    /// </summary>
+    /// <param name="sourceInventoryItem"></param>
+    /// <param name="amountToTransfer"></param>
+    /// <returns></returns>
     public bool AttemptTransferItems(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
-        if (sourceInventoryItem.Item.ItemType == pocketsItemType && amountToTransfer > 0)
+        if (sourceInventoryItem.Item.ItemType == _pocketsItemType && amountToTransfer > 0)
         {
             InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
             if (inventoryItem != null)
@@ -118,25 +166,11 @@ public class InventoryTypePocket
     {
         if (!IsFull)
         {
-            InventoryItem II = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
-            II.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
-            storedItems.Add(II);
+            InventoryItem inventoryItem = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
+            inventoryItem.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
+            storedItems.Add(inventoryItem);
             return true;
         }
         return false;
-    }
-
-    /// <summary>
-    /// This skips checking if an InventoryItem is already in the storedItems list,
-    /// Primarily for setting up the Pocket when loading or filling an empty shop or loot list.
-    /// </summary>
-    /// <param name="inventoryItem"></param>
-    public void SafeForceAddItem(InventoryItem inventoryItem)
-    {
-        storedItems.Add(inventoryItem);
-    }
-    public void SafeForceRemoveItem(InventoryItem inventoryItem)
-    {
-        storedItems.Remove(inventoryItem);
     }
 }

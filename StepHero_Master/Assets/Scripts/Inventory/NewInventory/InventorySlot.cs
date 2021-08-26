@@ -4,83 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-[System.Serializable]
-public class InventoryItem
-{
-    [SerializeField] protected Item _item;
-    public Item Item
-    {
-        get { return _item; }
-    }
-
-    [SerializeField]
-    protected int _numberOfItem;
-    public int NumberOfItem
-    {
-        get { return _numberOfItem; }
-        protected set
-        {
-            if (_numberOfItem <= Item.StackSize)
-            {
-                _numberOfItem = value;
-
-                _inventorySlot?.UpdateStackSizeUI();
-
-                return;
-            }
-            Debug.LogWarning("Possible Mistake - " + value + " is more than item.StackSize of " + Item.StackSize + " or equal to current " + _numberOfItem);
-        }
-    }
-
-    [SerializeField] protected InventorySlot _inventorySlot;
-    public InventorySlot InventorySlot
-    {
-        get { return _inventorySlot; }
-        set {
-                _inventorySlot = value;
-
-            _inventorySlot?.UpdateStackSizeUI();
-        }
-    }
-
-    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot = null)
-    {
-        _item = item;
-        InventorySlot = inventorySlot;
-        NumberOfItem = numberOfItem;
-    }
-
-    public virtual bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
-    {
-        if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
-        {
-            NumberOfItem += amountToTransfer;
-
-            sourceInventoryItem.RemoveItems(amountToTransfer);
-            return true;
-        }
-        return false;
-    }
-
-    public void RemoveItems(int numberToRemove)
-    {
-        if (numberToRemove <= NumberOfItem)
-        {
-            NumberOfItem -= numberToRemove;
-        }
-    }
-
-    public virtual bool Interact()
-    {
-        if (_item is IUseable && ((IUseable)_item).Use())
-        {
-            RemoveItems(1);
-            return true;
-        }
-        return false;
-    }
-}
-
 public class InventorySlot : MonoBehaviour
 {
     // DATA.
@@ -167,5 +90,170 @@ public class InventorySlot : MonoBehaviour
         }
         InventoryItem = inventoryItem;
         _index = index;
+    }
+}
+
+
+
+[System.Serializable]
+public class InventoryItem
+{
+    [SerializeField] protected Item _item;
+    public Item Item
+    {
+        get { return _item; }
+    }
+
+    [SerializeField]
+    protected int _numberOfItem;
+    public int NumberOfItem
+    {
+        get { return _numberOfItem; }
+        protected set
+        {
+            if (_numberOfItem <= Item.StackSize)
+            {
+                _numberOfItem = value;
+
+                _inventorySlot?.UpdateStackSizeUI();
+
+                return;
+            }
+            Debug.LogWarning("Possible Mistake - " + value + " is more than item.StackSize of " + Item.StackSize + " or equal to current " + _numberOfItem);
+        }
+    }
+
+    [SerializeField] protected InventorySlot _inventorySlot;
+    public InventorySlot InventorySlot
+    {
+        get { return _inventorySlot; }
+        set {
+                _inventorySlot = value;
+
+            _inventorySlot?.UpdateStackSizeUI();
+        }
+    }
+
+    public InventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot = null)
+    {
+        _item = item;
+        InventorySlot = inventorySlot;
+        NumberOfItem = numberOfItem;
+    }
+
+    public virtual bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
+    {
+        if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
+        {
+            NumberOfItem += amountToTransfer;
+
+            sourceInventoryItem.RemoveItems(amountToTransfer);
+            return true;
+        }
+        return false;
+    }
+
+    public void RemoveItems(int numberToRemove)
+    {
+        if (numberToRemove <= NumberOfItem)
+        {
+            NumberOfItem -= numberToRemove;
+        }
+    }
+
+    public virtual bool Interact()
+    {
+        if (_item is IUseable && ((IUseable)_item).Use())
+        {
+            RemoveItems(1);
+            return true;
+        }
+        return false;
+    }
+}
+
+
+
+
+[System.Serializable]
+public class InventoryEquipableItem
+{
+    [SerializeField] protected Item _item;
+    public Item Item
+    {
+        get { return _item; }
+    }
+
+    [SerializeField]
+    public int NumberOfItem
+    {
+        get { return storedItemsDurabilities.Count; }
+    }
+
+    [SerializeField] private List<int> storedItemsDurabilities = new List<int>();
+    public List<int> StoredItemsDurabilities
+    {
+        get { return storedItemsDurabilities; }
+    }
+
+    [SerializeField] protected InventorySlot _inventorySlot;
+    public InventorySlot InventorySlot
+    {
+        get { return _inventorySlot; }
+        set
+        {
+            _inventorySlot = value;
+
+            _inventorySlot?.UpdateStackSizeUI();
+        }
+    }
+
+   
+
+    [SerializeField] private int focusedIndex = 0;
+    public int FocusedIndex { get => focusedIndex; set => focusedIndex = value; }
+
+
+
+
+    public InventoryEquipableItem(Item item, List<int>storedItemsDurabilities, InventorySlot inventorySlot = null)
+    {
+        _item = item;
+        InventorySlot = inventorySlot;
+
+        for (int i = 0; i < storedItemsDurabilities.Count; i++)
+        {
+            this.storedItemsDurabilities.Add(storedItemsDurabilities[i]);
+        }
+    }
+
+    public virtual bool AddFromInventoryItem(InventoryEquipableItem sourceInventoryEquipableItem, int index)
+    {
+        if (sourceInventoryEquipableItem.Item == Item && 1 + NumberOfItem <= Item.StackSize && sourceInventoryEquipableItem.NumberOfItem >= index)
+        {
+            this.storedItemsDurabilities.Add(sourceInventoryEquipableItem.StoredItemsDurabilities[index]);
+
+            sourceInventoryEquipableItem.RemoveItems(index);
+            return true;
+        }
+        return false;
+    }
+
+    public void RemoveItems(int indexToRemove)
+    {
+        if (indexToRemove <= NumberOfItem)
+        {
+            storedItemsDurabilities.RemoveAt(indexToRemove);
+        }
+    }
+
+    public virtual bool Interact()
+    {
+        if (_item is IUseable && ((IUseable)_item).Use())
+        {
+            //RemoveItems(1);
+            return true;
+        }
+        return false;
     }
 }
