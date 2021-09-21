@@ -118,7 +118,7 @@ public class ItemQuantityInteractor : MonoBehaviour
     {
         if (currentNumberOfItem > 0)
         {
-            itemDetail.RemoveItems(currentNumberOfItem);
+            itemDetail.InventoryItem.RemoveItems(currentNumberOfItem);
         }
     }
 
@@ -131,7 +131,7 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public void TakeSelectedItem()
     {
-        InventoryInteractionManager.Instance.PlayerInventory.InventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].AttemptTransferItems(itemDetail.InventoryItem, currentNumberOfItem);
+        InventoryInteractionManager.Instance.PlayerInventory.InventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].AttemptReceiveItems(itemDetail.InventoryItem, currentNumberOfItem);
     }
 
     public void BuySelectedItem()

@@ -5,7 +5,7 @@ using UnityEngine;
 //https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
 [CreateAssetMenu(fileName = "Bag", menuName = "Items/Bags" , order = 1)]
-public class Bag : Item, IUseable
+public class Bag : Item
 {
     private int _numberOfSlots = default;
 

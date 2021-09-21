@@ -94,10 +94,17 @@ public class Merchant_InventoryManager : Inventory
         }
     }
 
-    public void Update()
+    // TESTING
+    private void Update()
     {
-        
+
+        if (Input.GetKeyUp(KeyCode.M))
+        {
+            InventoryInteractionManager.Instance.SetInventory(this);
+            InventoryInteractionManager.Instance.ChangeFocustedInventory(false);
+        }
     }
+    // TOHERE
 
 
     public void AddStock()
@@ -129,6 +136,6 @@ public class Merchant_InventoryManager : Inventory
         //AddStock();
         AddStock_DRAFT();
         // TOHERE
-        InventoryInteractionManager.Instance.SetInventory(this, InventoryInteractionManager.InteractionType.SHOP_BUY);
+
     }
 }

@@ -141,7 +141,7 @@ public class InventoryItem
         NumberOfItem = numberOfItem;
     }
 
-    public virtual bool AddFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
+    public virtual bool ReceiveFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
         if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
         {

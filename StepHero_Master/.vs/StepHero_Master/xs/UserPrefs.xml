@@ -1,58 +1,37 @@
-﻿<Properties StartupConfiguration="{DF864C1E-9241-72CB-26AF-EE550FC8E670}|Unit Tests">
-  <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs">
+﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Items/Equippable.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="120" Column="10" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="37" Column="76" IsPinned="True" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="54" Column="118" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="5" Column="14" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="55" Column="47" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Map/TownMap/TownMapMovement.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="148" Column="46" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="132" Column="58" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="117" Column="127" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="129" Column="7" />
-      <File FileName="Assets/Scripts/Inventory/Items/Equipment.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" Line="16" Column="28" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="121" Column="71" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" />
+      <File FileName="Assets/Scripts/NPC/NPC.cs" />
+      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" />
+      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
+      <File FileName="Assets/Scripts/Inventory/OldInventory/IDescribable.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
+      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
+      <File FileName="Assets/Scripts/Inventory/OldInventory/InventoryScript.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
+      <File FileName="Assets/Scripts/Inventory/Items/Equippable.cs" Line="7" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StepHero_Master" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="Inventory" expanded="True">
-                    <Node name="Items" expanded="True" />
-                    <Node name="NewInventory" expanded="True">
-                      <Node name="InventorySlot.cs" selected="True" />
-                    </Node>
-                  </Node>
-                  <Node name="Map" expanded="True">
-                    <Node name="TownMap" expanded="True" />
-                    <Node name="WorldMap" expanded="True">
-                      <Node name="Location Related" expanded="True">
-                        <Node name="Events" expanded="True" />
-                      </Node>
-                      <Node name="UI" expanded="True" />
-                    </Node>
-                  </Node>
-                  <Node name="NPC" expanded="True">
-                    <Node name="Occupations" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-            </Node>
-          </Node>
+          <Node name="StepHero_Master" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5f5d04ea-7255-46a6-8969-85e6a1e0523a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e2f5d695-b291-4d23-ab41-a13e6b92669e" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

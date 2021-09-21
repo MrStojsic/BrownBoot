@@ -23,18 +23,22 @@ public class Inventory : MonoBehaviour
 
     // TODO
     // These were taken from InventoryTypePocket as it was unsafe to have them in ther.
-    // these should be added into the player for loading the save data and into the loot and vendors to fill their inventory when randomly stocked.
+
     /// <summary>
     /// This skips checking if an InventoryItem is already in the storedItems list,
-    /// Primarily for setting up the Pocket when loading or filling an empty shop or loot list.
+    /// this should ONLY be used by player for loading the save data and,
+    /// the loot and vendors to fill their inventory when randomly stocked.
     /// </summary>
     /// <param name="inventoryItem"></param>
     public void UnsafeForceAddItem(InventoryItem inventoryItem)
     {
         _inventoryTypePockets[(int)inventoryItem.Item.ItemType].storedItems.Add(inventoryItem);
     }
-    public void UnsafeForceRemoveItem(InventoryItem inventoryItem)
+    public void RemoveEmptyInventoryItemFromPocket(InventoryItem inventoryItem)
     {
-        _inventoryTypePockets[(int)inventoryItem.Item.ItemType].storedItems.Remove(inventoryItem);
+        if (inventoryItem.NumberOfItem == 0)
+        {
+            _inventoryTypePockets[(int)inventoryItem.Item.ItemType].storedItems.Remove(inventoryItem);
+        }
     }
 }

@@ -221,9 +221,4 @@ public class ItemDetail : InventorySlot
         IQI.SetUp(false);
         IQI.TakeAllSelectedItem();
     }
-
-    public void RemoveItems(int numberToRemove)
-    {
-        _inventoryItem.RemoveItems(numberToRemove);
-    }
 }

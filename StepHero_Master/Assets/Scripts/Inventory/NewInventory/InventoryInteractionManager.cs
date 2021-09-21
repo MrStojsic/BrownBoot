@@ -59,7 +59,7 @@ public class InventoryInteractionManager : MonoBehaviour
     ///     Non-Players inventory is where we store a reference to the other inventory we need to access,
     ///     this can be the inventory of a shop or loot.
     /// </summary>
-    private Inventory _nonPlayerInventory = default;
+    public Inventory _nonPlayerInventory = default;
     public Inventory NonPlayerInventory
     {
         get { return _nonPlayerInventory; }
@@ -97,12 +97,6 @@ public class InventoryInteractionManager : MonoBehaviour
     // TESTING
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            // This is a very dirty way to add items to an inventory, not good practice.
-            _focusedInventory.InventoryTypePockets[0].AttemptTransferItems(testItemToAdd, 1);
-        }
-
         if (Input.GetKeyUp(KeyCode.S))
         {
             ChangeFocustedInventory(true);
@@ -111,10 +105,11 @@ public class InventoryInteractionManager : MonoBehaviour
         {
             ChangeFocustedInventory(false);
         }
+
     }
     // TOHERE
 
-    public void SetInventory(Inventory inventory, InteractionType interactionType)
+    public void SetInventory(Inventory inventory)
     {
         if (inventory is Player_InventoryManager)
         {
@@ -124,7 +119,6 @@ public class InventoryInteractionManager : MonoBehaviour
         {
             _nonPlayerInventory = inventory;
         }
-        this._interactionType = interactionType;
     }
 
     /// <summary>
@@ -233,7 +227,7 @@ public class InventoryInteractionManager : MonoBehaviour
 
     public void RemoveItemFromInventory(InventorySlot inventorySlot)
     {
-        _focusedInventory.UnsafeForceRemoveItem(inventorySlot.InventoryItem);
+        _focusedInventory.RemoveEmptyInventoryItemFromPocket(inventorySlot.InventoryItem);
 
         // Check if the pocket is now empty after removing item from it, if so disable the pocket button icon in the catagory list.
         if (_focusedInventory.InventoryTypePockets[_pocketSelectorGroup.selectedIndex].Count == 0)

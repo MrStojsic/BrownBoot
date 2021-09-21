@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class InventoryTypePocket
+public class  InventoryTypePocket
 {
     private int _sizeLimit = 1000;
     /// <summary>
@@ -135,39 +135,39 @@ public class InventoryTypePocket
     /// This should only be called from the inventory that stores this InventoryTypePocket!
     /// </summary>
     /// <param name="sourceInventoryItem"></param>
-    /// <param name="amountToTransfer"></param>
+    /// <param name="amountToReceive"></param>
     /// <returns></returns>
-    public bool AttemptTransferItems(InventoryItem sourceInventoryItem, int amountToTransfer)
+    public bool AttemptReceiveItems(InventoryItem sourceInventoryItem, int amountToReceive)
     {
-        if (sourceInventoryItem.Item.ItemType == _pocketsItemType && amountToTransfer > 0)
+        if (sourceInventoryItem.Item.ItemType == _pocketsItemType && amountToReceive > 0)
         {
             InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
             if (inventoryItem != null)
             {
-                return TransferToExistingStack(sourceInventoryItem, inventoryItem, amountToTransfer);
+                return ReceiveInExistingStack(sourceInventoryItem, inventoryItem, amountToReceive);
             }
-            return TransferToNewStack(sourceInventoryItem, amountToTransfer);
+            return ReceiveInNewStack(sourceInventoryItem, amountToReceive);
         }
         // An error has occured.
         return false;
     }
 
-    private bool TransferToExistingStack(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToTransfer)
+    private bool ReceiveInExistingStack(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToReceive)
     {
         if (inventoryItemDestination != null)
         {
-            return inventoryItemDestination.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
+            return inventoryItemDestination.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive);
         }
         return false;
     }
 
     // TODO ; Ensure that this removes the number of items added from the source items inventory.
-    private bool TransferToNewStack(InventoryItem sourceInventoryItem, int amountToTransfer)
+    private bool ReceiveInNewStack(InventoryItem sourceInventoryItem, int amountToReceive)
     {
         if (!IsFull)
         {
             InventoryItem inventoryItem = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
-            inventoryItem.AddFromInventoryItem(sourceInventoryItem, amountToTransfer);
+            inventoryItem.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive);
             storedItems.Add(inventoryItem);
             return true;
         }

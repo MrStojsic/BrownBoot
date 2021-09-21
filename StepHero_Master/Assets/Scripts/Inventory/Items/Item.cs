@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
-
 public enum ItemType
 {
     FOOD,       // 0
@@ -23,27 +21,10 @@ public enum ItemType
     ANY,        // 14
 }
 
+// https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
-/// <summary>
-/// Superclass for all items
-/// </summary>
-public abstract class Item : ScriptableObject, IMoveable, IDescribable
+public abstract class Item : ScriptableObject, IDescribable
 {
-    [SerializeField]
-    private ItemType _itemType = default;
-
-    /// <summary>
-    /// The icon used to display this item, also used when moving and placing the items
-    /// </summary>
-    [SerializeField]
-    private Sprite _icon = default;
-
-    /// <summary>
-    /// The size of the stack, less than 2 is not stackable
-    /// </summary>
-    [SerializeField]
-    private int _stackSize = default;
-
     /// <summary>
     /// The item's title
     /// </summary>
@@ -51,70 +32,54 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
     private string _title = default;
 
     /// <summary>
-    /// Property for accessing the _title
+    /// The icon used to display this item, also used when moving and placing the items
     /// </summary>
-    public string Title
-    {
-        get
-        {
-            return _title;
-        }
-    }
+    [SerializeField]
+    private Sprite _icon = default;
 
-    private string description = default;
-    public string Description
-    {
-        get { return description; }
-    }
+    [SerializeField]
+    private ItemType _itemType = default;
+
+    /// <summary>
+    /// The size of the stack, less than 2 is not stackable
+    /// </summary>
+     private int _stackSize = default;
+
+    [SerializeField] private int _price = default;
 
     /// <summary>
     /// The item's rarity
     /// </summary>
     [SerializeField] private Rarity _rarity = default;
 
-    public ItemType ItemType
+
+    /// <summary>
+    /// Property for accessing the _title
+    /// </summary>
+    public string Title
     {
-        get
-        {
-            return _itemType;
-        }
+        get => _title;
     }
-
-
-    [SerializeField] private int _price = default;
-
 
     /// <summary>
     /// Property for accessing the _icon
     /// </summary>
     public Sprite Icon
     {
-        get
-        {
-            return _icon;
-        }
+        get => _icon;
     }
 
+    public ItemType ItemType
+    {
+        get => _itemType;
+    }
+    
     /// <summary>
     /// Property for accessing the _stacksize
     /// </summary>
-    public int StackSize
+    public virtual int StackSize
     {
-        get
-        {
-            return _stackSize;
-        }
-    }
-
-    /// <summary>
-    /// Property for accessing the _rarity
-    /// </summary>
-    public Rarity Rarity
-    {
-        get
-        {
-            return _rarity;
-        }
+        get => _stackSize;
     }
 
     public int Price
@@ -130,7 +95,27 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
             return _price;
         }
     }
-    
+
+
+    /// <summary>
+    /// Property for accessing the _rarity
+    /// </summary>
+    public Rarity Rarity
+    {
+        get => _rarity;
+    }
+
+    [SerializeField] private string _longDescription = default;
+    public string LongDescription
+    {
+        get { return _longDescription; }
+    }
+    [SerializeField] private string _shortDescription = default;
+    public string ShortDescription
+    {
+        get { return _shortDescription; }
+    }
+
     /// <summary>
     /// Returns a description of this specific item
     /// </summary>
@@ -147,8 +132,7 @@ public abstract class Item : ScriptableObject, IMoveable, IDescribable
 
     public virtual string GetTitle()
     {
-        return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], _title);
+        return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], Title);
     }
+
 }
-
-

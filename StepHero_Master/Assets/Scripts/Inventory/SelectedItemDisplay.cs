@@ -37,7 +37,8 @@ public class SelectedItemDisplay : MonoBehaviour
 
         title.text = item.GetTitle();
 
-        if (item.GetType() == typeof(Equipment))
+        
+        if (item.GetType() == typeof(Equippable))
         {
             actionButtonTitle.text = "Equip";
         }

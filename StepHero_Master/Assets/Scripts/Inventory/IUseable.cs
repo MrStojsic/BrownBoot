@@ -5,11 +5,5 @@ using UnityEngine;
 
 interface IUseable
 {
-    Sprite Icon
-    {
-        get;
-
-    }
-
     bool Use();
 }
