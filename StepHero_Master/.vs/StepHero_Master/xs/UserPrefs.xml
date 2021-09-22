@@ -1,25 +1,20 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/Items/Equippable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="121" Column="71" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Bag.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" />
-      <File FileName="Assets/Scripts/NPC/NPC.cs" />
-      <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" />
-      <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/OldInventory/IDescribable.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" />
-      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
-      <File FileName="Assets/Scripts/Inventory/OldInventory/InventoryScript.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Apple.cs" />
-      <File FileName="Assets/Scripts/Inventory/Items/Equippable.cs" Line="7" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/Equipment.cs" Line="12" Column="24" />
+      <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" Line="41" Column="49" />
+      <File FileName="Assets/Scripts/Inventory/Items/Item.cs" Line="57" Column="16" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryInteractionManager.cs" Line="47" Column="41" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="22" Column="32" />
+      <File FileName="Assets/Scripts/Inventory/ConsumableEquipment.cs" Line="12" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/IEquippable.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/IUseable.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" Line="22" Column="46" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="195" Column="23" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="52" Column="168" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="132" Column="48" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="5" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

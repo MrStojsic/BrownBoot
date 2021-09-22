@@ -106,6 +106,12 @@ public class InventoryInteractionManager : MonoBehaviour
             ChangeFocustedInventory(false);
         }
 
+        if (Input.GetKeyUp(KeyCode.T))
+        {
+            _playerInventory.InventoryTypePockets[(int)testItemToAdd.Item.ItemType].AttemptReceiveItems(testItemToAdd, 1);
+            print(testItemToAdd.Item.StackSize);
+        }
+
     }
     // TOHERE
 

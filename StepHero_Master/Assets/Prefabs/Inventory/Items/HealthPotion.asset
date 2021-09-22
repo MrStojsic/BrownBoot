@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0198ded3734dc5b32f75bbdbae2f6, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  _itemType: 1
-  _icon: {fileID: 21300000, guid: 869bddd06c9e6433096098c266aaedf2, type: 3}
-  _stackSize: 5
   _title: Weak Health Potion
-  _rarity: 0
-  _slot: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 869bddd06c9e6433096098c266aaedf2, type: 3}
+  _itemType: 1
   _price: 0
+  _rarity: 0
+  _shortDescription: Restores {0} health when used.
+  _longDescription: 
   health: 10

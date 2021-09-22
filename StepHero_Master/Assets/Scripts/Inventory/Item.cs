@@ -7,18 +7,19 @@ public enum ItemType
     FOOD,       // 0
     POTION,     // 1
     MATERIALS,  // 2
-    MAIN_HAND,  // 3
-    OFF_HAND,   // 4
-    TWO_HAND,   // 5
-    HELMET,     // 6
-    SHOULDER,   // 7
-    CHEST,      // 8
-    LEGGING,    // 9
-    BOOTS,      // 10
-    GLOVES,     // 11
-    NECKLACE,   // 12
-    RING,       // 13
-    ANY,        // 14
+    TWO_HAND,   // 3
+    ONE_HAND,   // 4
+    SHIELD,     // 5
+    THROWABLE,  // 6
+    HELMET,     // 7
+    SHOULDER,   // 8
+    CHEST,      // 9
+    LEGGING,    // 10
+    BOOTS,      // 11
+    GLOVES,     // 12
+    NECKLACE,   // 13
+    RING,       // 14
+    ANY,        // 15
 }
 
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
@@ -40,11 +41,6 @@ public abstract class Item : ScriptableObject, IDescribable
     [SerializeField]
     private ItemType _itemType = default;
 
-    /// <summary>
-    /// The size of the stack, less than 2 is not stackable
-    /// </summary>
-     private int _stackSize = default;
-
     [SerializeField] private int _price = default;
 
     /// <summary>
@@ -52,35 +48,28 @@ public abstract class Item : ScriptableObject, IDescribable
     /// </summary>
     [SerializeField] private Rarity _rarity = default;
 
+    /// <summary>
+    /// The size of the stack, less than 2 is not stackable
+    /// </summary>
+    private int stackSize = 99;
+
+    [TextArea] [SerializeField] private string _shortDescription = default;
+    [TextArea] [SerializeField] private string _longDescription = default;
 
     /// <summary>
     /// Property for accessing the _title
     /// </summary>
     public string Title
-    {
-        get => _title;
-    }
+    {   get => _title;  }
 
     /// <summary>
     /// Property for accessing the _icon
     /// </summary>
     public Sprite Icon
-    {
-        get => _icon;
-    }
+    {   get => _icon;   }
 
     public ItemType ItemType
-    {
-        get => _itemType;
-    }
-    
-    /// <summary>
-    /// Property for accessing the _stacksize
-    /// </summary>
-    public virtual int StackSize
-    {
-        get => _stackSize;
-    }
+    {   get => _itemType;  }
 
     public int Price
     {
@@ -101,20 +90,18 @@ public abstract class Item : ScriptableObject, IDescribable
     /// Property for accessing the _rarity
     /// </summary>
     public Rarity Rarity
-    {
-        get => _rarity;
-    }
+    {   get => _rarity;   }
 
-    [SerializeField] private string _longDescription = default;
+    public virtual int StackSize
+    { get => stackSize; }
+
     public string LongDescription
-    {
-        get { return _longDescription; }
-    }
-    [SerializeField] private string _shortDescription = default;
+    {   get => _longDescription;    }
+
     public string ShortDescription
-    {
-        get { return _shortDescription; }
-    }
+    {   get => _shortDescription;   }
+
+
 
     /// <summary>
     /// Returns a description of this specific item

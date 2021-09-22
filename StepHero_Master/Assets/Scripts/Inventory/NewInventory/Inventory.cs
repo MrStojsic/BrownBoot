@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField]
-    private InventoryTypePocket[] _inventoryTypePockets = new InventoryTypePocket[14];
+    private InventoryTypePocket[] _inventoryTypePockets = new InventoryTypePocket[15];
 
     public InventoryTypePocket[] InventoryTypePockets
     {
