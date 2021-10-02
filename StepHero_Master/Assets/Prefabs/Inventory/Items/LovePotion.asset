@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ad0198ded3734dc5b32f75bbdbae2f6, type: 3}
   m_Name: LovePotion
   m_EditorClassIdentifier: 
-  _itemType: 1
-  _icon: {fileID: 21300000, guid: f0cda215a7076456b885b5b9db23064b, type: 3}
-  _stackSize: 20
   _title: Love Potion
+  _icon: {fileID: 21300000, guid: f0cda215a7076456b885b5b9db23064b, type: 3}
+  _itemType: 1
+  _price: 46
   _rarity: 0
-  _slot: {fileID: 0}
-  _price: 0
+  _shortDescription: 
+  _longDescription: 
   health: 15

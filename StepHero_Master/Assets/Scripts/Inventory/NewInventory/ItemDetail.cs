@@ -1,6 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
+
+public enum InteractionType
+{
+    PLAYER_USE,
+    PLAYER_SELL,
+    SHOP_BUY,
+    LOOT_TAKE,
+};
 
 public class ItemDetail : InventorySlot
 {
@@ -21,7 +30,7 @@ public class ItemDetail : InventorySlot
 
                 SetLongOrShortDescription(true);
 
-                IQI.ToggleDisplay(false);
+                itemQuantityInteractor.ToggleDisplay(false);
 
                 //UpdateStackSizeUI();
             }
@@ -47,7 +56,7 @@ public class ItemDetail : InventorySlot
             }
             if (_inventoryItem.NumberOfItem == 0)
             {
-                IIM.RemoveItemFromInventory(_displayedInventorySlot);
+                inventoryPageManager.RemoveItemFromInventory(_displayedInventorySlot);
                 InventoryItem = null;
             }
         }
@@ -58,8 +67,9 @@ public class ItemDetail : InventorySlot
     }
 
 
-    private InventoryInteractionManager.InteractionType _interactionType = 0;
-    public InventoryInteractionManager.InteractionType InteractionType
+
+    private InteractionType _interactionType = 0;
+    public InteractionType InteractionType
     {
         get { return _interactionType; }
     }
@@ -76,8 +86,8 @@ public class ItemDetail : InventorySlot
 
     [SerializeField] private RectTransform _rectTransform = null;
 
-    [SerializeField] private ItemQuantityInteractor IQI = null;
-    [SerializeField] private InventoryInteractionManager IIM = null;
+    [SerializeField] private ItemQuantityInteractor itemQuantityInteractor = null;
+    [SerializeField] private InventoryPageManager inventoryPageManager = null;
 
 
     public delegate void ButtonFunction();
@@ -113,7 +123,7 @@ public class ItemDetail : InventorySlot
         Canvas.ForceUpdateCanvases();
     }
 
-    public void SetInteractionInterface(InventoryInteractionManager.InteractionType interactionType)
+    public void SetInteractionInterface(InteractionType interactionType)
     {
         this._interactionType = interactionType;
 
@@ -203,12 +213,12 @@ public class ItemDetail : InventorySlot
 
     private void SetIQI()
     {
-        if (IQI.gameObject.activeSelf == false)
+        if (itemQuantityInteractor.gameObject.activeSelf == false)
         {
-            IQI.SetUp();
+            itemQuantityInteractor.SetUp();
         }
         else {
-            IQI.SetUp(false);
+            itemQuantityInteractor.SetUp(false);
         }
     }
 
@@ -218,7 +228,7 @@ public class ItemDetail : InventorySlot
     }
     private void TakeAll()
     {
-        IQI.SetUp(false);
-        IQI.TakeAllSelectedItem();
+        itemQuantityInteractor.SetUp(false);
+        itemQuantityInteractor.TakeAllSelectedItem();
     }
 }

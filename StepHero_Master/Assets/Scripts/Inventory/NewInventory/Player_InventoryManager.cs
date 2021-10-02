@@ -28,9 +28,10 @@ public class Player_InventoryManager : Inventory
     public void Awake()
     {
         // HACK This just sets up the players inventory to the debug item list for debugging, remove later.
+
         SetDebugPlayerinventoryPockets();
-        InventoryInteractionManager.Instance.SetInventory(this);
-        InventoryInteractionManager.Instance.ChangeFocustedInventory(true);
+        InventoryPageManager.Instance.SetInventory(this);
+        InventoryPageManager.Instance.ChangeFocusedInventory(true);
         // TOHERE
     }
 
@@ -40,8 +41,8 @@ public class Player_InventoryManager : Inventory
 
         if (Input.GetKeyUp(KeyCode.P))
         {
-            InventoryInteractionManager.Instance.SetInventory(this);
-            InventoryInteractionManager.Instance.ChangeFocustedInventory(true);
+            InventoryPageManager.Instance.SetInventory(this);
+            InventoryPageManager.Instance.ChangeFocusedInventory(true);
         }
     }
     // TOHERE

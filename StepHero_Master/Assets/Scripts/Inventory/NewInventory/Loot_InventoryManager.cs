@@ -12,7 +12,7 @@ public class Loot_InventoryManager : MonoBehaviour
     public int gold;
 
     [SerializeField]
-    private InventoryInteractionManager inventoryInteractionManager = default;
+    private InventoryPageManager inventoryInteractionManager = default;
 
     [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
 

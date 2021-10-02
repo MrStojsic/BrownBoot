@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faab328a1dea54555b69beb7098606e4, type: 3}
   m_Name: Bag
   m_EditorClassIdentifier: 
-  _itemType: 3
-  _icon: {fileID: 21300000, guid: ea20c45e318144b4d9f67879bd014ce7, type: 3}
-  _stackSize: 2
   _title: Bag
+  _icon: {fileID: 21300000, guid: ea20c45e318144b4d9f67879bd014ce7, type: 3}
+  _itemType: 3
+  _price: 25
   _rarity: 0
-  _slot: {fileID: 0}
-  _price: 0
+  _shortDescription: 
+  _longDescription: 
   bagPrefab: {fileID: 2756894846467978157, guid: 8caee25ca315c4d1d88fee74caad4c94,
     type: 3}

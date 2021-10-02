@@ -15,7 +15,7 @@ MonoBehaviour:
   _title: Sweet Wotato
   _icon: {fileID: 21300000, guid: c9989dab7a21d4248ab0c9d4d1b81508, type: 3}
   _itemType: 0
-  _price: 0
+  _price: 6
   _rarity: 0
   _shortDescription: 
   _longDescription: 

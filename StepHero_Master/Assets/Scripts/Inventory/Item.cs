@@ -78,7 +78,7 @@ public abstract class Item : ScriptableObject, IDescribable
 #if UNITY_EDITOR
             if (_price < 1)
             {
-                Debug.LogError("Price CANNOT be 0g");
+                Debug.LogError(Title + " price has not been set and CANNOT be 0g");
             }
 #endif
             return _price;

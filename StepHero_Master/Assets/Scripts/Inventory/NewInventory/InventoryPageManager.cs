@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryInteractionManager : MonoBehaviour
+public class InventoryPageManager : MonoBehaviour
 {
-    private static InventoryInteractionManager _instance;
-    public static InventoryInteractionManager Instance
+    private static InventoryPageManager _instance;
+    public static InventoryPageManager Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<InventoryInteractionManager>();
+                _instance = FindObjectOfType<InventoryPageManager>();
             }
             return _instance;
         }
@@ -59,7 +59,7 @@ public class InventoryInteractionManager : MonoBehaviour
     ///     Non-Players inventory is where we store a reference to the other inventory we need to access,
     ///     this can be the inventory of a shop or loot.
     /// </summary>
-    public Inventory _nonPlayerInventory = default;
+    private Inventory _nonPlayerInventory = default;
     public Inventory NonPlayerInventory
     {
         get { return _nonPlayerInventory; }
@@ -80,13 +80,7 @@ public class InventoryInteractionManager : MonoBehaviour
     private int selectedSlotIndex = 0;
     private int selectedPocketIndex = 0;
 
-    public enum InteractionType
-    {
-        PLAYER_USE,
-        PLAYER_SELL,
-        SHOP_BUY,
-        LOOT_TAKE,
-    };
+
 
     [SerializeField]
     private InteractionType _interactionType;
@@ -99,11 +93,11 @@ public class InventoryInteractionManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.S))
         {
-            ChangeFocustedInventory(true);
+            ChangeFocusedInventory(true);
         }
         if (Input.GetKeyUp(KeyCode.P))
         {
-            ChangeFocustedInventory(false);
+            ChangeFocusedInventory(false);
         }
 
         if (Input.GetKeyUp(KeyCode.T))
@@ -132,17 +126,17 @@ public class InventoryInteractionManager : MonoBehaviour
     /// TRUE for the player, FALSE for the Non-Player.
     /// </summary>
     /// <param name="isPlayerInventory"></param>
-    public void ChangeFocustedInventory(bool isPlayerInventory)
+    public void ChangeFocusedInventory(bool isPlayerInventory)
     {
         if (isPlayerInventory)
         {
             _focusedInventory = _playerInventory;
-            _interactionType = _nonPlayerInventory is Merchant_InventoryManager ? InteractionType.PLAYER_SELL : InteractionType.PLAYER_USE;
+            _itemDetail.SetInteractionInterface(_nonPlayerInventory is Merchant_InventoryManager ? InteractionType.PLAYER_SELL : InteractionType.PLAYER_USE);
         }
         else
         {
             _focusedInventory = _nonPlayerInventory;
-            _interactionType = _nonPlayerInventory is Merchant_InventoryManager ? InteractionType.SHOP_BUY : InteractionType.LOOT_TAKE;
+            _itemDetail.SetInteractionInterface(_nonPlayerInventory is Merchant_InventoryManager ? InteractionType.SHOP_BUY : InteractionType.LOOT_TAKE);
         }
         InitialiseInventorySlots();
     }
@@ -168,7 +162,7 @@ public class InventoryInteractionManager : MonoBehaviour
                 }
             }
         }
-        _itemDetail.SetInteractionInterface(_interactionType);
+        //_itemDetail.SetInteractionInterface(_interactionType);
     }
 
     public void InitialiseInventorySlotsPageIndex()

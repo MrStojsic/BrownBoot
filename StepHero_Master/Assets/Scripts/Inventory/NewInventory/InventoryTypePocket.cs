@@ -56,7 +56,7 @@ public class  InventoryTypePocket
         _pocketsItemType = itemType;
     }
 
-    private InventoryItem FindItem(Item item)
+    public InventoryItem FindItem(Item item)
     {
         if (item.ItemType == _pocketsItemType)
         {
@@ -71,75 +71,7 @@ public class  InventoryTypePocket
         return null;
     }
 
-    public int GetMaxNumberOfItemRecivable(InventoryItem sourceInventoryItem)
-    {
-        if (sourceInventoryItem.Item.ItemType == _pocketsItemType)
-        {
-            if (sourceInventoryItem.Item.StackSize > 1)
-            {
-                InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
 
-                if (inventoryItem != null)
-                {
-                    if (inventoryItem.NumberOfItem + sourceInventoryItem.NumberOfItem <= inventoryItem.Item.StackSize)
-                    { return sourceInventoryItem.NumberOfItem; }
-
-                    return inventoryItem.Item.StackSize - inventoryItem.NumberOfItem;
-                }
-            }
-            if (!IsFull)
-            {
-                return sourceInventoryItem.NumberOfItem;
-            }
-        }
-        return 0;
-    }
-
-
-    public int GetMaxNumberOfItemsPurchaseable(InventoryItem sellersInventoryItem, Inventory buyersInventory, out ItemQuantityInteractor.QuantityLimitReason quantityLimitReasonOut)
-    {
-        if (buyersInventory.Gold > 0)
-        {
-            ItemQuantityInteractor.QuantityLimitReason currentQuantityLimitReason = default;
-            int confirmedMax = int.MaxValue;
-            int unconfirmedMax = 0;
-
-            // Check if the buyers gold will be the purchase limiting factor.
-            unconfirmedMax = Mathf.FloorToInt(buyersInventory.Gold / sellersInventoryItem.Item.Price);
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
-            }
-            // Check if the sellers stock level will be the purchase limiting factor.
-            unconfirmedMax = sellersInventoryItem.NumberOfItem;
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_STOCK ;
-            }
-
-            // UNSURE OF FEATURE HERE.
-            // If i want the player to be able to sell items over the merchants standard x99 stack size, use the check below
-            // "if (buyersInventory is Player_InventoryManager)" before the buyers inventory space check.
-
-            // Check if the buyers inventory space will be the purchase limiting factor.
-            unconfirmedMax = buyersInventory.InventoryTypePockets[(int)sellersInventoryItem.Item.ItemType].GetMaxNumberOfItemRecivable(sellersInventoryItem);
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_SPACE;
-            }
-
-            // Now we knoe the limiting factor.
-            quantityLimitReasonOut = currentQuantityLimitReason;
-            return confirmedMax;
-        }
-        quantityLimitReasonOut = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
-        return 0;
-
-    }
     /// <summary>
     /// This should only be called from the inventory that stores this InventoryTypePocket!
     /// </summary>
@@ -185,4 +117,5 @@ public class  InventoryTypePocket
         }
         return false;
     }
+
 }

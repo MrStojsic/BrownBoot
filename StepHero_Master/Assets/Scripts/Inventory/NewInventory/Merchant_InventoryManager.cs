@@ -100,8 +100,8 @@ public class Merchant_InventoryManager : Inventory
 
         if (Input.GetKeyUp(KeyCode.M))
         {
-            InventoryInteractionManager.Instance.SetInventory(this);
-            InventoryInteractionManager.Instance.ChangeFocustedInventory(false);
+            InventoryPageManager.Instance.SetInventory(this);
+            InventoryPageManager.Instance.ChangeFocusedInventory(false);
         }
     }
     // TOHERE

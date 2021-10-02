@@ -15,7 +15,7 @@ MonoBehaviour:
   _title: Weak Health Potion
   _icon: {fileID: 21300000, guid: 869bddd06c9e6433096098c266aaedf2, type: 3}
   _itemType: 1
-  _price: 0
+  _price: 15
   _rarity: 0
   _shortDescription: Restores {0} health when used.
   _longDescription: 
