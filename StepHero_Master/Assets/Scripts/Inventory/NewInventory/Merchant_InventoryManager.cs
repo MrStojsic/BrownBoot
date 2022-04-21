@@ -13,7 +13,6 @@ public class Merchant_InventoryManager : Inventory
     [SerializeField] private List<MerchantInventoryItem> rarePossibleStockItems = default;
     [SerializeField] private int minRareItemsExpected = 0;
 
-
     /// <summary>
     /// This returns the number week of the current date, this may be moved to somewhere else later.
     /// </summary>

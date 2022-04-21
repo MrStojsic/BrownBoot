@@ -15,7 +15,7 @@ MonoBehaviour:
   _title: LeatherGlove
   _icon: {fileID: 21300000, guid: edd14aead6c39452ab8cb2047a4380ae, type: 3}
   _itemType: 12
-  _price: 10
+  _price: 110
   _rarity: 0
   _shortDescription: A smelly leather glove
   _longDescription: Do you want to know how smelly?

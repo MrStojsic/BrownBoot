@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-[System.Serializable]
+    [System.Serializable]
     public class Wallet
     {
         [SerializeField]
@@ -15,9 +15,9 @@ public class Inventory : MonoBehaviour
             get => gold;
         }
 
-        public void InitGold(int amountToReceive)
+        public void InitGold(int initAmount)
         {
-            gold += amountToReceive;
+            gold = initAmount;
         }
         public bool PayOtherWallet(ref Wallet recipientWallet, int amountGiven)
         {
@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour
             {
                 gold -= amountGiven;
                 recipientWallet.gold += amountGiven;
-          
+
                 return true;
             }
             return false;
@@ -44,27 +44,27 @@ public class Inventory : MonoBehaviour
         protected set => _inventoryTypePockets = value;
     }
 
-  
+
 
     public int GetMaxNumberOfItemReceivable(InventoryItem sourceInventoryItem)
     {
-            if (sourceInventoryItem.Item.StackSize > 1)
-            {
-                InventoryItem inventoryItem = _inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].FindItem(sourceInventoryItem.Item);
+        if (sourceInventoryItem.Item.StackSize > 1)
+        {
+            InventoryItem inventoryItem = _inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].FindItem(sourceInventoryItem.Item);
 
-                if (inventoryItem != null)
-                {
-                    if (inventoryItem.NumberOfItem + sourceInventoryItem.NumberOfItem <= inventoryItem.Item.StackSize)
-                    { return sourceInventoryItem.NumberOfItem; }
-
-                    return inventoryItem.Item.StackSize - inventoryItem.NumberOfItem;
-                }
-            }
-            if (!_inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].IsFull)
+            if (inventoryItem != null)
             {
-                return sourceInventoryItem.NumberOfItem;
+                if (inventoryItem.NumberOfItem + sourceInventoryItem.NumberOfItem <= inventoryItem.Item.StackSize)
+                { return sourceInventoryItem.NumberOfItem; }
+
+                return inventoryItem.Item.StackSize - inventoryItem.NumberOfItem;
             }
-        
+        }
+        if (!_inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].IsFull)
+        {
+            return sourceInventoryItem.NumberOfItem;
+        }
+
         return 0;
     }
 
@@ -115,9 +115,8 @@ public class Inventory : MonoBehaviour
 
     // This takes in the sellers inventory,
 
-    public bool AttemptToPurchaseItems(Wallet sellersWallet, InventoryItem sellersInventoryItem, int amountToReceive, int pricePerItem)
+    public bool AttemptToPurchaseItems(Wallet sellersWallet, InventoryItem sellersInventoryItem, int amountToReceive, int totalPrice)
     {
-        int totalPrice = pricePerItem * amountToReceive;
         if (totalPrice <= wallet.Gold && sellersInventoryItem.NumberOfItem >= amountToReceive)
         {
             if (_inventoryTypePockets[(int)sellersInventoryItem.Item.ItemType].AttemptReceiveItems(sellersInventoryItem, amountToReceive))

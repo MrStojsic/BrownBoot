@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(SpriteRenderer),typeof(BoxCollider2D))]
+[RequireComponent(typeof(SpriteRenderer),typeof(CircleCollider2D))]
 public class SpriteButton : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;

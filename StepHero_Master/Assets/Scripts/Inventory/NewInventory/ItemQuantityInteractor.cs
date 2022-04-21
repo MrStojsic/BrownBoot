@@ -22,7 +22,8 @@ public class ItemQuantityInteractor : MonoBehaviour
     [SerializeField] private Text quantityText = null;
 
     [SerializeField] private Text priceText = null;
-    private int currentPrice;
+    private int totalPrice;
+    private int pricePerItemAfterTax = default;
 
     [SerializeField] private Text confirmationText = null;
 
@@ -40,6 +41,14 @@ public class ItemQuantityInteractor : MonoBehaviour
     // Start is called before the first frame update
     public void SetUp(bool doEnable = true)
     {
+        for (int i = 1; i < 20; i++)
+        {
+            print(Mathf.CeilToInt((i) * 0.95f));
+    }
+
+
+
+
         switch ((int)itemDetail.InteractionType)
         {
             case 0: // PLAYER_USE / DROP, check number of item.
@@ -56,6 +65,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Sell how many?";
+                CalculateFinalPricePerItem();
                 UpdatePriceUi(true);
                 itemInteraction = PlayerSellSelectedItem;
                 break;
@@ -64,6 +74,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Buy how many?";
+                CalculateFinalPricePerItem();
                 UpdatePriceUi(true);
                 itemInteraction = PlayerBuySelectedItem;
                 break;
@@ -72,7 +83,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
                 confirmationText.text = "Take how many?";
-                UpdatePriceUi(true);
+                UpdatePriceUi(false);
                 itemInteraction = TakeSelectedItem;
                 break;
             default:
@@ -115,12 +126,27 @@ public class ItemQuantityInteractor : MonoBehaviour
     {
         if (doShow)
         {
-            currentPrice = currentNumberOfItem * itemDetail.InventoryItem.Item.Price;
-            priceText.text = currentPrice.ToString();
+            totalPrice = currentNumberOfItem * pricePerItemAfterTax;
+
+            priceText.text = totalPrice.ToString();
         }
         if (pricePanel.activeSelf != doShow)
         {
             pricePanel.SetActive(doShow);
+        }
+    }
+
+    private void CalculateFinalPricePerItem()
+    {
+        // if the player is selling we incure a 5% loss to the value, rounted up to the next dollar. so a minimum loss of 1 gold.
+        if (itemDetail.InteractionType == InteractionType.PLAYER_SELL)
+        {
+            pricePerItemAfterTax = Mathf.CeilToInt(itemDetail.InventoryItem.Item.Price * 0.95f);
+        }
+        // if the player is buying we pay a 5% surcharge to the value, rounted up to the next dollar. so a minimum surcharge of 1 gold. 
+        else
+        {
+            pricePerItemAfterTax = Mathf.CeilToInt(itemDetail.InventoryItem.Item.Price * 1.05f);
         }
     }
 
@@ -155,14 +181,14 @@ public class ItemQuantityInteractor : MonoBehaviour
         InventoryPageManager.Instance.PlayerInventory.AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory.wallet,
                                                                              itemDetail.InventoryItem,
                                                                              currentNumberOfItem,
-                                                                             itemDetail.InventoryItem.Item.Price);
+                                                                             totalPrice);
     }
     public void PlayerSellSelectedItem()
     {
         InventoryPageManager.Instance.NonPlayerInventory.AttemptToPurchaseItems(InventoryPageManager.Instance.PlayerInventory.wallet,
                                                                                 itemDetail.InventoryItem,
                                                                                 currentNumberOfItem,
-                                                                                itemDetail.InventoryItem.Item.Price);
+                                                                                totalPrice);
     }
 
     public void ToggleDisplay(bool toggleEnable)

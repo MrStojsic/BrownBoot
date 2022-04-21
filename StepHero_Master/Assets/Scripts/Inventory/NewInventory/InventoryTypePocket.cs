@@ -5,6 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class  InventoryTypePocket
 {
+
+    [SerializeField]
+    public List<InventoryItem> storedItems;
+
+    public void Initialise(ItemType itemType)
+    {
+        storedItems = new List<InventoryItem>();
+        _pocketsItemType = itemType;
+    }
+
     private int _sizeLimit = 1000;
     /// <summary>
     /// This is the limit of how many different items can be stored in the pocket,
@@ -47,14 +57,7 @@ public class  InventoryTypePocket
         get => _pocketsItemType;
     }
 
-    [SerializeField]
-    public List<InventoryItem> storedItems;
 
-    public void Initialise(ItemType itemType)
-    {
-        storedItems = new List<InventoryItem>();
-        _pocketsItemType = itemType;
-    }
 
     public InventoryItem FindItem(Item item)
     {
@@ -87,16 +90,16 @@ public class  InventoryTypePocket
                 InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
                 if (inventoryItem != null)
                 {
-                    return ReceiveInExistingStack(sourceInventoryItem, inventoryItem, amountToReceive);
+                    return ReceiveInExistingItem(sourceInventoryItem, inventoryItem, amountToReceive);
                 }
             }
-            return ReceiveInNewStack(sourceInventoryItem, amountToReceive);
+            return ReceiveInNewItem(sourceInventoryItem, amountToReceive);
         }
         // An error has occured.
         return false;
     }
 
-    private bool ReceiveInExistingStack(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToReceive)
+    private bool ReceiveInExistingItem(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToReceive)
     {
         if (inventoryItemDestination != null)
         {
@@ -106,7 +109,7 @@ public class  InventoryTypePocket
     }
 
     // TODO ; Ensure that this removes the number of items added from the source items inventory.
-    private bool ReceiveInNewStack(InventoryItem sourceInventoryItem, int amountToReceive)
+    private bool ReceiveInNewItem(InventoryItem sourceInventoryItem, int amountToReceive)
     {
         if (!IsFull)
         {

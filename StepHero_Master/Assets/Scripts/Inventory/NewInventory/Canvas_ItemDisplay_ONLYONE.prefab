@@ -107,8 +107,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4531951822625679763}
+  m_Children: []
   m_Father: {fileID: 6746889266409489706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -525,15 +524,15 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4867810250666315564}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1622905145465405328}
-  m_RootOrder: 0
+  m_Father: {fileID: 6746889266409489706}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.01933067, y: 0}
-  m_AnchorMax: {x: 0.97852147, y: 0.555}
+  m_AnchorMin: {x: 0.038857788, y: 0.05283257}
+  m_AnchorMax: {x: 0.91400003, y: 0.50335693}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -854,9 +853,8 @@ MonoBehaviour:
   _descriptionText: {fileID: 33233420563752965}
   _descriptionAreaLayoutElement: {fileID: 6885053337590913055}
   _rectTransform: {fileID: 4413854700224691428}
-  IQI: {fileID: 6885053337288756170}
-  IIM: {fileID: 0}
-  actions: []
+  itemQuantityInteractor: {fileID: 0}
+  inventoryPageManager: {fileID: 0}
   leftButtonText: {fileID: 0}
   rightButtonText: {fileID: 0}
 --- !u!114 &6885053336838657623
@@ -1235,6 +1233,7 @@ MonoBehaviour:
   itemDetail: {fileID: 6885053336838657622}
   pricePanel: {fileID: 0}
   quantityText: {fileID: 6885053338209800051}
+  priceText: {fileID: 0}
   confirmationText: {fileID: 0}
 --- !u!1 &6885053337403647696
 GameObject:
@@ -2701,6 +2700,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1622905145465405328}
+  - {fileID: 4531951822625679763}
   m_Father: {fileID: 1890761937463156751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

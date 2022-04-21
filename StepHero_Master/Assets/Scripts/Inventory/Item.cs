@@ -49,6 +49,11 @@ public abstract class Item : ScriptableObject, IDescribable
     [SerializeField] private Rarity _rarity = default;
 
     /// <summary>
+    /// The centre point of the items origin, this will likely be used to adjust the price of some items based on how far its bought or sold from its native region.
+    /// </summary>
+    [SerializeField] private Vector2 _regionOfOrigin = default;
+
+    /// <summary>
     /// The size of the stack, less than 2 is not stackable
     /// </summary>
     private int stackSize = 99;
@@ -91,6 +96,9 @@ public abstract class Item : ScriptableObject, IDescribable
     /// </summary>
     public Rarity Rarity
     {   get => _rarity;   }
+
+    public Vector2 RegionOfOrigin
+    { get => _regionOfOrigin; }
 
     public virtual int StackSize
     { get => stackSize; }

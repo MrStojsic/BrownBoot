@@ -13,8 +13,8 @@ public class UiWindowManager : MonoBehaviour
 {
     private static UiWindowManager instance;
 
-    [SerializeField] private UiWindow startingPanel;
-    [SerializeField] private UiWindow[] uiPanels;
+    [SerializeField] private UiWindow startingPanel = default;
+    [SerializeField] private UiWindow[] uiPanels = default;
 
     private UiWindow currentUiPanel;
 
