@@ -41,6 +41,7 @@ public class Player_InventoryManager : Inventory
 
         if (Input.GetKeyUp(KeyCode.P))
         {
+            Debug.Log("Pressed P - Set focused inventory to Player's");
             InventoryPageManager.Instance.SetInventory(this);
             InventoryPageManager.Instance.ChangeFocusedInventory(true);
         }

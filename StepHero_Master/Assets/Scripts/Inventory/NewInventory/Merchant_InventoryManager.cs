@@ -99,6 +99,7 @@ public class Merchant_InventoryManager : Inventory
 
         if (Input.GetKeyUp(KeyCode.M))
         {
+            Debug.Log("Pressed M - Set focused inventory to Merchant's");
             InventoryPageManager.Instance.SetInventory(this);
             InventoryPageManager.Instance.ChangeFocusedInventory(false);
         }

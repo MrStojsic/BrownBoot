@@ -5,9 +5,9 @@ using System;
 
 public enum InteractionType
 {
-    PLAYER_USE,
-    PLAYER_SELL,
     SHOP_BUY,
+    PLAYER_SELL,
+    PLAYER_USE,
     LOOT_TAKE,
 };
 
@@ -129,23 +129,22 @@ public class ItemDetail : InventorySlot
 
         switch ((int)_interactionType)
         {
-
-            case 0: // PLAYER_USE / DROP, check number of item.
-                leftButtonText.text = "Drop";
-                leftButtonFunction = SetIQI;
-                leftButtonText.transform.parent.gameObject.SetActive(true);
-                rightButtonText.text = "Use";
-                rightButtonFunction = InteractWithItem;
+            case 0: // SHOP_BUY, check both player inventory and number of item and number player can afford.
+                leftButtonText.transform.parent.gameObject.SetActive(false);
+                rightButtonText.text = "Buy";
+                rightButtonFunction = SetIQI;
                 break;
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
                 leftButtonText.transform.parent.gameObject.SetActive(false);
                 rightButtonText.text = "Sell";
                 rightButtonFunction = SetIQI;
                 break;
-            case 2: // SHOP_BUY, check both player inventory and number of item and number player can afford.
-                leftButtonText.transform.parent.gameObject.SetActive(false);
-                rightButtonText.text = "Buy";
-                rightButtonFunction = SetIQI;
+            case 2: // PLAYER_USE / DROP, check number of item.
+                leftButtonText.text = "Drop";
+                leftButtonFunction = SetIQI;
+                leftButtonText.transform.parent.gameObject.SetActive(true);
+                rightButtonText.text = "Use";
+                rightButtonFunction = InteractWithItem;
                 break;
             case 3: // LOOT, check player inventory.
                 leftButtonText.text = "Take";

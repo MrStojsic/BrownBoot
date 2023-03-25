@@ -59,6 +59,7 @@ public class InventoryPageManager : MonoBehaviour
     ///     Non-Players inventory is where we store a reference to the other inventory we need to access,
     ///     this can be the inventory of a shop or loot.
     /// </summary>
+    [SerializeField]
     private Inventory _nonPlayerInventory = default;
     public Inventory NonPlayerInventory
     {
@@ -93,17 +94,26 @@ public class InventoryPageManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.S))
         {
+            Debug.Log("Pressed S - Set Inventory to Sell from Player.");
             ChangeFocusedInventory(true);
         }
         if (Input.GetKeyUp(KeyCode.P))
         {
+            Debug.Log("Pressed P - Set Inventory to purchase from Merchant.");
             ChangeFocusedInventory(false);
         }
 
         if (Input.GetKeyUp(KeyCode.T))
         {
+            Debug.Log("Pressed T - Gave player test item.");
             _playerInventory.InventoryTypePockets[(int)testItemToAdd.Item.ItemType].AttemptReceiveItems(testItemToAdd, 1);
             print(testItemToAdd.Item.StackSize);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            Debug.Log("Pressed D - Deloaded mechant inventory.");
+            NonPlayerInventory = null;
+            ChangeFocusedInventory(true);
         }
 
     }
@@ -146,6 +156,7 @@ public class InventoryPageManager : MonoBehaviour
     {
         bool hasSelectedFirstValidButton = false;
 
+        // If an error is being thrown here press M to set the merchants inventory up for now, or check that the _nonPlayerInventory variable references to something.
         for (int i = 0; i < _focusedInventory.InventoryTypePockets.Length; i++)
         {
             if (_focusedInventory.InventoryTypePockets[i].Count < 1)

@@ -51,16 +51,17 @@ public class ItemQuantityInteractor : MonoBehaviour
 
         switch ((int)itemDetail.InteractionType)
         {
-            case 0: // PLAYER_USE / DROP, check number of item.
-                maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
-                currentNumberOfItem = 0;
+            case 0: // SHOP_BUY, check both player inventory and number of item and number player can afford.
+                maxNumberOfItem = InventoryPageManager.Instance.PlayerInventory.GetMaxNumberOfItemsPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
+                currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
-                confirmationText.text = "Discard how many?";
-                UpdatePriceUi(false);
-                itemInteraction = DropSelectedItem;
+                confirmationText.text = "Buy how many?";
+                CalculateFinalPricePerItem();
+                UpdatePriceUi(true);
+                itemInteraction = PlayerBuySelectedItem;
                 break;
-            case 1: // PLAYER_SELL, check number of item and number shop can afford.
 
+            case 1: // PLAYER_SELL, check number of item and number shop can afford.
                 maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemsPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
@@ -69,14 +70,13 @@ public class ItemQuantityInteractor : MonoBehaviour
                 UpdatePriceUi(true);
                 itemInteraction = PlayerSellSelectedItem;
                 break;
-            case 2: // SHOP_BUY, check both player inventory and number of item and number player can afford.
-                maxNumberOfItem = InventoryPageManager.Instance.PlayerInventory.GetMaxNumberOfItemsPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
-                currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
+            case 2: // PLAYER_USE / DROP, check number of item.
+                maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
+                currentNumberOfItem = 0;
                 quantityText.text = currentNumberOfItem.ToString();
-                confirmationText.text = "Buy how many?";
-                CalculateFinalPricePerItem();
-                UpdatePriceUi(true);
-                itemInteraction = PlayerBuySelectedItem;
+                confirmationText.text = "Discard how many?";
+                UpdatePriceUi(false);
+                itemInteraction = DropSelectedItem;
                 break;
             case 3: // LOOT, check player inventory.
                 maxNumberOfItem = InventoryPageManager.Instance.PlayerInventory.GetMaxNumberOfItemReceivable(itemDetail.InventoryItem);
@@ -105,7 +105,7 @@ public class ItemQuantityInteractor : MonoBehaviour
             {
                 currentNumberOfItem++;
                 quantityText.text = currentNumberOfItem.ToString();
-                UpdatePriceUi();
+                UpdatePriceUi((int)itemDetail.InteractionType < 2);
                 return;
             }
             Debug.Log(quantityLimitReason);
@@ -117,23 +117,25 @@ public class ItemQuantityInteractor : MonoBehaviour
             {
                 currentNumberOfItem--;
                 quantityText.text = currentNumberOfItem.ToString();
-                UpdatePriceUi();
+                UpdatePriceUi((int)itemDetail.InteractionType < 2);
             }
         }
     }
 
     private void UpdatePriceUi(bool doShow = true)
     {
-        if (doShow)
-        {
-            totalPrice = currentNumberOfItem * pricePerItemAfterTax;
+            if (doShow)
+            {
+                totalPrice = currentNumberOfItem * pricePerItemAfterTax;
 
-            priceText.text = totalPrice.ToString();
-        }
-        if (pricePanel.activeSelf != doShow)
-        {
-            pricePanel.SetActive(doShow);
-        }
+                priceText.text = totalPrice.ToString();
+            }
+            if (pricePanel.activeSelf != doShow)
+            {
+                pricePanel.SetActive(doShow);
+                print(doShow);
+            }
+        
     }
 
     private void CalculateFinalPricePerItem()

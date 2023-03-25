@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2871256371975870593}
   - component: {fileID: 6392672379515366521}
   - component: {fileID: 25685092227487978}
-  - component: {fileID: 8208361410950326067}
+  - component: {fileID: -5490046245080086303}
   - component: {fileID: 9058229038991205701}
   - component: {fileID: 4417169563714197173}
   m_Layer: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 0}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -120,8 +121,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8208361410950326067
-BoxCollider2D:
+--- !u!58 &-5490046245080086303
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,18 +135,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.14}
-  m_EdgeRadius: 0
+  m_Radius: 0.08
 --- !u!114 &9058229038991205701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +179,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89403b76ef9c41d0b238bd191af44f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapUiManager: {fileID: 0}
-  treasure:
-    isInteracting: 0

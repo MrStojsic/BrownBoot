@@ -40,7 +40,7 @@ public class ExerciseManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.T))
         {
-
+            Debug.Log("Pressed T - ");
         }
     }
     // ^^^^^^^^ TESTING.

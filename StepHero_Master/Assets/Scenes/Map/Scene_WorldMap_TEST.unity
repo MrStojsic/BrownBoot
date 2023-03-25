@@ -5948,7 +5948,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.7
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -5991,7 +5991,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSpriteRenderer: {fileID: 1275946093}
-  minZoomLimit: 2
+  frameHeaderRect: {fileID: 0}
+  frameFooterRect: {fileID: 0}
+  panXLimit: 0
+  panYLimits: {x: 0, y: 0}
+  zoomAllowed: 1
+  minZoomLimit: 1
   maxZoomLimit: 3.8
 --- !u!114 &828874426
 MonoBehaviour:
@@ -9614,6 +9619,7 @@ MonoBehaviour:
     type: 3}
   _inventorySlots: []
   _pooledInventoryHolder: {fileID: 2048520560}
+  _nonPlayerInventory: {fileID: 0}
   selectedSlotIndex: 0
   _interactionType: 0
   testItemToAdd:
@@ -12808,7 +12814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1804791824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12925,7 +12931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1807195920
@@ -13004,8 +13010,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.025, y: 0.020290017}
   m_AnchorMax: {x: 0.19166632, y: 0.9357101}
-  m_AnchoredPosition: {x: 0, y: 73.90039}
-  m_SizeDelta: {x: 0, y: 147.88501}
+  m_AnchoredPosition: {x: -13.5, y: 73.90039}
+  m_SizeDelta: {x: 27.01828, y: 147.88501}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1807318133
 MonoBehaviour:
@@ -15736,6 +15742,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6885053336838657629, guid: a68b9813fdc094e068c77b10acf65a9e,
+        type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885053336838657629, guid: a68b9813fdc094e068c77b10acf65a9e,
+        type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6885053336838657631, guid: a68b9813fdc094e068c77b10acf65a9e,
         type: 3}
       propertyPath: m_Name
@@ -16050,6 +16066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885053338209800051, guid: a68b9813fdc094e068c77b10acf65a9e,
+        type: 3}
+      propertyPath: m_Text
+      value: NOT SET
       objectReference: {fileID: 0}
     - target: {fileID: 6885053338227413587, guid: a68b9813fdc094e068c77b10acf65a9e,
         type: 3}
