@@ -11,7 +11,6 @@ namespace Npcs
         [SerializeField] protected string title = "New NPC Name";
         [SerializeField] protected string greetingText = "Hello Adventurer";
 
-        [SerializeField] private Quest questToUnlockFurtherInteractions = null;
 
         [SerializeField] private Vector2 _positionPercentage;
         public Vector2 PositionPercentage

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    public int id;
+    public int ID { get; set; }
 
     [SerializeField] private CanvasGroup healthGroup = default;
 

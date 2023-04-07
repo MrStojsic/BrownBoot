@@ -7,26 +7,28 @@ public class QuestKillGoal : QuestGoal
 {
     public int EnemyID { get; set; }
 
-    public QuestKillGoal(int enemyID, string description, bool isCompleted, int progressAmount, int requiredAmount)
+    public QuestKillGoal(int enemyID, string description, bool isCompleted, int currentAmount, int requiredAmount)
     {
         this.EnemyID = enemyID;
         this.Description = description;
         this.IsCompleted = isCompleted;
-        this.ProgressAmount = progressAmount;
+        this.CurrentAmount = currentAmount;
         this.RequiredAmount = requiredAmount;
     }
 
     public override void Initialise()
     {
         base.Initialise();
+        // TODO
+        // This hasnt been implimented, watch game grind RPG series for implimentation.
+        //CombatEvents.OnEnemyDeath += EnemyDied;
     }
 
-    // TODO - cehck video.
     void EnemyDied(Enemy enemy)
     {
-        if (enemy.id == this.EnemyID)
+        if (enemy.ID == this.EnemyID)
         {
-            this.ProgressAmount++;
+            this.CurrentAmount++;
             Evaluate();
         }
     }

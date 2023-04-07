@@ -4889,7 +4889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testStat: {fileID: 0}
   maxTestStat: 0
-  id: 0
   healthGroup: {fileID: 0}
   lootTable: {fileID: 694009423}
   isAlive: 1
@@ -9152,6 +9151,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71e380cefb7d144b387aec3b4966ebc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1228933182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1228933183}
+  m_Layer: 0
+  m_Name: Quests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1228933183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228933182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 714.62854, y: 803.292, z: -83.06347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234993564
 GameObject:
   m_ObjectHideFlags: 0
@@ -10913,7 +10942,6 @@ GameObject:
   - component: {fileID: 1580145769}
   - component: {fileID: 1580145767}
   - component: {fileID: 1580145766}
-  - component: {fileID: 1580145772}
   - component: {fileID: 1580145768}
   m_Layer: 0
   m_Name: The Port of Argent
@@ -10938,7 +10966,7 @@ MonoBehaviour:
   bestEdgeIndex: 0
   previousBestEdgeIndex: 0
   _location: {fileID: 1580145766}
-  _worldMapNodeEvent: {fileID: 1580145772}
+  _worldMapNodeEvent: {fileID: 0}
   gScore: 0
   hScore: 0
   id: 0
@@ -11081,21 +11109,6 @@ Transform:
   m_Father: {fileID: 1834148540}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1580145772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1580145764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b5ba392a45fd4020bb0ceeb07aa647c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _overallChanceOfAnEncounter: 0
-  possibleEncounters: []
-  encounterWeights: 
 --- !u!1 &1589491705
 GameObject:
   m_ObjectHideFlags: 0
@@ -12931,7 +12944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1807195920

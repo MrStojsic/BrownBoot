@@ -141,6 +141,8 @@ public class InventoryPageManager : MonoBehaviour
         if (isPlayerInventory)
         {
             _focusedInventory = _playerInventory;
+            // - The 'is' operator in C# is used to check the object type and it returns a bool value: true if the object is the same type and false if not.
+            //   So if _nonPlayerInventory is a merchant, pass PLAYER_SELL, otherwise pass PLAYER_USE as the parameter in SetInteractionInterface.
             _itemDetail.SetInteractionInterface(_nonPlayerInventory is Merchant_InventoryManager ? InteractionType.PLAYER_SELL : InteractionType.PLAYER_USE);
         }
         else

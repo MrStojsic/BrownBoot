@@ -18,7 +18,6 @@ public class Player_InventoryManager : Inventory
         {
             InventoryTypePockets[i].Initialise((ItemType)i);
         }
-        print(_debugInventoryTypePockets.Count);
 
             for (int i = 0; i < _debugInventoryTypePockets.Count; i++)
             {

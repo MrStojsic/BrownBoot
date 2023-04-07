@@ -7,12 +7,12 @@ public class QuestReachLocationGoal : QuestGoal
 {
     public int NodeID { get; set; }
 
-    public QuestReachLocationGoal(int nodeID, string description, bool isCompleted, int progressAmount, int requiredAmount)
+    public QuestReachLocationGoal(int nodeID, string description, bool isCompleted, int currentAmount, int requiredAmount)
     {
         this.NodeID = nodeID;
         this.Description = description;
         this.IsCompleted = isCompleted;
-        this.ProgressAmount = progressAmount;
+        this.CurrentAmount = currentAmount;
         this.RequiredAmount = requiredAmount;
     }
 
@@ -25,7 +25,7 @@ public class QuestReachLocationGoal : QuestGoal
     {
         if (node.id == this.NodeID)
         {
-            this.ProgressAmount++;
+            this.CurrentAmount++;
             Evaluate();
         }
     }
