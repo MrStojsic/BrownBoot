@@ -1,20 +1,21 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NPC/Occupations/QuestGiver.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/Inventory.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/Items/Equipment.cs" Line="9" Column="20" />
+      <File FileName="Assets/InscopeQuests/ISS_QuestScript.cs" Line="5" Column="104" IsPinned="True" />
+      <File FileName="Assets/Scripts/Inventory/Items/Equipment.cs" />
       <File FileName="Assets/Scripts/Inventory/SelectedItemDisplay.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" />
       <File FileName="Assets/Scripts/Inventory/ConsumableEquipment.cs" />
       <File FileName="Assets/Scripts/Inventory/IEquippable.cs" />
       <File FileName="Assets/Scripts/Inventory/IUseable.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="40" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" />
       <File FileName="Assets/Scripts/Inventory/Items/HealthPotion.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="125" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="20" Column="10" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="84" Column="27" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" Line="51" Column="52" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryPageManager.cs" Line="148" Column="13" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryPageManager.cs" />
       <File FileName="Assets/Scripts/Inventory/EquippedInventory.cs" />
       <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" />
       <File FileName="Assets/Scripts/Inventory/PlayerEquipmentWindow.cs" />
@@ -29,22 +30,29 @@
       <File FileName="Assets/Scripts/UI Components/ScaleOnScroll.cs" />
       <File FileName="Assets/Scripts/Map/WorldMap/Location Related/LocationPoi.cs" />
       <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" />
-      <File FileName="Assets/Scripts/NPC/NPC.cs" Line="13" Column="1" />
+      <File FileName="Assets/Scripts/NPC/NPC.cs" />
       <File FileName="Assets/Scripts/Utitlities/IInteractable.cs" />
       <File FileName="Assets/Scripts/Workout/ExerciseAndWorkout/ExerciseManager.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarNode.cs" Line="25" Column="12" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Pathfinding/AStarNode.cs" />
       <File FileName="Assets/Editor/PathfindingPlacementManagementWindow.cs" />
       <File FileName="Assets/Scripts/Map/CameraControls/ZoomPanCamera.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" Line="15" Column="35" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapPathEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapEvent.cs" Line="6" Column="14" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" Line="5" Column="28" />
-      <File FileName="Assets/Scripts/RPG/Entity.cs" Line="5" Column="23" />
-      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RPG/BattleUiManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/RPG/BattleManager.cs" Line="11" Column="6" />
-      <File FileName="Assets/Scripts/NPC/Occupations/QuestGiver.cs" Line="34" Column="105" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/MerchantInventoryItem.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapNodeEvent.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapPathEvent.cs" />
+      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Events/WorldMapEvent.cs" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Enemy.cs" />
+      <File FileName="Assets/Scripts/RPG/Entity.cs" />
+      <File FileName="Assets/Scripts/RPG/Enemies/Wolf.cs" />
+      <File FileName="Assets/Scripts/RPG/BattleUiManager.cs" />
+      <File FileName="Assets/Scripts/RPG/BattleManager.cs" />
+      <File FileName="Assets/Scripts/NPC/Occupations/QuestGiver.cs" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" />
+      <File FileName="Assets/InscopeQuests/ISS_QuestGiver.cs" />
+      <File FileName="Assets/Scripts/Questing_GameGrindVersion/Quest.cs" />
+      <File FileName="Assets/InscopeQuests/ISS_Quest.cs" />
+      <File FileName="Assets/InscopeQuests/ISS_QuestLog.cs" />
+      <File FileName="Assets/Scripts/Questing_GameGrindVersion/QuestKillGoal.cs" />
+      <File FileName="Assets/Scripts/Inventory/OldInventory/IDescribable.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -52,10 +60,14 @@
           <Node name="StepHero_Master" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Editor" expanded="True" />
+              <Node name="InscopeQuests" expanded="True" />
               <Node name="Scripts" expanded="True">
                 <Node name="Inventory" expanded="True">
                   <Node name="Items" expanded="True" />
-                  <Node name="NewInventory" expanded="True" />
+                  <Node name="NewInventory" expanded="True">
+                    <Node name="Inventory.cs" selected="True" />
+                  </Node>
+                  <Node name="OldInventory" expanded="True" />
                 </Node>
                 <Node name="Map" expanded="True">
                   <Node name="CameraControls" expanded="True" />
@@ -67,13 +79,13 @@
                   </Node>
                 </Node>
                 <Node name="NPC" expanded="True">
-                  <Node name="Occupations" expanded="True">
-                    <Node name="QuestGiver.cs" selected="True" />
-                  </Node>
+                  <Node name="Occupations" expanded="True" />
                 </Node>
+                <Node name="Questing_GameGrindVersion" expanded="True" />
                 <Node name="RPG" expanded="True">
                   <Node name="Enemies" expanded="True" />
                 </Node>
+                <Node name="UI Components" expanded="True" />
                 <Node name="UNUSED_SCRIPTS" expanded="True">
                   <Node name="Map" expanded="True" />
                 </Node>
@@ -86,7 +98,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="47ffede4-b0e0-45bd-852b-57f27b623b9b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a0103fad-3515-4341-b18b-6802ee744f6c" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

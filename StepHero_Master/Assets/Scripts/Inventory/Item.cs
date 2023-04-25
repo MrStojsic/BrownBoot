@@ -22,6 +22,8 @@ public enum ItemType
     ANY,        // 15
 }
 
+// TODO: Add item ID so searches and comparisons of items is faster.
+
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 
 public abstract class Item : ScriptableObject, IDescribable
