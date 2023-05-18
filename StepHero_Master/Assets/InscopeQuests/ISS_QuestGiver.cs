@@ -12,7 +12,7 @@ public class ISS_QuestGiver : MonoBehaviour
     [SerializeField]
     private ISS_QuestLog tempLog;
 
-    private void Awake()
+    private void Start()
     {
         // here we need to accept a quest.
         //DEBUGGING ONLY.

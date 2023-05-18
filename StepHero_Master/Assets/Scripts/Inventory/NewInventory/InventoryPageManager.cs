@@ -107,7 +107,6 @@ public class InventoryPageManager : MonoBehaviour
         {
             Debug.Log("Pressed T - Gave player test item.");
             _playerInventory.InventoryTypePockets[(int)testItemToAdd.Item.ItemType].AttemptReceiveItems(testItemToAdd, 1);
-            print(testItemToAdd.Item.StackSize);
         }
         if (Input.GetKeyUp(KeyCode.D))
         {

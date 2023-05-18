@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//- Added ItemCountDelegate and Event from https://www.youtube.com/watch?v=7eOFqwGH_hA&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=64
+//  Still want to update the way it works after updatig the player inventory. 
+public delegate void ItemCountChanged(Item item);
+
 [System.Serializable]
 public class  InventoryTypePocket
 {
+    public event ItemCountChanged itemCountChanged;
 
     [SerializeField]
     public List<InventoryItem> storedItems;
@@ -57,8 +62,10 @@ public class  InventoryTypePocket
         get => _pocketsItemType;
     }
 
+    
 
 
+    // TODO - This could also be optimised by using item IDs and passing na int ID and comparing it to the storedItems ids.
     public InventoryItem FindItem(Item item)
     {
         if (item.ItemType == _pocketsItemType)
@@ -73,6 +80,8 @@ public class  InventoryTypePocket
         }
         return null;
     }
+
+   
 
 
     /// <summary>
@@ -103,7 +112,12 @@ public class  InventoryTypePocket
     {
         if (inventoryItemDestination != null)
         {
-            return inventoryItemDestination.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive);
+            if (inventoryItemDestination.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive) == true)
+            {
+                OnItemCountChanged(sourceInventoryItem.Item);
+                return true;
+            }
+           
         }
         return false;
     }
@@ -116,9 +130,18 @@ public class  InventoryTypePocket
             InventoryItem inventoryItem = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
             inventoryItem.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive);
             storedItems.Add(inventoryItem);
+            OnItemCountChanged(sourceInventoryItem.Item);
             return true;
         }
         return false;
     }
 
+    //- WE need to check that the event itemCountChanged has some listeners before we call it otherwise we will get a null ref error.
+    public void OnItemCountChanged(Item item)
+    {
+        if (itemCountChanged != null)
+        {
+            itemCountChanged.Invoke(item);
+        }
+    }
 }

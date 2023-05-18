@@ -22,7 +22,23 @@ public enum ItemType
     ANY,        // 15
 }
 
-// TODO: Add item ID so searches and comparisons of items is faster.
+/*
+ * // TODO: Add item ID so searches and comparisons of items is faster.
+//- If we decide to go with itemType plus Item ID to make each item id (so we can work out an items type based on its ID
+//  EG. returned ID 1990 would be item type POTION + id 990 tellings us its a POTION of item type 990.)
+//  to calculate the item type from he final 1990 use the below equation.
+
+         int[] ints = new int[] {0991, 1490, 2454, 3999,4001,5808,10490,14890 };
+
+        foreach (int i in ints)
+        {
+            int itemType = (i - i % 1000) / 1000;
+            print(itemType + "\n");
+        }
+
+     */
+
+
 
 // https://www.youtube.com/watch?v=OJsWnf8B-Zo&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=49
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+// Added 
+
 public class InventorySlot : MonoBehaviour
 {
     // DATA.
@@ -157,7 +159,14 @@ public class InventoryItem
     {
         if (numberToRemove <= NumberOfItem)
         {
+            // HACK
+            // Just a shitty fix, i dont think i want the inventory to work how it is having the OnItemCountChanged in each pocket.
+            if (InventoryPageManager.Instance.PlayerInventory != null) // This is shit << i want OnItemCountChanged to be in the inventory i think.
+            {
+                InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)_item.ItemType].OnItemCountChanged(_item);
+            }
             NumberOfItem -= numberToRemove;
+            
         }
     }
 

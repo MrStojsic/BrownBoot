@@ -33,7 +33,7 @@ public class ISS_QuestLog : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -44,6 +44,11 @@ public class ISS_QuestLog : MonoBehaviour
 
     public void AcceptQuest(ISS_Quest quest)
     {
+        foreach (CollectionObjective o in quest.CollectionObjectives)
+        {
+            InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)o.Item.ItemType].itemCountChanged += new ItemCountChanged(o.UpdateCollectedItemCount);
+        }
+
         ISS_QuestScript newMenuQuest;
         newMenuQuest = Instantiate(questPrefeb, _questSlotSelectorGroup.selectorButtonsParent);
         newMenuQuest.SelectorButton.selectorGroup = _questSlotSelectorGroup;
@@ -69,7 +74,7 @@ public class ISS_QuestLog : MonoBehaviour
         string objectives = "\n";
         foreach (Objective o in quest.CollectionObjectives)
         {
-            objectives += (o.Type + ": " + o.CurrentAmount + "/" + o.Amount + "\n");
+            objectives += (o.Item.Title + ": " + o.CurrentAmount + "/" + o.Amount + "\n");
         }
 
         descriptionText.text = quest.Description;

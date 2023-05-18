@@ -18,18 +18,6 @@ public class ISS_Quest
     [SerializeField]
     private CollectionObjective[] _collectionObjectives;
     public CollectionObjective[] CollectionObjectives { get => _collectionObjectives; }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 
 [System.Serializable]
@@ -41,9 +29,14 @@ public abstract class Objective
     [SerializeField]
     private int _currentAmount;
     public int CurrentAmount { get => _currentAmount; set => _currentAmount = value; }
+
+    //- Diviated from tutorial to store an item rather than the string name for comparisons,
+    //  but we stll compare to the items name. may use item IDs in future.
     [SerializeField]
-    private string _type;
-    public string Type { get => _type; set => _type = value; }
+    private Item _item;
+    public Item Item { get => _item; set => _item = value; }
+
+
 }
 
 [System.Serializable]
@@ -51,12 +44,9 @@ public class CollectionObjective : Objective
 {
     public void UpdateCollectedItemCount(Item item)
     {
-        //- We compare the name of the items after comparing to lower case just in case there are any casing errors.
-        if (Type.ToLower() == item.Title.ToLower())
+        //- We compare to the items name. may use item IDs in future.
+        if (Item.Title == item.Title)
         {
-            //- Stopped here as "itemCountChangedEvent" isnt implimented yet and the totorial was about to use it.
-            https://youtu.be/lbJsitsHcUs?t=178
-
             CurrentAmount = InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)item.ItemType].FindItem(item).NumberOfItem;
             Debug.Log("Quest - CurrentAmount = " + CurrentAmount);
         }

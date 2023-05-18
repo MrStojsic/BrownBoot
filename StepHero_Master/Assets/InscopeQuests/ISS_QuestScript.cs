@@ -13,7 +13,8 @@ public class ISS_QuestScript : MonoBehaviour
         get { return _selectorButton; }
     }
     //TODO -Impliment the rest of the InventoryScript to InventoryPageManager like functionality
-    //      to QuestScript and QuestLog so they act like the inventory slots, InventoryPageManager.
+    //      to QuestScript and QuestLog so they act like the inventory slots, InventoryPageManager
+    //      so we can scroll through like we can items selecting items and having them replace with it details slot.
     /*
     [SerializeField] protected Image _icon = default;
     public Image Icon
