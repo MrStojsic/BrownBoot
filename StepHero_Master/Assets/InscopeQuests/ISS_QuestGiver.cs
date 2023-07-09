@@ -17,6 +17,7 @@ public class ISS_QuestGiver : MonoBehaviour
         // here we need to accept a quest.
         //DEBUGGING ONLY.
         tempLog.AcceptQuest(quests[0]);
+        tempLog.AcceptQuest(quests[1]);
     }
 
     private void Update()

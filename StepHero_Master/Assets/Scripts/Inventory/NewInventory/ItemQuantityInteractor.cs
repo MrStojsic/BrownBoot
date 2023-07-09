@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ItemQuantityInteractor : MonoBehaviour
 {
-   
+
 
     // DATA.
-    int maxNumberOfItem = 0;
-    int currentNumberOfItem = 0;
+    private int maxNumberOfItem = 0;
+    private int currentNumberOfItem = 0;
 
-    [SerializeField ]private ItemDetail itemDetail = null;
+    [SerializeField] private ItemDetail itemDetail = null;
 
     [SerializeField] private GameObject pricePanel = null;
 
@@ -38,21 +38,13 @@ public class ItemQuantityInteractor : MonoBehaviour
     }
     private QuantityLimitReason quantityLimitReason;
 
-    // Start is called before the first frame update
+  
     public void SetUp(bool doEnable = true)
     {
-        for (int i = 1; i < 20; i++)
-        {
-            print(Mathf.CeilToInt((i) * 0.95f));
-    }
-
-
-
-
         switch ((int)itemDetail.InteractionType)
         {
             case 0: // SHOP_BUY, check both player inventory and number of item and number player can afford.
-                maxNumberOfItem = InventoryPageManager.Instance.PlayerInventory.GetMaxNumberOfItemsPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
+                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Buy how many?";
@@ -62,7 +54,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 break;
 
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
-                maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemsPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
+                maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Sell how many?";
@@ -79,7 +71,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 itemInteraction = DropSelectedItem;
                 break;
             case 3: // LOOT, check player inventory.
-                maxNumberOfItem = InventoryPageManager.Instance.PlayerInventory.GetMaxNumberOfItemReceivable(itemDetail.InventoryItem);
+                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemReceivable(itemDetail.InventoryItem);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
                 confirmationText.text = "Take how many?";
@@ -124,18 +116,18 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     private void UpdatePriceUi(bool doShow = true)
     {
-            if (doShow)
-            {
-                totalPrice = currentNumberOfItem * pricePerItemAfterTax;
+        if (doShow)
+        {
+            totalPrice = currentNumberOfItem * pricePerItemAfterTax;
 
-                priceText.text = totalPrice.ToString();
-            }
-            if (pricePanel.activeSelf != doShow)
-            {
-                pricePanel.SetActive(doShow);
-                print(doShow);
-            }
-        
+            priceText.text = totalPrice.ToString();
+        }
+        if (pricePanel.activeSelf != doShow)
+        {
+            pricePanel.SetActive(doShow);
+            print(doShow);
+        }
+
     }
 
     private void CalculateFinalPricePerItem()
@@ -162,7 +154,7 @@ public class ItemQuantityInteractor : MonoBehaviour
     {
         if (currentNumberOfItem > 0)
         {
-            itemDetail.InventoryItem.RemoveItems(currentNumberOfItem);
+            PlayerInventory.Instance.RemoveItems(itemDetail.InventoryItem, currentNumberOfItem);
         }
     }
 
@@ -175,22 +167,34 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public void TakeSelectedItem()
     {
-        InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)itemDetail.InventoryItem.Item.ItemType].AttemptReceiveItems(itemDetail.InventoryItem, currentNumberOfItem);
+        PlayerInventory.Instance.AttemptAddItem(itemDetail.InventoryItem.Item, currentNumberOfItem);
     }
 
     public void PlayerBuySelectedItem()
     {
-        InventoryPageManager.Instance.PlayerInventory.AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory.wallet,
-                                                                             itemDetail.InventoryItem,
-                                                                             currentNumberOfItem,
-                                                                             totalPrice);
+        AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory, itemDetail.InventoryItem);
     }
     public void PlayerSellSelectedItem()
     {
-        InventoryPageManager.Instance.NonPlayerInventory.AttemptToPurchaseItems(InventoryPageManager.Instance.PlayerInventory.wallet,
-                                                                                itemDetail.InventoryItem,
-                                                                                currentNumberOfItem,
-                                                                                totalPrice);
+        AttemptToPurchaseItems(PlayerInventory.Instance, itemDetail.InventoryItem);
+    }
+
+    public bool AttemptToPurchaseItems(Inventory sellersInventory, InventoryItem sellersInventoryItem)
+    {
+        Inventory buyersInventory = sellersInventory is PlayerInventory ? InventoryPageManager.Instance.NonPlayerInventory : PlayerInventory.Instance;
+
+        if (totalPrice <= buyersInventory.wallet.Gold && sellersInventoryItem.NumberOfItem >= currentNumberOfItem)
+        {
+            if (buyersInventory.AttemptAddItem(sellersInventoryItem.Item, currentNumberOfItem))
+            {
+                buyersInventory.wallet.PayOtherWallet(ref sellersInventory.wallet, totalPrice);
+                sellersInventoryItem.RemoveItems(currentNumberOfItem);
+
+                print("Buyers gold" + buyersInventory.wallet.Gold + " : Sellers Gold" + sellersInventory.wallet.Gold);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void ToggleDisplay(bool toggleEnable)

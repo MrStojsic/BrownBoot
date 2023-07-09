@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryPageManager : MonoBehaviour
+public class InventoryPageManager : UiWindow
 {
     private static InventoryPageManager _instance;
     public static InventoryPageManager Instance
@@ -38,22 +38,6 @@ public class InventoryPageManager : MonoBehaviour
     // _focusedInventoryPockets is the inventory we are currently displaying, this can be the player, shop or loot depending what we need to be displayed in the UI.
     private Inventory _focusedInventory = default;
 
-    private Inventory _playerInventory = default;
-    public Inventory PlayerInventory
-    {
-        get { return _playerInventory; }
-        set
-        {
-            if (value is Player_InventoryManager)
-            {
-                _playerInventory = value;
-            }
-            else
-            {
-                Debug.LogError("_playerInventory MUST be of type Player_InventoryManager silly.");
-            }
-        }
-    }
     /// <summary>
     ///     MUST NEVER BE SET TO THE PLAYERS INVENTORY!
     ///     Non-Players inventory is where we store a reference to the other inventory we need to access,
@@ -102,11 +86,10 @@ public class InventoryPageManager : MonoBehaviour
             Debug.Log("Pressed P - Set Inventory to purchase from Merchant.");
             ChangeFocusedInventory(false);
         }
-
         if (Input.GetKeyUp(KeyCode.T))
         {
             Debug.Log("Pressed T - Gave player test item.");
-            _playerInventory.InventoryTypePockets[(int)testItemToAdd.Item.ItemType].AttemptReceiveItems(testItemToAdd, 1);
+            PlayerInventory.Instance.AttemptAddItem(testItemToAdd.Item, 1);
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
@@ -118,16 +101,14 @@ public class InventoryPageManager : MonoBehaviour
     }
     // TOHERE
 
-    public void SetInventory(Inventory inventory)
+    public override void Initialise()
     {
-        if (inventory is Player_InventoryManager)
-        {
-            PlayerInventory = inventory;
-        }
-        else
-        {
-            _nonPlayerInventory = inventory;
-        }
+  
+    }
+
+    public void SetNonPlayerInventory(Inventory inventory)
+    {
+        _nonPlayerInventory = inventory;
     }
 
     /// <summary>
@@ -139,7 +120,7 @@ public class InventoryPageManager : MonoBehaviour
     {
         if (isPlayerInventory)
         {
-            _focusedInventory = _playerInventory;
+            _focusedInventory = PlayerInventory.Instance;
             // - The 'is' operator in C# is used to check the object type and it returns a bool value: true if the object is the same type and false if not.
             //   So if _nonPlayerInventory is a merchant, pass PLAYER_SELL, otherwise pass PLAYER_USE as the parameter in SetInteractionInterface.
             _itemDetail.SetInteractionInterface(_nonPlayerInventory is Merchant_InventoryManager ? InteractionType.PLAYER_SELL : InteractionType.PLAYER_USE);
@@ -174,7 +155,6 @@ public class InventoryPageManager : MonoBehaviour
                 }
             }
         }
-        //_itemDetail.SetInteractionInterface(_interactionType);
     }
 
     public void InitialiseInventorySlotsPageIndex()
@@ -190,6 +170,7 @@ public class InventoryPageManager : MonoBehaviour
                 {
                     _inventorySlots[slotIndex].Initialise(_focusedInventory.InventoryTypePockets[selectedPocketIndex].storedItems[slotIndex],slotIndex);
                     _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
+                    _inventorySlots[slotIndex].transform.SetSiblingIndex(slotIndex);
                     _inventorySlots[slotIndex].gameObject.SetActive(true);
                 }
                 else
@@ -203,11 +184,10 @@ public class InventoryPageManager : MonoBehaviour
                 for (; slotIndex < _inventorySlots.Count; slotIndex++)
                 {
                     _inventorySlots[slotIndex].transform.SetParent(_pooledInventoryHolder);
-
-                    // TODO, thers an issues when we change types, the selector group calls the last buttons deslect reenabling the buttons we disabled  here. 
                 }
             }
-        selectedSlotIndex = 0;
+            // - Below line seemingly does nothing.
+        //selectedSlotIndex = 0;
     }
 
     void AddMenuItem(int slotIndex)
@@ -223,9 +203,9 @@ public class InventoryPageManager : MonoBehaviour
 
     private void CallPreviewItem(InventorySlot inventorySlot)
     {
+        print(inventorySlot.Index + " : " +inventorySlot.transform.GetSiblingIndex());
+
         selectedSlotIndex = inventorySlot.Index;
-        _itemDetail.transform.SetSiblingIndex(selectedSlotIndex);
-  
         _itemDetail.DisplayItem(inventorySlot);
     }
 
@@ -237,7 +217,7 @@ public class InventoryPageManager : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromInventory(InventorySlot inventorySlot)
+    public void ClearEmptyInventorySlot(InventorySlot inventorySlot)
     {
         _focusedInventory.RemoveEmptyInventoryItemFromPocket(inventorySlot.InventoryItem);
 
@@ -246,7 +226,6 @@ public class InventoryPageManager : MonoBehaviour
         {
             _pocketSelectorGroup.transform.GetChild(_pocketSelectorGroup.selectedIndex).gameObject.SetActive(false);
         }
-
         PoolInventorySlot(inventorySlot);
     }
 
@@ -255,7 +234,7 @@ public class InventoryPageManager : MonoBehaviour
         inventorySlot.transform.SetParent(_pooledInventoryHolder);
     }
 
-
+    // -The following 3 functions are used for sorting the items by name or value, its a WIP.
     /*
     void SetMenuItems()
     {

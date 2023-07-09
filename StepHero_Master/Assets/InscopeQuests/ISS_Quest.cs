@@ -18,6 +18,21 @@ public class ISS_Quest
     [SerializeField]
     private CollectionObjective[] _collectionObjectives;
     public CollectionObjective[] CollectionObjectives { get => _collectionObjectives; }
+
+    public bool IsComplete
+    {
+        get
+        {
+            foreach (Objective o in CollectionObjectives)
+            {
+                if (!o.IsCOmplete)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 }
 
 [System.Serializable]
@@ -36,6 +51,13 @@ public abstract class Objective
     private Item _item;
     public Item Item { get => _item; set => _item = value; }
 
+    public bool IsCOmplete
+    {
+        get
+        {
+            return CurrentAmount >= Amount;
+        }
+    }
 
 }
 
@@ -47,8 +69,18 @@ public class CollectionObjective : Objective
         //- We compare to the items name. may use item IDs in future.
         if (Item.Title == item.Title)
         {
-            CurrentAmount = InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)item.ItemType].FindItem(item).NumberOfItem;
+            // TODO - For now this will be called 2 times for each item we give the player.
+            //        Once for when we recive the item, and then once again from the Item slot giving us the item removing the item.
+            //        I need to find a way the giving slot to not call this too!!
+            CurrentAmount = PlayerInventory.Instance.FindItem(item).NumberOfItem;
             Debug.Log("Quest - CurrentAmount = " + CurrentAmount);
+
+            //- This call to the UpdateUi is needed but the check for null or not is just slapped in for now as we dont always have a ref to Questlog yet.
+            if (ISS_QuestLog.Instance != null)
+            {
+                ISS_QuestLog.Instance.UpdateUi();
+                ISS_QuestLog.Instance.CheckCompletion();
+            }
         }
     }
 }

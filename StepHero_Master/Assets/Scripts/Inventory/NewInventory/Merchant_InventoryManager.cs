@@ -6,12 +6,16 @@ using UnityEngine;
 public class Merchant_InventoryManager : Inventory
 {
 
-    [SerializeField] private List<MerchantInventoryItem> commonPossibleStockItems = default;
+    [SerializeField]
+    public Dictionary<int, InventoryTypePocket> dictionary = new Dictionary<int, InventoryTypePocket>();
+
+    [SerializeField] private List<NpcInventoryItem> commonPossibleStockItems = default;
     [SerializeField] private int minCommonItemsExpected = default;
-    [SerializeField] private List<MerchantInventoryItem> uncommonPossibleStockItems = default;
+    [SerializeField] private List<NpcInventoryItem> uncommonPossibleStockItems = default;
     [SerializeField] private int minUncommonItemsExpected = default;
-    [SerializeField] private List<MerchantInventoryItem> rarePossibleStockItems = default;
+    [SerializeField] private List<NpcInventoryItem> rarePossibleStockItems = default;
     [SerializeField] private int minRareItemsExpected = 0;
+
 
     /// <summary>
     /// This returns the number week of the current date, this may be moved to somewhere else later.
@@ -31,7 +35,8 @@ public class Merchant_InventoryManager : Inventory
             InventoryTypePockets[i].Initialise((ItemType)i);
         }
 
-        Random.InitState(System.DateTime.Now.DayOfYear);
+        //Random.InitState(System.DateTime.Now.DayOfYear);
+        Random.InitState(1);
 
         // COMMON STOCK.
         if (commonPossibleStockItems.Count > 0)
@@ -100,7 +105,7 @@ public class Merchant_InventoryManager : Inventory
         if (Input.GetKeyUp(KeyCode.M))
         {
             Debug.Log("Pressed M - Set focused inventory to Merchant's");
-            InventoryPageManager.Instance.SetInventory(this);
+            InventoryPageManager.Instance.SetNonPlayerInventory(this);
             InventoryPageManager.Instance.ChangeFocusedInventory(false);
         }
     }
@@ -114,7 +119,7 @@ public class Merchant_InventoryManager : Inventory
         // Seed random with the current week of the year.
         //Random.InitState(GetWeekOfYear());
         //Random.InitState(System.DateTime.Now.DayOfYear);
-       // Random.InitState((int)System.DateTime.Now.Ticks);
+        // Random.InitState((int)System.DateTime.Now.Ticks);
         // TOHERE
 
 

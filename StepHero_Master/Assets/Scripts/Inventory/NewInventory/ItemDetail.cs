@@ -43,7 +43,7 @@ public class ItemDetail : InventorySlot
 
     public override void UpdateStackSizeUI()
     {
-        if (_inventoryItem != null && _inventoryItem.Item.StackSize > 1)
+        if (_inventoryItem != null)
         {
             if (_inventoryItem.NumberOfItem > 1)
             {
@@ -56,7 +56,7 @@ public class ItemDetail : InventorySlot
             }
             if (_inventoryItem.NumberOfItem == 0)
             {
-                inventoryPageManager.RemoveItemFromInventory(_displayedInventorySlot);
+                inventoryPageManager.ClearEmptyInventorySlot(_displayedInventorySlot);
                 InventoryItem = null;
             }
         }
@@ -101,16 +101,11 @@ public class ItemDetail : InventorySlot
 
     public void DisplayItem(InventorySlot inventorySlot)
     {
-        if (inventorySlot.transform.parent != transform.parent)
+        if (transform.parent != inventorySlot.transform.parent)
         {
             transform.SetParent(inventorySlot.transform.parent);
         }
-        transform.SetSiblingIndex(inventorySlot.transform.GetSiblingIndex());
-
-        if (_displayedInventorySlot != null)
-        {
-            InventoryItem.InventorySlot = _displayedInventorySlot;
-        }
+        transform.SetSiblingIndex(inventorySlot.Index);
 
         _displayedInventorySlot = inventorySlot;
         InventoryItem = inventorySlot.InventoryItem;
@@ -132,23 +127,23 @@ public class ItemDetail : InventorySlot
             case 0: // SHOP_BUY, check both player inventory and number of item and number player can afford.
                 leftButtonText.transform.parent.gameObject.SetActive(false);
                 rightButtonText.text = "Buy";
-                rightButtonFunction = SetIQI;
+                rightButtonFunction = SetItemQuantityInteractor;
                 break;
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
                 leftButtonText.transform.parent.gameObject.SetActive(false);
                 rightButtonText.text = "Sell";
-                rightButtonFunction = SetIQI;
+                rightButtonFunction = SetItemQuantityInteractor;
                 break;
             case 2: // PLAYER_USE / DROP, check number of item.
                 leftButtonText.text = "Drop";
-                leftButtonFunction = SetIQI;
+                leftButtonFunction = SetItemQuantityInteractor;
                 leftButtonText.transform.parent.gameObject.SetActive(true);
                 rightButtonText.text = "Use";
                 rightButtonFunction = InteractWithItem;
                 break;
             case 3: // LOOT, check player inventory.
                 leftButtonText.text = "Take";
-                leftButtonFunction = SetIQI;
+                leftButtonFunction = SetItemQuantityInteractor;
                 leftButtonText.transform.parent.gameObject.SetActive(true);
                 rightButtonText.text = "Take Max";
                 rightButtonFunction = TakeAll;
@@ -162,7 +157,7 @@ public class ItemDetail : InventorySlot
     {
         if (_displayedInventorySlot != null)
         {
-            InventoryItem.InventorySlot = _displayedInventorySlot;
+            //InventoryItem.InventorySlot = _displayedInventorySlot;
             _displayedInventorySlot.SelectorButton.Deselect();
         }
         gameObject.SetActive(false);
@@ -210,7 +205,7 @@ public class ItemDetail : InventorySlot
         rightButtonFunction.Invoke();
     }
 
-    private void SetIQI()
+    private void SetItemQuantityInteractor()
     {
         if (itemQuantityInteractor.gameObject.activeSelf == false)
         {
@@ -223,7 +218,7 @@ public class ItemDetail : InventorySlot
 
     private void InteractWithItem()
     {
-        _inventoryItem.Interact();
+        PlayerInventory.Instance.UseItem(_inventoryItem);
     }
     private void TakeAll()
     {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class MerchantInventoryItem : InventoryItem
+public class NpcInventoryItem : InventoryItem
 {
-    public MerchantInventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot = null) : base(item, numberOfItem, inventorySlot = null)
+    public NpcInventoryItem(Item item, int numberOfItem, InventorySlot inventorySlot = null) : base(item, numberOfItem, inventorySlot = null)
     {
         _item = item;
         InventorySlot = inventorySlot;
         NumberOfItem = numberOfItem;
     }
 
-    public override bool Interact()
+    public override bool UseItem()
     {
         return false;
     }

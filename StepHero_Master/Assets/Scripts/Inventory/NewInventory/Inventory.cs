@@ -15,9 +15,9 @@ public class Inventory : MonoBehaviour
             get => gold;
         }
 
-        public void InitGold(int initAmount)
+        public void InitializeWallet(int initialGoldAmount)
         {
-            gold = initAmount;
+            gold = initialGoldAmount;
         }
         public bool PayOtherWallet(ref Wallet recipientWallet, int amountGiven)
         {
@@ -33,11 +33,8 @@ public class Inventory : MonoBehaviour
     }
     public Wallet wallet;
 
-
-
     [SerializeField]
     private InventoryTypePocket[] _inventoryTypePockets = new InventoryTypePocket[15];
-
     public InventoryTypePocket[] InventoryTypePockets
     {
         get => _inventoryTypePockets;
@@ -46,11 +43,110 @@ public class Inventory : MonoBehaviour
 
 
 
+    // TODO - This could also be optimised by using item IDs and passing na int ID and comparing it to the storedItems ids.
+    public InventoryItem FindItem(Item item)
+    {
+        return _inventoryTypePockets[item.GetItemTypeInt()].FindItem(item);
+    }
+
+    /// <summary>
+    /// This should only be called from the inventory that stores this InventoryTypePocket!
+    /// </summary>
+    /// <param name="sourceInventoryItem"></param>
+    /// <param name="amountToReceive"></param>
+    /// <returns></returns>
+    public virtual bool AttemptAddItem(Item item, int amountToReceive)
+    {
+        if (amountToReceive > 0)
+        {
+            InventoryItem inventoryItem = FindItem(item);
+            if (inventoryItem != null)
+            {
+                return ReceiveExistingItem(item, inventoryItem, amountToReceive);
+            }
+
+            return ReceiveNewItem(item, amountToReceive);
+        }
+        // An error has occured.
+        return false;
+    }
+    /*    public bool AttemptAddItems(InventoryItem sourceInventoryItem, int amountToReceive)
+    {
+        if (sourceInventoryItem.Item.ItemType == _pocketsItemType && amountToReceive > 0)
+        {
+            if (sourceInventoryItem.Item.StackSize > 1)
+            {
+                InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
+                if (inventoryItem != null)
+                {
+                    return ReceiveInExistingItem(sourceInventoryItem, inventoryItem, amountToReceive);
+                }
+            }
+            return ReceiveInNewItem(sourceInventoryItem, amountToReceive);
+        }
+        // An error has occured.
+        return false;
+    }*/
+
+    private bool ReceiveExistingItem(Item item, InventoryItem itemDestination, int amountToReceive)
+    {
+        if (itemDestination != null)
+        {
+            if (itemDestination.ReceiveItem(item, amountToReceive) == true)
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+    /*
+         private bool ReceiveInExistingItem(InventoryItem sourceInventoryItem, InventoryItem inventoryItemDestination, int amountToReceive)
+    {
+        if (inventoryItemDestination != null)
+        {
+            if (inventoryItemDestination.ReceiveFromInventoryItem(sourceInventoryItem, amountToReceive) == true)
+            {
+                OnItemCountChanged(sourceInventoryItem.Item);
+                return true;
+            }
+           
+        }
+        return false;
+    }*/
+
+    private bool ReceiveNewItem(Item item, int amountToReceive)
+    {
+        int pocketIndex = item.GetItemTypeInt();
+        if (!_inventoryTypePockets[pocketIndex].IsFull)
+        {
+            InventoryItem inventoryItem = new InventoryItem(item, amountToReceive);
+            _inventoryTypePockets[pocketIndex].storedItems.Add(inventoryItem);
+            return true;
+        }
+        return false;
+    }
+    /*
+   
+    private bool ReceiveNewItem(InventoryItem sourceInventoryItem, int amountToReceive)
+    {
+        if (!IsFull)
+        {
+            InventoryItem inventoryItem = new InventoryItem(sourceInventoryItem.Item, 0, sourceInventoryItem.InventorySlot);
+            inventoryItem.ReceiveItem(sourceInventoryItem.Item, amountToReceive);
+            storedItems.Add(inventoryItem);
+            OnItemCountChanged(sourceInventoryItem.Item);
+            return true;
+        }
+        return false;
+    }
+    */
+
     public int GetMaxNumberOfItemReceivable(InventoryItem sourceInventoryItem)
     {
-        if (sourceInventoryItem.Item.StackSize > 1)
+        if (sourceInventoryItem.NumberOfItem > 0)
         {
-            InventoryItem inventoryItem = _inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].FindItem(sourceInventoryItem.Item);
+            InventoryItem inventoryItem = FindItem(sourceInventoryItem.Item);
 
             if (inventoryItem != null)
             {
@@ -60,7 +156,7 @@ public class Inventory : MonoBehaviour
                 return inventoryItem.Item.StackSize - inventoryItem.NumberOfItem;
             }
         }
-        if (!_inventoryTypePockets[(int)sourceInventoryItem.Item.ItemType].IsFull)
+        if (!_inventoryTypePockets[(int)sourceInventoryItem.Item.GetItemTypeInt()].IsFull)
         {
             return sourceInventoryItem.NumberOfItem;
         }
@@ -68,66 +164,51 @@ public class Inventory : MonoBehaviour
         return 0;
     }
 
-    public int GetMaxNumberOfItemsPurchaseable(InventoryItem sellersInventoryItem, out ItemQuantityInteractor.QuantityLimitReason quantityLimitReasonOut)
+    public int GetMaxNumberOfItemPurchaseable(InventoryItem sellersInventoryItem, out ItemQuantityInteractor.QuantityLimitReason quantityLimitReasonOut)
     {
-        if (wallet.Gold > 0)
+        //- If buyers gold is 0 return reason now and 0 purchasable.
+        if (wallet.Gold == 0)
         {
-            ItemQuantityInteractor.QuantityLimitReason currentQuantityLimitReason = default;
-            int confirmedMax = int.MaxValue;
-            int unconfirmedMax = 0;
-
-            // Check if the buyers gold will be the purchase limiting factor.
-            unconfirmedMax = Mathf.FloorToInt(wallet.Gold / sellersInventoryItem.Item.Price);
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
-            }
-            // Check if the sellers stock level will be the purchase limiting factor.
-            unconfirmedMax = sellersInventoryItem.NumberOfItem;
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_STOCK;
-            }
-
-            // UNSURE OF FEATURE HERE.
-            // If i want the player to be able to sell items over the merchants standard x99 stack size, use the check below
-            // "if (buyersInventory is Player_InventoryManager)" before the buyers inventory space check.
-
-            // Check if the buyers inventory space will be the purchase limiting factor.
-            unconfirmedMax = GetMaxNumberOfItemReceivable(sellersInventoryItem);
-            if (unconfirmedMax < confirmedMax)
-            {
-                confirmedMax = unconfirmedMax;
-                currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_SPACE;
-            }
-
-            // Now we knoe the limiting factor.
-            quantityLimitReasonOut = currentQuantityLimitReason;
-            return confirmedMax;
+            quantityLimitReasonOut = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
+            return 0;
         }
-        quantityLimitReasonOut = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
-        return 0;
 
-    }
+        //- Otherwise find out number purchaseable and the limiting reason if any.
+        ItemQuantityInteractor.QuantityLimitReason currentQuantityLimitReason = default;
+        int confirmedMax = int.MaxValue;
+        int unconfirmedMax = 0;
 
-    // This takes in the sellers inventory,
-
-    public bool AttemptToPurchaseItems(Wallet sellersWallet, InventoryItem sellersInventoryItem, int amountToReceive, int totalPrice)
-    {
-        if (totalPrice <= wallet.Gold && sellersInventoryItem.NumberOfItem >= amountToReceive)
+        // Check if the buyers gold will be the purchase limiting factor.
+        unconfirmedMax = Mathf.FloorToInt(wallet.Gold / sellersInventoryItem.Item.Price);
+        if (unconfirmedMax < confirmedMax)
         {
-            if (_inventoryTypePockets[(int)sellersInventoryItem.Item.ItemType].AttemptReceiveItems(sellersInventoryItem, amountToReceive))
-            {
-                wallet.PayOtherWallet(ref sellersWallet, totalPrice);
-
-                print(wallet.Gold + " , " + sellersWallet.Gold);
-                return true;
-            }
+            confirmedMax = unconfirmedMax;
+            currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_GOLD;
         }
-        return false;
+        // Check if the sellers stock level will be the purchase limiting factor.
+        unconfirmedMax = sellersInventoryItem.NumberOfItem;
+        if (unconfirmedMax < confirmedMax)
+        {
+            confirmedMax = unconfirmedMax;
+
+            currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_STOCK;
+        }
+
+        // UNSURE OF FEATURE HERE.
+        // If i want the player to be able to sell items over the merchants standard x99 stack size, use the check below
+        // "if (buyersInventory is Player_InventoryManager)" before the buyers inventory space check.
+
+        // Check if the buyers inventory space will be the purchase limiting factor.
+        unconfirmedMax = GetMaxNumberOfItemReceivable(sellersInventoryItem);
+        if (unconfirmedMax < confirmedMax)
+        {
+            confirmedMax = unconfirmedMax;
+            currentQuantityLimitReason = ItemQuantityInteractor.QuantityLimitReason.NOT_ENOUGH_SPACE;
+        }
+
+        // Now we know the limiting factor.
+        quantityLimitReasonOut = currentQuantityLimitReason;
+        return confirmedMax;
     }
 
     /// <summary>
@@ -148,4 +229,10 @@ public class Inventory : MonoBehaviour
             _inventoryTypePockets[(int)inventoryItem.Item.ItemType].storedItems.Remove(inventoryItem);
         }
     }
+
+
+
+
+
+   
 }

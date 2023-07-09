@@ -5,15 +5,30 @@ using UnityEngine;
 [System.Serializable]
 public class WorldMapEvent : IInteractable
 {
-    public void Interact()
+    private bool _isInteracting;
+    public bool IsInteracting
     {
-        Debug.Log("Enteracting");
-        throw new System.NotImplementedException();
+        get { return _isInteracting; }
+        set { _isInteracting = value; }
     }
 
-    public void StopIneract()
+    public void Interact()
     {
+        if (IsInteracting)
+        {
+            Debug.Log("Enteracting");
+            StopInteract();
+        }
+        else
+        {
+            IsInteracting = true;
+            Debug.Log("Treasure Opened");
+        }
+    }
+
+    public void StopInteract()
+    {
+        IsInteracting = false;
         Debug.Log("Stopped Enteracting");
-        throw new System.NotImplementedException();
     }
 }

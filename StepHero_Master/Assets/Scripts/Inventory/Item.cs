@@ -147,5 +147,9 @@ public abstract class Item : ScriptableObject, IDescribable
     {
         return string.Format("<color={0}>{1}</color>", RarityColours.Colors[Rarity], Title);
     }
+    public virtual int GetItemTypeInt()
+    {
+        return (int)_itemType;
+    }
 
 }

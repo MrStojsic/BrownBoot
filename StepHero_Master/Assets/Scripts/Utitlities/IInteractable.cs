@@ -5,5 +5,12 @@ using UnityEngine;
 public interface IInteractable
 {
     void Interact();
-    void StopIneract();
+    void StopInteract();
+
+    bool IsInteracting
+    {
+        get;
+        set;
+    }
+
 }

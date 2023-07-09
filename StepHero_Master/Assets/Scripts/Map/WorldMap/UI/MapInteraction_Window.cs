@@ -23,9 +23,8 @@ public class MapInteraction_Window : UiWindow
 
 
     public override void Initialise()
-    {
+    { }
 
-    }
 
     public void PresetDisplay(Location location, bool isAtLocation)
     {

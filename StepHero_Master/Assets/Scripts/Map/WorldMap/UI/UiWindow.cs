@@ -2,8 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 [HelpURL("https://www.youtube.com/watch?v=rdXC2om16lo")]
+[RequireComponent(typeof(CanvasGroup))]
 public abstract class UiWindow : MonoBehaviour
 {
+    [SerializeField]
+    private CanvasGroup canvasGroup;
+    [SerializeField]
+    private Canvas canvas;
+
+
+
     // NOTE: Try to keep inheriting class function order the same as here.
 
     public abstract void Initialise();
@@ -12,9 +20,38 @@ public abstract class UiWindow : MonoBehaviour
     //        Its best practice to call it PresetDisplay() with what ever parameters are required passed in.
     //public void PresetDisplay() { }
 
-    public virtual void Hide() => gameObject.SetActive(false);
+    // HACK
+    //- This is purely for my sanity, instead of setting canvasGroup alpha and raycasts constantly duing deveopment,
+    //  just toggle the canvas itself. Remember to undo this later and use the below 2 functions instead.
+    public virtual void Show()
+    {
+        canvas.enabled = true;
+    }
 
-    public virtual void Show() => gameObject.SetActive(true);
+    public virtual void Hide()
+    {
+        canvas.enabled = false;
+    }
+    /*
+        public virtual void Show()
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.blocksRaycasts = true;
+        }
+
+        public virtual void Hide()
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.blocksRaycasts = false;
+        }
+    */
 
     // NOTE: Continue below with other functions below in inherited classes.
+
+
+
+
+
+
+
 }

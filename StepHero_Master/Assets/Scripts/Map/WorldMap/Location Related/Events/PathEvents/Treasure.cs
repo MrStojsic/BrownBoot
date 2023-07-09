@@ -5,26 +5,35 @@ using UnityEngine;
 [System.Serializable]
 public class Treasure : IInteractable
 {
-    [SerializeField] bool isInteracting = false;
+    [SerializeField] private bool _isInteracting = false;
+
+
     [SerializeField] Item item;
+
+    public bool IsInteracting
+    {
+        get { return _isInteracting; }
+        set { _isInteracting = value; }
+    }
+
     public void Interact()
     {
-        if (isInteracting)
+        if (IsInteracting)
         {
-            StopIneract();
+            StopInteract();
         }
         else
         {
-            isInteracting = true;
+            IsInteracting = true;
             Debug.Log("Treasure Opened");
         }
 
 
     }
 
-    public void StopIneract()
+    public void StopInteract()
     {
-        isInteracting = false;
+        IsInteracting = false;
         Debug.Log("Treasure Closed");
     }
 }

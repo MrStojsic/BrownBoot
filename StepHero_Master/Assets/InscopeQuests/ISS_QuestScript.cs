@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [HelpURL("https://www.youtube.com/watch?v=cAiYebAR8Hk&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=100")]
 public class ISS_QuestScript : MonoBehaviour
 {
     public ISS_Quest Quest { get; set; }
+
+    private bool isMarkedCompleted = false;
 
     [SerializeField] private SelectorButton _selectorButton = default;
     public SelectorButton SelectorButton
@@ -44,6 +47,22 @@ public class ISS_QuestScript : MonoBehaviour
     public void Deselect()
     {
         Debug.Log("Deselected");
+    }
+
+    public void IsComplete()
+    {
+        if (!isMarkedCompleted && Quest.IsComplete)
+        {
+            print("Completed Quest");
+            // TODO - Add process to mark complated quest and handle next actions.
+            isMarkedCompleted = true;
+        }
+        else if (isMarkedCompleted && !Quest.IsComplete)
+        {
+            print("UN-Completed Quest");
+            // TODO - Add process to unmark complated quest.
+            isMarkedCompleted = false;
+        }
     }
 
 }

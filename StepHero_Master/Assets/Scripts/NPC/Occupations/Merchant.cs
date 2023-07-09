@@ -34,7 +34,7 @@ namespace Npcs.Occupation
       
         }
 
-        public override void StopIneract()
+        public override void StopInteract()
         {
 
         }

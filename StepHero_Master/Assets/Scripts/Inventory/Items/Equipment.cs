@@ -6,8 +6,8 @@ public class Equipment : Item, IEquippable
 {
     private int _maxDurability = default;
 
-    public override int StackSize
-    { get => 1; }
+   public override int StackSize
+   { get => 1; }
 
 
     public int MaxDurability {  get => _maxDurability;  }

@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 195966904}
   - component: {fileID: 195966903}
   m_Layer: 5
-  m_Name: QuestLog_Window
+  m_Name: QuestLog_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,7 +1964,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -0.000061035156, y: 0.00039672852}
-  m_SizeDelta: {x: 0, y: -998.18945}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &218353493
 MonoBehaviour:
@@ -2207,10 +2207,10 @@ RectTransform:
   m_Father: {fileID: 1151790361}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 451.5, y: -90.90527}
-  m_SizeDelta: {x: 891, y: 169.81055}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &244436711
 GameObject:
@@ -3371,7 +3371,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3447,10 +3447,10 @@ RectTransform:
   m_Father: {fileID: 1151790361}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1348.5, y: -90.90527}
-  m_SizeDelta: {x: 891, y: 169.81055}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385923100
 MonoBehaviour:
@@ -5481,9 +5481,9 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 704959869}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OpenClose
+      - m_Target: {fileID: 1303372571}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6446,7 +6446,6 @@ GameObject:
   - component: {fileID: 704959868}
   - component: {fileID: 704959872}
   - component: {fileID: 704959871}
-  - component: {fileID: 704959869}
   - component: {fileID: 704959870}
   m_Layer: 5
   m_Name: PlayerInventory_Window
@@ -6478,19 +6477,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &704959869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704959867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b0a8905451a41e5907588a2407b463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 704959870}
 --- !u!225 &704959870
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -10973,9 +10959,9 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: OpenClose
+      - m_Target: {fileID: 2038579287}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11570,8 +11556,8 @@ GameObject:
   - component: {fileID: 1303372566}
   - component: {fileID: 1303372570}
   - component: {fileID: 1303372572}
-  - component: {fileID: 1303372573}
   - component: {fileID: 1303372571}
+  - component: {fileID: 1303372574}
   m_Layer: 5
   m_Name: Canvas_Inventory
   m_TagString: Untagged
@@ -11722,6 +11708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f0362bc56564895a5c755b2c6d07a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1303372574}
   _itemSlotSelectorGroup: {fileID: 1834075865}
   _pocketSelectorGroup: {fileID: 734374280}
   _itemDetail: {fileID: 1444037340}
@@ -11773,57 +11760,18 @@ MonoBehaviour:
   - _item: {fileID: 0}
     _numberOfItem: 6
     _inventorySlot: {fileID: 0}
---- !u!114 &1303372573
-MonoBehaviour:
+--- !u!225 &1303372574
+CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303372565}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7e56fce7ff14b549112b1fb98a80ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wallet:
-    gold: 200
-  _inventoryTypePockets:
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  commonPossibleStockItems:
-  - _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-    _numberOfItem: 5
-    _inventorySlot: {fileID: 0}
-  - _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
-    _numberOfItem: 5
-    _inventorySlot: {fileID: 0}
-  - _item: {fileID: 11400000, guid: 0fa1529e5a6de443b9fc7a9dc2cd3560, type: 2}
-    _numberOfItem: 5
-    _inventorySlot: {fileID: 0}
-  - _item: {fileID: 11400000, guid: 39ccdb699393149a5b2ab65eee1cef3a, type: 2}
-    _numberOfItem: 5
-    _inventorySlot: {fileID: 0}
-  - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
-    _numberOfItem: 40
-    _inventorySlot: {fileID: 0}
-  minCommonItemsExpected: 0
-  uncommonPossibleStockItems: []
-  minUncommonItemsExpected: 0
-  rarePossibleStockItems: []
-  minRareItemsExpected: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1309089557
 GameObject:
   m_ObjectHideFlags: 0
@@ -12045,13 +11993,14 @@ GameObject:
   - component: {fileID: 1353080766}
   - component: {fileID: 1353080765}
   - component: {fileID: 1353080769}
+  - component: {fileID: 1353080770}
   m_Layer: 5
   m_Name: Canvas_MapInteraction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1353080765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12144,6 +12093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb0ee6bfc185e485a9bab3a3e50c4d41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1353080770}
   title: {fileID: 685048168}
   journeyDistance: {fileID: 602961569}
   setOffButton: {fileID: 97949442}
@@ -12153,6 +12103,18 @@ MonoBehaviour:
   largeCancelJourneyButton: {fileID: 1234993564}
   breadCrumb_FollowBezierPath: {fileID: 1874390976}
   locationPoiPopulator: {fileID: 218353495}
+--- !u!225 &1353080770
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353080764}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1353513350
 GameObject:
   m_ObjectHideFlags: 0
@@ -15779,6 +15741,88 @@ Transform:
   m_Father: {fileID: 1834148540}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1819910037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819910039}
+  - component: {fileID: 1819910038}
+  m_Layer: 0
+  m_Name: MerchantNPC_TEMP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1819910038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819910037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7e56fce7ff14b549112b1fb98a80ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallet:
+    gold: 200
+  _inventoryTypePockets:
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  - storedItems: []
+  commonPossibleStockItems:
+  - _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
+    _numberOfItem: 5
+    _inventorySlot: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
+    _numberOfItem: 5
+    _inventorySlot: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 0fa1529e5a6de443b9fc7a9dc2cd3560, type: 2}
+    _numberOfItem: 5
+    _inventorySlot: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 39ccdb699393149a5b2ab65eee1cef3a, type: 2}
+    _numberOfItem: 5
+    _inventorySlot: {fileID: 0}
+  - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
+    _numberOfItem: 6
+    _inventorySlot: {fileID: 0}
+  minCommonItemsExpected: 0
+  uncommonPossibleStockItems: []
+  minUncommonItemsExpected: 0
+  rarePossibleStockItems: []
+  minRareItemsExpected: 0
+--- !u!4 &1819910039
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819910037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 919.5265, y: 1510.9032, z: -142.54242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1824752785
 GameObject:
   m_ObjectHideFlags: 0
@@ -17529,6 +17573,7 @@ GameObject:
   - component: {fileID: 2038579292}
   - component: {fileID: 2038579291}
   - component: {fileID: 2038579287}
+  - component: {fileID: 2038579288}
   m_Layer: 5
   m_Name: Canvas_Quests
   m_TagString: Untagged
@@ -17548,11 +17593,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de740a38e98f245bc840cb6b01e78608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 2038579288}
+  selectedQuest:
+    title: 
+    _description: 
+    _collectionObjectives: []
   questPrefeb: {fileID: 5784384316500346586, guid: 2cc35391249e3424f8e03d3e0d278fdf,
     type: 3}
   _questSlotSelectorGroup: {fileID: 838789836}
   descriptionText: {fileID: 4177326753306117109}
   titleText: {fileID: 4527028425389155281}
+--- !u!225 &2038579288
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038579286}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &2038579291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17679,7 +17741,7 @@ GameObject:
   - component: {fileID: 2059207682}
   - component: {fileID: 2059207681}
   m_Layer: 0
-  m_Name: QuestGiver_TEMP
+  m_Name: QuestGiverNPC_TEMP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17704,6 +17766,12 @@ MonoBehaviour:
     - _amount: 5
       _currentAmount: 0
       _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
+  - title: A sub quest
+    _description: an extra quest
+    _collectionObjectives:
+    - _amount: 5
+      _currentAmount: 0
+      _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
   tempLog: {fileID: 2038579287}
 --- !u!4 &2059207682
 Transform:
@@ -18300,9 +18368,9 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 704959869}
-        m_TargetAssemblyTypeName: PlayerEquipmentWindow, Assembly-CSharp
-        m_MethodName: OpenClose
+      - m_Target: {fileID: 1303372571}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: Show
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18313,9 +18381,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: SetFocustedInventoryTypePockets
-        m_Mode: 6
+        m_TargetAssemblyTypeName: InventoryPageManager, Assembly-CSharp
+        m_MethodName: InitialiseInventorySlots
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

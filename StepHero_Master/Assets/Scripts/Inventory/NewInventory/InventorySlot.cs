@@ -140,10 +140,23 @@ public class InventoryItem
     {
         _item = item;
         InventorySlot = inventorySlot;
+        if (numberOfItem > _item.StackSize)
+        {
+            Debug.LogError(item.Title + " - Attempted to make InventoryItem larger than stackSize.");
+        }
         NumberOfItem = numberOfItem;
     }
 
-    public virtual bool ReceiveFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
+    public virtual bool ReceiveItem(Item item, int amountToTransfer)
+    {
+        if (item == _item && amountToTransfer + _numberOfItem <= Item.StackSize)
+        {
+            NumberOfItem += amountToTransfer;
+            return true;
+        }
+        return false;
+    }
+    /*    public virtual bool ReceiveFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
     {
         if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
         {
@@ -153,24 +166,22 @@ public class InventoryItem
             return true;
         }
         return false;
-    }
+    }*/
 
-    public void RemoveItems(int numberToRemove)
+    public bool RemoveItems(int numberToRemove)
     {
         if (numberToRemove <= NumberOfItem)
-        {
-            // HACK
-            // Just a shitty fix, i dont think i want the inventory to work how it is having the OnItemCountChanged in each pocket.
-            if (InventoryPageManager.Instance.PlayerInventory != null) // This is shit << i want OnItemCountChanged to be in the inventory i think.
-            {
-                InventoryPageManager.Instance.PlayerInventory.InventoryTypePockets[(int)_item.ItemType].OnItemCountChanged(_item);
-            }
+        { 
             NumberOfItem -= numberToRemove;
-            
+            return true;
         }
+        return false;
     }
-
-    public virtual bool Interact()
+    /// <summary>
+    /// NOTE - Not to be used outside of PlayerInventory.
+    /// </summary>
+    /// <returns></returns>
+    public virtual bool UseItem()
     {
         if (_item is IUseable && ((IUseable)_item).Use())
         {
@@ -183,7 +194,7 @@ public class InventoryItem
 
 
 
-
+/*
 [System.Serializable]
 public class InventoryEquipableItem
 {
@@ -265,4 +276,4 @@ public class InventoryEquipableItem
         }
         return false;
     }
-}
+}*/
