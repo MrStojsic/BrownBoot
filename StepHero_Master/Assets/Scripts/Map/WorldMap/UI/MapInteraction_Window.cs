@@ -19,11 +19,7 @@ public class MapInteraction_Window : UiWindow
 
     [SerializeField] private BreadCrumb_FollowBezierPath breadCrumb_FollowBezierPath = null;
 
-    [SerializeField] private MapInteraction_LocationPoiPopulator locationPoiPopulator;
-
-
-    public override void Initialise()
-    { }
+    [SerializeField] private MapInteraction_LocationPoiPopulator locationPoiPopulator = null;
 
 
     public void PresetDisplay(Location location, bool isAtLocation)

@@ -16,7 +16,7 @@ public class ISS_Quest
     public string Description { get => _description; set => _description = value; }
 
     [SerializeField]
-    private CollectionObjective[] _collectionObjectives;
+    private CollectionObjective[] _collectionObjectives = null;
     public CollectionObjective[] CollectionObjectives { get => _collectionObjectives; }
 
     public bool IsComplete
@@ -39,16 +39,16 @@ public class ISS_Quest
 public abstract class Objective
 {
     [SerializeField]
-    private int _amount;
+    private int _amount = default;
     public int Amount { get => _amount; }
     [SerializeField]
-    private int _currentAmount;
+    private int _currentAmount = default;
     public int CurrentAmount { get => _currentAmount; set => _currentAmount = value; }
 
     //- Diviated from tutorial to store an item rather than the string name for comparisons,
     //  but we stll compare to the items name. may use item IDs in future.
     [SerializeField]
-    private Item _item;
+    private Item _item = default;
     public Item Item { get => _item; set => _item = value; }
 
     public bool IsCOmplete
@@ -82,5 +82,18 @@ public class CollectionObjective : Objective
                 ISS_QuestLog.Instance.CheckCompletion();
             }
         }
+    }
+
+    public void UpdateCollectedItemCount()
+    {
+            CurrentAmount = PlayerInventory.Instance.FindItem(Item).NumberOfItem;
+
+            //- This call to the UpdateUi is needed but the check for null or not is just slapped in for now as we dont always have a ref to Questlog yet.
+            if (ISS_QuestLog.Instance != null)
+            {
+                ISS_QuestLog.Instance.UpdateUi();
+                ISS_QuestLog.Instance.CheckCompletion();
+            }
+       
     }
 }

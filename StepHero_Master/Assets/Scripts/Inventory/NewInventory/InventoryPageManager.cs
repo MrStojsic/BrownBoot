@@ -101,11 +101,6 @@ public class InventoryPageManager : UiWindow
     }
     // TOHERE
 
-    public override void Initialise()
-    {
-  
-    }
-
     public void SetNonPlayerInventory(Inventory inventory)
     {
         _nonPlayerInventory = inventory;
@@ -195,6 +190,7 @@ public class InventoryPageManager : UiWindow
         InventorySlot newMenuItem;
         newMenuItem = Instantiate(_inventorySlotPrefab, _itemSlotSelectorGroup.selectorButtonsParent);
         newMenuItem.SelectorButton.selectorGroup = _itemSlotSelectorGroup;
+        print("I RAN ON " + newMenuItem.Title);
         newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
         newMenuItem.Initialise(_focusedInventory.InventoryTypePockets[selectedPocketIndex].storedItems[slotIndex], slotIndex);
         newMenuItem.transform.name += _inventorySlots.Count.ToString();

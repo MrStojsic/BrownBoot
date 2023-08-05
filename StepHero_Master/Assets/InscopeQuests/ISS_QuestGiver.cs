@@ -6,22 +6,27 @@ using UnityEngine;
 public class ISS_QuestGiver : MonoBehaviour
 {
     [SerializeField]
-    private ISS_Quest[] quests;
+    private ISS_Quest[] _quests;
+
+    public ISS_Quest[] Quests { get { return _quests; } }
+
 
     // DEBUG ONLY
     [SerializeField]
-    private ISS_QuestLog tempLog;
+    private ISS_QuestLog tempLog = null;
 
-    private void Start()
-    {
-        // here we need to accept a quest.
-        //DEBUGGING ONLY.
-        tempLog.AcceptQuest(quests[0]);
-        tempLog.AcceptQuest(quests[1]);
-    }
 
-    private void Update()
+
+    //HACK < HERE
+    // here we need to accept a quest.
+    //DEBUGGING ONLY.
+    public void AcceptQuest0()
     {
-        
+        tempLog.AcceptQuest(Quests[0]);
     }
+    public void AcceptQuest1()
+    {
+        tempLog.AcceptQuest(Quests[1]);
+    }
+    // < TO HERE.
 }

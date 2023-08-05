@@ -11,12 +11,12 @@ public class QuestGiver : Npc
     public bool AssignedQuest { get; set; }
     public bool Helped { get; set; }
 
-    [SerializeField] private GameObject quests;
+    [SerializeField] private GameObject quests = null;
     // ALTERNATIVE
     //- This is the name of the script that is the quest we are after,
     //  so this relighs on each quest being its own unique script rather than a scriptable obj.
     //  May change later
-    [SerializeField] private string questType;
+    [SerializeField] private string questType = null;
 
     //- This is a reference to the quaet this NPC has assigned, so it can check the progress of the quest later.
     private Quest Quest { get; set; }

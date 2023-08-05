@@ -16,7 +16,7 @@ namespace Npcs
 
   
         // LOCATION
-        [SerializeField] private Vector2 _positionPercentage;
+        [SerializeField] private Vector2 _positionPercentage = default;
         public Vector2 PositionPercentage
         {
             get{ return _positionPercentage; }
@@ -24,7 +24,7 @@ namespace Npcs
 
         // UI
         [SerializeField]
-        private NpcWindow npcWindow;
+        private NpcWindow npcWindow = null;
 
         public bool IsInteracting { get; set; }
 

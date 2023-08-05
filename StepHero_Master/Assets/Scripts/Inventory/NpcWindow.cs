@@ -8,13 +8,10 @@ public class NpcWindow : UiWindow
     // TODO.. This isnt final, i dont know if many windows will need NPC data at all..
     private IInteractable interactable;
 
-    public override void Initialise()
-    {
-    
-    }
-
     public virtual void Show(IInteractable interactable)
     {
+        //- Rememer we can pass in an interactable but access it as its final class eg Merchant
+        //  by writing "(interactable as Merchant).functionality;"
         this.interactable = interactable;
         base.Show();
     }

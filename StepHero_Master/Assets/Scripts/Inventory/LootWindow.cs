@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 // https://www.youtube.com/watch?v=T6ZjSpy3JrI&list=PLX-uZVK_0K_6JEecbu3Y-nVnANJznCzix&index=73
 
-public class LootWindow : MonoBehaviour
+public class LootWindow : UiWindow
 {
     private static LootWindow _instance;
     public static LootWindow Instance
@@ -99,7 +99,7 @@ public class LootWindow : MonoBehaviour
         }
         itemSelectorGroup.SelectSelectorViaIndex(0);
 
-        OpenClose();
+        Hide();
     }
 
     public void SetItemInfo(ItemSelectorButton itemSelectorButton)
@@ -122,19 +122,4 @@ public class LootWindow : MonoBehaviour
         // If inventory cant accept more of this item, grey it out on the list.
         // and only enable drop button
     }
-
-
-    public void OpenClose()
-    {
-        if (canvasGroup.alpha == 0)
-        {
-            canvasGroup.alpha = 1;
-            canvasGroup.blocksRaycasts = true;
-            return;
-        }
-        canvasGroup.alpha = 0;
-        canvasGroup.blocksRaycasts = false;
-        lootItems.Clear();
-    }
-
 }

@@ -23,47 +23,40 @@ public class ISS_QuestLog : UiWindow
     [SerializeField] private ISS_Quest selectedQuest;
 
     [SerializeField]
-    private ISS_QuestScript questPrefeb;
+    private ISS_QuestScript questPrefeb = null;
     [SerializeField]
     private SelectorGroup _questSlotSelectorGroup = default;
 
 
     private List<ISS_QuestScript> questScripts = new List<ISS_QuestScript>();
 
-    private List<ISS_Quest> _quests = new List<ISS_Quest>();
-    public List<ISS_Quest> Quests
+    private List<ISS_Quest> _AcceptedQuests = new List<ISS_Quest>();
+
+    public List<ISS_Quest> AcceptedQuests
     {
-        get { return _quests; }
-        set { _quests = value; }
+        get { return _AcceptedQuests; }
+        set { _AcceptedQuests = value; }
         }
 
     // HACK
     public Text descriptionText;
     public Text titleText;
-
-    public override void Initialise()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // <
 
     public void AcceptQuest(ISS_Quest quest)
     {
+        // HACK - This is just so we cant pick up the same quest twice for now,
+        //        will make a better fix fo this later once quests are finalised.
+        if (HasQuest(quest))
+        {
+            return;
+        }
+        // <
+
         foreach (CollectionObjective o in quest.CollectionObjectives)
         {
             PlayerInventory.Instance.itemCountChanged += new ItemCountChanged(o.UpdateCollectedItemCount);
-            //o.UpdateCollectedItemCount();
+            o.UpdateCollectedItemCount();
         }
 
         ISS_QuestScript newMenuQuest;
@@ -72,7 +65,7 @@ public class ISS_QuestLog : UiWindow
 
         newMenuQuest.Quest = quest;
 
-        Quests.Add(quest);
+        AcceptedQuests.Add(quest);
         questScripts.Add(newMenuQuest);
 
         // TODO - Complete this once we have the quest detail script running.
@@ -86,7 +79,16 @@ public class ISS_QuestLog : UiWindow
         newMenuQuest.GetComponentInChildren<Text>().text = quest.Title;
         // <
 
+        //- Check if any of the tasks have bee n completed already.
+        CheckCompletion();
 
+    }
+
+    public void AbandonQuest()
+    {
+        //- Removes quest from the quest log.
+        //- Remember if we go with dialoge based quests
+        //  this needs to undo that dialoge making the quest availible again.
     }
 
     // HACK
@@ -105,6 +107,11 @@ public class ISS_QuestLog : UiWindow
         if (quest != null)
         {
             titleText.text = quest.Title;
+
+            // HACK -This is the current lazy way to show a quest is complete in the description.
+            if (HasQuest(quest) && quest.IsComplete)
+            { titleText.text = "(C) " + quest.Title; }
+            // <
 
             string objectives = "\n";
             foreach (Objective o in quest.CollectionObjectives)
@@ -126,5 +133,12 @@ public class ISS_QuestLog : UiWindow
         {
             qs.IsComplete();
         }
+    }
+
+    //- Takes in a quest and checks our list of accepted quests to see if we the quest has already been accepted.
+    public bool HasQuest(ISS_Quest quest)
+    {
+        //- Check if the quest exists in the list of accepted quests.
+        return _AcceptedQuests.Exists(x => x.Title == quest.Title);
     }
 }

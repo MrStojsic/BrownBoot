@@ -5,10 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(CanvasGroup))]
 public abstract class UiWindow : MonoBehaviour
 {
+
+    // NOTE: This is here to remind you that some inheriting classes may require setting up the window before displaying it.
+    //        Its best practice to call it PresetDisplay() with what ever parameters are required passed in.
+    //public void PresetDisplay() { }
+
+    public virtual void Hide() => gameObject.GetComponent<Canvas>().enabled=false;
+
+    public virtual void Show() => gameObject.GetComponent<Canvas>().enabled = true;
+
+    /*
+{
     [SerializeField]
-    private CanvasGroup canvasGroup;
+    protected CanvasGroup canvasGroup;
     [SerializeField]
-    private Canvas canvas;
+    protected Canvas canvas;
 
 
 

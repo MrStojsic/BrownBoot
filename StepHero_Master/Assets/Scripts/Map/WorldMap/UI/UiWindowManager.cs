@@ -7,7 +7,7 @@ using UnityEngine;
 // NOTE: Remember we can call Show() passing in a type and check if we have that UI window type in our list without actually needing a direct refernce to it
 //       (assuming we only have one of those window classes in the uiPanels)
 //       EG Button.onClick.AddListener(() => UiManager.Show<MapInteraction_Window>())
-//       And Show<T>() will look to see if it contains a womdow of that type and if so will show it.
+//       And Show<T>() will look to see if it contains a window of that type and if so will show it.
 
 public class UiWindowManager : MonoBehaviour
 {
