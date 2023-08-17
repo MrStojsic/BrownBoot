@@ -24,7 +24,7 @@ public class InventoryPageManager : UiWindow
     private SelectorGroup _pocketSelectorGroup = default;
 
     [SerializeField]
-    private ItemDetail _itemDetail = null;
+    private DisplayItemDetail _itemDetail = null;
 
     [SerializeField]
     private InventorySlot _inventorySlotPrefab = default;
@@ -157,31 +157,31 @@ public class InventoryPageManager : UiWindow
         _itemDetail.HideEntireDisplay();
         selectedPocketIndex = _pocketSelectorGroup.selectedIndex;
 
-            int slotIndex = 0;
+        int slotIndex = 0;
 
-            for (; slotIndex < _focusedInventory.InventoryTypePockets[selectedPocketIndex].Count; slotIndex++)
+        for (; slotIndex < _focusedInventory.InventoryTypePockets[selectedPocketIndex].Count; slotIndex++)
+        {
+            if (_inventorySlots.Count > slotIndex)
             {
-                if (_inventorySlots.Count > slotIndex)
-                {
-                    _inventorySlots[slotIndex].Initialise(_focusedInventory.InventoryTypePockets[selectedPocketIndex].storedItems[slotIndex],slotIndex);
-                    _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
-                    _inventorySlots[slotIndex].transform.SetSiblingIndex(slotIndex);
-                    _inventorySlots[slotIndex].gameObject.SetActive(true);
-                }
-                else
-                {
-                    AddMenuItem(slotIndex);
-                }
+                _inventorySlots[slotIndex].Initialise(_focusedInventory.InventoryTypePockets[selectedPocketIndex].storedItems[slotIndex], slotIndex);
+                _inventorySlots[slotIndex].transform.SetParent(_itemSlotSelectorGroup.selectorButtonsParent);
+                _inventorySlots[slotIndex].transform.SetSiblingIndex(slotIndex);
+                _inventorySlots[slotIndex].gameObject.SetActive(true);
             }
+            else
+            {
+                AddMenuItem(slotIndex);
+            }
+        }
 
-            if (_focusedInventory.InventoryTypePockets[selectedPocketIndex].Count < _inventorySlots.Count)
+        if (_focusedInventory.InventoryTypePockets[selectedPocketIndex].Count < _inventorySlots.Count)
+        {
+            for (; slotIndex < _inventorySlots.Count; slotIndex++)
             {
-                for (; slotIndex < _inventorySlots.Count; slotIndex++)
-                {
-                    _inventorySlots[slotIndex].transform.SetParent(_pooledInventoryHolder);
-                }
+                _inventorySlots[slotIndex].transform.SetParent(_pooledInventoryHolder);
             }
-            // - Below line seemingly does nothing.
+        }
+        // - Below line seemingly does nothing.
         //selectedSlotIndex = 0;
     }
 
@@ -199,7 +199,7 @@ public class InventoryPageManager : UiWindow
 
     private void CallPreviewItem(InventorySlot inventorySlot)
     {
-        print(inventorySlot.Index + " : " +inventorySlot.transform.GetSiblingIndex());
+        print(inventorySlot.Index + " : " + inventorySlot.transform.GetSiblingIndex());
 
         selectedSlotIndex = inventorySlot.Index;
         _itemDetail.DisplayItem(inventorySlot);

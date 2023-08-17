@@ -11,12 +11,9 @@ public class ItemQuantityInteractor : MonoBehaviour
     private int maxNumberOfItem = 0;
     private int currentNumberOfItem = 0;
 
-    [SerializeField] private ItemDetail itemDetail = null;
+    [SerializeField] private DisplayItemDetail displayItemDetail = null;
 
     [SerializeField] private GameObject pricePanel = null;
-
-
-
 
     // UI.
     [SerializeField] private Text quantityText = null;
@@ -38,45 +35,45 @@ public class ItemQuantityInteractor : MonoBehaviour
     }
     private QuantityLimitReason quantityLimitReason;
 
-  
+
     public void SetUp(bool doEnable = true)
     {
-        switch ((int)itemDetail.InteractionType)
+        switch ((int)displayItemDetail.InteractionType)
         {
             case 0: // SHOP_BUY, check both player inventory and number of item and number player can afford.
-                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
+                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemPurchaseable(displayItemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Buy how many?";
                 CalculateFinalPricePerItem();
                 UpdatePriceUi(true);
-                itemInteraction = PlayerBuySelectedItem;
+                itemInteraction = PlayerBuyItem;
                 break;
 
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
-                maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemPurchaseable(itemDetail.InventoryItem, out quantityLimitReason);
+                maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemPurchaseable(displayItemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Sell how many?";
                 CalculateFinalPricePerItem();
                 UpdatePriceUi(true);
-                itemInteraction = PlayerSellSelectedItem;
+                itemInteraction = PlayerSellItem;
                 break;
             case 2: // PLAYER_USE / DROP, check number of item.
-                maxNumberOfItem = itemDetail.InventoryItem.NumberOfItem;
+                maxNumberOfItem = displayItemDetail.InventoryItem.NumberOfItem;
                 currentNumberOfItem = 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Discard how many?";
                 UpdatePriceUi(false);
-                itemInteraction = DropSelectedItem;
+                itemInteraction = DropItem;
                 break;
             case 3: // LOOT, check player inventory.
-                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemReceivable(itemDetail.InventoryItem);
+                maxNumberOfItem = PlayerInventory.Instance.GetMaxNumberOfItemReceivable(displayItemDetail.InventoryItem);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = maxNumberOfItem == 0 ? "FULL" : currentNumberOfItem.ToString();
                 confirmationText.text = "Take how many?";
                 UpdatePriceUi(false);
-                itemInteraction = TakeSelectedItem;
+                itemInteraction = TakeItem;
                 break;
             default:
                 break;
@@ -88,8 +85,7 @@ public class ItemQuantityInteractor : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    public void UpdateQuantityPickerValue(bool isIncrement)
+    public void ChooseDesiredQuantity (bool isIncrement)
     {
         if (isIncrement)
         {
@@ -97,7 +93,7 @@ public class ItemQuantityInteractor : MonoBehaviour
             {
                 currentNumberOfItem++;
                 quantityText.text = currentNumberOfItem.ToString();
-                UpdatePriceUi((int)itemDetail.InteractionType < 2);
+                UpdatePriceUi((int)displayItemDetail.InteractionType < 2);
                 return;
             }
             Debug.Log(quantityLimitReason);
@@ -109,8 +105,29 @@ public class ItemQuantityInteractor : MonoBehaviour
             {
                 currentNumberOfItem--;
                 quantityText.text = currentNumberOfItem.ToString();
-                UpdatePriceUi((int)itemDetail.InteractionType < 2);
+                UpdatePriceUi((int)displayItemDetail.InteractionType < 2);
             }
+            // -If we want to allow negative 0 to round back to max, allow below statment.
+            /*else
+            {
+                currentNumberOfItem = maxNumberOfItem;
+                quantityText.text = currentNumberOfItem.ToString();
+                UpdatePriceUi((int)displayItemDetail.InteractionType < 2);
+            }*/
+        }
+    }
+
+    private void CalculateFinalPricePerItem()
+    {
+        // if the player is selling we incure a 5% loss to the value, rounted up to the next dollar. so a minimum loss of 1 gold.
+        if (displayItemDetail.InteractionType == InteractionType.PLAYER_SELL)
+        {
+            pricePerItemAfterTax = Mathf.CeilToInt(displayItemDetail.InventoryItem.Item.Price * 0.95f);
+        }
+        // if the player is buying we pay a 5% surcharge to the value, rounted up to the next dollar. so a minimum surcharge of 1 gold. 
+        else
+        {
+            pricePerItemAfterTax = Mathf.CeilToInt(displayItemDetail.InventoryItem.Item.Price * 1.05f);
         }
     }
 
@@ -125,58 +142,42 @@ public class ItemQuantityInteractor : MonoBehaviour
         if (pricePanel.activeSelf != doShow)
         {
             pricePanel.SetActive(doShow);
-            print(doShow);
-        }
-
-    }
-
-    private void CalculateFinalPricePerItem()
-    {
-        // if the player is selling we incure a 5% loss to the value, rounted up to the next dollar. so a minimum loss of 1 gold.
-        if (itemDetail.InteractionType == InteractionType.PLAYER_SELL)
-        {
-            pricePerItemAfterTax = Mathf.CeilToInt(itemDetail.InventoryItem.Item.Price * 0.95f);
-        }
-        // if the player is buying we pay a 5% surcharge to the value, rounted up to the next dollar. so a minimum surcharge of 1 gold. 
-        else
-        {
-            pricePerItemAfterTax = Mathf.CeilToInt(itemDetail.InventoryItem.Item.Price * 1.05f);
         }
     }
 
     public void CallAppropriateItemInteractions()
     {
-        itemInteraction.Invoke();
+        itemInteraction?.Invoke();
         ToggleDisplay(false);
     }
 
-    public void DropSelectedItem()
+    public void DropItem()
     {
         if (currentNumberOfItem > 0)
         {
-            PlayerInventory.Instance.RemoveItems(itemDetail.InventoryItem, currentNumberOfItem);
+            PlayerInventory.Instance.RemoveItems(displayItemDetail.InventoryItem, currentNumberOfItem);
         }
     }
 
-    public void TakeAllSelectedItem()
+    public void TakeAllItem()
     {
         currentNumberOfItem = maxNumberOfItem;
-        TakeSelectedItem();
+        TakeItem();
         ToggleDisplay(false);
     }
 
-    public void TakeSelectedItem()
+    public void TakeItem()
     {
-        PlayerInventory.Instance.AttemptAddItem(itemDetail.InventoryItem.Item, currentNumberOfItem);
+        PlayerInventory.Instance.AttemptAddItem(displayItemDetail.InventoryItem.Item, currentNumberOfItem);
     }
 
-    public void PlayerBuySelectedItem()
+    public void PlayerBuyItem()
     {
-        AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory, itemDetail.InventoryItem);
+        AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory, displayItemDetail.InventoryItem);
     }
-    public void PlayerSellSelectedItem()
+    public void PlayerSellItem()
     {
-        AttemptToPurchaseItems(PlayerInventory.Instance, itemDetail.InventoryItem);
+        AttemptToPurchaseItems(PlayerInventory.Instance, displayItemDetail.InventoryItem);
     }
 
     public bool AttemptToPurchaseItems(Inventory sellersInventory, InventoryItem sellersInventoryItem)
@@ -202,7 +203,7 @@ public class ItemQuantityInteractor : MonoBehaviour
         if (gameObject.activeSelf != toggleEnable)
         {
             gameObject.SetActive(toggleEnable);
-            itemDetail.ToggleDescriptionVisibility(!toggleEnable);
+            displayItemDetail.SetLongOrShortDescription(true);
         }
     }
 }

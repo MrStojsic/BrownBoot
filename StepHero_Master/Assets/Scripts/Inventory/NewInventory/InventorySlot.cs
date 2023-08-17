@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class InventorySlot : MonoBehaviour
 {
     // DATA.
+    [SerializeField]
     protected InventoryItem _inventoryItem;
     public virtual InventoryItem InventoryItem
     {
@@ -48,11 +49,6 @@ public class InventorySlot : MonoBehaviour
                 InventoryItem = null;
                 _stackSizeText.color = Color.clear;
             }
-        }
-        else
-        // TODO i dont think this even needs to be here, it should already be disabled hence no need to update the colour.        else
-        {
-            _stackSizeText.color = Color.clear;
         }
     }
 
@@ -133,6 +129,7 @@ public class InventoryItem
                 _inventorySlot = value;
 
             _inventorySlot?.UpdateStackSizeUI();
+            Debug.Log("RAAAAN");
         }
     }
 

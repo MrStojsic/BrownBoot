@@ -8,8 +8,12 @@ using UnityEngine;
 public class ISS_Quest
 {
     [SerializeField]
-    private string title;
-    public string Title { get => title; set => title = value; }
+    private string _title;
+    public string Title { get => _title; set => _title = value; }
+
+    [SerializeField]
+    private Sprite _icon;
+    public Sprite Icon { get => _icon; set => _icon = value; }
 
     [SerializeField]
     private string _description;
@@ -25,7 +29,7 @@ public class ISS_Quest
         {
             foreach (Objective o in CollectionObjectives)
             {
-                if (!o.IsCOmplete)
+                if (!o.IsComplete)
                 {
                     return false;
                 }
@@ -39,6 +43,9 @@ public class ISS_Quest
 public abstract class Objective
 {
     [SerializeField]
+    private string _description;
+    public string Description { get => _description; set => _description = value; }
+    [SerializeField]
     private int _amount = default;
     public int Amount { get => _amount; }
     [SerializeField]
@@ -51,7 +58,7 @@ public abstract class Objective
     private Item _item = default;
     public Item Item { get => _item; set => _item = value; }
 
-    public bool IsCOmplete
+    public bool IsComplete
     {
         get
         {

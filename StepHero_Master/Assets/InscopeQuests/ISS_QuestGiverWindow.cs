@@ -15,7 +15,8 @@ public class ISS_QuestGiverWindow : NpcWindow
 
         foreach (ISS_Quest quest in questGiver.Quests)
         {
-            // access and show quests.
+            // -Access and show quests.
+            // -Remember to check for which quests have been completed too, not just quests we have.
         }
     }
 

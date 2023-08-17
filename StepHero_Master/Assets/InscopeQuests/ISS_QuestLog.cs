@@ -68,8 +68,6 @@ public class ISS_QuestLog : UiWindow
         AcceptedQuests.Add(quest);
         questScripts.Add(newMenuQuest);
 
-        // TODO - Complete this once we have the quest detail script running.
-        //newMenuQuest.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuQuest));
         // HACK
         newMenuQuest.SelectorButton.AddListenerActionToOnSelected(() => ShowDescription(newMenuQuest.Quest));
         // <
@@ -82,6 +80,14 @@ public class ISS_QuestLog : UiWindow
         //- Check if any of the tasks have bee n completed already.
         CheckCompletion();
 
+    }
+    public void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            Debug.Log("Pressed Q - Clost the QuestLog.");
+            Hide();
+        }
     }
 
     public void AbandonQuest()

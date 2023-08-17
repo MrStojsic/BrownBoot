@@ -1,45 +1,39 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Quests/ObjectiveSlot.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="5" Column="48" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/PlayerInventory.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryPageManager.cs" Line="193" Column="36" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindow.cs" Line="6" Column="23" />
-      <File FileName="Assets/InscopeQuests/ISS_QuestLog.cs" Line="74" Column="9" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/MapInteraction_Window.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindowManager.cs" />
-      <File FileName="Assets/Scripts/Map/WorldMap/Location Related/Location.cs" />
-      <File FileName="Assets/InscopeQuests/ISS_QuestGiver.cs" Line="25" Column="1" />
-      <File FileName="Assets/Scripts/NPC/Occupations/QuestGiver.cs" />
-      <File FileName="Assets/Scripts/NPC/Occupations/Merchant.cs" />
-      <File FileName="Assets/Scripts/NPC/NPC.cs" />
-      <File FileName="Assets/InscopeQuests/ISS_QuestGiverWindow.cs" Line="28" Column="1" />
-      <File FileName="Assets/InscopeQuests/ISS_Quest.cs" Line="89" Column="67" />
-      <File FileName="Assets/Scripts/Inventory/NpcWindow.cs" Line="6" Column="14" />
-      <File FileName="Assets/InscopeQuests/ISS_QuestScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" Line="161" Column="53" />
-      <File FileName="Assets/Scripts/UI Components/SimpleButton.cs" Line="75" Column="22" />
-      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" Line="63" Column="17" />
-      <File FileName="Assets/Scripts/UI Components/ItemSelectorButton.cs" Line="35" Column="14" />
-      <File FileName="Assets/Scripts/UI Components/SelectorGroup.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemDetail.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/ItemQuantityInteractor.cs" Line="144" Column="42" />
+      <File FileName="Assets/Scripts/UI Components/SelectorButton.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs" Line="123" Column="10" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryPageManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Quests/DisplayQuestDetail.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Quests/ObjectiveSlot.cs" Line="6" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StepHero_Master" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="InscopeQuests" expanded="True" />
-                <Node name="Scripts" expanded="True">
-                  <Node name="Inventory" expanded="True">
-                    <Node name="NewInventory" expanded="True">
-                      <Node name="ItemDetail.cs" selected="True" />
-                    </Node>
-                  </Node>
-                  <Node name="UI Components" expanded="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="InscopeQuests" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="NewInventory" expanded="True" />
                 </Node>
+                <Node name="Map" expanded="True">
+                  <Node name="WorldMap" expanded="True">
+                    <Node name="UI" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Quests" expanded="True">
+                  <Node name="ObjectiveSlot.cs" selected="True" />
+                </Node>
+                <Node name="UI Components" expanded="True" />
+              </Node>
+              <Node name="ThirdParty" expanded="True">
+                <Node name="InspectorButton" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -49,9 +43,11 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b9794dcd-b3ec-4be3-b401-cd9e7548e0ee" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0ff5fd38-ec88-4e88-8641-e84f73c07593" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mikey/Documents/GitHub/BrownBoot/StepHero_Master/Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs" relfile="Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs" line="30" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
