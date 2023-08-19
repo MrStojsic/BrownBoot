@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectiveSlot : MonoBehaviour
+public class ObjectiveSlot : Slot
 {
-    [SerializeField]
-    private Text _textDescription;
-    [SerializeField]
-    private Image _checkBoxImage;
-
-    public void SetSlot(Objective o, Sprite tickBox = null)
+    public void SetObjectiveDetails(Objective o, Sprite tickBox = null)
     {
         if (tickBox != null)
         {
-            _checkBoxImage.sprite = tickBox;
+            Icon.sprite = tickBox;
         }
-        _textDescription.text = o.Description + " " + o.CurrentAmount + "/" + o.Amount;
+        Title.text = o.Description + " " + o.CurrentAmount + "/" + o.Amount;
     }
 }

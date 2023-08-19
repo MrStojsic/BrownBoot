@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class ItemQuantityInteractor : MonoBehaviour
 {
-
-
     // DATA.
     private int maxNumberOfItem = 0;
     private int currentNumberOfItem = 0;
@@ -148,6 +146,7 @@ public class ItemQuantityInteractor : MonoBehaviour
     public void CallAppropriateItemInteractions()
     {
         itemInteraction?.Invoke();
+        displayItemDetail.UpdateStackSizeUI();
         ToggleDisplay(false);
     }
 

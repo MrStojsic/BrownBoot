@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 // Added 
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : Slot
 {
     // DATA.
     [SerializeField]
@@ -52,32 +52,12 @@ public class InventorySlot : MonoBehaviour
         }
     }
 
-    private int _index;
-    public int Index { get { return _index; } }
 
-    // UI.
-    [SerializeField] protected Text _title = default;
-    public Text Title
-    {
-        get { return _title; }
-    }
-
-    [SerializeField] protected Image _icon = default;
-    public Image Icon
-    {
-        get { return _icon; }
-    }
 
     [SerializeField] protected Text _stackSizeText = default;
     public Text StackSizeText
     {
         get { return _stackSizeText; }
-    }
-
-    [SerializeField] private SelectorButton _selectorButton = default;
-    public SelectorButton SelectorButton
-    {
-        get { return _selectorButton; }
     }
 
     public void Initialise(InventoryItem inventoryItem, int index)
@@ -87,7 +67,7 @@ public class InventorySlot : MonoBehaviour
             _inventoryItem.InventorySlot = null;
         }
         InventoryItem = inventoryItem;
-        _index = index;
+        Index = index;
     }
 }
 

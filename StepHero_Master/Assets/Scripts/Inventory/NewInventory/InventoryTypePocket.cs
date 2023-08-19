@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class  InventoryTypePocket
+public class  InventoryTypePocket : ICountable
 {
     [SerializeField]
     public List<InventoryItem> storedItems;

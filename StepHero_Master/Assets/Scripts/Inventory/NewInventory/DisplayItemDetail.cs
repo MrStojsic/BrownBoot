@@ -27,11 +27,10 @@ public class DisplayItemDetail : InventorySlot
                 _inventoryItem = value;
                 _title.text = value.Item.Title;
                 _icon.sprite = value.Item.Icon;
-                _inventoryItem.InventorySlot = this;
-
                 SetLongOrShortDescription(true);
 
                 _itemQuantityInteractor.ToggleDisplay(false);
+                UpdateStackSizeUI();
             }
             else
             {
@@ -100,19 +99,13 @@ public class DisplayItemDetail : InventorySlot
         }
         transform.SetSiblingIndex(inventorySlot.Index);
 
-        //- Set inventoryItem inventorySlot back to its original slot so the slot updates if any changes were made.
-        if (_displayedInventorySlot != null)
-        {
-            InventoryItem.InventorySlot = _displayedInventorySlot;
-        }
-
-        _displayedInventorySlot = inventorySlot;
-        InventoryItem = inventorySlot.InventoryItem;
-
         if (gameObject.activeSelf == false)
         {
             gameObject.SetActive(true);
         }
+
+        _displayedInventorySlot = inventorySlot;
+        InventoryItem = inventorySlot.InventoryItem; // KEep
 
         Canvas.ForceUpdateCanvases();
     }
@@ -121,7 +114,7 @@ public class DisplayItemDetail : InventorySlot
     {
         if (_displayedInventorySlot != null)
         {
-            InventoryItem.InventorySlot = _displayedInventorySlot;
+         
             _displayedInventorySlot.SelectorButton.Deselect();
         }
         gameObject.SetActive(false);

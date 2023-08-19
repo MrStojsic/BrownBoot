@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Npcs;
-using UnityEngine.UI;
 
 public class TownMapPoiManager : MonoBehaviour
 {
