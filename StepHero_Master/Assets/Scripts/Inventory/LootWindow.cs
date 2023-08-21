@@ -44,15 +44,6 @@ public class LootWindow : UiWindow
 
     [SerializeField] private ItemSelectorButton itemEntryPrefab = default;
 
-    [SerializeField] private CanvasGroup canvasGroup = default;
-    private void Awake()
-    {
-        if (canvasGroup == null)
-        {
-            canvasGroup = GetComponent<CanvasGroup>();
-        }
-    }
-
     public void AddLoot(List<Item> lootToAdd)
     {
         lootItems.AddRange(lootToAdd);

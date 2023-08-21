@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public abstract class Slot : MonoBehaviour
 {
     // UI.
     [SerializeField] protected Text _title = default;

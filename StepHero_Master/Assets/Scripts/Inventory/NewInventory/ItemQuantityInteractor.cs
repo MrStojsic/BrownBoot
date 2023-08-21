@@ -49,7 +49,7 @@ public class ItemQuantityInteractor : MonoBehaviour
                 break;
 
             case 1: // PLAYER_SELL, check number of item and number shop can afford.
-                maxNumberOfItem = InventoryPageManager.Instance.NonPlayerInventory.GetMaxNumberOfItemPurchaseable(displayItemDetail.InventoryItem, out quantityLimitReason);
+                maxNumberOfItem = InventoryUiManager.Instance.NonPlayerInventory.GetMaxNumberOfItemPurchaseable(displayItemDetail.InventoryItem, out quantityLimitReason);
                 currentNumberOfItem = maxNumberOfItem > 0 ? 1 : 0;
                 quantityText.text = currentNumberOfItem.ToString();
                 confirmationText.text = "Sell how many?";
@@ -172,7 +172,7 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public void PlayerBuyItem()
     {
-        AttemptToPurchaseItems(InventoryPageManager.Instance.NonPlayerInventory, displayItemDetail.InventoryItem);
+        AttemptToPurchaseItems(InventoryUiManager.Instance.NonPlayerInventory, displayItemDetail.InventoryItem);
     }
     public void PlayerSellItem()
     {
@@ -181,7 +181,7 @@ public class ItemQuantityInteractor : MonoBehaviour
 
     public bool AttemptToPurchaseItems(Inventory sellersInventory, InventoryItem sellersInventoryItem)
     {
-        Inventory buyersInventory = sellersInventory is PlayerInventory ? InventoryPageManager.Instance.NonPlayerInventory : PlayerInventory.Instance;
+        Inventory buyersInventory = sellersInventory is PlayerInventory ? InventoryUiManager.Instance.NonPlayerInventory : PlayerInventory.Instance;
 
         if (totalPrice <= buyersInventory.wallet.Gold && sellersInventoryItem.NumberOfItem >= currentNumberOfItem)
         {

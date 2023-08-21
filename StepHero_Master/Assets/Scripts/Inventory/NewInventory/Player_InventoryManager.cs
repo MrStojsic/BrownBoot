@@ -28,7 +28,7 @@ public class Player_InventoryManager : PlayerInventory
 
         SetDebugPlayerinventoryPockets();
         //InventoryPageManager.Instance.SetNonPlayerInventory(this);
-        InventoryPageManager.Instance.ChangeFocusedInventory(true);
+        InventoryUiManager.Instance.ChangeFocusedInventory(true);
         // TOHERE
     }
 }

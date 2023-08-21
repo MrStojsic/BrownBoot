@@ -9,6 +9,9 @@ public class ISS_QuestGiverWindow : NpcWindow
     //   that lead to quests, rather than a list of quests to choose from.
     private ISS_QuestGiver _questGiver;
 
+    // NOTE: NOT IMPLIMENTED YET!!
+    private ISS_Quest _currentQuest;
+
     public void ShowQuest(ISS_QuestGiver questGiver)
     {
         _questGiver = questGiver;
@@ -24,5 +27,24 @@ public class ISS_QuestGiverWindow : NpcWindow
     {
         ShowQuest(interactable as ISS_QuestGiver);
         base.Show();
+    }
+
+    // NOTE: Im putting this Complete quest fucntion in here
+    //       but later it can be in the Questgiver class or handled outside of the QL if wanted.
+    //- If the current quest is complete, we want to go throught the quest givers quests and null out that index,
+    //  removing the quest from their array of quests.
+    //- Eventually this will be handled by the dialogue system as a dialogue progression.
+    public void CompleteQuest()
+    {
+        if (_currentQuest.IsComplete)
+        {
+            for (int i = 0; i < _questGiver.Quests.Length; i++)
+            {
+                if (_currentQuest == _questGiver.Quests[i])
+                {
+                    _questGiver.Quests[i] = null;
+                }
+            }
+        }
     }
 }

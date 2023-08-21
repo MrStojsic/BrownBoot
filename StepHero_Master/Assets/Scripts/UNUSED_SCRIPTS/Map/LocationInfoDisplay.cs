@@ -13,9 +13,6 @@ public class LocationInfoDisplay : MonoBehaviour
 
     [SerializeField] private Text journeyDistanceText = null;
 
-    [SerializeField] private BreadCrumb_FollowBezierPath breadCrumb_FollowBezierPath = null;
-
-
     public void SetLocationDetails(Location location)
     {
         title.text = location.name; // NOTE: this .name is the Objects name in the hierachy.

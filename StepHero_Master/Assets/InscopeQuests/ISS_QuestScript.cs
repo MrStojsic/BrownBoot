@@ -18,12 +18,12 @@ public class ISS_QuestScript : MonoBehaviour
     //TODO -Impliment the rest of the InventoryScript to InventoryPageManager like functionality
     //      to QuestScript and QuestLog so they act like the inventory slots, InventoryPageManager
     //      so we can scroll through like we can items selecting items and having them replace with it details slot.
-    /*
+    
     [SerializeField] protected Image _icon = default;
     public Image Icon
     {
         get { return _icon; }
-    }*/
+    }
 
     // Start is called before the first frame update
     void Start()

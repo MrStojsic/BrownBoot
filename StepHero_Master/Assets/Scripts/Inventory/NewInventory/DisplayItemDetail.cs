@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System;
 
 public enum InteractionType
 {
@@ -11,13 +9,11 @@ public enum InteractionType
     LOOT_TAKE,
 };
 
-public class DisplayItemDetail : InventorySlot
+public class DisplayItemDetail : DisplaySlotDetail
 {
-    // DATA.
-    [SerializeField]
-    private InventorySlot _displayedInventorySlot;
-
-    public override InventoryItem InventoryItem
+    // INVENTORY.
+    private InventoryItem _inventoryItem;
+    public InventoryItem InventoryItem
     {
         get { return _inventoryItem; }
         protected set
@@ -39,7 +35,41 @@ public class DisplayItemDetail : InventorySlot
         }
     }
 
-    public override void UpdateStackSizeUI()
+    // UI.
+    [SerializeField] protected Text _stackSizeText = default;
+    public Text StackSizeText
+    {
+        get { return _stackSizeText; }
+    }
+    [SerializeField] private Text _descriptionText = default;
+    public Text DescriptionText
+    {
+        get { return _descriptionText; }
+    }
+
+    private bool descriptionIsShort = true;
+
+    [SerializeField] private LayoutElement _descriptionAreaLayoutElement = null;
+
+    // INTERACTIONS.
+    [SerializeField] private InventoryUiManager _inventoryPageManager = null;
+    [SerializeField] private ItemQuantityInteractor _itemQuantityInteractor = null;
+
+    private InteractionType _interactionType = 0;
+    public InteractionType InteractionType
+    {
+        get { return _interactionType; }
+    }
+
+    public delegate void ButtonFunction();
+    public ButtonFunction leftButtonFunction;
+    public ButtonFunction rightButtonFunction;
+
+    [SerializeField] private Text _leftButtonText = null;
+    [SerializeField] private Text _rightButtonText = null;
+
+
+    public void UpdateStackSizeUI()
     {
         if (_inventoryItem != null)
         {
@@ -54,71 +84,16 @@ public class DisplayItemDetail : InventorySlot
             }
             if (_inventoryItem.NumberOfItem == 0)
             {
-                _inventoryPageManager.ClearEmptyInventorySlot(_displayedInventorySlot);
+                _inventoryPageManager.ClearEmptySlot(_displayedSlot);
                 InventoryItem = null;
             }
         }
     }
 
-    private InteractionType _interactionType = 0;
-    public InteractionType InteractionType
+    public override void DisplayDetail(Slot slot)
     {
-        get { return _interactionType; }
-    }
-
-    private bool descriptionIsShort = true;
-
-    // UI.
-    [SerializeField] private Text _descriptionText = default;
-    public Text DescriptionText
-    {
-        get { return _descriptionText; }
-    }
-    [SerializeField] private LayoutElement _descriptionAreaLayoutElement = null;
-
-    [SerializeField] private RectTransform _rectTransform = null;
-
-    [SerializeField] private ItemQuantityInteractor _itemQuantityInteractor = null;
-    [SerializeField] private InventoryPageManager _inventoryPageManager = null;
-
-
-    public delegate void ButtonFunction();
-    public ButtonFunction leftButtonFunction;
-    public ButtonFunction rightButtonFunction;
-
-
-    [SerializeField] private Text _leftButtonText = null;
-    [SerializeField] private Text _rightButtonText = null;
-
-
-    public void DisplayItem(InventorySlot inventorySlot)
-    {
-        if (transform.parent != inventorySlot.transform.parent)
-        {
-            transform.SetParent(inventorySlot.transform.parent);
-        }
-        transform.SetSiblingIndex(inventorySlot.Index);
-
-        if (gameObject.activeSelf == false)
-        {
-            gameObject.SetActive(true);
-        }
-
-        _displayedInventorySlot = inventorySlot;
-        InventoryItem = inventorySlot.InventoryItem; // KEep
-
-        Canvas.ForceUpdateCanvases();
-    }
-
-    public void HideEntireDisplay()
-    {
-        if (_displayedInventorySlot != null)
-        {
-         
-            _displayedInventorySlot.SelectorButton.Deselect();
-        }
-        gameObject.SetActive(false);
-        _displayedInventorySlot = null;
+        InventoryItem = (slot as InventorySlot).InventoryItem;
+        base.DisplayDetail(slot);
     }
 
     public void ToggleLongOrShortDescription()

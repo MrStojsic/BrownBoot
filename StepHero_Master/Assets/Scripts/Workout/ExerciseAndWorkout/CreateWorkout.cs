@@ -18,7 +18,8 @@ public class CreateWorkout : MonoBehaviour
     [SerializeField] Text totalTimeText = default;
     [SerializeField] Image iconImage = default;
 
-    [SerializeField] GameObject incorrectEntryWindow = default;
+    // Never used?
+    //[SerializeField] GameObject incorrectEntryWindow = default;
 
     [SerializeField] SetActiveUiElement workoutEntryPanel = default;
     [SerializeField] SetActiveUiElement workoutCataloguePanel = default;

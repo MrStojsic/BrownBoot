@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayDetailSlot : MonoBehaviour
+public abstract class DisplaySlotDetail : Slot
 {
     
     // DATA.
     [SerializeField]
-    private Slot _displayedSlot;
-
-    [SerializeField] private InventoryPageManager _inventoryPageManager = null;
+    protected Slot _displayedSlot;
 
 
-    public void DisplayItem(Slot slot)
+    public virtual void DisplayDetail(Slot slot)
     {
         if (transform.parent != slot.transform.parent)
         {

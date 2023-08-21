@@ -9,7 +9,6 @@ public class ScaleOnScroll : MonoBehaviour, IPointerExitHandler, IPointerEnterHa
     [SerializeField] private RectTransform mapRectTransform = null;
     [SerializeField] private RectTransform scrollviewRectTransform = null;
 
-    [SerializeField] float scaleSpeed = default;
     [SerializeField] float minScale = default;
     [SerializeField] float maxScale = default;
 

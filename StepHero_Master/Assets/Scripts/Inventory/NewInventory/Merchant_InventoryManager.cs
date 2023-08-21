@@ -42,11 +42,9 @@ public class Merchant_InventoryManager : Inventory
         if (commonPossibleStockItems.Count > 0)
         {
             int commonStockToSkip = commonPossibleStockItems.Count - Random.Range(minCommonItemsExpected, commonPossibleStockItems.Count - 1);
-            print("commonStockToSkip" + commonStockToSkip);
             for (int i = 0; i < commonStockToSkip; i++)
             {
                 commonPossibleStockItems[Random.Range(0, commonPossibleStockItems.Count - 1)] = null;
-                print("Removed an item");
             }
             for (int i = 0; i < commonPossibleStockItems.Count; i++)
             {
@@ -105,8 +103,8 @@ public class Merchant_InventoryManager : Inventory
         if (Input.GetKeyUp(KeyCode.M))
         {
             Debug.Log("Pressed M - Set focused inventory to Merchant's");
-            InventoryPageManager.Instance.SetNonPlayerInventory(this);
-            InventoryPageManager.Instance.ChangeFocusedInventory(false);
+            InventoryUiManager.Instance.SetNonPlayerInventory(this);
+            InventoryUiManager.Instance.ChangeFocusedInventory(false);
         }
     }
     // TOHERE

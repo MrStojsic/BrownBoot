@@ -11,14 +11,10 @@ public class Loot_InventoryManager : MonoBehaviour
 
     public int gold;
 
-    [SerializeField]
-    private InventoryPageManager inventoryInteractionManager = default;
-
     [SerializeField] private List<InventoryItem> debugLootItems = new List<InventoryItem>();
 
     public void AddLoot(List<InventoryItem> lootToAdd)
     {
-        print("ADD LOOT");
         inventoryTypePockets[14].Initialise(ItemType.ANY);
 
         for (int i = 0; i < lootToAdd.Count; i++)

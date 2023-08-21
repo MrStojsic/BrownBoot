@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-
-// Added 
 
 public class InventorySlot : Slot
 {
@@ -21,7 +18,6 @@ public class InventorySlot : Slot
                 _inventoryItem = value;
                 _title.text = value.Item.Title;
                 _icon.sprite = value.Item.Icon;
-
                 _inventoryItem.InventorySlot = this;
             }
             else
@@ -51,8 +47,6 @@ public class InventorySlot : Slot
             }
         }
     }
-
-
 
     [SerializeField] protected Text _stackSizeText = default;
     public Text StackSizeText
@@ -109,7 +103,6 @@ public class InventoryItem
                 _inventorySlot = value;
 
             _inventorySlot?.UpdateStackSizeUI();
-            Debug.Log("RAAAAN");
         }
     }
 
@@ -133,17 +126,6 @@ public class InventoryItem
         }
         return false;
     }
-    /*    public virtual bool ReceiveFromInventoryItem(InventoryItem sourceInventoryItem, int amountToTransfer)
-    {
-        if (sourceInventoryItem.Item == Item && amountToTransfer + _numberOfItem <= Item.StackSize && amountToTransfer <= sourceInventoryItem.NumberOfItem)
-        {
-            NumberOfItem += amountToTransfer;
-
-            sourceInventoryItem.RemoveItems(amountToTransfer);
-            return true;
-        }
-        return false;
-    }*/
 
     public bool RemoveItems(int numberToRemove)
     {

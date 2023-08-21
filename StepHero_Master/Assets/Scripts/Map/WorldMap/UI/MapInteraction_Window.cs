@@ -16,9 +16,6 @@ public class MapInteraction_Window : UiWindow
 
     [SerializeField] private GameObject largeCancelJourneyButton = null;
 
-
-    [SerializeField] private BreadCrumb_FollowBezierPath breadCrumb_FollowBezierPath = null;
-
     [SerializeField] private MapInteraction_LocationPoiPopulator locationPoiPopulator = null;
 
 

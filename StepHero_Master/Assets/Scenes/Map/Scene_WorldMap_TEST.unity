@@ -1926,8 +1926,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2968,8 +2968,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4010,8 +4010,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5439,8 +5439,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5557,8 +5557,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7235,8 +7235,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7724,8 +7724,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9046,8 +9046,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11153,8 +11153,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12325,8 +12325,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13712,7 +13712,6 @@ GameObject:
   - component: {fileID: 1303372567}
   - component: {fileID: 1303372566}
   - component: {fileID: 1303372570}
-  - component: {fileID: 1303372572}
   - component: {fileID: 1303372571}
   - component: {fileID: 1303372574}
   - component: {fileID: 1303372575}
@@ -13868,56 +13867,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HideWindow: 
   canvasGroup: {fileID: 1303372574}
-  _itemSlotSelectorGroup: {fileID: 1834075865}
+  _slotSelectorGroup: {fileID: 1834075865}
   _pocketSelectorGroup: {fileID: 734374280}
-  _itemDetail: {fileID: 1444037340}
-  _inventorySlotPrefab: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
+  _displayDetailSlot: {fileID: 1444037340}
+  _slotPrefab: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _inventorySlots: []
-  _pooledInventoryHolder: {fileID: 2048520560}
-  _nonPlayerInventory: {fileID: 0}
+  _slots: []
+  _pooledSlotHolder: {fileID: 2048520560}
   selectedSlotIndex: 0
+  _nonPlayerInventory: {fileID: 1303372570}
   _interactionType: 0
   testItemToAdd:
     _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
     _numberOfItem: 5
-    _inventorySlot: {fileID: 0}
---- !u!114 &1303372572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303372565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6500a72991cf4336a4e0a1bf8fccebb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryTypePockets:
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  - storedItems: []
-  gold: 0
-  inventoryInteractionManager: {fileID: 1303372571}
-  debugLootItems:
-  - _item: {fileID: 11400000, guid: 1cd4decbd245645078bfec9ec6784be7, type: 2}
-    _numberOfItem: 20
-    _inventorySlot: {fileID: 0}
-  - _item: {fileID: 0}
-    _numberOfItem: 6
     _inventorySlot: {fileID: 0}
 --- !u!225 &1303372574
 CanvasGroup:
@@ -13927,9 +13889,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1303372565}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!222 &1303372575
 CanvasRenderer:
@@ -14269,7 +14231,6 @@ MonoBehaviour:
   journeyOnButton: {fileID: 1067725937}
   closeButton: {fileID: 2088544860}
   largeCancelJourneyButton: {fileID: 1234993564}
-  breadCrumb_FollowBezierPath: {fileID: 1874390976}
   locationPoiPopulator: {fileID: 218353495}
 --- !u!225 &1353080770
 CanvasGroup:
@@ -14703,20 +14664,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efac700d714e43aca78dc58e4b220e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventoryItem:
-    _item: {fileID: 0}
-    _numberOfItem: 0
-    _inventorySlot: {fileID: 0}
   _title: {fileID: 1490304202}
   _icon: {fileID: 1849668961}
-  _stackSizeText: {fileID: 514755814}
   _selectorButton: {fileID: 0}
-  _displayedInventorySlot: {fileID: 0}
+  _displayedSlot: {fileID: 0}
+  _stackSizeText: {fileID: 514755814}
   _descriptionText: {fileID: 1489912517}
   _descriptionAreaLayoutElement: {fileID: 1169288308}
-  _rectTransform: {fileID: 1489912516}
-  _itemQuantityInteractor: {fileID: 1302934834}
   _inventoryPageManager: {fileID: 1303372571}
+  _itemQuantityInteractor: {fileID: 1302934834}
   _leftButtonText: {fileID: 542024207}
   _rightButtonText: {fileID: 1743282877}
 --- !u!1 &1451708909
@@ -15877,8 +15833,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16343,8 +16299,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18105,8 +18061,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18236,8 +18192,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19729,8 +19685,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22139,8 +22095,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
+        m_MethodName: InitialisePocketedSlots
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

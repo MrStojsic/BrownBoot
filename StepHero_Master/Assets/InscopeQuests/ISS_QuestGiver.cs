@@ -6,7 +6,7 @@ using UnityEngine;
 public class ISS_QuestGiver : MonoBehaviour
 {
     [SerializeField]
-    private ISS_Quest[] _quests;
+    private ISS_Quest[] _quests = default;
 
     public ISS_Quest[] Quests { get { return _quests; } }
 
@@ -29,4 +29,6 @@ public class ISS_QuestGiver : MonoBehaviour
         tempLog.AcceptQuest(Quests[1]);
     }
     // < TO HERE.
+
+
 }

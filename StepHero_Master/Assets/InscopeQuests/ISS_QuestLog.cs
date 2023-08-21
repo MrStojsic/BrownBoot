@@ -107,7 +107,7 @@ public class ISS_QuestLog : UiWindow
     }
     // <
 
-    // HACK
+
     public void ShowDescription(ISS_Quest quest)
     {
         if (quest != null)
@@ -132,7 +132,7 @@ public class ISS_QuestLog : UiWindow
         }
 
     }
-    //<
+
     public void CheckCompletion()
     {
         foreach (ISS_QuestScript qs in questScripts)
@@ -147,4 +147,6 @@ public class ISS_QuestLog : UiWindow
         //- Check if the quest exists in the list of accepted quests.
         return _AcceptedQuests.Exists(x => x.Title == quest.Title);
     }
+
+
 }

@@ -3,18 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlotContentManager : UiWindow
+public abstract class SlotUiManager : UiWindow
 {
-
-
     [SerializeField]
     private SelectorGroup _slotSelectorGroup = default;
 
     [SerializeField]
-    private SelectorGroup _pocketSelectorGroup = default;
+    protected SelectorGroup _pocketSelectorGroup = default;
 
     [SerializeField]
-    private DisplayDetailSlot _displayDetailSlot = null;
+    protected DisplaySlotDetail _displayDetailSlot = null;
 
     [SerializeField]
     private Slot _slotPrefab = default;
@@ -23,22 +21,25 @@ public class SlotContentManager : UiWindow
     private List<Slot> _slots = new List<Slot>();
 
     [SerializeField]
-    private Transform _pooledInventoryHolder = default;
+    private Transform _pooledSlotHolder = default;
 
- 
+    protected ICountable[] slotPockets;
 
     [SerializeField]
     private int selectedSlotIndex = 0;
-    private int selectedPocketIndex = 0;
+    protected int selectedPocketIndex = 0;
 
-    public void InitialiseInventorySlots(ICountable[] countables)
+    public void test()
+    {
+    }
+    public void InitialisePockets()
     {
         bool hasSelectedFirstValidButton = false;
 
         // If an error is being thrown here press M to set the merchants inventory up for now, or check that the _nonPlayerInventory variable references to something.
-        for (int i = 0; i < countables.Length; i++)
+        for (int i = 0; i < slotPockets.Length; i++)
         {
-            if (countables[i].Count < 1)
+            if (slotPockets[i].Count < 1)
             {
                 _pocketSelectorGroup.transform.GetChild(i).gameObject.SetActive(false);
             }
@@ -53,15 +54,15 @@ public class SlotContentManager : UiWindow
             }
         }
     }
-
-    public void InitialiseInventorySlotsPageIndex(ICountable[] countables)
+    
+    public void InitialisePocketedSlots()
     {
         _displayDetailSlot.HideEntireDisplay();
         selectedPocketIndex = _pocketSelectorGroup.selectedIndex;
 
         int slotIndex = 0;
 
-        for (; slotIndex < countables[selectedPocketIndex].Count; slotIndex++)
+        for (; slotIndex < slotPockets[selectedPocketIndex].Count; slotIndex++)
         {
             if (_slots.Count > slotIndex)
             {
@@ -72,50 +73,41 @@ public class SlotContentManager : UiWindow
             }
             else
             {
-                AddMenuItem(slotIndex);
+                AddNewSlot(slotIndex);
             }
         }
 
-        if (countables[selectedPocketIndex].Count < _slots.Count)
+        if (slotPockets[selectedPocketIndex].Count < _slots.Count)
         {
             for (; slotIndex < _slots.Count; slotIndex++)
             {
-                _slots[slotIndex].transform.SetParent(_pooledInventoryHolder);
+                _slots[slotIndex].transform.SetParent(_pooledSlotHolder);
             }
         }
-        // - Below line seemingly does nothing.
-        //selectedSlotIndex = 0;
     }
 
-    void AddMenuItem(int slotIndex)
+    void AddNewSlot(int slotIndex)
     {
         Slot newMenuItem;
         newMenuItem = Instantiate(_slotPrefab, _slotSelectorGroup.selectorButtonsParent);
         newMenuItem.SelectorButton.selectorGroup = _slotSelectorGroup;
-        print("I RAN ON " + newMenuItem.Title);
-        newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallPreviewItem(newMenuItem));
+        newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallDisplayDetail(newMenuItem));
         InitializeNewSlot(newMenuItem, slotIndex);
         newMenuItem.transform.name += _slots.Count.ToString();
         _slots.Add(newMenuItem);
     }
-    // For DisplayItemDetil Only
-    /*
-    protected virtual void InitializeNewSlot(Slot newSlot, int slotIndex)
-    {
-        (newSlot as InventorySlot).Initialise(_focusedInventory.InventoryTypePockets[selectedPocketIndex].storedItems[slotIndex], slotIndex);
-    }
-    */
+
     protected virtual void InitializeNewSlot(Slot newSlot, int slotIndex)
     {
         throw new NotImplementedException("InitializeNewSlot in " + gameObject.name + "  not implimented!"); 
     }
 
-    private void CallPreviewItem(Slot slot)
+    private void CallDisplayDetail(Slot slot)
     {
         print(slot.Index + " : " + slot.transform.GetSiblingIndex());
 
         selectedSlotIndex = slot.Index;
-        _displayDetailSlot.DisplayItem(slot);
+        _displayDetailSlot.DisplayDetail(slot);
     }
 
     void SelectFirstItem()
@@ -126,22 +118,19 @@ public class SlotContentManager : UiWindow
         }
     }
 
-    // For DisplayItemDetil Only
-    /*
-    public virtual void ClearEmptyInventorySlot(Slot emptySlot)
+    public virtual void ClearEmptySlot(Slot slot)
     {
         // Check if the pocket is now empty after removing item from it, if so disable the pocket button icon in the catagory list.
-        if (_focusedInventory.InventoryTypePockets[_pocketSelectorGroup.selectedIndex].Count == 0)
+        if (slotPockets[_pocketSelectorGroup.selectedIndex].Count == 0)
         {
             _pocketSelectorGroup.transform.GetChild(_pocketSelectorGroup.selectedIndex).gameObject.SetActive(false);
         }
-        PoolSlot(emptySlot);
+        PoolSlot(slot);
     }
-    */
 
     public void PoolSlot(Slot emptySlot)
     {
-        emptySlot.transform.SetParent(_pooledInventoryHolder);
+        emptySlot.transform.SetParent(_pooledSlotHolder);
     }
 
     // -The following 3 functions are used for sorting the items by name or value, its a WIP.
