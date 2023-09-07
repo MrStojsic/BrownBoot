@@ -23,6 +23,7 @@ public class InventorySlot : Slot
             else
             {
                 gameObject.SetActive(false);
+                InventoryUiManager.Instance.PoolSlot(this);
             }
         }
     }

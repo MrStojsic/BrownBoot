@@ -5,11 +5,22 @@ using UnityEngine.UI;
 
 public class ObjectiveSlot : Slot
 {
-    public void SetObjectiveDetails(Objective o, Sprite tickBox = null)
+    [SerializeField] private Sprite currentObjectiveIcon;
+    [SerializeField] private Color currentObjectiveColour;
+    [SerializeField] private Sprite completedObjectiveIcon;
+    [SerializeField] private Color completedObjectiveColour;
+
+    public void SetObjectiveDetails(Objective o)
     {
-        if (tickBox != null)
+        if (o.IsComplete == true)
         {
-            Icon.sprite = tickBox;
+            Icon.sprite = completedObjectiveIcon;
+            Icon.color = completedObjectiveColour;
+        }
+        else
+		{
+            Icon.sprite = currentObjectiveIcon;
+            Icon.color = currentObjectiveColour;
         }
         Title.text = o.Description + " " + o.CurrentAmount + "/" + o.Amount;
     }

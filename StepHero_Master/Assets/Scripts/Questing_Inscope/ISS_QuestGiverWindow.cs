@@ -12,6 +12,8 @@ public class ISS_QuestGiverWindow : NpcWindow
     // NOTE: NOT IMPLIMENTED YET!!
     private ISS_Quest _currentQuest;
 
+
+
     public void ShowQuest(ISS_QuestGiver questGiver)
     {
         _questGiver = questGiver;
@@ -42,9 +44,19 @@ public class ISS_QuestGiverWindow : NpcWindow
             {
                 if (_currentQuest == _questGiver.Quests[i])
                 {
+                    _questGiver.CompletedQuests.Add(_currentQuest.Title);
                     _questGiver.Quests[i] = null;
+                    _currentQuest.questGiver.UpdateQuestStatus();
                 }
             }
+
+			foreach (CollectItemObjective o in _currentQuest.CollectionObjectives)
+			{
+                PlayerInventory.Instance.itemCountChanged -= new ItemCountChanged(o.UpdateCollectedItemCount);
+                o.Complete();
+            }
+
+            ISS_QuestLog.Instance.RemoveQuest(_currentQuest);
         }
     }
 }

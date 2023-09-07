@@ -10,31 +10,21 @@ public class ISS_QuestScript : MonoBehaviour
 
     private bool isMarkedCompleted = false;
 
-    [SerializeField] private SelectorButton _selectorButton = default;
-    public SelectorButton SelectorButton
-    {
-        get { return _selectorButton; }
-    }
-    //TODO -Impliment the rest of the InventoryScript to InventoryPageManager like functionality
-    //      to QuestScript and QuestLog so they act like the inventory slots, InventoryPageManager
-    //      so we can scroll through like we can items selecting items and having them replace with it details slot.
-    
     [SerializeField] protected Image _icon = default;
     public Image Icon
     {
         get { return _icon; }
     }
-
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected Text _title = default;
+    public Text Title
     {
-
+        get { return _title; }
     }
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private SelectorButton _selectorButton = default;
+    public SelectorButton SelectorButton
     {
-
+        get { return _selectorButton; }
     }
 
     // ONLY TO MATCH TUTORIAL, will replace later.
@@ -57,7 +47,7 @@ public class ISS_QuestScript : MonoBehaviour
             // TODO - Add process to mark complated quest and handle next actions.
             isMarkedCompleted = true;
         }
-        else if (isMarkedCompleted && !Quest.IsComplete)
+        else if (!Quest.IsComplete)
         {
             print("UN-Completed Quest");
             // TODO - Add process to unmark complated quest.

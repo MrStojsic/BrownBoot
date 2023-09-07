@@ -3,6 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//- This interface is used for all slotPockets classes as a general accessor to the pockets.
+public interface ICountable
+{
+    int Count { get; }
+}
+
 public abstract class SlotUiManager : UiWindow
 {
     [SerializeField]
@@ -18,7 +24,7 @@ public abstract class SlotUiManager : UiWindow
     private Slot _slotPrefab = default;
 
     [SerializeField]
-    private List<Slot> _slots = new List<Slot>();
+    protected List<Slot> _existingSlots = new List<Slot>();
 
     [SerializeField]
     private Transform _pooledSlotHolder = default;
@@ -26,12 +32,10 @@ public abstract class SlotUiManager : UiWindow
     protected ICountable[] slotPockets;
 
     [SerializeField]
-    private int selectedSlotIndex = 0;
+    protected int selectedSlotIndex = 0;
     protected int selectedPocketIndex = 0;
 
-    public void test()
-    {
-    }
+	//- Set pockets to only be displayed if they contain slots with data in them.
     public void InitialisePockets()
     {
         bool hasSelectedFirstValidButton = false;
@@ -55,67 +59,57 @@ public abstract class SlotUiManager : UiWindow
         }
     }
     
-    public void InitialisePocketedSlots()
+    public void InitialiseSlotsInPockets()
     {
         _displayDetailSlot.HideEntireDisplay();
         selectedPocketIndex = _pocketSelectorGroup.selectedIndex;
 
-        int slotIndex = 0;
+        int index = 0;
 
-        for (; slotIndex < slotPockets[selectedPocketIndex].Count; slotIndex++)
+        for (; index < slotPockets[selectedPocketIndex].Count; index++)
         {
-            if (_slots.Count > slotIndex)
+            if (_existingSlots.Count > index)
             {
-                InitializeNewSlot(_slots[slotIndex], slotIndex);
-                _slots[slotIndex].transform.SetParent(_slotSelectorGroup.selectorButtonsParent);
-                _slots[slotIndex].transform.SetSiblingIndex(slotIndex);
-                _slots[slotIndex].gameObject.SetActive(true);
+                SetSpecializedSlotFunctionality(_existingSlots[index], index);
+                _existingSlots[index].transform.SetParent(_slotSelectorGroup.selectorButtonsParent);
+                _existingSlots[index].transform.SetSiblingIndex(index);
+                _existingSlots[index].gameObject.SetActive(true);
             }
             else
             {
-                AddNewSlot(slotIndex);
+                CreateNewSlot(index);
             }
         }
 
-        if (slotPockets[selectedPocketIndex].Count < _slots.Count)
+        if (slotPockets[selectedPocketIndex].Count < _existingSlots.Count)
         {
-            for (; slotIndex < _slots.Count; slotIndex++)
+            for (; index < _existingSlots.Count; index++)
             {
-                _slots[slotIndex].transform.SetParent(_pooledSlotHolder);
+                PoolSlot(_existingSlots[index]);
             }
         }
     }
 
-    void AddNewSlot(int slotIndex)
+    void CreateNewSlot(int slotIndex)
     {
-        Slot newMenuItem;
-        newMenuItem = Instantiate(_slotPrefab, _slotSelectorGroup.selectorButtonsParent);
-        newMenuItem.SelectorButton.selectorGroup = _slotSelectorGroup;
-        newMenuItem.SelectorButton.AddListenerActionToOnSelected(() => CallDisplayDetail(newMenuItem));
-        InitializeNewSlot(newMenuItem, slotIndex);
-        newMenuItem.transform.name += _slots.Count.ToString();
-        _slots.Add(newMenuItem);
+        Slot newSlot;
+        newSlot = Instantiate(_slotPrefab, _slotSelectorGroup.selectorButtonsParent);
+        newSlot.SelectorButton.selectorGroup = _slotSelectorGroup;
+        newSlot.SelectorButton.AddListenerActionToOnSelected(() => CallDisplayDetail(newSlot));
+        SetSpecializedSlotFunctionality(newSlot, slotIndex);
+        newSlot.transform.name += _existingSlots.Count.ToString();
+        _existingSlots.Add(newSlot);
     }
 
-    protected virtual void InitializeNewSlot(Slot newSlot, int slotIndex)
+    protected virtual void SetSpecializedSlotFunctionality(Slot newSlot, int slotIndex)
     {
         throw new NotImplementedException("InitializeNewSlot in " + gameObject.name + "  not implimented!"); 
     }
 
     private void CallDisplayDetail(Slot slot)
     {
-        print(slot.Index + " : " + slot.transform.GetSiblingIndex());
-
-        selectedSlotIndex = slot.Index;
+		selectedSlotIndex = slot.Index;
         _displayDetailSlot.DisplayDetail(slot);
-    }
-
-    void SelectFirstItem()
-    {
-        if (_slots != null)
-        {
-            _slotSelectorGroup.OnButtonSelected(_slots[selectedSlotIndex].SelectorButton);
-        }
     }
 
     public virtual void ClearEmptySlot(Slot slot)

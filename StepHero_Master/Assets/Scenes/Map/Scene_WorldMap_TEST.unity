@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 11656682}
   - component: {fileID: 11656681}
   m_Layer: 5
-  m_Name: IconBackground_Weekly
+  m_Name: IconBackground_Hunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,10 +158,10 @@ RectTransform:
   m_Father: {fileID: 1925293980}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -1300}
-  m_SizeDelta: {x: 440, y: 440}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11656681
 MonoBehaviour:
@@ -181,9 +181,9 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -569,10 +569,10 @@ RectTransform:
   m_Father: {fileID: 90538573}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 175, y: -175}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26264614
 MonoBehaviour:
@@ -1138,7 +1138,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 958.5, y: -490.7}
-  m_SizeDelta: {x: 0, y: 350}
+  m_SizeDelta: {x: 1830, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90538574
 MonoBehaviour:
@@ -1583,6 +1583,7 @@ RectTransform:
   m_Children:
   - {fileID: 1156580703}
   - {fileID: 1293225178}
+  - {fileID: 1399338513}
   m_Father: {fileID: 324588473}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1926,8 +1927,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2968,8 +2969,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3814,26 +3815,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _quests:
-  - _title: 
-    _icon: {fileID: 0}
-    _description: Collec 3 green potions
+  - _title: help
+    _icon: {fileID: 21300000, guid: ddc3d1a908626440a97cf9ec2af39aed, type: 3}
+    _questType: 1
+    _shortDescription: Help Mr A gather 2 health potions.
+    _longDescription: Mr A has injured his knee and needs you top help him by gathering
+      2 health potions.
     _collectionObjectives:
-    - _description: 
+    - _description: collect 2 health potions
       _amount: 3
       _currentAmount: 0
       _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
-  - _title: 
-    _icon: {fileID: 0}
-    _description: Collect 20 Apples & 10 Sweet Wotatoes
+    questScript: {fileID: 0}
+    questGiver: {fileID: 0}
+  - _title: Apple farming
+    _icon: {fileID: 21300000, guid: 09ce37886eeff43388a2de00e9bc4337, type: 3}
+    _questType: 0
+    _shortDescription: A hungry horse needs 20 apples and 10 Sweet Wotatoes
+    _longDescription: A horse is hungy and needs some ingredients to make a lovely
+      soup. He needs 20 Apples and 10 Sweet Wotatoes, help him pout by gathering
+      them for him.
     _collectionObjectives:
-    - _description: 
+    - _description: Gather 20 Apples.
       _amount: 20
       _currentAmount: 0
       _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-    - _description: 
+    - _description: Gather 10 Sweet Wotatoes.
       _amount: 10
       _currentAmount: 0
       _item: {fileID: 11400000, guid: 5803666bc26a04174910c1d92033bb11, type: 2}
+    questScript: {fileID: 0}
+    questGiver: {fileID: 0}
+  _questGiverId: 0
   tempLog: {fileID: 2038579287}
 --- !u!1 &337819886
 GameObject:
@@ -4010,8 +4023,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4217,6 +4230,41 @@ Transform:
   m_Father: {fileID: 1834148540}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &368364031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368364032}
+  m_Layer: 5
+  m_Name: PooledObjectivesHolder(KeepDisabled)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &368364032
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368364031}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 438565997}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &369871770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4269,7 +4317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32156864, g: 0.27058825, b: 0.33333334, a: 1}
+  m_Color: {r: 0.33333334, g: 0.27982786, b: 0.27058825, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4617,10 +4665,10 @@ RectTransform:
   m_Father: {fileID: 90538573}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 545, y: -175}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &421917383
 MonoBehaviour:
@@ -5023,10 +5071,10 @@ RectTransform:
   m_Father: {fileID: 90538573}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 915, y: -175}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438518823
 MonoBehaviour:
@@ -5098,6 +5146,7 @@ GameObject:
   - component: {fileID: 438566000}
   - component: {fileID: 438565999}
   - component: {fileID: 438565998}
+  - component: {fileID: 438566001}
   m_Layer: 5
   m_Name: ObjectivesArea
   m_TagString: Untagged
@@ -5116,14 +5165,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.95, y: 1, z: 1}
   m_Children:
-  - {fileID: 1904150162}
+  - {fileID: 368364032}
   m_Father: {fileID: 7350532761434815916}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 958.6668, y: -1226}
+  m_SizeDelta: {x: 1917.3336, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &438565998
 MonoBehaviour:
@@ -5164,7 +5213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32156864, g: 0.27058825, b: 0.33333334, a: 1}
+  m_Color: {r: 0.33333334, g: 0.27968538, b: 0.27058825, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5189,6 +5238,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438565996}
   m_CullTransparentMesh: 0
+--- !u!114 &438566001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438565996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 696386c981e9b48ac86284042716ec8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _slotPrefab: {fileID: 1001097029390049703, guid: d8a11600e6e0343d4931916627d048df,
+    type: 3}
+  _existingSlots: []
+  _pooledSlotHolder: {fileID: 368364032}
 --- !u!1 &444053598
 GameObject:
   m_ObjectHideFlags: 0
@@ -5222,10 +5287,10 @@ RectTransform:
   m_Father: {fileID: 7350532761434815916}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 958.6668, y: -2202}
+  m_SizeDelta: {x: 1917.3336, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444053600
 MonoBehaviour:
@@ -5439,8 +5504,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5557,8 +5622,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6494,7 +6559,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &561636306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6945,6 +7010,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595340093}
   m_CullTransparentMesh: 0
+--- !u!1 &596321492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 596321493}
+  - component: {fileID: 596321495}
+  - component: {fileID: 596321494}
+  m_Layer: 5
+  m_Name: IconQuest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &596321493
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596321492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 684786324}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -76, y: -76}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &596321494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596321492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4724fb332f2824142b96c2bb78ba570c, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &596321495
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596321492}
+  m_CullTransparentMesh: 0
 --- !u!1 &602961567
 GameObject:
   m_ObjectHideFlags: 0
@@ -7235,8 +7375,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7486,6 +7626,137 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680359283}
   m_CullTransparentMesh: 0
+--- !u!1 &684786323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 684786324}
+  - component: {fileID: 684786328}
+  - component: {fileID: 684786327}
+  - component: {fileID: 684786326}
+  - component: {fileID: 684786325}
+  m_Layer: 5
+  m_Name: IconBackground_Completed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &684786324
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684786323}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 596321493}
+  m_Father: {fileID: 1925293980}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &684786325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684786323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b4c9afee70c4423387769cdc854691f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorGroup: {fileID: 1925293983}
+  background: {fileID: 684786327}
+  buttonSelectedColour: {r: 0, g: 0, b: 0, a: 0}
+  onSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDeselected:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &684786326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684786323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: 400
+  m_MinHeight: 400
+  m_PreferredWidth: 440
+  m_PreferredHeight: 440
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &684786327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684786323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.7294118, g: 0.7058824, b: 0.7725491, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 30befe166f0e94f7689cc8074f1c59b6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &684786328
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684786323}
+  m_CullTransparentMesh: 0
 --- !u!1 &685048166
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,8 +7995,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8796,6 +9067,7 @@ GameObject:
   - component: {fileID: 828874422}
   - component: {fileID: 828874425}
   - component: {fileID: 828874426}
+  - component: {fileID: 828874427}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8903,6 +9175,19 @@ MonoBehaviour:
   startingPanel: {fileID: 0}
   uiPanels:
   - {fileID: 1353080769}
+--- !u!114 &828874427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828874421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6856fd0a3f2e44563b1ff666925fef20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateInterval: 0.5
 --- !u!1 &838789833
 GameObject:
   m_ObjectHideFlags: 0
@@ -8979,9 +9264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d48ac6cddaf4eebad205af6b4fac9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonDefaultColour: {r: 0.6666492, g: 0.6391955, b: 0.7169812, a: 1}
-  buttonDownColour: {r: 0.5058824, g: 0.47450984, b: 0.5921569, a: 1}
-  buttonSelectedColour: {r: 0.5058824, g: 0.47450984, b: 0.5921569, a: 1}
+  buttonDefaultColour: {r: 0.7176471, g: 0.6509804, b: 0.6392157, a: 1}
+  buttonDownColour: {r: 0.5921569, g: 0.49215686, b: 0.4745098, a: 1}
+  buttonSelectedColour: {r: 0.5921569, g: 0.49215686, b: 0.4745098, a: 1}
   selectedSelectorButton: {fileID: 0}
   selectorButtonsParent: {fileID: 838789834}
   useButtonsSelectedColour: 0
@@ -9046,8 +9331,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9849,10 +10134,10 @@ RectTransform:
   m_Father: {fileID: 90538573}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1655, y: -175}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &908276673
 MonoBehaviour:
@@ -11153,8 +11438,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12325,8 +12610,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12827,7 +13112,7 @@ GameObject:
   - component: {fileID: 1188015593}
   - component: {fileID: 1188015592}
   m_Layer: 5
-  m_Name: IconBackground_FactionExample
+  m_Name: 'IconBackground_Sub '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12848,10 +13133,10 @@ RectTransform:
   m_Father: {fileID: 1925293980}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -760}
-  m_SizeDelta: {x: 440, y: 440}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1188015592
 MonoBehaviour:
@@ -12871,9 +13156,9 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13175,7 +13460,7 @@ GameObject:
   - component: {fileID: 1228324507}
   - component: {fileID: 1228324506}
   m_Layer: 5
-  m_Name: IconBackground_Misc
+  m_Name: IconBackground_Treasure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13196,10 +13481,10 @@ RectTransform:
   m_Father: {fileID: 1925293980}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -1840}
-  m_SizeDelta: {x: 440, y: 440}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1228324506
 MonoBehaviour:
@@ -13219,9 +13504,9 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13838,7 +14123,7 @@ MonoBehaviour:
     - _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
       _numberOfItem: 90
       _inventorySlot: {fileID: 0}
-    - _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
+    - _item: {fileID: 11400000, guid: 39ccdb699393149a5b2ab65eee1cef3a, type: 2}
       _numberOfItem: 2
       _inventorySlot: {fileID: 0}
     - _item: {fileID: 11400000, guid: 0fa1529e5a6de443b9fc7a9dc2cd3560, type: 2}
@@ -13872,14 +14157,14 @@ MonoBehaviour:
   _displayDetailSlot: {fileID: 1444037340}
   _slotPrefab: {fileID: 7526633822373833087, guid: fb22b81b8a59b4dedbad08fe115bf2cd,
     type: 3}
-  _slots: []
+  _existingSlots: []
   _pooledSlotHolder: {fileID: 2048520560}
   selectedSlotIndex: 0
   _nonPlayerInventory: {fileID: 1303372570}
   _interactionType: 0
   testItemToAdd:
-    _item: {fileID: 11400000, guid: dbbc4a4955a4643cd83cabd88bdaaf6b, type: 2}
-    _numberOfItem: 5
+    _item: {fileID: 11400000, guid: 4baff26b42c2a40d3a9588ee81d4ac1e, type: 2}
+    _numberOfItem: 1
     _inventorySlot: {fileID: 0}
 --- !u!225 &1303372574
 CanvasGroup:
@@ -14275,6 +14560,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2074322605}
+  - {fileID: 1531059393}
   m_Father: {fileID: 1697292853}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14482,6 +14768,114 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1399338512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399338513}
+  - component: {fileID: 1399338516}
+  - component: {fileID: 1399338515}
+  - component: {fileID: 1399338514}
+  m_Layer: 5
+  m_Name: Button_Complete
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1399338513
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399338512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2135374936}
+  m_Father: {fileID: 123636766}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 622.26807, y: 176.11401}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1399338514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399338512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e380cefb7d144b387aec3b4966ebc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  background: {fileID: 0}
+  sprite: {fileID: 0}
+  buttonDefaultColour: {r: 0.8980392, g: 0.8745098, b: 0.40392157, a: 1}
+  buttonPressedColour: {r: 0.9528302, g: 0.93720657, b: 0.62473303, a: 1}
+  onClicked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 324588474}
+        m_TargetAssemblyTypeName: ISS_QuestGiver, Assembly-CSharp
+        m_MethodName: AcceptQuest1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1399338515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399338512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8962264, g: 0.87073076, b: 0.40161088, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: de6db6a877b234dbeb3d871ab5f4b31b, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1399338516
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399338512}
+  m_CullTransparentMesh: 0
 --- !u!1 &1422615269
 GameObject:
   m_ObjectHideFlags: 0
@@ -15462,7 +15856,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15624,6 +16018,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522901592}
   m_CullTransparentMesh: 0
+--- !u!1 &1531059392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1531059393}
+  - component: {fileID: 1531059394}
+  - component: {fileID: 1531059395}
+  m_Layer: 5
+  m_Name: QuestCapacityText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1531059393
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531059392}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1353513351}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.19166632, y: 0.020290017}
+  m_AnchorMax: {x: 0.9408343, y: 0.07535499}
+  m_AnchoredPosition: {x: -183.50568, y: -64.40039}
+  m_SizeDelta: {x: -367.0114, y: -46.998894}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1531059394
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531059392}
+  m_CullTransparentMesh: 0
+--- !u!114 &1531059395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531059392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: da022761ad43c49e49d76a7b23e42a5e, type: 3}
+    m_FontSize: 60
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 200
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 50/50
 --- !u!1 &1539955724
 GameObject:
   m_ObjectHideFlags: 0
@@ -15833,8 +16306,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16299,8 +16772,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16347,10 +16820,10 @@ RectTransform:
   m_Father: {fileID: 90538573}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1285, y: -175}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626262010
 MonoBehaviour:
@@ -17271,7 +17744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2454805, g: 0.20545569, b: 0.254717, a: 1}
+  m_Color: {r: 0.25490198, g: 0.21120583, b: 0.20392157, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18061,8 +18534,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18192,8 +18665,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19336,8 +19809,8 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2038579287}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: QuestLogUiManager, Assembly-CSharp
         m_MethodName: Show
         m_Mode: 1
         m_Arguments:
@@ -19685,8 +20158,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19757,12 +20230,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1880231563}
   m_CullTransparentMesh: 0
---- !u!224 &1904150162 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-    type: 3}
-  m_PrefabInstance: {fileID: 9058751842296476170}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904451988
 GameObject:
   m_ObjectHideFlags: 0
@@ -19869,13 +20336,14 @@ RectTransform:
   - {fileID: 1188015591}
   - {fileID: 11656680}
   - {fileID: 1228324505}
+  - {fileID: 684786324}
   m_Father: {fileID: 278337398}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -19.959991, y: -881.5918}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1925293981
 MonoBehaviour:
@@ -20953,7 +21421,9 @@ GameObject:
   - component: {fileID: 2038579292}
   - component: {fileID: 2038579291}
   - component: {fileID: 2038579287}
+  - component: {fileID: 2038579289}
   - component: {fileID: 2038579288}
+  - component: {fileID: 2038579295}
   m_Layer: 5
   m_Name: Canvas_QuestLog
   m_TagString: Untagged
@@ -20975,16 +21445,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HideWindow: 
   canvasGroup: {fileID: 2038579288}
-  selectedQuest:
+  _selectedQuest:
     _title: 
     _icon: {fileID: 0}
-    _description: 
+    _questType: 0
+    _shortDescription: 
+    _longDescription: 
     _collectionObjectives: []
-  questPrefeb: {fileID: 5784384316500346586, guid: 2cc35391249e3424f8e03d3e0d278fdf,
-    type: 3}
-  _questSlotSelectorGroup: {fileID: 838789836}
-  descriptionText: {fileID: 4177326753306117109}
-  titleText: {fileID: 4527028425389155281}
+    questScript: {fileID: 0}
+    questGiver: {fileID: 0}
+  _questTypePockets:
+  - storedQuests: []
+  - storedQuests: []
+  - storedQuests: []
+  - storedQuests: []
+  - storedQuests: []
 --- !u!225 &2038579288
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -20997,6 +21472,28 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2038579289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038579286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b092166add9d44c90af4c7910c6597f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HideWindow: 
+  canvasGroup: {fileID: 2038579288}
+  _slotSelectorGroup: {fileID: 838789836}
+  _pocketSelectorGroup: {fileID: 1925293983}
+  _displayDetailSlot: {fileID: 7350532761434815920}
+  _slotPrefab: {fileID: 18373903862988825, guid: ef250a7aad546477a9a67b11d36b927c,
+    type: 3}
+  _existingSlots: []
+  _pooledSlotHolder: {fileID: 1655425066}
+  selectedSlotIndex: 0
 --- !u!114 &2038579291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21077,6 +21574,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!222 &2038579295
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038579286}
+  m_CullTransparentMesh: 0
 --- !u!1 &2048520559
 GameObject:
   m_ObjectHideFlags: 0
@@ -21785,9 +22290,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: InventoryPageManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlots
-        m_Mode: 1
+        m_TargetAssemblyTypeName: InventoryUiManager, Assembly-CSharp
+        m_MethodName: ChangeFocusedInventory
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22095,8 +22600,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303372571}
-        m_TargetAssemblyTypeName: SlotContentManager, Assembly-CSharp
-        m_MethodName: InitialisePocketedSlots
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22167,6 +22672,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109210664}
   m_CullTransparentMesh: 0
+--- !u!1 &2135374935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2135374936}
+  - component: {fileID: 2135374938}
+  - component: {fileID: 2135374937}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2135374936
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135374935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1399338513}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2135374937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135374935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 58
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 59
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: CHECK FOR COMPLETED QUEST
+--- !u!222 &2135374938
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135374935}
+  m_CullTransparentMesh: 0
 --- !u!1 &2138715387
 GameObject:
   m_ObjectHideFlags: 0
@@ -22202,10 +22786,10 @@ RectTransform:
   m_Father: {fileID: 1925293980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220, y: -220}
-  m_SizeDelta: {x: 440, y: 440}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2138715389
 MonoBehaviour:
@@ -22225,9 +22809,9 @@ MonoBehaviour:
   onSelected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: InventoryInteractionManager, Assembly-CSharp
-        m_MethodName: InitialiseInventorySlotsPageIndex
+      - m_Target: {fileID: 2038579289}
+        m_TargetAssemblyTypeName: SlotUiManager, Assembly-CSharp
+        m_MethodName: InitialiseSlotsInPockets
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22546,10 +23130,10 @@ RectTransform:
   m_Father: {fileID: 7350532761434815916}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 958.6668, y: -250}
+  m_SizeDelta: {x: 1917.3336, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2653461161889361419
 GameObject:
@@ -22639,7 +23223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6666492, g: 0.6391955, b: 0.7169812, a: 1}
+  m_Color: {r: 0.7294118, g: 0.7058824, b: 0.7725491, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22868,7 +23452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5058824, g: 0.47450984, b: 0.5921569, a: 1}
+  m_Color: {r: 0.5921569, g: 0.49537012, b: 0.4745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22907,8 +23491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 7350532761434815906}
   sprite: {fileID: 0}
-  buttonDefaultColour: {r: 0.5058824, g: 0.47450984, b: 0.5921569, a: 1}
-  buttonPressedColour: {r: 0.5058824, g: 0.4745098, b: 0.5921569, a: 1}
+  buttonDefaultColour: {r: 0.5921569, g: 0.4914877, b: 0.4745098, a: 1}
+  buttonPressedColour: {r: 0.5921569, g: 0.49120742, b: 0.4745098, a: 1}
   onClicked:
     m_PersistentCalls:
       m_Calls: []
@@ -22931,10 +23515,10 @@ RectTransform:
   m_Father: {fileID: 838789834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 963.6668, y: -1176}
+  m_SizeDelta: {x: 1927.3336, y: 2352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7350532761434815917
 MonoBehaviour:
@@ -22984,7 +23568,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7350532761434815920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22997,6 +23581,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4fb00323dbaa4fb781aa8162dc14c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _title: {fileID: 4527028425389155281}
+  _icon: {fileID: 2986342166256727327}
+  _selectorButton: {fileID: 0}
+  _displayedSlot: {fileID: 0}
+  _descriptionText: {fileID: 4177326753306117109}
+  _descriptionAreaLayoutElement: {fileID: 7350532761858012143}
+  objectiveSlotManager: {fileID: 438566001}
 --- !u!1 &7350532761622765632
 GameObject:
   m_ObjectHideFlags: 0
@@ -23032,10 +23623,10 @@ RectTransform:
   m_Father: {fileID: 7350532761434815916}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 958.6668, y: -1662}
+  m_SizeDelta: {x: 1917.3336, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7350532761622765634
 MonoBehaviour:
@@ -23070,7 +23661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.32156864, g: 0.27058825, b: 0.33333334, a: 1}
+  m_Color: {r: 0.33333334, g: 0.28011942, b: 0.27058825, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23128,10 +23719,10 @@ RectTransform:
   m_Father: {fileID: 7350532761434815916}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 958.6668, y: -840}
+  m_SizeDelta: {x: 1917.3336, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7350532761858012143
 MonoBehaviour:
@@ -23172,8 +23763,8 @@ MonoBehaviour:
   onClicked:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemDetail, Assembly-CSharp
+      - m_Target: {fileID: 7350532761434815920}
+        m_TargetAssemblyTypeName: DisplayQuestDetail, Assembly-CSharp
         m_MethodName: ToggleLongOrShortDescription
         m_Mode: 1
         m_Arguments:
@@ -23197,7 +23788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6666492, g: 0.6391955, b: 0.7169812, a: 1}
+  m_Color: {r: 0.7176471, g: 0.65109843, b: 0.6392157, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23392,127 +23983,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &9058751842296476170
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 438565997}
-    m_Modifications:
-    - target: {fileID: 9058751842397826259, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_Text
-      value: No objectives set.
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1917.3336
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237336, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9058751843110237339, guid: d8a11600e6e0343d4931916627d048df,
-        type: 3}
-      propertyPath: m_Name
-      value: QuestObjectivePrefab
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d8a11600e6e0343d4931916627d048df, type: 3}

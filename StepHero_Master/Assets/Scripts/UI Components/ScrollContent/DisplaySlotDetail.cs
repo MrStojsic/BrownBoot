@@ -24,7 +24,6 @@ public abstract class DisplaySlotDetail : Slot
         {
             gameObject.SetActive(true);
         }
-
         Canvas.ForceUpdateCanvases();
     }
 

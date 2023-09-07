@@ -71,7 +71,20 @@ public class  InventoryTypePocket : ICountable
                 return storedItems[i];
             }
         }
-
         return null;
+    }
+
+    public int FindNumberOfItem(Item item)
+    {
+        int pocketIndex = item.GetItemTypeInt();
+
+        for (int i = 0; i < storedItems.Count; i++)
+        {
+            if (item == storedItems[i].Item)
+            {
+                return storedItems[i].NumberOfItem;
+            }
+        }
+        return 0;
     }
 }

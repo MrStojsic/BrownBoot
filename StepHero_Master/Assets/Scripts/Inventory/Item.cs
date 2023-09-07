@@ -77,7 +77,12 @@ public abstract class Item : ScriptableObject, IDescribable
     private int stackSize = 99;
 
     [TextArea] [SerializeField] private string _shortDescription = default;
+    public string ShortDescription
+    { get => _shortDescription; }
+
     [TextArea] [SerializeField] private string _longDescription = default;
+    public string LongDescription
+    { get => _longDescription; }
 
     /// <summary>
     /// Property for accessing the _title
@@ -121,11 +126,9 @@ public abstract class Item : ScriptableObject, IDescribable
     public virtual int StackSize
     { get => stackSize; }
 
-    public string LongDescription
-    {   get => _longDescription;    }
 
-    public string ShortDescription
-    {   get => _shortDescription;   }
+
+
 
 
 

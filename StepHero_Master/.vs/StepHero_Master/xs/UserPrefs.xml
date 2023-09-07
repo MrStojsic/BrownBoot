@@ -1,19 +1,67 @@
 ﻿<Properties StartupConfiguration="{AFE9CA61-C7A3-662E-EA53-F8BDC278A5B2}|">
   <MonoDevelop.Ide.ItemProperties.PathCreatorEditor PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/InventoryUiManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs">
     <Files>
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryUiManager.cs" Line="113" Column="1" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Loot_InventoryManager.cs" />
-      <File FileName="Assets/Scripts/Quests/ObjectiveSlot.cs" />
-      <File FileName="Assets/Scripts/UI Components/ScrollContent/SlotUiManager.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" />
-      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" />
+      <File FileName="Assets/Scripts/Questing_Inscope/ISS_QuestLog.cs" Line="40" Column="52" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/DisplayItemDetail.cs" Line="93" Column="26" />
+      <File FileName="Assets/Scripts/Questing_Inscope/ISS_QuestScript.cs" Line="6" Column="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventorySlot.cs" Line="6" Column="32" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryUiManager.cs" Line="68" Column="34" />
+      <File FileName="Assets/Scripts/UI Components/ScrollContent/SlotUiManager.cs" Line="112" Column="28" />
+      <File FileName="Assets/Scripts/Quests/QuestTypePocket.cs" Line="5" Column="22" />
+      <File FileName="Assets/Scripts/Questing_Inscope/ISS_QuestGiver.cs" Line="10" Column="18" NotebookId="1" IsPinned="True" />
+      <File FileName="Assets/Scripts/Questing_Inscope/ISS_Quest.cs" Line="105" Column="63" NotebookId="1" IsPinned="True" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/QuestScript.cs" Line="14" Column="48" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/Questlog.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/QuestGiverWindow.cs" Line="133" Column="38" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/QuestGiver.cs" Line="36" Column="26" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/Quest.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Assets/Scripts/Quest/QGQuestScript.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Quests/ObjectiveSlot.cs" Line="11" Column="61" NotebookId="1" />
+      <File FileName="../../../../Downloads/RPG/Library/PackageCache/com.unity.timeline@1.5.4/Runtime/Animation/AnimationPreviewUpdateCallback.cs" Line="15" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/UI Components/ScrollContent/Slot.cs" Line="19" Column="6" NotebookId="1" />
+      <File FileName="Assets/Scripts/Map/WorldMap/UI/UiWindow.cs" Line="40" Column="55" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Player_InventoryManager.cs" Line="31" Column="22" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Merchant_InventoryManager.cs" Line="107" Column="41" NotebookId="1" />
+      <File FileName="Assets/Scripts/Questing_Inscope/ISS_QuestGiverWindow.cs" Line="59" Column="60" NotebookId="1" />
+      <File FileName="Assets/ThirdParty/Utilitys/FPSCounter.cs" Line="25" Column="47" NotebookId="1" />
+      <File FileName="Assets/Scripts/Quests/QuestLogUiManager.cs" Line="28" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Quests/QuestSlot.cs" Line="28" Column="17" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/InventoryTypePocket.cs" Line="76" Column="1" NotebookId="1" />
+      <File FileName="Assets/Scripts/Quests/DisplayQuestDetail.cs" Line="44" Column="8" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/Item.cs" Line="17" Column="22" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/PlayerInventory.cs" Line="24" Column="35" NotebookId="1" />
+      <File FileName="Assets/Scripts/Inventory/NewInventory/Inventory.cs" Line="53" Column="63" NotebookId="1" />
+      <File FileName="Assets/Scripts/Quests/ObjectiveSlotManager.cs" Line="20" Column="17" NotebookId="1" />
+      <File FileName="Assets/Scripts/UI Components/ScrollContent/DisplaySlotDetail.cs" Line="13" Column="25" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="StepHero_Master" expanded="True" selected="True" />
+          <Node name="StepHero_Master" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="Inventory" expanded="True">
+                  <Node name="NewInventory" expanded="True">
+                    <Node name="DisplayItemDetail.cs" selected="True" />
+                  </Node>
+                </Node>
+                <Node name="Map" expanded="True">
+                  <Node name="WorldMap" expanded="True">
+                    <Node name="UI" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Questing_Inscope" expanded="True" />
+                <Node name="Quests" expanded="True" />
+                <Node name="UI Components" expanded="True">
+                  <Node name="ScrollContent" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="ThirdParty" expanded="True">
+                <Node name="Utilitys" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

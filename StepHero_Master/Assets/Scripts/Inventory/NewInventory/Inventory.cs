@@ -48,6 +48,12 @@ public class Inventory : MonoBehaviour
     {
         return _inventoryTypePockets[item.GetItemTypeInt()].FindItem(item);
     }
+    public int FindNumerOfItem(Item item)
+    {
+        return _inventoryTypePockets[item.GetItemTypeInt()].FindNumberOfItem(item);
+    }
+
+
 
     /// <summary>
     /// This should only be called from the inventory that stores this InventoryTypePocket!
